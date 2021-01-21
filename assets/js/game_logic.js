@@ -1,8 +1,9 @@
 var playButtonEl = document.querySelector(".play-button");
-var dealerHand = [];
-var playerHand = [];
+$('.game').hide()
 var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
-let deckId = ""
+let deckId;
+var dealerHand;
+var playerHand;
 
 var cardValueEvaluate = function(string){
     let cardValue = 0;
@@ -18,58 +19,38 @@ var cardValueEvaluate = function(string){
     return cardValue;
 }
 
-
-// console.log(dealerHand);
-
-
-var playGame = function(){
-    dealerHand = [];
-    playerHand = [];
-    getDeck()
+async function playGame(){
+    await getDeck()
+    dealerHand = await dealCard(2, [])
+    playerHand = await dealCard(2, [])
+    checkCards(false)
 }
 
-var getDeck = function(){
-    fetch(urlAddress).then(function(response){
-        if(response.ok){
-            response.json()
-            .then(function(data){
-                deckId = data.deck_id
-                dealCard(deckId, 2, 'Dealer')
-                dealCard(deckId, 2, 'Me')
-            })
-        }
-    })
+async function getDeck(){
+    const res = await fetch(urlAddress)
+    const data = await res.json()
+    deckId = data.deck_id
 }
 
 
-var dealCard = function(deckId, integer, player) {
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${integer}`)
-    .then(function(response){
-        response.json()
-        .then(function(response){
-        for (let i=0; i<integer; i++){
-            var cardValue = cardValueEvaluate(response.cards[i].code);
-            var cardObj = {
-                card: response.cards[i].code,
-                value: cardValue,
-                img: response.cards[i].image
-            }
-            if (player !== 'Dealer'){
-                playerHand.push(cardObj);
-            } else{
-                dealerHand.push(cardObj)
-            }
+async function dealCard(integer, hand) {
+    var hand = hand
+    const res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${integer}`)
+    const data = await res.json()
+    for (let i=0; i<integer; i++){
+        var cardValue = cardValueEvaluate(data.cards[i].code);
+        var cardObj = {
+            card: data.cards[i].code,
+            value: cardValue,
+            img: data.cards[i].image
         }
-        if(playerHand.length === null){
-
-        }else{
-            checkCards()
-        }
-        })
-    })
+        hand.push(cardObj)
+    }
+    return hand
 }
 
-var checkCards = function(){
+function checkCards(standCheck){
+
     let playerSum = playerHand.reduce(function(accumulator, currentValue){
         return accumulator + currentValue.value;
     }, 0)
@@ -77,37 +58,63 @@ var checkCards = function(){
         return accumulator + currentValue.value;
     }, 0)
     console.log(`player = ${playerSum} \n dealer = ${dealerSum}`)
-    if (dealerSum > 21 && playerSum > 21){
-        playerTie();
-    } else if (dealerSum > 21){
-        playerWin();
-    } else if (playerSum > 21){
-        playerLose();
-    } else if (dealerSum === 21 && playerSum !== 21){
-        playerLose();
-    } else if (playerSum === 21 && dealerSum !== 21){
-        playerWin();
-    }else {
-        var hit = $('<button>').text('Hit')
-        var stand = $('<button>').text('Stand')
-        $('body').append(hit, stand)
+    if (!standCheck){
+        if (dealerSum > 21 && playerSum > 21){
+            playerTie();
+        } else if (dealerSum > 21){
+            playerWin();
+        } else if (playerSum > 21){
+            playerLose();
+        } else if (dealerSum === 21 && playerSum !== 21){
+            playerLose();
+        } else if (playerSum === 21 && dealerSum !== 21){
+            playerWin();
+        }else {
+            $('.game').show()
+            $('.box').hide()
+        }
+    } else {
+        if (playerSum > dealerSum){
+            playerWin();
+        } else if (dealerSum > playerSum){
+            playerLose();
+        } else {
+            playerTie();
+        }
     }
 }
+
 var playerTie = function(){
     console.log(`You tied`)
+    gameOver()
 }
 var playerLose = function(){
     console.log(`You lose`)
-    
+    gameOver()
 }
 var playerWin = function(){
     console.log(`You win`)
-    
+    gameOver()
+}
+var gameOver = function(){
+    $('.game').hide()
+    $('.box').show()
 }
 
 
 
-document.getElementById("play-button").addEventListener("click", function(){
+document.getElementById("play-button").addEventListener("click", function(event){
+    event.preventDefault()
     playGame();
 })
-// document.addEventListener("load", pullDeck());
+
+$('.hit').on('click', async function(event){
+    event.preventDefault()
+    await dealCard(1, playerHand)
+    checkCards(false)
+})
+
+$('.stand').on('click', async function(event){
+    event.preventDefault()
+    checkCards(true)
+})
