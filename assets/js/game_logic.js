@@ -1,9 +1,8 @@
 var playButtonEl = document.querySelector(".play-button");
-let initialValue = 0;
 var dealerHand = [];
 var playerHand = [];
 var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
-var deckId=""
+let deckId = ""
 
 var cardValueEvaluate = function(string){
     let cardValue = 0;
@@ -22,46 +21,93 @@ var cardValueEvaluate = function(string){
 
 // console.log(dealerHand);
 
-var pullDeck = function() {fetch(urlAddress)
-    .then(function(response){
-        response.json().then(function(response) {
-            deckId = response.deck_id;
-            console.log(dealCard(deckId, 2, dealerHand));
-            console.log(dealCard(deckId, 2, playerHand));
-            
-            // let playerSum = playerHand.reduce(
-            //     (accumulator, currentValue) => accumulator + currentValue.value , initialValue
-            // )
-            // console.log(dealerHand, playerHand, playerSum);
-            // localStorage.setItem("deckId", JSON.stringify(response.deck_id));
-    })})}
 
+var playGame = function(){
+    dealerHand = [];
+    playerHand = [];
+    getDeck()
+}
+
+var getDeck = function(){
+    fetch(urlAddress).then(function(response){
+        if(response.ok){
+            response.json()
+            .then(function(data){
+                deckId = data.deck_id
+                dealCard(deckId, 2, 'Dealer')
+                dealCard(deckId, 2, 'Me')
+            })
+        }
+    })
+}
 
 
 var dealCard = function(deckId, integer, player) {
-    // deckId = JSON.parse(localStorage.getItem("deckId"));
-    return fetch("https://deckofcardsapi.com/api/deck/"+deckId+"/draw/?count="+integer)
-    .then(function(response){response.json().then(function(response){
-        // cardValue = cardValueEvaluate(response.cards[0].code);
-        // console.log(cardValue, response.cards[0].code);
-        for (let i=0; i<integer; i++) 
-            {
-             var cardValue = cardValueEvaluate(response.cards[i].code);
-            //  console.log(response, response.cards[i].code)
-             var cardObj = {
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${integer}`)
+    .then(function(response){
+        response.json()
+        .then(function(response){
+        for (let i=0; i<integer; i++){
+            var cardValue = cardValueEvaluate(response.cards[i].code);
+            var cardObj = {
                 card: response.cards[i].code,
-                value: cardValue
-                }
-            player.push(cardObj);
+                value: cardValue,
+                img: response.cards[i].image
             }
-        let playerSum = player.reduce(
-                (accumulator, currentValue) => accumulator + currentValue.value , 0
-            )
-        //  console.log(player);
+            if (player !== 'Dealer'){
+                playerHand.push(cardObj);
+            } else{
+                dealerHand.push(cardObj)
+            }
+        }
+        if(playerHand.length === null){
+
+        }else{
+            checkCards()
+        }
+        })
+    })
+}
+
+var checkCards = function(){
+    let playerSum = playerHand.reduce(function(accumulator, currentValue){
+        return accumulator + currentValue.value;
+    }, 0)
+    let dealerSum = dealerHand.reduce(function(accumulator, currentValue){
+        return accumulator + currentValue.value;
+    }, 0)
+    console.log(`player = ${playerSum} \n dealer = ${dealerSum}`)
+    if (dealerSum > 21 && playerSum > 21){
+        playerTie();
+    } else if (dealerSum > 21){
+        playerWin();
+    } else if (playerSum > 21){
+        playerLose();
+    } else if (dealerSum === 21 && playerSum !== 21){
+        playerLose();
+    } else if (playerSum === 21 && dealerSum !== 21){
+        playerWin();
+    }else {
+        var hit = $('<button>').text('Hit')
+        var stand = $('<button>').text('Stand')
+        $('body').append(hit, stand)
     }
-    )
 }
-);
+var playerTie = function(){
+    console.log(`You tied`)
 }
-document.getElementById("play-button").addEventListener("click", function(){pullDeck()});
+var playerLose = function(){
+    console.log(`You lose`)
+    
+}
+var playerWin = function(){
+    console.log(`You win`)
+    
+}
+
+
+
+document.getElementById("play-button").addEventListener("click", function(){
+    playGame();
+})
 // document.addEventListener("load", pullDeck());
