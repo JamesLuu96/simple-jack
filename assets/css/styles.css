@@ -46,3 +46,30 @@ body {
   padding: 1.5rem 2rem;
   font-weight: bold;
 }
+/*------------modal---------------*/
+.content h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+
+.content h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
+  color: #363636;
+  font-weight: 600;
+  line-height: 1.125;
+}
+/*-------animation-------*/
+.button-box{
+  opacity:0;
+}
+
+.button-box.animate__animated {
+  opacity:1 
+ }

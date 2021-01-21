@@ -7,30 +7,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<link
+rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <link rel="stylesheet" href="./assets/css/styles.css">
+    
     <title>Simple Jack</title>
 </head>
 <body>
     <header>
- 
   </header>
   <section class="home">
     <div class="home-background"> 
         <h1>Simple Jack</h1>
-        <div class="button-box box">
-            
+        <div class="button-box animate__animated animate__fadeInRight animate__delay-0.5s">
         <a href="./game_logic.html"><button class="button is-success is-outlined">Play Now</button></a>
-        <button class="button is-info is-outlined">Rules</button>
+        <button class="button  is-success"  id="btnModal">Rules</button>
     </div>
         <img src="./assets/css/images/gambit.png" alt="section-background" class="home-gambit">
     </div>
   </section>
-
-
-
-
-
+<!-- modal for the rules-->
+       <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">blackJack Rules</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+              <div class="content">
+       <h1>Introduction</h1>
+       <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible without exceeding 21. In contrast to poker, where players compete with each other, blackjack is a one-on-one game between each player and the dealer.</p>
+          <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their face value. The jack, queen and king are worth 10 points each. The ace has a value of either 1 point or 11 points, depending on its usage in your hand.
+          <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are responsible for paying out bets, they obviously can’t take insurance. They also can’t split their hand, double down on a good hand or surrender for half their bet.</p>
+          <p>In addition to these rules, when you play as the dealer you face additional rules that limit how you can hit or stand. In most casinos, the dealer is required to hit on hands worth less than 17 points, regardless of the cards that make up their hand.</p>
+          <p>Hands worth 17 points, however, can’t be hit on. If you’re playing as the dealer and your hand is worth 17, 18, 19, 20 or 21 points, you can’t hit any further and need to stand with whatever hand you’ve got.</p>
+        <p>These restrictions on additional rules, hitting, and standing are the only differences between the dealer’s rules and the players’ rules. In addition to the different rules, the dealer plays their hand after the players have played their hands.</p>
     
+        <h3>Before you start dealing cards</h3>
+          <p>Are you ready to deal the cards? Don’t act too quickly. Before you deal cards to the players, several things need to be done. First, you need to shuffle your cards and, if you’re playing with several players, combine two or more decks together.</p>
+          <p>Once your cards are shuffled, make sure all players have placed their bets. All bets need to be placed before you start dealing cards – players can’t bet once their cards are dealt unless they’re doubling down or splitting their hand into two.</p>
+        
+          <h3>Dealing cards for players</h3>
+       
+          <p>Start by dealing each player’s first card face down. Deal the player on your left first, then move left to right down the remaining players. Finish by dealing yourself one card face down. Deal another card to each player, this time with the card facing up.</p>
+          <p>Finally, deal your final card. This time, it should face upwards. If your card is an ace, you need to ask the players if they want to purchase insurance. If they do, take each player’s insurance (it should be half of their original bet) and flip over your second card to see whether or not you have a blackjack.</p>
+          <p>If you have a blackjack, collect bets from anyone that didn’t buy insurance. Players that did buy insurance receive their original bets back. Players with blackjack will receive their original bet, even if they didn’t purchase insurance.</p>
+
+        
+        <h3>The players’ turns</h3>
+        <p>If your face-up card isn’t an ace, continue play as normal. Starting from your left, all of the players play their hand in turn. Players can stand, in which case you move on to the next player. They can also hit, in which case you deal them a new card face up.</p>
+        <p>If the player continues drawing cards until their hand exceeds 21, they’re bust. You can collect their bet and move on to the next player. If they have blackjack on their first hand, pay back their bet with a 3:2 bonus (for example, a $20 bet receives $30, as well as the return of their original bet.)</p>
+        <p>Before players take additional cards, they can double down. In this case, deal them a new card face up after they have added their extra bet. Remember that players who choose to double down only receive one new card and cannot continue to hit.</p>
+    <p>Players with matching cards can split their hand into two. Once a player splits their hand and matches their original bet, you should deal them two cards – one for each hand – both facing down. Players then play one hand followed by the other.</p>
+    </div>
+</section>
+          <footer class="modal-card-foot">
+            <button class="button is-success is-outlined" id="btn-close">close</button>
+
+          </footer>
+        </div>
+        
+
+
+
+
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
