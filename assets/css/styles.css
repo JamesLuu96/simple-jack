@@ -8,10 +8,11 @@ body {
   font-family: "Chakra Petch", sans-serif;
 }
 .home-background {
-  background-image: linear-gradient(to top left,
-  rgba(51, 51, 51, 0.9),
-  rgba(51, 51, 51, 0.8)
-),
+  background-image: linear-gradient(
+      to top left,
+      rgba(51, 51, 51, 0.9),
+      rgba(51, 51, 51, 0.8)
+    ),
     url("./images/city.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,10 +25,10 @@ body {
   color: #fff;
   font-size: 350%;
   text-align: left;
-  padding:2% 0 0 2%;
+  padding: 2% 0 0 2%;
 }
-.home-background span{
-  color:#2fb667;
+.home-background span {
+  color: #2fb667;
 }
 
 .home-gambit {
@@ -40,9 +41,8 @@ body {
   display: inline-block;
   padding: 3rem 6rem;
   position: absolute;
-  bottom :5%;
-  right:0;
-
+  bottom: 5%;
+  right: 0;
 }
 .button {
   margin-right: 1rem;
@@ -54,7 +54,6 @@ body {
   font-size: 2em;
   margin-bottom: 0.5em;
 }
-
 
 .content h1 {
   font-size: 2em;
@@ -69,10 +68,82 @@ body {
   line-height: 1.125;
 }
 /*-------animation-------*/
-.button-box{
-  opacity:0;
+.button-box {
+  opacity: 0;
 }
 
 .button-box.animate__animated {
-  opacity:1 
- }
+  opacity: 1;
+}
+/*-------card container-------*/
+
+.play-section {
+  /* display:none; */
+  width: 100vw;
+  height: 100vh;
+  padding-top: 2%;
+}
+
+/* .center{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+} */
+/*-------hero section-------*/
+.card-wrapper {
+  width: 70%;
+}
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+.cards {
+  color: #fff;
+  width: 40vw;
+  height: 60vh;
+}
+
+.column {
+  flex-grow: 0;
+}
+.hero-body {
+  padding-bottom: 0;
+}
+.columns img {
+  width: 40%;
+  margin-right: 2%;
+}
+.user-name {
+  animation: type 3s steps(22);
+  overflow: hidden;
+  white-space: no-wrap;
+  width: 22ch;
+}
+@keyframes type {
+  0% {
+    width: 0ch;
+  }
+  100% {
+    width: 22ch;
+  }
+}
+.play-section {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(51, 51, 51, 0.705),
+      rgba(51, 51, 51, 0.747)
+    ),
+    url(./images/back3.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  padding-top: 0;
+  color: #fff;
+}
+.play-section .user-info {
+  margin-left: 12%;
+  margin-bottom: 0;
+  padding-top: 4%;
+}
