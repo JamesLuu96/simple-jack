@@ -147,3 +147,10 @@ body {
   margin-bottom: 0;
   padding-top: 4%;
 }
+.player-text {
+  color: #333;
+  font-family: "Shadows Into Light";
+  font-weight: bold;
+  border: 3px solid #333;
+  border-radius: 5px;
+}

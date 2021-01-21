@@ -22,12 +22,12 @@ $(document).ready(function () {
   btnClose.addEventListener("click", () => {
     modal.classList.remove("is-active");
   });
-  $(".play-section").hide();
+  // $(".play-section").hide();
   var btnPlay = document.querySelector("#play");
-
+ $(".home").hide();
   $("#play").on("click", function () {
-    $(".home").hide();
-    $(".play-section").show();
+   
+    // $(".play-section").show();
   })
 
 
