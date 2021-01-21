@@ -105,7 +105,7 @@ var displayHand = function(player){
         }
     } else {
         for(let i = 0; i < dealerHand.length; i++){
-            var card = $('<img>').attr('src', playerHand[i].img)
+            var card = $('<img>').attr('src', dealerHand[i].img)
             $(`.${player}-cards`).append(card)
         }
     }
