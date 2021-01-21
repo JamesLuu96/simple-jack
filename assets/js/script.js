@@ -1,7 +1,7 @@
 var btn = document.querySelector("#btnModal");
 var modal = document.querySelector(".modal");
 var modalbg = document.querySelector(".modal-background");
-var btnClose=document.querySelector("#btn-close");
+var btnClose = document.querySelector("#btn-close");
 
 //pop up the rules modal
 btn.addEventListener("click", () => {
@@ -16,3 +16,9 @@ btnClose.addEventListener("click", () => {
   modal.classList.remove("is-active");
 });
 
+//
+var btnPlay = document.querySelector("#play");
+
+$("#play").on("click", function () {
+  $(".home").hide();
+})
