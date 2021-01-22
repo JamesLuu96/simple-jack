@@ -119,14 +119,8 @@ body {
   white-space: no-wrap;
   width: 22ch;
 }
-@keyframes type {
-  0% {
-    width: 0ch;
-  }
-  100% {
-    width: 22ch;
-  }
-}
+
+/* Play Game */
 .play-section {
   width: 100vw;
   height: 100vh;
@@ -143,14 +137,69 @@ body {
   color: #fff;
 }
 .play-section .user-info {
-  margin-left: 12%;
-  margin-bottom: 0;
-  padding-top: 4%;
+  padding-top: 5px;
+  margin-bottom: 8px;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
 }
 .player-text {
   color: #333;
+  background-color: #fff;
   font-family: "Shadows Into Light";
   font-weight: bold;
   border: 3px solid #333;
   border-radius: 5px;
+  flex-basis: 60%;
+  padding: 1%;
+}
+
+.player-img {
+  flex-basis: 10%;
+}
+
+/* Play Area */
+.play-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* max-height: 60%; */
+}
+.button-container .button{
+  margin: 5px;
+}
+.hand{
+  /* max-width: 20%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hand img {
+  margin: 5px;
+  max-width: 20%;
+}
+
+.player{
+  flex: 40%;
+}
+.button-container{
+  flex: 20%;
+}
+.dealer{
+  flex: 40%;
+}
+
+/* Media Queries */
+
+@keyframes type {
+  0% {
+    width: 0ch;
+  }
+  100% {
+    width: 8ch;
+  }
 }

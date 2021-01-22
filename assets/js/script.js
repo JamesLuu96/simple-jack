@@ -1,8 +1,17 @@
-
+var x = true
 $(document).ready(function () {
-
-
-
+  // $('.player-text').hide()
+  $('.game-button-container').hide()
+  $('.gambit-special').hide()
+  $('.start-btn').hide()
+  $('.special-btn').on('click', function(){
+    if(x){
+      $('.gambit-special').fadeIn()
+    }else{
+      $('.gambit-special').fadeOut()
+    }
+    x = !x
+  })
 
 
   var btn = document.querySelector("#btnModal");
@@ -22,12 +31,11 @@ $(document).ready(function () {
   btnClose.addEventListener("click", () => {
     modal.classList.remove("is-active");
   });
-  // $(".play-section").hide();
+  $(".play-section").hide();
   var btnPlay = document.querySelector("#play");
- $(".home").hide();
   $("#play").on("click", function () {
-   
-    // $(".play-section").show();
+    $(".home").hide();
+    $(".play-section").show();
   })
 
 
