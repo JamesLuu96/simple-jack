@@ -4,13 +4,31 @@ var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 let deckId;
 var dealerHand;
 var playerHand;
+var bankMoney = 300;
+// var betAmount = 0;
+
+var placeBet = function() {
+    var betAmount = parseInt(prompt(`How much do you want to bet?
+    You can place a bet up to $${bankMoney} dollars.`));
+    return betAmount;
+}
 
 // Evaluates Card Values
-var cardValueEvaluate = function(string){
+var cardValueEvaluate = function(string, objArr){
     let cardValue = 0;
+    let playerSum = objArr.reduce(function(accumulator, currentValue){
+        return accumulator + currentValue.value;
+    }, 0)
     if (string[0] === "A") {
-        cardValue = 11;
-    } 
+    //    if (playerSum>10){
+    // the objArr check may be unnecessary
+        if (playerSum>10 || objArr.some(code => code.card = "[^=A]")) {
+            cardValue = 1;
+        }
+        else {
+            cardValue = 11;
+        } 
+    }
     else if (string[0]==="K" || string[0]==="Q" || string[0]==="J" || string[0]==="0") {
         cardValue = 10;
     }
@@ -26,7 +44,7 @@ async function playGame(){
     dealerHand = await dealCard(2, [])
     playerHand = await dealCard(2, [])
     displayHand('player')
-    checkCards(false)
+    checkCards(false, betAmount)
 }
 
 // Gets a new deck id 
@@ -39,14 +57,15 @@ async function getDeck(){
 
 // Deals a card whether at beginning of game or hitting
 async function dealCard(integer, hand) {
-    var hand = hand
+    var hand = hand;
     const res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${integer}`)
     const data = await res.json()
 
     for (let i=0; i<integer; i++){
-        var cardValue = cardValueEvaluate(data.cards[i].code);
+        var cardValue = cardValueEvaluate(data.cards[i].code, hand);
         var cardObj = {
             card: data.cards[i].code,
+            // card: "AH",
             value: cardValue,
             img: data.cards[i].image
         }
@@ -57,7 +76,7 @@ async function dealCard(integer, hand) {
 
 
 // Compares Hands
-function checkCards(standCheck){
+function checkCards(standCheck, integer){
     // Creates Sum of Hand Variables to Compare
     let playerSum = playerHand.reduce(function(accumulator, currentValue){
         return accumulator + currentValue.value;
@@ -66,28 +85,28 @@ function checkCards(standCheck){
         return accumulator + currentValue.value;
     }, 0)
     console.log(`player = ${playerSum} \n dealer = ${dealerSum}`)
-    // Checks if you and standing
+    // Checks if you are standing
     // If not
     if (!standCheck){
         if (dealerSum > 21 && playerSum > 21){
             playerTie();
         } else if (dealerSum > 21){
-            playerWin();
+            playerWin(integer);
         } else if (playerSum > 21){
-            playerLose();
+            playerLose(integer);
         } else if (dealerSum === 21 && playerSum !== 21){
-            playerLose();
+            playerLose(integer);
         } else if (playerSum === 21 && dealerSum !== 21){
-            playerWin();
+            playerWin(integer);
         }else {
             $('.game').show()
             $('.box').hide()
         }
     } else {
         if (playerSum > dealerSum){
-            playerWin();
+            playerWin(integer);
         } else if (dealerSum > playerSum){
-            playerLose();
+            playerLose(integer);
         } else {
             playerTie();
         }
@@ -115,12 +134,16 @@ var playerTie = function(){
     console.log(`You tied`)
     gameOver()
 }
-var playerLose = function(){
-    console.log(`You lose`)
+var playerLose = function(integer){
+    console.log(bankMoney, integer);
+    bankMoney = bankMoney - integer;
+    console.log(`You lose, you now have ${bankMoney} dollars`)
     gameOver()
 }
-var playerWin = function(){
-    console.log(`You win`)
+var playerWin = function(integer){
+    console.log(bankMoney, integer);
+    bankMoney += integer;
+    console.log(`You win, you now have ${bankMoney} dollars`)
     gameOver()
 }
 var gameOver = function(){
@@ -137,6 +160,7 @@ var gameOver = function(){
 
 $("#play-button").on("click", function(event){
     event.preventDefault()
+    var betAmount = placeBet();
     playGame();
 })
 
@@ -144,10 +168,10 @@ $('.hit').on('click', async function(event){
     event.preventDefault()
     await dealCard(1, playerHand)
     displayHand('player')
-    checkCards(false)
+    checkCards(false, betAmount)
 })
 
 $('.stand').on('click', async function(event){
     event.preventDefault()
-    checkCards(true)
+    checkCards(true, betAmount)
 })
