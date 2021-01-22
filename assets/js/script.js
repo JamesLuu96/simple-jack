@@ -22,7 +22,9 @@ $('#start').on('click', function(){
   $('.home-gambit').fadeIn()
   $('.button-box').fadeIn()
   $('.home h1').fadeIn()
+  $('.shop').hide();
 })
+
 
 $('#play').on('click', function(){
   $('.home').hide()
@@ -42,4 +44,20 @@ $('.modal-background').on("click", () => {
 })
 $('#btnClose').on("click", () => {
   $('.modal').removeClass("is-active");
+})
+//go to shop page from play page
+$("#shop").on("click",()=>{
+  $(".play-section").hide();
+  $(".shop").show();
+})
+//back to home from play page
+$("#home").on("click",()=>{
+  $(".play-section").hide();
+  $(".home").show();
+})
+
+//back to home from shop page
+$(".return-home").on("click",()=>{
+  $(".play-section").hide();
+  $(".home").show();
 })
