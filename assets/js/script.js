@@ -1,5 +1,6 @@
 var x = true
 $(document).ready(function () {
+  
   // $('.player-text').hide()
   $('.game-button-container').hide()
   $('.gambit-special').hide()
@@ -34,6 +35,9 @@ $(document).ready(function () {
   $(".play-section").hide();
   var btnPlay = document.querySelector("#play");
   $("#play").on("click", function () {
+    const sound = new Audio()
+    sound.src = `./assets/audio/main-menu.mp3`
+    sound.play()
     $(".home").hide();
     $(".play-section").show();
   })
