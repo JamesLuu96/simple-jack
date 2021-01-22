@@ -5,7 +5,7 @@ let deckId;
 var dealerHand;
 var playerHand;
 var bankMoney = 300;
-// var betAmount = 0;
+let betAmount = 0;
 
 var placeBet = function() {
     var betAmount = parseInt(prompt(`How much do you want to bet?
@@ -44,7 +44,7 @@ async function playGame(){
     dealerHand = await dealCard(2, [])
     playerHand = await dealCard(2, [])
     displayHand('player')
-    checkCards(false, betAmount)
+    checkCards(false)
 }
 
 // Gets a new deck id 
@@ -76,7 +76,8 @@ async function dealCard(integer, hand) {
 
 
 // Compares Hands
-function checkCards(standCheck, integer){
+function checkCards(standCheck){
+    betAmount = placeBet();
     // Creates Sum of Hand Variables to Compare
     let playerSum = playerHand.reduce(function(accumulator, currentValue){
         return accumulator + currentValue.value;
@@ -91,22 +92,22 @@ function checkCards(standCheck, integer){
         if (dealerSum > 21 && playerSum > 21){
             playerTie();
         } else if (dealerSum > 21){
-            playerWin(integer);
+            playerWin(betAmount);
         } else if (playerSum > 21){
-            playerLose(integer);
+            playerLose(betAmount);
         } else if (dealerSum === 21 && playerSum !== 21){
-            playerLose(integer);
+            playerLose(betAmount);
         } else if (playerSum === 21 && dealerSum !== 21){
-            playerWin(integer);
+            playerWin(betAmount);
         }else {
             $('.game').show()
             $('.box').hide()
         }
     } else {
         if (playerSum > dealerSum){
-            playerWin(integer);
+            playerWin(betAmount);
         } else if (dealerSum > playerSum){
-            playerLose(integer);
+            playerLose(betAmount);
         } else {
             playerTie();
         }
@@ -160,7 +161,6 @@ var gameOver = function(){
 
 $("#play-button").on("click", function(event){
     event.preventDefault()
-    var betAmount = placeBet();
     playGame();
 })
 
@@ -168,10 +168,10 @@ $('.hit').on('click', async function(event){
     event.preventDefault()
     await dealCard(1, playerHand)
     displayHand('player')
-    checkCards(false, betAmount)
+    checkCards(false)
 })
 
 $('.stand').on('click', async function(event){
     event.preventDefault()
-    checkCards(true, betAmount)
+    checkCards(true)
 })
