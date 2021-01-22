@@ -26,8 +26,12 @@ $('#start').on('click', function(){
 
 $('#play').on('click', function(){
   $('.home').hide()
-  $('.play-section').hide()
+  $('.play-section').show()
+  $('.gambit-special').hide()
   stopSong()
+})
+$('.special-btn').on('click', function(){
+  $('.gambit-special').fadeIn()
 })
 $('#btnModal').on("click", () => {
   $('.modal').addClass("is-active");
@@ -38,7 +42,4 @@ $('.modal-background').on("click", () => {
 })
 $('#btnClose').on("click", () => {
   $('.modal').removeClass("is-active");
-})
-$('body').on('click', function(){
-  console.log($(this).className)
 })
