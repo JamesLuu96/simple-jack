@@ -7,32 +7,33 @@ $('.button-box').hide()
 $('.home h1').hide()
 $('.play-section').hide()
 
-async function playSong(){
+async function playSong() {
   sound.currentTime = 0
   await sound.play()
 }
 
-var stopSong = function(){
+var stopSong = function () {
   sound.pause()
 }
 
-$('#start').on('click', function(){
+$('#start').on('click', function () {
   playSong()
   $('.start').fadeOut()
   $('.home-gambit').fadeIn()
   $('.button-box').fadeIn()
   $('.home h1').fadeIn()
   $('.shop').hide();
+
 })
 
 
-$('#play').on('click', function(){
+$('#play').on('click', function () {
   $('.home').hide()
   $('.play-section').show()
   $('.gambit-special').hide()
   stopSong()
 })
-$('.special-btn').on('click', function(){
+$('.special-btn').on('click', function () {
   $('.gambit-special').fadeIn()
 })
 $('#btnModal').on("click", () => {
@@ -46,18 +47,18 @@ $('#btnClose').on("click", () => {
   $('.modal').removeClass("is-active");
 })
 //go to shop page from play page
-$("#shop").on("click",()=>{
+$("#shop").on("click", () => {
   $(".play-section").hide();
   $(".shop").show();
 })
 //back to home from play page
-$("#home").on("click",()=>{
+$("#home").on("click", () => {
   $(".play-section").hide();
   $(".home").show();
 })
 
 //back to home from shop page
-$(".return-home").on("click",()=>{
+$(".return-home").on("click", () => {
   $(".play-section").hide();
   $(".home").show();
 })
