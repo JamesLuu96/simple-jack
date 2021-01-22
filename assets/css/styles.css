@@ -239,6 +239,7 @@ body {
   padding: 0 20px 20px;
   width: 20%;
   overflow: hidden;
+  flex-shrink: 100%;
 }
 
 .shop-container img {
@@ -299,3 +300,4 @@ body {
     width: 8ch;
   }
 }
+

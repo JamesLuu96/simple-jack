@@ -6,6 +6,7 @@ $('.home-gambit').hide()
 $('.button-box').hide()
 $('.home h1').hide()
 $('.play-section').hide()
+$('.shop').hide();
 
 async function playSong() {
   sound.currentTime = 0
@@ -22,7 +23,6 @@ $('#start').on('click', function () {
   $('.home-gambit').fadeIn()
   $('.button-box').fadeIn()
   $('.home h1').fadeIn()
-  $('.shop').hide();
 
 })
 
