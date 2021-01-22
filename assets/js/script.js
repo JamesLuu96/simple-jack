@@ -1,46 +1,44 @@
-var x = true
-$(document).ready(function () {
-  
-  // $('.player-text').hide()
-  $('.game-button-container').hide()
-  $('.gambit-special').hide()
-  $('.start-btn').hide()
-  $('.special-btn').on('click', function(){
-    if(x){
-      $('.gambit-special').fadeIn()
-    }else{
-      $('.gambit-special').fadeOut()
-    }
-    x = !x
-  })
+const sound = new Audio()
+sound.src = `./assets/audio/main-menu.mp3`
 
+// Hidden From Start
+$('.home-gambit').hide()
+$('.button-box').hide()
+$('.home h1').hide()
+$('.play-section').hide()
 
-  var btn = document.querySelector("#btnModal");
-  var modal = document.querySelector(".modal");
-  var modalbg = document.querySelector(".modal-background");
-  var btnClose = document.querySelector("#btn-close");
+async function playSong(){
+  sound.currentTime = 0
+  await sound.play()
+}
 
-  //pop up the rules modal
-  btn.addEventListener("click", () => {
-    modal.classList.add("is-active");
-  });
+var stopSong = function(){
+  sound.pause()
+}
 
-  //close the rules modals
-  modalbg.addEventListener("click", () => {
-    modal.classList.remove("is-active");
-  });
-  btnClose.addEventListener("click", () => {
-    modal.classList.remove("is-active");
-  });
-  $(".play-section").hide();
-  var btnPlay = document.querySelector("#play");
-  $("#play").on("click", function () {
-    const sound = new Audio()
-    sound.src = `./assets/audio/main-menu.mp3`
-    sound.play()
-    $(".home").hide();
-    $(".play-section").show();
-  })
+$('#start').on('click', function(){
+  playSong()
+  $('.start').fadeOut()
+  $('.home-gambit').fadeIn()
+  $('.button-box').fadeIn()
+  $('.home h1').fadeIn()
+})
 
-
+$('#play').on('click', function(){
+  $('.home').hide()
+  $('.play-section').hide()
+  stopSong()
+})
+$('#btnModal').on("click", () => {
+  $('.modal').addClass("is-active");
+})
+//close the rules modals
+$('.modal-background').on("click", () => {
+  $('.modal').removeClass("is-active");
+})
+$('#btnClose').on("click", () => {
+  $('.modal').removeClass("is-active");
+})
+$('body').on('click', function(){
+  console.log($(this).className)
 })
