@@ -1,6 +1,18 @@
 const sound = new Audio()
 sound.loop = true
 sound.src = `./assets/audio/main-menu.mp3`
+var mute = false
+
+$('#mute').on('click', function(){
+    if(mute){
+        playSong(sound)
+        $('#mute').attr('data-glyph', 'volume-high')
+    } else{
+        stopSong(sound)
+        $('#mute').attr('data-glyph', 'volume-off')
+    }
+    mute = !mute
+})
 
 // Hidden From Start
 $('.home-gambit').hide()
@@ -8,6 +20,7 @@ $('.button-box').hide()
 $('.home h1').hide()
 $('.play-section').hide()
 $('.shop').hide();
+$('#mute').hide()
 
 async function playSong(song) {
   song.currentTime = 0
@@ -24,7 +37,7 @@ $('#start').on('click', function () {
   $('.home-gambit').fadeIn()
   $('.button-box').fadeIn()
   $('.home h1').fadeIn()
-
+  $('#mute').show()
 })
 
 
