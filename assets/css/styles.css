@@ -225,6 +225,12 @@ body {
 #home,#shop:hover{
   background-color:#eee;
 }
+
+.modal-bet{
+width:25%;
+border-radius: 5px;
+}
+
 /* shop section */
 .shop {
   background-color: #f6f6f6;

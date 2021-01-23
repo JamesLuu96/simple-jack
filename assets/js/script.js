@@ -43,9 +43,11 @@ $('#btnModal').on("click", () => {
 $('.modal-background').on("click", () => {
   $('.modal').removeClass("is-active");
 })
-$('#btnClose').on("click", () => {
+
+$('#btn-close').on("click", () => {
   $('.modal').removeClass("is-active");
 })
+
 //go to shop page from play page
 $("#shop").on("click", () => {
   $(".play-section").hide();
@@ -62,3 +64,4 @@ $(".return-home").on("click", () => {
   $(".play-section").hide();
   $(".home").show();
 })
+
