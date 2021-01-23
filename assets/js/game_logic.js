@@ -24,14 +24,18 @@ var cardValueEvaluate = function(string, objArr){
         return accumulator + currentValue.value;
     }, 0)
     if (string[0] === "A") {
+        cardValue = 1;
+        if (cardValue + playerSum + 10 <=21) {
+            cardValue+=10;
+        }
     //    if (playerSum>10){
     // the objArr check may be unnecessary
-        if (playerSum>10 || objArr.some(code => code.card = "[^=A]")) {
-            cardValue = 1;
-        }
-        else {
-            cardValue = 11;
-        } 
+        // if (playerSum>10 || objArr.some(code => code.card === ("AH"||"AD"||"AC"||"AS"))) {
+        //     cardValue = 1;
+        // }
+        // else {
+        //     cardValue = 11;
+        // } 
     }
     else if (string[0]==="K" || string[0]==="Q" || string[0]==="J" || string[0]==="0") {
         cardValue = 10;
