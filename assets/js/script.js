@@ -1,19 +1,3 @@
-const sound = new Audio()
-sound.loop = true
-sound.src = `./assets/audio/main-menu.mp3`
-var mute = false
-
-$('#mute').on('click', function(){
-    if(mute){
-        playSong(sound)
-        $('#mute').attr('data-glyph', 'volume-high')
-    } else{
-        stopSong(sound)
-        $('#mute').attr('data-glyph', 'volume-off')
-    }
-    mute = !mute
-})
-
 // Hidden From Start
 $('.home-gambit').hide()
 $('.button-box').hide()
@@ -22,17 +6,9 @@ $('.play-section').hide()
 $('.shop').hide();
 $('#mute').hide()
 
-async function playSong(song) {
-  song.currentTime = 0
-  await song.play()
-}
-
-var stopSong = function (song) {
-  song.pause()
-}
 
 $('#start').on('click', function () {
-  playSong(sound)
+  playSong(mySong)
   $('.start').fadeOut()
   $('.home-gambit').fadeIn()
   $('.button-box').fadeIn()
@@ -45,10 +21,14 @@ $('#play').on('click', function () {
     $('.home').hide()
     $('.play-section').show()
     $('.gambit-special').hide()
-    var jokerEntry = new Audio()
-    jokerEntry.src = `./assets/audio/Joker/joker-entry.wav`
-    jokerEntry.play()
+    randomEntryAudio()
+    setTimeout(function(){
+        $('#dealer-text').hide()
+        $('#player-text').hide()
+        $('#play-button').show()
+    }, 4500)
 })
+
 $('.special-btn').on('click', function () {
     $('.gambit-special').fadeIn()
 })

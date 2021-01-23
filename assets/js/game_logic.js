@@ -8,8 +8,9 @@ $('.game-button-container').hide()
 $('.special-btn').hide()
 $('.player p').hide()
 $('.dealer p').hide()
-
-
+$('#player-text').hide()
+$('#dealer-text').hide()
+$('#play-button').hide()
 
 // Evaluates Card Values
 var cardValueEvaluate = function (string, objArr) {
@@ -145,27 +146,21 @@ var displayHand = function (player) {
 }
 
 var playerTie = function () {
+    $('.game-result').text(`You tied.`)
     console.log(`You tied`)
     gameOver()
 }
 var playerLose = function(integer){
-    var gambitLose = new Audio()
-    gambitLose.src = `./assets/audio/Gambit/gambit-lose.wav`
-    var jokerWin = new Audio()
-    jokerWin.src = `./assets/audio/Joker/joker-win.wav`
-    gambitLose.play()
-    gambitLose.onended = function(){
-        jokerWin.play()
-    }
+    $('.game-result').text(`You Lost.`)
+    randomAudio(playerLoseAudio)
     console.log(bankMoney, integer);
     bankMoney = bankMoney - integer;
     console.log(`You lose, you now have ${bankMoney} dollars`)
     gameOver()
 }
 var playerWin = function(integer){
-    var jokerLose = new Audio()
-    jokerLose.src = `./assets/audio/Joker/joker-lose.wav`
-    jokerLose.play()
+    $('.game-result').text(`You Won!`)
+    randomAudio(playerWinAudio)
     console.log(bankMoney, integer);
     bankMoney += integer;
     console.log(`You win, you now have ${bankMoney} dollars`)
@@ -176,14 +171,16 @@ var gameOver = function () {
     displayHand('dealer')
     $('.game-button-container').hide()
     setTimeout(function () {
+        $('.game-result').text('')
+        $('#player-text').hide()
+        $('#dealer-text').hide()
         $('#play-button').show()
         $('.cards').text('')
         $('.player span').text(0)
         $('.player p').hide()
         $('.dealer span').text(0)
         $('.dealer p').hide()
-
-    }, 10000)
+    }, 5000)
 }
 
 
@@ -204,6 +201,7 @@ $('.btn-bet').on('click', function(event){
         return
     }
     $('#play-button').hide()
+    $('.modal').removeClass("is-active");
     playGame();
 })
 
@@ -218,9 +216,3 @@ $('.stand').on('click', async function (event) {
     event.preventDefault()
     checkCards(true)
 })
-
-//added to close the et modal and call placebet
-$('.btn-bet').on('click', function () {
-    $('.modal').removeClass("is-active");
-    placeBet();
-});
