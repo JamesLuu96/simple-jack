@@ -20,11 +20,11 @@ var cardValueEvaluate = function (string, objArr) {
     }, 0)
     if (string[0] === "A") {
         cardValue = 1;
-        if (cardValue + playerSum + 10 <=21) {
-            cardValue+=10;
+        if (cardValue + playerSum + 10 <= 21) {
+            cardValue += 10;
         }
-    //    if (playerSum>10){
-    // the objArr check may be unnecessary
+        //    if (playerSum>10){
+        // the objArr check may be unnecessary
         // if (playerSum>10 || objArr.some(code => code.card === ("AH"||"AD"||"AC"||"AS"))) {
         //     cardValue = 1;
         // }
@@ -39,10 +39,10 @@ var cardValueEvaluate = function (string, objArr) {
         cardValue = parseInt(string[0]);
     }
     //checks to see if the sum has gone over AND the hand has an ACE
-    if (cardValue + playerSum > 21 && objArr.some(code => code.card === ("AH"||"AD"||"AC"||"AS"))){
+    if (cardValue + playerSum > 21 && objArr.some(code => code.card === ("AH" || "AD" || "AC" || "AS"))) {
         //goes through the array, changes all ace values to 1
-        for (let i = 0; i < objArr.length ; i++) {
-            if (objArr[i].card === ("AH"||"AD"||"AC"||"AS")) {
+        for (let i = 0; i < objArr.length; i++) {
+            if (objArr[i].card === ("AH" || "AD" || "AC" || "AS")) {
                 objArr[i].value = 1;
             }
         }
@@ -57,6 +57,11 @@ async function playGame() {
     playerHand = await dealCard(2, [])
     displayHand('player')
     checkCards(false)
+}
+async function doubleDown() {
+    betAmount = 2 * betAmount
+    await dealCard(1, playerHand)
+    checkCards(true)
 }
 
 // Gets a new deck id 
@@ -88,8 +93,8 @@ async function dealCard(integer, hand) {
 
 
 // Compares Hands
-async function checkCards(standCheck){
-    
+async function checkCards(standCheck) {
+
     // Creates Sum of Hand Variables to Compare
     let playerSum = playerHand.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue.value;
@@ -107,39 +112,41 @@ async function checkCards(standCheck){
             playerWin(betAmount);
         } else if (playerSum > 21) {
             playerLose(betAmount);
-        } else if(dealerSum === 21 && playerSum === 21){
+        } else if (dealerSum === 21 && playerSum === 21) {
             playerTie()
         } else if (dealerSum === 21 && playerSum !== 21) {
             playerLose(betAmount);
         } else if (playerSum === 21 && dealerSum !== 21) {
             playerWin(betAmount);
-        }else {
+        } else {
             $('.dealer-cards').text('')
-            $('.dealer-cards').append($('<img>').attr('src','https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png'),$('<img>').attr('src',dealerHand[1].img))
+            $('.dealer-cards').append($('<img>').attr('src', 'https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png'), $('<img>').attr('src', dealerHand[1].img))
             $('.dealer span').text(dealerHand[1].value)
             $('.dealer p').show()
             $('.game-button-container').show()
+            if (bankMoney < (2 * betAmount)) {
+                $('.double').hide()
+            }
             $('.box').hide()
-
         }
     } else {
         //deals cards to dealer if the dealerSum is less than 17
         // debugger;
-        while (dealerSum < 17 ) {
-            await dealCard (1, dealerHand);
-            dealerSum = dealerHand.reduce(function(accumulator, currentValue){
+        while (dealerSum < 17) {
+            await dealCard(1, dealerHand);
+            dealerSum = dealerHand.reduce(function (accumulator, currentValue) {
                 return accumulator + currentValue.value;
             }, 0)
         }
         //if the dealer goes over, dealer loses
-        if (dealerSum > 21) {
+        if (dealerSum > 21 && playerSum <= 21) {
             playerWin(betAmount);
-        } 
+        }
         // if the dealer hits 21, dealer wins (already checked if player had 21)
-        else if (dealerSum === 21) {
+        else if (dealerSum === 21 && playerSum > 21 || dealerSum === 21 && playerSum < 21 || playerSum > 21 && dealerSum <= 21 || playerSum > 21 && dealerSum > 21) {
             playerLose(betAmount);
         }
-        else if (playerSum > dealerSum){
+        else if (playerSum > dealerSum) {
             playerWin(betAmount);
         } else if (dealerSum > playerSum) {
             playerLose(betAmount);
@@ -181,7 +188,7 @@ var playerTie = function () {
     console.log(`You tied`)
     gameOver()
 }
-var playerLose = function(integer){
+var playerLose = function (integer) {
     $('.game-result').text(`You Lost.`)
     randomAudio(playerLoseAudio)
     console.log(bankMoney, integer);
@@ -189,7 +196,7 @@ var playerLose = function(integer){
     console.log(`You lose, you now have ${bankMoney} dollars`)
     gameOver()
 }
-var playerWin = function(integer){
+var playerWin = function (integer) {
     $('.game-result').text(`You Won!`)
     randomAudio(playerWinAudio)
     console.log(bankMoney, integer);
@@ -224,7 +231,7 @@ $("#play-button").on("click", function (event) {
     $('.modal').addClass("is-active");
 })
 
-$('.btn-bet').on('click', function(event){
+$('.btn-bet').on('click', function (event) {
     event.preventDefault()
     betAmount = $('#bet-money').val();
     betAmount = parseInt(betAmount)
@@ -246,4 +253,9 @@ $('.hit').on('click', async function (event) {
 $('.stand').on('click', async function (event) {
     event.preventDefault()
     checkCards(true)
+})
+
+
+$('.double').on('click', function () {
+    doubleDown();
 })
