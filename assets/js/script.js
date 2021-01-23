@@ -1,4 +1,5 @@
 const sound = new Audio()
+sound.loop = true
 sound.src = `./assets/audio/main-menu.mp3`
 
 // Hidden From Start
@@ -9,16 +10,16 @@ $('.play-section').hide()
 $('.shop').hide();
 
 async function playSong(song) {
-  sound.currentTime = 0
-  await sound.play()
+  song.currentTime = 0
+  await song.play()
 }
 
-var stopSong = function () {
-  sound.pause()
+var stopSong = function (song) {
+  song.pause()
 }
 
 $('#start').on('click', function () {
-  playSong()
+  playSong(sound)
   $('.start').fadeOut()
   $('.home-gambit').fadeIn()
   $('.button-box').fadeIn()
@@ -28,37 +29,39 @@ $('#start').on('click', function () {
 
 
 $('#play').on('click', function () {
-  $('.home').hide()
-  $('.play-section').show()
-  $('.gambit-special').hide()
-  stopSong()
+    $('.home').hide()
+    $('.play-section').show()
+    $('.gambit-special').hide()
+    var jokerEntry = new Audio()
+    jokerEntry.src = `./assets/audio/Joker/joker-entry.wav`
+    jokerEntry.play()
 })
 $('.special-btn').on('click', function () {
-  $('.gambit-special').fadeIn()
+    $('.gambit-special').fadeIn()
 })
 $('#btnModal').on("click", () => {
-  $('.modal').addClass("is-active");
+    $('.modal').addClass("is-active");  
 })
 //close the rules modals
 $('.modal-background').on("click", () => {
-  $('.modal').removeClass("is-active");
+    $('.modal').removeClass("is-active");
 })
 $('#btnClose').on("click", () => {
-  $('.modal').removeClass("is-active");
+    $('.modal').removeClass("is-active");
 })
 //go to shop page from play page
 $("#shop").on("click", () => {
-  $(".play-section").hide();
-  $(".shop").show();
+    $(".play-section").hide();
+    $(".shop").show();
 })
 //back to home from play page
 $("#home").on("click", () => {
-  $(".play-section").hide();
-  $(".home").show();
+    $(".play-section").hide();
+    $(".home").show();
 })
 
 //back to home from shop page
 $(".return-home").on("click", () => {
-  $(".play-section").hide();
-  $(".home").show();
+    $(".play-section").hide();
+    $(".home").show();
 })

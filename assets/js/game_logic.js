@@ -105,6 +105,7 @@ function checkCards(standCheck){
         } else if (playerSum === 21 && dealerSum !== 21){
             playerWin(betAmount);
         }else {
+            $('.dealer-cards').text('')
             $('.dealer-cards').append($('<img>').attr('src','https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png'),$('<img>').attr('src',dealerHand[1].img))
             $('.dealer span').text(dealerHand[1].value)
             $('.dealer p').show()
@@ -154,12 +155,23 @@ var playerTie = function(){
     gameOver()
 }
 var playerLose = function(integer){
+    var gambitLose = new Audio()
+    gambitLose.src = `./assets/audio/Gambit/gambit-lose.wav`
+    var jokerWin = new Audio()
+    jokerWin.src = `./assets/audio/Joker/joker-win.wav`
+    gambitLose.play()
+    gambitLose.onended = function(){
+        jokerWin.play()
+    }
     console.log(bankMoney, integer);
     bankMoney = bankMoney - integer;
     console.log(`You lose, you now have ${bankMoney} dollars`)
     gameOver()
 }
 var playerWin = function(integer){
+    var jokerLose = new Audio()
+    jokerLose.src = `./assets/audio/Joker/joker-lose.wav`
+    jokerLose.play()
     console.log(bankMoney, integer);
     bankMoney += integer;
     console.log(`You win, you now have ${bankMoney} dollars`)
