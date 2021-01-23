@@ -1,5 +1,5 @@
 const gateway = 'https://gateway.marvel.com';
-var seriesComp = '/v1/public/series?seriesType=ongoing&contains=comic&limit=100'
+
 const apiKey = '&apikey=6183cc1410bb4bd83659bc716cd7fadb';
 // use this for list of available series and to make calls to api
 const selections = [
@@ -73,32 +73,40 @@ const selections = [
   }  
 ];
 
-// call to root endpoint to obtain id and use id for specific endpoints
-
-// pull series by id and push to characters()
-// pull characters and assign to series row
-// check available characters against unlocked characters
+// TODO: check available characters against unlocked characters
 
 function pageBuild() {
   // create select box
-  var selectBox = $('<select>').attr('placeholder', 'Choose a series...');
+  var selectBox = $('<select>');
   
+  // populate options for select box
   for (let i = 0; i < selections.length; i++) {
-    var option = $('<option>').text(selections[i].series);
+    var option = $('<option>').attr('value', selections[i].id).text(selections[i].series);
     selectBox.append(option);
   }
 
-  $('#select-box').append(selectBox);
   // append select box with options
+  $('#select-box').append(selectBox);
+  seriesDisplay();
 };
 
-async function testFunction() {
-  
-  var response = await fetch('https://gateway.marvel.com/v1/public/series/454/characters?limit=100&apikey=6183cc1410bb4bd83659bc716cd7fadb')
-  var data = await response.json()
+// display series based on option selection (default is Amazing Spider-Man)
+async function seriesDisplay(value) {
+  var seriesComp = '/v1/public/series/454/characters?limit=100';
+  $('.shop-container').empty()
+  console.log(value);
+  // will skip on initial page load and load default series list
+  if (value) {
+    seriesComp = seriesComp.replace('454', value);
+    console.log(seriesComp)
+  }
+
+  var response = await fetch(`${gateway}${seriesComp}${apiKey}`);
+  var data = await response.json();
   // debugger
 
   for (let i = 0; i < data.data.results.length; i++) {
+    console.log("I'm in for loop")
     var name = (data.data.results[i].name);
     var picPath = data.data.results[i].thumbnail.path;
     var picExtension = data.data.results[i].thumbnail.extension;
@@ -119,8 +127,47 @@ async function testFunction() {
       $('.shop-container').append(container);
     }
   }
+  
+  if (data.data.results.length === 100) {
+    seriesComp += '&offset=100';
+    fetch(`${gateway}${seriesComp}${apiKey}`).then(function(response) {
+      response.json().then(function(data) {
+        for (let i = 0; i < data.data.results.length; i++) {
+          var name = (data.data.results[i].name);
+          var picPath = data.data.results[i].thumbnail.path;
+          var picExtension = data.data.results[i].thumbnail.extension;
+          if (picPath.includes('image_not_available')) {
+            continue;
+          } else {
+            var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
+            var container = $('<div>');
+            var listItem = $('<p>').text(`${name}`);
+            var picture = $('<img>').attr('src', thumbnail);
+            container.append(listItem);
+            container.append(picture);
+            var buttonContainer = $('<div>').addClass('unlock-card');
+            var button = $('<button>').addClass('button is-success').attr('title', 'you need 200 points').text('Unlock');
+            buttonContainer.append(button);
+            container.append(buttonContainer);
+
+            $('.shop-container').append(container);
+          }
+        }
+      })
+    })
+  }
 };
 
+// }
+
+// TODO: get value from selected option and pass to seriesDisplay()
+$('#select-box').change((event) => {
+
+  var value = event.target.value;
+  seriesDisplay(value);
+})
+
+pageBuild();
 // throw away - just to pull the list of series, IDs, and available characters
 
 // Amazing Spider-Man (1999 - 2013) - series 454	- total characters 145
@@ -173,5 +220,3 @@ async function testFunction() {
 //           $('#test').append(listItem);
 //         }
 // };
-pageBuild();
-testFunction();
