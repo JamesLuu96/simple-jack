@@ -92,9 +92,10 @@ function pageBuild() {
 
 // display series based on option selection (default is Amazing Spider-Man)
 async function seriesDisplay(value) {
+  // API limits query results to 100 and defaults to 20 unless otherwise specified
   var seriesComp = '/v1/public/series/454/characters?limit=100';
+  // clear previous series
   $('.shop-container').empty()
-  console.log(value);
   // will skip on initial page load and load default series list
   if (value) {
     seriesComp = seriesComp.replace('454', value);
@@ -128,6 +129,7 @@ async function seriesDisplay(value) {
     }
   }
   
+  // checks array length and calls new fetch to pull rest of results for series
   if (data.data.results.length === 100) {
     seriesComp += '&offset=100';
     fetch(`${gateway}${seriesComp}${apiKey}`).then(function(response) {
