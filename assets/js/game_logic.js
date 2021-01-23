@@ -9,31 +9,25 @@ $('.special-btn').hide()
 $('.player p').hide()
 $('.dealer p').hide()
 
-var placeBet = function() {
-    betAmount = parseInt(prompt(`How much do you want to bet?
-    You can place a bet up to $${bankMoney} dollars.`));
-    if (betAmount > bankMoney || betAmount === NaN){
-        placeBet()
-    }
-}
+
 
 // Evaluates Card Values
-var cardValueEvaluate = function(string, objArr){
+var cardValueEvaluate = function (string, objArr) {
     let cardValue = 0;
-    let playerSum = objArr.reduce(function(accumulator, currentValue){
+    let playerSum = objArr.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue.value;
     }, 0)
     if (string[0] === "A") {
-    //    if (playerSum>10){
-    // the objArr check may be unnecessary
-        if (playerSum>10 || objArr.some(code => code.card = "[^=A]")) {
+        //    if (playerSum>10){
+        // the objArr check may be unnecessary
+        if (playerSum > 10 || objArr.some(code => code.card = "[^=A]")) {
             cardValue = 1;
         }
         else {
             cardValue = 11;
-        } 
+        }
     }
-    else if (string[0]==="K" || string[0]==="Q" || string[0]==="J" || string[0]==="0") {
+    else if (string[0] === "K" || string[0] === "Q" || string[0] === "J" || string[0] === "0") {
         cardValue = 10;
     }
     else {
@@ -43,8 +37,7 @@ var cardValueEvaluate = function(string, objArr){
 }
 
 // Starts Game
-async function playGame(){
-    placeBet();
+async function playGame() {
     await getDeck()
     dealerHand = await dealCard(2, [])
     playerHand = await dealCard(2, [])
@@ -53,7 +46,7 @@ async function playGame(){
 }
 
 // Gets a new deck id 
-async function getDeck(){
+async function getDeck() {
     const res = await fetch(urlAddress)
     const data = await res.json()
     deckId = data.deck_id
@@ -66,7 +59,7 @@ async function dealCard(integer, hand) {
     const res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${integer}`)
     const data = await res.json()
 
-    for (let i=0; i<integer; i++){
+    for (let i = 0; i < integer; i++) {
         var cardValue = cardValueEvaluate(data.cards[i].code, hand);
         var cardObj = {
             card: data.cards[i].code,
@@ -81,28 +74,28 @@ async function dealCard(integer, hand) {
 
 
 // Compares Hands
-function checkCards(standCheck){
-    
+function checkCards(standCheck) {
+
     // Creates Sum of Hand Variables to Compare
-    let playerSum = playerHand.reduce(function(accumulator, currentValue){
+    let playerSum = playerHand.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue.value;
     }, 0)
-    let dealerSum = dealerHand.reduce(function(accumulator, currentValue){
+    let dealerSum = dealerHand.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue.value;
     }, 0)
     console.log(`player = ${playerSum} \n dealer = ${dealerSum}`)
     // Checks if you are standing
     // If not
-    if (!standCheck){
-        if (dealerSum > 21 && playerSum > 21){
+    if (!standCheck) {
+        if (dealerSum > 21 && playerSum > 21) {
             playerTie();
-        } else if (dealerSum > 21){
+        } else if (dealerSum > 21) {
             playerWin(betAmount);
-        } else if (playerSum > 21){
+        } else if (playerSum > 21) {
             playerLose(betAmount);
-        } else if (dealerSum === 21 && playerSum !== 21){
+        } else if (dealerSum === 21 && playerSum !== 21) {
             playerLose(betAmount);
-        } else if (playerSum === 21 && dealerSum !== 21){
+        } else if (playerSum === 21 && dealerSum !== 21) {
             playerWin(betAmount);
         }else {
             $('.dealer-cards').text('')
@@ -111,11 +104,12 @@ function checkCards(standCheck){
             $('.dealer p').show()
             $('.game-button-container').show()
             $('.box').hide()
+
         }
     } else {
-        if (playerSum > dealerSum){
+        if (playerSum > dealerSum) {
             playerWin(betAmount);
-        } else if (dealerSum > playerSum){
+        } else if (dealerSum > playerSum) {
             playerLose(betAmount);
         } else {
             playerTie();
@@ -124,24 +118,24 @@ function checkCards(standCheck){
 }
 
 // Displays Hand on HTML
-var displayHand = function(player){
-    let playerSum = playerHand.reduce(function(accumulator, currentValue){
+var displayHand = function (player) {
+    let playerSum = playerHand.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue.value;
     }, 0)
-    let dealerSum = dealerHand.reduce(function(accumulator, currentValue){
+    let dealerSum = dealerHand.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue.value;
     }, 0)
     $(`.${player}-cards`).text('')
     // Adds Card
-    if(player === 'player'){
-        for(let i = 0; i < playerHand.length; i++){
+    if (player === 'player') {
+        for (let i = 0; i < playerHand.length; i++) {
             var card = $('<img>').attr('src', playerHand[i].img)
             $(`.${player}-cards`).append(card)
             $('.player span').text(playerSum)
             $('.player p').show()
         }
     } else {
-        for(let i = 0; i < dealerHand.length; i++){
+        for (let i = 0; i < dealerHand.length; i++) {
             var card = $('<img>').attr('src', dealerHand[i].img)
             $(`.${player}-cards`).append(card)
             $('.dealer span').text(dealerSum)
@@ -150,7 +144,7 @@ var displayHand = function(player){
     }
 }
 
-var playerTie = function(){
+var playerTie = function () {
     console.log(`You tied`)
     gameOver()
 }
@@ -177,11 +171,11 @@ var playerWin = function(integer){
     console.log(`You win, you now have ${bankMoney} dollars`)
     gameOver()
 }
-var gameOver = function(){
+var gameOver = function () {
     displayHand('player')
     displayHand('dealer')
     $('.game-button-container').hide()
-    setTimeout(function(){
+    setTimeout(function () {
         $('#play-button').show()
         $('.cards').text('')
         $('.player span').text(0)
@@ -194,20 +188,39 @@ var gameOver = function(){
 
 
 
-$("#play-button").on("click", function(event){
+$("#play-button").on("click", function (event) {
     event.preventDefault()
+    $('#bet-money').val('')
+    $('#bet span').text(bankMoney)
+    //added to show the modal when play button click
+    $('.modal').addClass("is-active");
+})
+
+$('.btn-bet').on('click', function(event){
+    event.preventDefault()
+    betAmount = $('#bet-money').val();
+    betAmount = parseInt(betAmount)
+    if (betAmount > bankMoney || betAmount === NaN || !betAmount) {
+        return
+    }
     $('#play-button').hide()
     playGame();
 })
 
-$('.hit').on('click', async function(event){
+$('.hit').on('click', async function (event) {
     event.preventDefault()
     await dealCard(1, playerHand)
     displayHand('player')
     checkCards(false)
 })
 
-$('.stand').on('click', async function(event){
+$('.stand').on('click', async function (event) {
     event.preventDefault()
     checkCards(true)
 })
+
+//added to close the et modal and call placebet
+$('.btn-bet').on('click', function () {
+    $('.modal').removeClass("is-active");
+    placeBet();
+});
