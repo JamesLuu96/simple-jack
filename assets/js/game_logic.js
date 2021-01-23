@@ -19,14 +19,18 @@ var cardValueEvaluate = function (string, objArr) {
         return accumulator + currentValue.value;
     }, 0)
     if (string[0] === "A") {
-        //    if (playerSum>10){
-        // the objArr check may be unnecessary
-        if (playerSum > 10 || objArr.some(code => code.card = "[^=A]")) {
-            cardValue = 1;
+        cardValue = 1;
+        if (cardValue + playerSum + 10 <=21) {
+            cardValue+=10;
         }
-        else {
-            cardValue = 11;
-        }
+    //    if (playerSum>10){
+    // the objArr check may be unnecessary
+        // if (playerSum>10 || objArr.some(code => code.card === ("AH"||"AD"||"AC"||"AS"))) {
+        //     cardValue = 1;
+        // }
+        // else {
+        //     cardValue = 11;
+        // } 
     }
     else if (string[0] === "K" || string[0] === "Q" || string[0] === "J" || string[0] === "0") {
         cardValue = 10;
@@ -75,8 +79,8 @@ async function dealCard(integer, hand) {
 
 
 // Compares Hands
-function checkCards(standCheck) {
-
+async function checkCards(standCheck){
+    
     // Creates Sum of Hand Variables to Compare
     let playerSum = playerHand.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue.value;
@@ -108,7 +112,23 @@ function checkCards(standCheck) {
 
         }
     } else {
-        if (playerSum > dealerSum) {
+        //deals cards to dealer if the dealerSum is less than 17
+        // debugger;
+        while (dealerSum < 17 ) {
+            await dealCard (1, dealerHand);
+            dealerSum = dealerHand.reduce(function(accumulator, currentValue){
+                return accumulator + currentValue.value;
+            }, 0)
+        }
+        //if the dealer goes over, dealer loses
+        if (dealerSum > 21) {
+            playerWin(betAmount);
+        } 
+        // if the dealer hits 21, dealer wins (already checked if player had 21)
+        else if (dealerSum === 21) {
+            playerLose(betAmount);
+        }
+        else if (playerSum > dealerSum){
             playerWin(betAmount);
         } else if (dealerSum > playerSum) {
             playerLose(betAmount);
