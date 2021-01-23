@@ -1,16 +1,20 @@
-var playButtonEl = document.querySelector(".play-button");
-$('.game').hide()
 var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 let deckId;
 var dealerHand;
 var playerHand;
 var bankMoney = 300;
 let betAmount = 0;
+$('.game-button-container').hide()
+$('.special-btn').hide()
+$('.player p').hide()
+$('.dealer p').hide()
 
 var placeBet = function() {
-    var betAmount = parseInt(prompt(`How much do you want to bet?
+    betAmount = parseInt(prompt(`How much do you want to bet?
     You can place a bet up to $${bankMoney} dollars.`));
-    return betAmount;
+    if (betAmount > bankMoney || betAmount === NaN){
+        placeBet()
+    }
 }
 
 // Evaluates Card Values
@@ -40,6 +44,7 @@ var cardValueEvaluate = function(string, objArr){
 
 // Starts Game
 async function playGame(){
+    placeBet();
     await getDeck()
     dealerHand = await dealCard(2, [])
     playerHand = await dealCard(2, [])
@@ -77,7 +82,7 @@ async function dealCard(integer, hand) {
 
 // Compares Hands
 function checkCards(standCheck){
-    betAmount = placeBet();
+    
     // Creates Sum of Hand Variables to Compare
     let playerSum = playerHand.reduce(function(accumulator, currentValue){
         return accumulator + currentValue.value;
@@ -116,17 +121,27 @@ function checkCards(standCheck){
 
 // Displays Hand on HTML
 var displayHand = function(player){
+    let playerSum = playerHand.reduce(function(accumulator, currentValue){
+        return accumulator + currentValue.value;
+    }, 0)
+    let dealerSum = dealerHand.reduce(function(accumulator, currentValue){
+        return accumulator + currentValue.value;
+    }, 0)
     $(`.${player}-cards`).text('')
     // Adds Card
     if(player === 'player'){
         for(let i = 0; i < playerHand.length; i++){
             var card = $('<img>').attr('src', playerHand[i].img)
             $(`.${player}-cards`).append(card)
+            $('.player span').text(playerSum)
+            $('.player p').show()
         }
     } else {
         for(let i = 0; i < dealerHand.length; i++){
             var card = $('<img>').attr('src', dealerHand[i].img)
             $(`.${player}-cards`).append(card)
+            $('.dealer span').text(dealerSum)
+            $('.dealer p').show()
         }
     }
 }
@@ -150,10 +165,15 @@ var playerWin = function(integer){
 var gameOver = function(){
     displayHand('player')
     displayHand('dealer')
-    $('.game').hide()
+    $('.game-button-container').hide()
     setTimeout(function(){
-        $('.box').show()
+        $('#play-button').show()
         $('.cards').text('')
+        $('.player span').text(0)
+        $('.player p').hide()
+        $('.dealer span').text(0)
+        $('.dealer p').hide()
+
     }, 10000)
 }
 
@@ -161,6 +181,8 @@ var gameOver = function(){
 
 $("#play-button").on("click", function(event){
     event.preventDefault()
+    $('.game-button-container').show()
+    $('#play-button').hide()
     playGame();
 })
 
