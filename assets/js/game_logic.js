@@ -1,4 +1,4 @@
-var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6"
 let deckId;
 var dealerHand;
 var playerHand;
@@ -37,6 +37,15 @@ var cardValueEvaluate = function (string, objArr) {
     }
     else {
         cardValue = parseInt(string[0]);
+    }
+    //checks to see if the sum has gone over AND the hand has an ACE
+    if (cardValue + playerSum > 21 && objArr.some(code => code.card === ("AH"||"AD"||"AC"||"AS"))){
+        //goes through the array, changes all ace values to 1
+        for (let i = 0; i < objArr.length ; i++) {
+            if (objArr[i].card === ("AH"||"AD"||"AC"||"AS")) {
+                objArr[i].value = 1;
+            }
+        }
     }
     return cardValue;
 }
