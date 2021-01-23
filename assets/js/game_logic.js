@@ -85,7 +85,7 @@ async function dealCard(integer, hand) {
 
 
 // Compares Hands
-function checkCards(standCheck){
+async function checkCards(standCheck){
     
     // Creates Sum of Hand Variables to Compare
     let playerSum = playerHand.reduce(function(accumulator, currentValue){
@@ -117,7 +117,23 @@ function checkCards(standCheck){
             $('.box').hide()
         }
     } else {
-        if (playerSum > dealerSum){
+        //deals cards to dealer if the dealerSum is less than 17
+        // debugger;
+        while (dealerSum < 17 ) {
+            await dealCard (1, dealerHand);
+            dealerSum = dealerHand.reduce(function(accumulator, currentValue){
+                return accumulator + currentValue.value;
+            }, 0)
+        }
+        //if the dealer goes over, dealer loses
+        if (dealerSum > 21) {
+            playerWin(betAmount);
+        } 
+        // if the dealer hits 21, dealer wins (already checked if player had 21)
+        else if (dealerSum === 21) {
+            playerLose(betAmount);
+        }
+        else if (playerSum > dealerSum){
             playerWin(betAmount);
         } else if (dealerSum > playerSum){
             playerLose(betAmount);
