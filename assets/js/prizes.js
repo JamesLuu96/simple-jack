@@ -79,16 +79,26 @@ const selections = [
 // pull characters and assign to series row
 // check available characters against unlocked characters
 
+function pageBuild() {
+  // create select box
+  var selectBox = $('<select>').attr('placeholder', 'Choose a series...');
+  
+  for (let i = 0; i < selections.length; i++) {
+    var option = $('<option>').text(selections[i].series);
+    selectBox.append(option);
+  }
+
+  $('#select-box').append(selectBox);
+  // append select box with options
+};
 
 async function testFunction() {
   
   var response = await fetch('https://gateway.marvel.com/v1/public/series/454/characters?limit=100&apikey=6183cc1410bb4bd83659bc716cd7fadb')
   var data = await response.json()
   // debugger
-  console.log(data)
-  
-  
-  for (let i = 0; i < 100; i++) {
+
+  for (let i = 0; i < data.data.results.length; i++) {
     var name = (data.data.results[i].name);
     var picPath = data.data.results[i].thumbnail.path;
     var picExtension = data.data.results[i].thumbnail.extension;
@@ -96,10 +106,17 @@ async function testFunction() {
       continue;
     } else {
       var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
+      var container = $('<div>');
       var listItem = $('<p>').text(`${name}`);
       var picture = $('<img>').attr('src', thumbnail);
-      $('#test').append(listItem);
-      $('#test').append(picture)
+      container.append(listItem);
+      container.append(picture);
+      var buttonContainer = $('<div>').addClass('unlock-card');
+      var button = $('<button>').addClass('button is-success').attr('title', 'you need 200 points').text('Unlock');
+      buttonContainer.append(button);
+      container.append(buttonContainer);
+
+      $('.shop-container').append(container);
     }
   }
 };
@@ -156,4 +173,5 @@ async function testFunction() {
 //           $('#test').append(listItem);
 //         }
 // };
+pageBuild();
 testFunction();
