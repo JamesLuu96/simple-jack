@@ -98,6 +98,8 @@ async function checkCards(standCheck){
             playerWin(betAmount);
         } else if (playerSum > 21) {
             playerLose(betAmount);
+        } else if(dealerSum === 21 && playerSum === 21){
+            playerTie()
         } else if (dealerSum === 21 && playerSum !== 21) {
             playerLose(betAmount);
         } else if (playerSum === 21 && dealerSum !== 21) {
