@@ -8,7 +8,7 @@ $('.home h1').hide()
 $('.play-section').hide()
 $('.shop').hide();
 
-async function playSong() {
+async function playSong(song) {
   sound.currentTime = 0
   await sound.play()
 }

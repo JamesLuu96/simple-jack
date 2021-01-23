@@ -105,7 +105,10 @@ function checkCards(standCheck){
         } else if (playerSum === 21 && dealerSum !== 21){
             playerWin(betAmount);
         }else {
-            $('.game').show()
+            $('.dealer-cards').append($('<img>').attr('src','https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png'),$('<img>').attr('src',dealerHand[1].img))
+            $('.dealer span').text(dealerHand[1].value)
+            $('.dealer p').show()
+            $('.game-button-container').show()
             $('.box').hide()
         }
     } else {
@@ -181,7 +184,6 @@ var gameOver = function(){
 
 $("#play-button").on("click", function(event){
     event.preventDefault()
-    $('.game-button-container').show()
     $('#play-button').hide()
     playGame();
 })
