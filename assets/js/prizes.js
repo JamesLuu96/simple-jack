@@ -1,5 +1,4 @@
 const gateway = 'https://gateway.marvel.com';
-
 const apiKey = '&apikey=6183cc1410bb4bd83659bc716cd7fadb';
 // use this for list of available series and to make calls to api
 const selections = [
@@ -72,7 +71,7 @@ const selections = [
     'id': '749'
   }  
 ];
-
+console.log(bankMoney)
 // TODO: check available characters against unlocked characters
 
 function pageBuild() {
@@ -120,10 +119,15 @@ async function seriesDisplay(value) {
       var picture = $('<img>').attr('src', thumbnail);
       container.append(listItem);
       container.append(picture);
-      var buttonContainer = $('<div>').addClass('unlock-card');
-      var button = $('<button>').addClass('button is-success').attr('title', 'you need 200 points').text('Unlock');
-      buttonContainer.append(button);
-      container.append(buttonContainer);
+      if (bankMoney >= 200) {
+        var buttonContainer = $('<div>').addClass('unlock-card');
+        var button = $('<button>').addClass('button is-success').attr('title', 'you need 200 points').text('Unlock');
+        buttonContainer.append(button);
+        container.append(buttonContainer);
+      } else {
+        var notEnough = $('<p>').text('You don\'t have enough points');
+        container.append(notEnough)
+      }
 
       $('.shop-container').append(container);
     }
@@ -160,9 +164,8 @@ async function seriesDisplay(value) {
   }
 };
 
-// }
+// add pictures to local array of objects
 
-// TODO: get value from selected option and pass to seriesDisplay()
 $('#select-box').change((event) => {
 
   var value = event.target.value;

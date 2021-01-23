@@ -28,6 +28,7 @@ $('#start').on('click', function () {
 
 
 $('#play').on('click', function () {
+  playerMoney()
   $('.home').hide()
   $('.play-section').show()
   $('.gambit-special').hide()
