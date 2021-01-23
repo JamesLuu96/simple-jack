@@ -124,11 +124,10 @@ async function checkCards(standCheck) {
             $('.dealer span').text(dealerHand[1].value)
             $('.dealer p').show()
             $('.game-button-container').show()
-
             if (bankMoney < (2 * betAmount)) {
                 $('.double').hide()
             } else {
-                $('.double').hide()
+                $('.double').show()
             }
             $('.box').hide()
         }
