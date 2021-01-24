@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Shadows+Into+Light&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css"
+    integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q=="
+    crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <link rel="stylesheet" href="./assets/css/styles.css">
@@ -17,9 +20,11 @@
 </head>
 
 <body>
+  <!-- Mute Button -->
+  <span id="mute" class="oi" data-glyph="volume-high"></span>
   <!-- Start Menu -->
   <div class="start">
-    <button id="start">Play Game</button>
+    <button id="start">Enter Site</button>
   </div>
 
   <!-- Home Section -->
@@ -30,7 +35,7 @@
         <button class="button is-success is-outlined" id="play">Play Now</button>
         <button class="button  is-success" id="btnModal">Rules</button>
       </div>
-      <img src="./assets/css/images/gambit.png" alt="section-background"
+      <img src="./assets/images/gambit.png" alt="section-background"
         class="home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
     </div>
     <!-- modal for the rules-->
@@ -105,16 +110,17 @@
 
   <!-- Play Game Section -->
   <section class="play-section">
-    <img src="./assets/css/images/gambit.png" alt="section-background"
-      class="gambit-special home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
+    <span id="home" class="game-back oi" data-glyph="arrow-thick-left"></span>
+    <img src="./assets/images/special/gambit.png" alt="section-background"
+      class="special animate__animated animate__fadeInLeft animate__delay-0.5s">
 
     <div class="pl-3 user-info">
-      <div class="player-img">
-        <img src="./assets/css/images/user.png" style="max-width:80px" alt="user image">
-        <p class="user-name" style="width:auto;">Gambit</p>
+      <div id="player-img" class="player-img">
+        <img style="max-width:80px" alt="user image">
+        <p class="user-name" style="width:auto;"><!--Name--></p>
       </div>
-      <div class="player-text">
-        <p>Watch this</p>
+      <div id="player-text" class="player-text">
+        <p class="text"></p>
       </div>
     </div>
 
@@ -128,10 +134,44 @@
 
       <div class="button-container">
         <button id="play-button" class="start-btn button is-success mt-4">Place Bet</button>
+
+
+        <div id="reload" class="modal modal-reload">
+          <div class="modal-background"></div>
+          <div class="modal-card modal-reload">
+            <section class="modal-card-body">
+              <div class="field">
+                <label class="label">You seem to have run out of money! Click the reload button to get another $300 dollars</label>
+              </div>
+              <button class="button is-success btn-reload">RELOAD</button>
+            </section>
+          </div>
+        </div> 
+
+        <div id="bet" class="modal modal-place-bet">
+          <div class="modal-background"></div>
+          <div class="modal-card modal-bet">
+            <form>
+            <section class="modal-card-body">
+              <div class="field">
+                <label class="label">
+                  You can place a bet up to <span></span> dollars
+                </label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Bet Amount" id="bet-money">
+                </div>
+                <button type="submit" class="button is-success btn-bet">Confirm</button>
+              </section>
+            </form>
+          </div>
+        </div>
+
+        <div class="game-result"></div>
         <button class="special-btn button is-success mt-4">Special Attack</button>
         <div class="game-button-container">
           <button class="hit button is-success mt-4">Hit</button>
           <button class="stand button is-success mt-4">Stand</button>
+          <button class="double button is-success mt-4">Double Down</button>
         </div>
       </div>
 
@@ -142,9 +182,37 @@
         <p>Dealer Score: <span>0</span></p>
       </div>
     </div>
+
+    <div class="pl-3 user-info">
+      <div class="player-img">
+        <img src="./assets/images/joker.png" style="max-width:80px" alt="user image">
+        <p class="user-name" style="width:auto;">Joker</p>
+      </div>
+      <div id="dealer-text" class="player-text">
+        <p class="text"></p>
+      </div>
+    </div>
+
     <div class="back-buttons">
-      <button class="button  mt-4" id="home">Home</button>
       <button class="button mt-4" id="shop">Shop</button>
+      <select name="characters" id="characters">
+        <option value="gambit">Gambit</option>
+        <option value="aquaman">Aquaman</option>
+        <option value="catwoman">Cat Woman</option>
+        <option value="cyclops">Cyclops</option>
+        <option value="deadpool">Deadpool</option>
+        <option value="greenarrow">Green Arrow</option>
+        <option value="greenlantern">Green Lantern</option>
+        <option value="groot">Groot</option>
+        <option value="ironman">Iron-Man</option>
+        <option value="magneto">Magneto</option>
+        <option value="mystique">Mystique</option>
+        <option value="nightwing">Nightwing</option>
+        <option value="spiderman">Spider-Man</option>
+        <option value="storm">Storm</option>
+        <option value="wolverine">Wolverine</option>
+        <option value="wonderwoman">Wonder-Woman</option>
+      </select>
     </div>
   </section>
 
@@ -175,7 +243,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/game_logic.js"></script>
-  <script src="./assets/js/prizes.js"></script>
+  <script src="./assets/js/audio.js"></script>
+  <script src="./assets/js/characters.js"></script>
 </body>
 
 </html>

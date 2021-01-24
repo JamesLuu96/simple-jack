@@ -1,5 +1,6 @@
-const sound = new Audio()
-sound.src = `./assets/audio/main-menu.mp3`
+// Generates User Picture / Name
+$('#player-img img').attr('src', './assets/images/user-icon/gambit.png')
+$('#player-img p').text('Gambit')
 
 // Hidden From Start
 $('.home-gambit').hide()
@@ -7,58 +8,65 @@ $('.button-box').hide()
 $('.home h1').hide()
 $('.play-section').hide()
 $('.shop').hide();
+$('#mute').hide()
 
-async function playSong(song) {
-  sound.currentTime = 0
-  await sound.play()
-}
-
-var stopSong = function () {
-  sound.pause()
-}
 
 $('#start').on('click', function () {
-  playSong()
+  playSong(mySong)
   $('.start').fadeOut()
   $('.home-gambit').fadeIn()
   $('.button-box').fadeIn()
   $('.home h1').fadeIn()
-
+  $('#mute').show()
 })
 
 
 $('#play').on('click', function () {
-  $('.home').hide()
-  $('.play-section').show()
-  $('.gambit-special').hide()
-  stopSong()
+    $('.home').hide()
+    $('.play-section').show()
+    $('.special').hide()
+    randomEntryAudio()
+    setTimeout(function(){
+        $('#dealer-text').hide()
+        $('#player-text').hide()
+        $('#play-button').show()
+    }, 4500)
 })
+var x = true
 $('.special-btn').on('click', function () {
-  $('.gambit-special').fadeIn()
+    if (x){
+        $('.special').fadeIn()
+    }else{
+        $('.special').fadeOut()
+    }
+    x=!x
 })
 $('#btnModal').on("click", () => {
-  $('.modal').addClass("is-active");
+    $('.modal').addClass("is-active");  
 })
 //close the rules modals
 $('.modal-background').on("click", () => {
+    $('.modal').removeClass("is-active");
+})
+
+$('#btn-close').on("click", () => {
   $('.modal').removeClass("is-active");
 })
-$('#btnClose').on("click", () => {
-  $('.modal').removeClass("is-active");
-})
+
 //go to shop page from play page
 $("#shop").on("click", () => {
-  $(".play-section").hide();
-  $(".shop").show();
+    $(".play-section").hide();
+    $(".shop").show();
 })
 //back to home from play page
 $("#home").on("click", () => {
-  $(".play-section").hide();
-  $(".home").show();
+    $(".play-section").hide();
+    $(".home").show();
 })
 
 //back to home from shop page
 $(".return-home").on("click", () => {
-  $(".play-section").hide();
-  $(".home").show();
+    $(".play-section").hide();
+    $(".home").show();
 })
+
