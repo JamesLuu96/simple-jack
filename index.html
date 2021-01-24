@@ -136,24 +136,36 @@
         <button id="play-button" class="start-btn button is-success mt-4">Place Bet</button>
 
 
-        <div id="bet" class="modal">
+        <div id="reload" class="modal modal-reload">
+          <div class="modal-background"></div>
+          <div class="modal-card modal-reload">
+            <section class="modal-card-body">
+              <div class="field">
+                <label class="label">You seem to have run out of money! Click the reload button to get another $300 dollars</label>
+              </div>
+              <button class="button is-success btn-reload">RELOAD</button>
+            </section>
+          </div>
+        </div> 
+
+        <div id="bet" class="modal modal-place-bet">
           <div class="modal-background"></div>
           <div class="modal-card modal-bet">
             <form>
-              <section class="modal-card-body">
-                <div class="field">
-                  <label class="label">
-                    You can place a bet up to <span></span> dollars
-                  </label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="bet money" id="bet-money">
-                  </div>
+            <section class="modal-card-body">
+              <div class="field">
+                <label class="label">
+                  You can place a bet up to <span></span> dollars
+                </label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Bet Amount" id="bet-money">
                 </div>
                 <button type="submit" class="button is-success btn-bet">Confirm</button>
               </section>
             </form>
           </div>
         </div>
+
         <div class="game-result"></div>
         <button class="special-btn button is-success mt-4">Special Attack</button>
         <div class="game-button-container">

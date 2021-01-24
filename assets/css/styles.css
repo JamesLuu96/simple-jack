@@ -149,6 +149,11 @@ body {
   width: 50%;
   z-index: 999;
 }
+.special-btn{
+  position: fixed;
+  right: 0;
+  top: 6%;
+}
 /* Play Game */
 .play-section {
   display: flex;

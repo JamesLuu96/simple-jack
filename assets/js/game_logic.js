@@ -1,4 +1,4 @@
-var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6&cards=AS,2S,9S,AD,2D,9D,AC,2C,9C,AH,2H,9H"
+var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6"
 let deckId;
 var dealerHand;
 var playerHand;
@@ -219,13 +219,24 @@ var gameOver = function () {
 
 $("#play-button").on("click", function (event) {
     event.preventDefault()
-    $('#bet-money').val('')
-    $('#bet span').text(bankMoney)
-    if(bankMoney <= 0){
-
+    if (bankMoney <= 0) {
+        $('.modal-reload').addClass("is-active") 
     }
+    $('#bet-money').val('50')
+    $('#bet span').text(bankMoney)
+    
     //added to show the modal when play button click
-    $('.modal').addClass("is-active");
+    $('.modal-place-bet').addClass("is-active");
+    $('#bet-money').trigger('select');
+})
+
+//modal when reload button is clicked
+$('.btn-reload').on('click', function (event) {
+    event.preventDefault()
+    bankMoney = 300;
+    $('.play-section').show();
+    $('#play-button').show();
+    $('.modal').removeClass("is-active");
 })
 
 $('#bet form').on('submit', function (event) {
