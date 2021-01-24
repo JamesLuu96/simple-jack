@@ -14,7 +14,6 @@ if(localStorage.getItem(mySong) === null){
 }
 
 async function playSong(song) {
-    song.currentTime = 0
     await song.play()
 }
 

@@ -23,14 +23,6 @@ var cardValueEvaluate = function (string, objArr) {
         if (cardValue + playerSum + 10 <= 21) {
             cardValue += 10;
         }
-        //    if (playerSum>10){
-        // the objArr check may be unnecessary
-        // if (playerSum>10 || objArr.some(code => code.card === ("AH"||"AD"||"AC"||"AS"))) {
-        //     cardValue = 1;
-        // }
-        // else {
-        //     cardValue = 11;
-        // } 
     }
     else if (string[0] === "K" || string[0] === "Q" || string[0] === "J" || string[0] === "0") {
         cardValue = 10;
@@ -124,7 +116,7 @@ async function checkCards(standCheck) {
             $('.dealer span').text(dealerHand[1].value)
             $('.dealer p').show()
             $('.game-button-container').show()
-            if (bankMoney < (2 * betAmount)) {
+            if (bankMoney < (2 * betAmount) || playerHand.length > 2) {
                 $('.double').hide()
             } else {
                 $('.double').show()
