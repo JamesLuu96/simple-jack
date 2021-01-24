@@ -5,7 +5,8 @@ var playerHand;
 var bankMoney = 300;
 let betAmount = 0;
 $('.game-button-container').hide()
-// $('.special-btn').hide()
+$('.special-btn').hide()
+$('#characters').hide()
 $('.player p').hide()
 $('.dealer p').hide()
 $('#player-text').hide()
@@ -44,6 +45,7 @@ var cardValueEvaluate = function (string, objArr) {
 
 // Starts Game
 async function playGame() {
+    $('#home').hide()
     await getDeck()
     dealerHand = await dealCard(2, [])
     playerHand = await dealCard(2, [])
@@ -212,6 +214,7 @@ var gameOver = function () {
         $('.player p').hide()
         $('.dealer span').text(0)
         $('.dealer p').hide()
+        $('#home').show()
     }, 5000)
 }
 
