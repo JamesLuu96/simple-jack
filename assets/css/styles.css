@@ -118,6 +118,20 @@ body {
     justify-content: left;
     align-items: center;
 } */
+/*------new added to display images when my list button click-----------*/
+.my-list{
+width:100%;
+display:flex;
+justify-content: space-between;
+}
+/* .list-div{
+  width:25%;
+}
+*/
+ .list-image{
+width:25%;
+
+} 
 /*-------hero section-------*/
 .card-wrapper {
   width: 70%;

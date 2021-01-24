@@ -34,7 +34,9 @@
       <div class="button-box animate__animated animate__fadeInRight animate__delay-0.5s">
         <button class="button is-success is-outlined" id="play">Play Now</button>
         <button class="button  is-success" id="btnModal">Rules</button>
+        <button class="button  is-success" id="my-list">my List</button>
       </div>
+
       <img src="./assets/css/images/gambit.png" alt="section-background"
         class="home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
     </div>
@@ -104,6 +106,22 @@
             <button class="button is-success is-outlined" id="btn-close">close</button>
           </footer>
         </section>
+      </div>
+    </div>
+    <!--modal for the inventory-->
+    <div class="modal" id="inventory">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">my characters</p>
+        </header>
+        <section class="modal-card-body">
+          <div class="my-list"></div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="close-inventory">close</button>
+
+        </footer>
       </div>
     </div>
   </section>
@@ -200,35 +218,54 @@
       </div>
     </nav>
     <div class="shop-container container">
-      <div>
+      <div class="img-con">
         <img src="assets/css/images/image1.jpg">
-        <div class="unlock-card"> <button class="button is-success" title="you need 200 points">unlock</button></div>
+        <h4>title 1</h4>
+        <div class="unlock-card"> <button class="button is-success" id="btn-unlock"
+            title="you need 200 points">unlock</button></div>
       </div>
-      <div>
+      <div class="img-con">
         <img src="assets/css/images/image22.jpg">
-        <div class="unlock-card"><button class="button is-success" title="you need 200 points">unlock</button> </div>
+        <h4>title 2</h4>
+        <div class="unlock-card"><button class="button is-success" id="btn-unlock"
+            title="you need 200 points">unlock</button> </div>
       </div>
-      <div>
+      <div class="img-con">
         <img src="assets/css/images/image1.jpg">
-        <div class="unlock-card"><button class="button is-success" title="you need 200 points">unlock</button></div>
+        <h4>title 3</h4>
+        <div class="unlock-card"><button class="button is-success" id="btn-unlock"
+            title="you need 200 points">unlock</button></div>
       </div>
-      <div>
+      <div class="img-con">
         <img src="assets/css/images/image33.jpg">
-        <div class="unlock-card"> <button class="button is-success" title="you need 200 points">unlock</button>
+        <h4>title 4</h4>
+        <div class="unlock-card"> <button class="button is-success" id="btn-unlock"
+            title="you need 200 points">unlock</button>
         </div>
 
       </div>
-      <div>
+      <div class="img-con">
         <img src="assets/css/images/image1.jpg">
-        <div class="unlock-card"><button class="button is-success" title="you need 200 points">unlock</button></div>
+        <h4>title 5</h4>
+        <div class="unlock-card"><button class="button is-success" id="btn-unlock"
+            title="you need 200 points">unlock</button></div>
       </div>
     </div>
   </section>
+
+
+
+
+
+
+
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/game_logic.js"></script>
+  <script src="./assets/js/prizes.js"></script>
   <script src="./assets/js/audio.js"></script>
 </body>
 
