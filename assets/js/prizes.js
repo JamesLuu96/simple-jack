@@ -1,8 +1,10 @@
 const gateway = 'https://gateway.marvel.com';
 const apiKey = 'apikey=6183cc1410bb4bd83659bc716cd7fadb';
-// use this for list of available series and to make calls to api
-var amazingSpiderMan = localStorage.getItem('amazingSpiderMan') || [];
+// stores available characters
 var characters = [];
+// stores unlocked characters in local storage
+var unlockedChars = localStorage.getItem('characterId') || [];
+// use this for list of available series and to make calls to api
 const selections = [
   {
     'series': 'Amazing Spider-Man',
@@ -74,6 +76,17 @@ const selections = [
   }  
 ];
 
+// TODO: check available characters against unlocked characters
+function checkCharacters() {
+
+  if (unlockedChars.includes(name)) {
+    return;
+  } else {
+    localStorage.setItem('unlockedChars', name)
+  }
+};
+
+// builds character array
 async function seriesList() {
   var seriesSearch = 'https://gateway.marvel.com/v1/public/series/';
   var charLimit = 'characters?limit=100';
@@ -90,24 +103,13 @@ async function seriesList() {
       if (picPath.includes('image_not_available')) {
         continue;
       } else {
-        // var newChar = data.data.results[i].id;
-        // var newArr = newChar.filter()
+        // TODO: filter duplicates
         characters.push(data.data.results[i].id);
       }
     }
   }
 };
 
-// TODO: check available characters against unlocked characters
-function checkCharacters() {
-  unlockedChars = localStorage.getItem('name') || [];
-
-  if (unlockedChars.includes(name)) {
-    return;
-  } else {
-    localStorage.setItem('name', name)
-  }
-}
 
 function pageBuild() {
   // create select box
@@ -127,9 +129,8 @@ function pageBuild() {
 };
 
 async function seriesDisplay() {
-  // API limits query results to 100 and defaults to 20 unless otherwise specified
   var charSearch = '/v1/public/characters/';
-  // will skip on initial page load and load default series list
+  
   for (let i = 0; i < characters.length; i++) {
     
     var response = await fetch(`${gateway}${charSearch}${characters[i]}?${apiKey}`);
@@ -144,6 +145,10 @@ async function seriesDisplay() {
     var picture = $('<img>').attr('src', thumbnail);
     container.append(listItem);
     container.append(picture);
+    var buttonContainer = $('<div>').addClass('unlock-card');
+    var button = $('<button>').addClass('button is-success').attr('title', 'you need 200 points').text('Unlock');
+    buttonContainer.append(button);
+    container.append(buttonContainer);
     $('.shop-container').append(container);
     // debugger
   }
@@ -231,9 +236,9 @@ $('#select-box').change((event) => {
 })
 
 // TODO: target unlock button to add character to localStorage
-$('.unlock-card').on('click', () => {
-  var name = $(this).closest('div').find('p').text()
-  console.log(name)
+$('.unlock-card').click(function(event) {
+  var name = $('.unlock-card')
+  console.log(event)
 })
 
 seriesList();
