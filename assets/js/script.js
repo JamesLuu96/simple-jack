@@ -24,6 +24,7 @@ $('#start').on('click', function () {
 $('#play').on('click', function () {
     $('.home').hide()
     $('.play-section').show()
+    loadGamePage()
     $('.special').hide()
     randomEntryAudio()
     setTimeout(function(){

@@ -4,14 +4,17 @@ var dealerHand;
 var playerHand;
 var bankMoney = 300;
 let betAmount = 0;
-$('.game-button-container').hide()
-$('.special-btn').hide()
-$('#characters').hide()
-$('.player p').hide()
-$('.dealer p').hide()
-$('#player-text').hide()
-$('#dealer-text').hide()
-$('#play-button').hide()
+var loadGamePage = function(){
+    $('.game-button-container').hide()
+    $('.special-btn').hide()
+    $('#characters').hide()
+    $('.player p').hide()
+    $('.dealer p').hide()
+    $('#player-text').hide()
+    $('#dealer-text').hide()
+    $('#play-button').hide()
+}
+
 
 // Evaluates Card Values
 var cardValueEvaluate = function (string, objArr) {
