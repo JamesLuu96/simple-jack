@@ -35,7 +35,7 @@
         <button class="button is-success is-outlined" id="play">Play Now</button>
         <button class="button  is-success" id="btnModal">Rules</button>
       </div>
-      <img src="./assets/css/images/gambit.png" alt="section-background"
+      <img src="./assets/images/gambit.png" alt="section-background"
         class="home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
     </div>
     <!-- modal for the rules-->
@@ -110,13 +110,14 @@
 
   <!-- Play Game Section -->
   <section class="play-section">
-    <img src="./assets/css/images/gambit.png" alt="section-background"
-      class="gambit-special home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
+    
+    <img src="./assets/images/special/groot.png" alt="section-background"
+      class="special animate__animated animate__fadeInLeft animate__delay-0.5s">
 
     <div class="pl-3 user-info">
-      <div class="player-img">
-        <img src="./assets/css/images/user.png" style="max-width:80px" alt="user image">
-        <p class="user-name" style="width:auto;">Gambit</p>
+      <div id="player-img" class="player-img">
+        <img style="max-width:80px" alt="user image">
+        <p class="user-name" style="width:auto;"><!--Name--></p>
       </div>
       <div id="player-text" class="player-text">
         <p class="text"></p>
@@ -180,6 +181,24 @@
     <div class="back-buttons">
       <button class="button  mt-4" id="home">Home</button>
       <button class="button mt-4" id="shop">Shop</button>
+      <select name="characters" id="characters">
+        <option value="gambit">Gambit</option>
+        <option value="aquaman">Aquaman</option>
+        <option value="catwoman">Cat Woman</option>
+        <option value="cyclops">Cyclops</option>
+        <option value="deadpool">Deadpool</option>
+        <option value="greenarrow">Green Arrow</option>
+        <option value="greenlantern">Green Lantern</option>
+        <option value="groot">Groot</option>
+        <option value="ironman">Iron-Man</option>
+        <option value="magneto">Magneto</option>
+        <option value="mystique">Mystique</option>
+        <option value="nightwing">Nightwing</option>
+        <option value="spiderman">Spider-Man</option>
+        <option value="storm">Storm</option>
+        <option value="wolverine">Wolverine</option>
+        <option value="wonderwoman">Wonder-Woman</option>
+      </select>
     </div>
   </section>
 
@@ -201,25 +220,25 @@
     </nav>
     <div class="shop-container container">
       <div>
-        <img src="assets/css/images/image1.jpg">
+        <img src="./assets/images/placeholder1.jpg">
         <div class="unlock-card"> <button class="button is-success" title="you need 200 points">unlock</button></div>
       </div>
       <div>
-        <img src="assets/css/images/image22.jpg">
+        <img src="./assets/images/placeholder2.jpg">
         <div class="unlock-card"><button class="button is-success" title="you need 200 points">unlock</button> </div>
       </div>
       <div>
-        <img src="assets/css/images/image1.jpg">
+        <img src="./assets/images/placeholder3.jpg">
         <div class="unlock-card"><button class="button is-success" title="you need 200 points">unlock</button></div>
       </div>
       <div>
-        <img src="assets/css/images/image33.jpg">
+        <img src="./assets/images/placeholder2.jpg">
         <div class="unlock-card"> <button class="button is-success" title="you need 200 points">unlock</button>
         </div>
 
       </div>
       <div>
-        <img src="assets/css/images/image1.jpg">
+        <img src="./assets/images/placeholder1.jpg">
         <div class="unlock-card"><button class="button is-success" title="you need 200 points">unlock</button></div>
       </div>
     </div>
@@ -230,6 +249,7 @@
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/game_logic.js"></script>
   <script src="./assets/js/audio.js"></script>
+  <script src="./assets/js/characters.js"></script>
 </body>
 
 </html>

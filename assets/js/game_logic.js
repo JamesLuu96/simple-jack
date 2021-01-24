@@ -5,7 +5,7 @@ var playerHand;
 var bankMoney = 300;
 let betAmount = 0;
 $('.game-button-container').hide()
-$('.special-btn').hide()
+// $('.special-btn').hide()
 $('.player p').hide()
 $('.dealer p').hide()
 $('#player-text').hide()
@@ -229,6 +229,9 @@ $("#play-button").on("click", function (event) {
     event.preventDefault()
     $('#bet-money').val('')
     $('#bet span').text(bankMoney)
+    if(bankMoney <= 0){
+
+    }
     //added to show the modal when play button click
     $('.modal').addClass("is-active");
 })

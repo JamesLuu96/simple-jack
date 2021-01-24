@@ -40,7 +40,7 @@ body {
       rgba(51, 51, 51, 0.9),
       rgba(51, 51, 51, 0.8)
     ),
-    url("./images/city.jpg");
+    url("../images/city.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
@@ -60,9 +60,10 @@ body {
 
 .home-gambit {
   position: absolute;
-  left: -40%;
-  top: 30%;
-  width: 100%;
+  left: 0;
+  bottom: 0;
+  max-width: 50%;
+  z-index: 1;
 }
 .button-box {
   display: inline-block;
@@ -141,7 +142,13 @@ body {
   width: 40%;
   margin-right: 2%;
 }
-
+.special{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 999;
+}
 /* Play Game */
 .play-section {
   display: flex;

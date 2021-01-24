@@ -1,3 +1,7 @@
+// Generates User Picture / Name
+$('#player-img img').attr('src', './assets/images/user-icon/gambit.png')
+$('#player-img p').text('Gambit')
+
 // Hidden From Start
 $('.home-gambit').hide()
 $('.button-box').hide()
@@ -20,7 +24,7 @@ $('#start').on('click', function () {
 $('#play').on('click', function () {
     $('.home').hide()
     $('.play-section').show()
-    $('.gambit-special').hide()
+    $('.special').hide()
     randomEntryAudio()
     setTimeout(function(){
         $('#dealer-text').hide()
@@ -28,9 +32,14 @@ $('#play').on('click', function () {
         $('#play-button').show()
     }, 4500)
 })
-
+var x = true
 $('.special-btn').on('click', function () {
-    $('.gambit-special').fadeIn()
+    if (x){
+        $('.special').fadeIn()
+    }else{
+        $('.special').fadeOut()
+    }
+    x=!x
 })
 $('#btnModal').on("click", () => {
     $('.modal').addClass("is-active");  
