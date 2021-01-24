@@ -1,0 +1,88 @@
+
+@media only screen and (max-width: 1200px) {
+    #home{
+     right:25%;
+   }
+ 
+}
+@media only screen and (max-width: 1006px) {
+   
+    .play-section{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+ #joker{
+      position: absolute;
+      top:50%;
+     left:10%;
+  }
+  
+  #gambit{
+    position: absolute;
+  left:10%;
+  top:8%;
+  } 
+    .play-area{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+    }
+    .button{
+        padding:12px 15px; 
+        
+    }
+    #home{
+        right:22%;
+      }
+     .game-button-container{
+         display: flex;
+         flex-direction: column;
+         position: absolute;
+         right:18%;
+         top:32%;
+     }
+    }
+
+@media only screen and (max-width: 730px) {
+    .home-gambit{
+        visibility: hidden;
+    }
+     .home-background h1{
+        font-size:250% ;
+    text-align: center;
+    margin-top: 20%;
+        
+    }
+    .game-button-container{
+        display: flex;
+        position: relative;
+        top:0%;
+        left:0%;
+       
+    }
+ #shop{
+     display: none;
+ }
+ #home{
+     right:10%;
+ }
+}
+
+@media only screen and (max-width: 576px) {
+     #play{
+        margin-bottom: 15%;  
+      }
+
+         .button-box{
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+            position: absolute; 
+         top:10%;
+        right:2%;
+          
+      }
+}
+

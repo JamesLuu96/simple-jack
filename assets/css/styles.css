@@ -1,3 +1,4 @@
+/*------main setup-------*/
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,7 @@ body {
   font-size: 20px;
   font-family: "Chakra Petch", sans-serif;
 }
-
+/*------home section-------*/
 #mute {
   position: fixed;
   z-index: 999;
@@ -76,12 +77,11 @@ body {
   padding: 1.5rem 2rem;
   font-weight: bold;
 }
-/*------------modal---------------*/
+/*------------rules modal---------------*/
 .content h1 {
   font-size: 2em;
   margin-bottom: 0.5em;
 }
-
 .content h1 {
   font-size: 2em;
   margin-bottom: 0.5em;
@@ -142,7 +142,7 @@ body {
   margin-right: 2%;
 }
 
-/* Play Game */
+/*------play game section-------*/
 .play-section {
   display: flex;
   flex-direction: column;
@@ -183,7 +183,6 @@ body {
 .player-img {
   flex-basis: 10%;
 }
-
 /* Play Area */
 .play-area {
   display: flex;
@@ -195,13 +194,6 @@ body {
 .button-container .button {
   margin: 5px;
 }
-
-/* .cards { */
-  /* max-width: 20%; */
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
-/* } */
 
 .cards img {
   margin: 5px;
@@ -236,7 +228,7 @@ width:25%;
 border-radius: 5px;
 }
 
-/* shop section */
+/*------shop section-------*/
 .shop {
   background-color: #f6f6f6;
   height: 100vh;
@@ -296,12 +288,5 @@ border-radius: 5px;
   color: #2fb667;
   margin-left: 10%;
 }
-
-/* .lock-icon {
-  background-color: rgba(255, 255, 255, 0.808);
-  z-index: 1;
-} */
-
-/* Media Queries */
 
 

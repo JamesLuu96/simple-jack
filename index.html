@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <link rel="stylesheet" href="./assets/css/styles.css">
-
+  <link rel="stylesheet" href="./assets/css/queries.css">
   <title>Simple Jack</title>
 </head>
 
@@ -38,7 +38,7 @@
       <img src="./assets/css/images/gambit.png" alt="section-background"
         class="home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
     </div>
-    <!-- modal for the rules-->
+    <!-- rules modal-->
     <div class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">
@@ -114,7 +114,7 @@
       class="gambit-special home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
 
     <div class="pl-3 user-info">
-      <div class="player-img">
+      <div class="player-img" id="gambit">
         <img src="./assets/css/images/user.png" style="max-width:80px" alt="user image">
         <p class="user-name" style="width:auto;">Gambit</p>
       </div>
@@ -126,7 +126,6 @@
     <div class="play-area">
       <div class="player">
         <div class="player-cards cards">
-          <!-- Player Hand -->
         </div>
         <p>Player Score: <span>0</span></p>
       </div>
@@ -134,7 +133,7 @@
       <div class="button-container">
         <button id="play-button" class="start-btn button is-success mt-4">Place Bet</button>
 
-
+        <!--place bet modal-->
         <div id="bet" class="modal">
           <div class="modal-background"></div>
           <div class="modal-card modal-bet">
@@ -161,14 +160,13 @@
 
       <div class="dealer">
         <div class="dealer-cards cards">
-          <!-- Dealer Hand -->
         </div>
         <p>Dealer Score: <span>0</span></p>
       </div>
     </div>
 
     <div class="pl-3 user-info">
-      <div class="player-img">
+      <div class="player-img" id="joker">
         <img src="./assets/images/joker.png" style="max-width:80px" alt="user image">
         <p class="user-name" style="width:auto;">Joker</p>
       </div>
