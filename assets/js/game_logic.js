@@ -224,13 +224,14 @@ $("#play-button").on("click", function (event) {
     event.preventDefault()
     if (bankMoney <= 0) {
         $('.modal-reload').addClass("is-active") 
+    } else{
+        $('#bet-money').val('50')
+        $('#bet span').text(bankMoney)
+        
+        //added to show the modal when play button click
+        $('.modal-place-bet').addClass("is-active");
+        $('#bet-money').trigger('select');
     }
-    $('#bet-money').val('50')
-    $('#bet span').text(bankMoney)
-    
-    //added to show the modal when play button click
-    $('.modal-place-bet').addClass("is-active");
-    $('#bet-money').trigger('select');
 })
 
 //modal when reload button is clicked
