@@ -1,4 +1,4 @@
-var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6"
+var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6&cards=AS,2S,9S,AD,2D,9D,AC,2C,9C,AH,2H,9H"
 let deckId;
 var dealerHand;
 var playerHand;
@@ -20,7 +20,7 @@ var cardValueEvaluate = function (string, objArr) {
     }, 0)
     if (string[0] === "A") {
         cardValue = 1;
-        if (cardValue + playerSum + 10 <= 21) {
+        if (11 + playerSum <= 21) {
             cardValue += 10;
         }
         //    if (playerSum>10){
@@ -39,10 +39,10 @@ var cardValueEvaluate = function (string, objArr) {
         cardValue = parseInt(string[0]);
     }
     //checks to see if the sum has gone over AND the hand has an ACE
-    if (cardValue + playerSum > 21 && objArr.some(code => code.card === ("AH" || "AD" || "AC" || "AS"))) {
+    if (cardValue + playerSum > 21 && objArr.some(code => code.card === "AH" || code.card=== "AD" || code.card=== "AC" || code.card === "AS")) {
         //goes through the array, changes all ace values to 1
         for (let i = 0; i < objArr.length; i++) {
-            if (objArr[i].card === ("AH" || "AD" || "AC" || "AS")) {
+            if (objArr[i].card === "AH" || objArr[i].card === "AD" || objArr[i].card === "AC" || objArr[i].card === "AS") {
                 objArr[i].value = 1;
             }
         }
