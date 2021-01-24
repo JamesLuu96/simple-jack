@@ -71,12 +71,24 @@ const selections = [
     'id': '749'
   }  
 ];
-console.log(bankMoney)
+
 // TODO: check available characters against unlocked characters
+
+function checkCharacters() {
+  unlockedChars = localStorage.getItem('name') || [];
+
+  if (unlockedChars.includes(name)) {
+    return;
+  } else {
+    localStorage.setItem('name', name)
+  }
+}
 
 function pageBuild() {
   // create select box
   var selectBox = $('<select>');
+  // pull bankMoney from game_logic.js to display available funds in shop
+  $('#shop-money').text(`Available Funds: ${bankMoney}`)
   
   // populate options for select box
   for (let i = 0; i < selections.length; i++) {
@@ -170,6 +182,11 @@ $('#select-box').change((event) => {
 
   var value = event.target.value;
   seriesDisplay(value);
+})
+
+$('.unlock-card').on('click', () => {
+  var name = $(this).closest('div').find('p').text()
+  console.log(name)
 })
 
 pageBuild();

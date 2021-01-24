@@ -2,7 +2,7 @@ var urlAddress = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 let deckId;
 var dealerHand;
 var playerHand;
-var bankMoney = parseInt(localStorage.getItem('bankMoney')) || 300;
+var bankMoney = 300;
 let betAmount = 0;
 $('.game-button-container').hide()
 $('.special-btn').hide()
@@ -41,11 +41,7 @@ var cardValueEvaluate = function(string, objArr){
     }
     return cardValue;
 }
-function playerMoney(){
-    var previousAmount = parseInt(localStorage.getItem('bankMoney')) || 300;
-    $('#player-money').text(`Bank Money: ${previousAmount}`);
-    console.log(playerMoney)
-}
+
 // Starts Game
 async function playGame(){
     placeBet();
@@ -173,10 +169,6 @@ var gameOver = function(){
     displayHand('player')
     displayHand('dealer')
     $('.game-button-container').hide()
-    var previousAmount = parseInt(localStorage.getItem('bankMoney')) || 300;
-    previousAmount = bankMoney
-    localStorage.setItem('bankMoney', previousAmount);
-    playerMoney();
     setTimeout(function(){
         $('#play-button').show()
         $('.cards').text('')

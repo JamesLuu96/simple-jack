@@ -192,8 +192,8 @@ body {
 }
 
 /* .cards { */
-  /* max-width: 20%; */
-  /* display: flex;
+/* max-width: 20%; */
+/* display: flex;
   flex-wrap: wrap;
   justify-content: center; */
 /* } */
@@ -212,18 +212,19 @@ body {
 .dealer {
   flex: 40%;
 }
-#shop{
+#shop {
   position: absolute;
-  bottom:10%;
-  right:10%;
+  bottom: 10%;
+  right: 10%;
 }
-#home{
+#home {
   position: absolute;
-  bottom:10%;
-  right:18%;
+  bottom: 10%;
+  right: 18%;
 }
-#home,#shop:hover{
-  background-color:#eee;
+#home,
+#shop:hover {
+  background-color: #eee;
 }
 /* shop section */
 .shop {
@@ -246,7 +247,7 @@ body {
 .shop-container img {
   border-radius: 4px;
   width: 100%;
-  height:100%;
+  height: 100%;
 }
 .shop-container .unlock-card {
   width: 100%;
@@ -286,6 +287,12 @@ body {
   margin-left: 10%;
 }
 
+#shop-money {
+  color: #2fb667;
+  text-align: right;
+  margin-right: 5%;
+}
+
 /* .lock-icon {
   background-color: rgba(255, 255, 255, 0.808);
   z-index: 1;
@@ -301,4 +308,3 @@ body {
     width: 8ch;
   }
 }
-
