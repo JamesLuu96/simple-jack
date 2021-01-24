@@ -228,7 +228,7 @@ $("#play-button").on("click", function (event) {
     $('.modal').addClass("is-active");
 })
 
-$('.btn-bet').on('click', function (event) {
+$('#bet form').on('submit', function (event) {
     event.preventDefault()
     betAmount = $('#bet-money').val();
     betAmount = parseInt(betAmount)

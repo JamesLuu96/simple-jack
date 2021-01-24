@@ -24,7 +24,7 @@
   <span id="mute" class="oi" data-glyph="volume-high"></span>
   <!-- Start Menu -->
   <div class="start">
-    <button id="start">Play Game</button>
+    <button id="start">Enter Site</button>
   </div>
 
   <!-- Home Section -->
@@ -110,8 +110,8 @@
 
   <!-- Play Game Section -->
   <section class="play-section">
-    
-    <img src="./assets/images/special/groot.png" alt="section-background"
+    <span id="home" class="game-back oi" data-glyph="arrow-thick-left"></span>
+    <img src="./assets/images/special/gambit.png" alt="section-background"
       class="special animate__animated animate__fadeInLeft animate__delay-0.5s">
 
     <div class="pl-3 user-info">
@@ -139,16 +139,19 @@
         <div id="bet" class="modal">
           <div class="modal-background"></div>
           <div class="modal-card modal-bet">
-            <section class="modal-card-body">
-              <div class="field">
-                <label class="label">How much do you want to bet? You can place a bet up to <span></span>
-                  dollars</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="bet money" id="bet-money">
+            <form>
+              <section class="modal-card-body">
+                <div class="field">
+                  <label class="label">
+                    You can place a bet up to <span></span> dollars
+                  </label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="bet money" id="bet-money">
+                  </div>
                 </div>
-              </div>
-              <button class="button is-success btn-bet">ok</button>
-            </section>
+                <button type="submit" class="button is-success btn-bet">Confirm</button>
+              </section>
+            </form>
           </div>
         </div>
         <div class="game-result"></div>
@@ -179,7 +182,6 @@
     </div>
 
     <div class="back-buttons">
-      <button class="button  mt-4" id="home">Home</button>
       <button class="button mt-4" id="shop">Shop</button>
       <select name="characters" id="characters">
         <option value="gambit">Gambit</option>

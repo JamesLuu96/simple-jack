@@ -203,6 +203,12 @@ body {
   margin: 5px;
 }
 
+.game-back{
+  color: black;
+  margin: 1% 2%;
+  cursor: pointer;
+}
+
 /* .cards { */
   /* max-width: 20%; */
   /* display: flex;
@@ -229,13 +235,16 @@ body {
   bottom:10%;
   right:10%;
 }
-#home{
-  position: absolute;
-  bottom:10%;
-  right:18%;
-}
-#home,#shop:hover{
+
+#shop:hover{
   background-color:#eee;
+}
+
+#characters{
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  padding: 2px;
 }
 
 .modal-bet{
