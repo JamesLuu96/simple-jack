@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Navigation Bar */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 2%;
+    font-size: 2rem;
+    z-index: 999;
+}
+nav p, #mute {
+    cursor: pointer;
+}
+
+/* Enter Site Screen */
+#enter-site {
+    display: none;
+}
+
+/* Home Screen */
+#home {
+    display: none;
+}
+
+/* Play Screen */
+#play {
+    display: none;
+}
+.user-display img {
+    max-width: 80px;
+}
+
+/* Shop Screen */
+#shop {
+    display: none;
+}
+
+/* Contact Us Screen */
+#contact {
+    display: none;
+}
+
+/* Footer */
