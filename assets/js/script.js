@@ -56,6 +56,7 @@ $('#btn-close').on("click", () => {
 //go to shop page from play page
 $("#shop").on("click", () => {
     $(".play-section").hide();
+    $(".series").val("784").trigger("change");
     $(".shop").show();
 })
 //back to home from play page

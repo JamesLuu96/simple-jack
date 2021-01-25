@@ -1,5 +1,5 @@
 const gateway = 'https://gateway.marvel.com';
-const apiKey = 'apikey=6183cc1410bb4bd83659bc716cd7fadb';
+const apiKey = 'apikey=8dc4947cd23a3751e248fa0ac896866f';
 // stores available characters
 var characters = [];
 // stores unlocked characters in local storage
@@ -77,14 +77,14 @@ const selections = [
 ];
 
 // TODO: check available characters against unlocked characters
-function checkCharacters() {
+// function checkCharacters() {
 
-  if (unlockedChars.includes(characters)) {
-    continue;
-  } else {
+//   if (unlockedChars.includes(characters)) {
+//     continue;
+//   } else {
 
-  }
-};
+//   }
+// };
 
 // builds character array
 async function seriesList() {
@@ -95,49 +95,55 @@ async function seriesList() {
 
     var response = await fetch(`${seriesSearch}/${selections[i].id}/${charLimit}&${apiKey}`);
     var data = await response.json();
-
+    debugger
     for (let i = 0; i < data.data.results.length; i++) {
-
+      
       var picPath = data.data.results[i].thumbnail.path;
-
+      
       if (picPath.includes('image_not_available')) {
         continue;
       } else {
-        // TODO: filter duplicates
-        characters.push(data.data.results[i].id);
+        var character = {
+            name: data.data.results[i].name,
+            path: data.data.results[i].thumbnail.path,
+            ext: data.data.results[i].thumbnail.extension,
+            id: data.data.results[i].id,
+            series: selections[i].id
+        }
+        characters.push(character);
       }
     }
   }
 };
 
+// get rid of and make html select box
 
-function pageBuild() {
-  // create select box
-  var selectBox = $('<select>');
-  // pull bankMoney from game_logic.js to display available funds in shop
-  $('#shop-money').text(`Available Funds: ${bankMoney}`)
+// function pageBuild() {
+//   // create select box
+//   var selectBox = $('<select>');
+//   // pull bankMoney from game_logic.js to display available funds in shop
+//   $('#shop-money').text(`Available Funds: ${bankMoney}`)
   
-  // populate options for select box
-  for (let i = 0; i < selections.length; i++) {
-    var option = $('<option>').attr('value', selections[i].id).text(selections[i].series);
-    selectBox.append(option);
-  }
+//   // populate options for select box
+//   for (let i = 0; i < selections.length; i++) {
+//     var option = $('<option>').attr('value', selections[i].id).text(selections[i].series);
+//     selectBox.append(option);
+//   }
 
-  // append select box with options
-  $('#select-box').append(selectBox);
-  seriesDisplay();
-};
+//   // append select box with options
+//   $('#select-box').append(selectBox);
+//   seriesDisplay();
+// };
 
-async function seriesDisplay() {
-  var charSearch = '/v1/public/characters/';
-  
-  for (let i = 0; i < characters.length; i++) {
-    
-    var response = await fetch(`${gateway}${charSearch}${characters[i]}?${apiKey}`);
-    var data = await response.json();
-    var name = (data.data.results[0].name);
-    var picPath = data.data.results[0].thumbnail.path;
-    var picExtension = data.data.results[0].thumbnail.extension;
+function seriesDisplay(value) {
+  var filteredArray = characters.filter(x => x.series === value)
+
+  // TODO: change to loop through filteredArray
+  for (let i = 0; i < filteredArray.length; i++) {
+
+    var name = (filteredArray[i].name);
+    var picPath = filteredArray[i].thumbnail.path;
+    var picExtension = filteredArray[i].thumbnail.extension;
 
     var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
     var container = $('<div>');
@@ -155,7 +161,7 @@ async function seriesDisplay() {
   }
 };
 
-$('#select-box').change((event) => {
+$('.series').on('change', function(event) {
 
   var value = event.target.value;
   seriesDisplay(value);
@@ -174,7 +180,6 @@ $('.unlock-card').click(function(event) {
 })
 
 seriesList();
-pageBuild();
 // display series based on option selection (default is Amazing Spider-Man)
 // async function seriesDisplay(value) {
 //   // API limits query results to 100 and defaults to 20 unless otherwise specified
