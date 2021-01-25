@@ -165,7 +165,7 @@ body {
       rgba(51, 51, 51, 0.705),
       rgba(51, 51, 51, 0.747)
     ),
-    url(./images/back3.jpg);
+    url(../images/game-placeholder.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
