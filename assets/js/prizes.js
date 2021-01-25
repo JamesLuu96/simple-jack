@@ -147,9 +147,9 @@ function seriesDisplay(value) {
       var picture = $('<img>').attr('src', thumbnail);
       container.append(listItem);
       container.append(picture);
-      var buttonContainer = $('<div>');
+      var buttonContainer = $('<div>').addClass('unlock-card');
       // create button with id of character
-      var button = $('<button>').addClass('button is-success unlock-card').attr('id', filteredArray[i].index).attr('title', 'you need 500 points').text('Unlock');
+      var button = $('<button>').addClass('button is-success unlock-char').attr('id', filteredArray[i].index).attr('title', 'you need 500 points').text('Unlock');
       buttonContainer.append(button);
       container.append(buttonContainer);
       $('.shop-container').append(container);
@@ -166,15 +166,16 @@ $('.series').on('change', function(event) {
 })
 
 // set unlocked character in localStorage and global variable
-$('.shop-container').on('click', '.unlock-card', function(event) {
-
-  if (bankMoney >= 10) {
-    var pullId = event.target.id;
+$('.shop-container').on('click', '.unlock-char', function(event) {
+  var pullId = event.target.id;
+  var cost = characters[pullId].cost;
+  if (bankMoney >= cost) {
     unlockedChars.push(characters[pullId]);
     localStorage.setItem('unlockedChars', JSON.stringify(unlockedChars));
     $('.series').trigger('change');
+    bankMoney -= cost
   } else {
-    alert('You don\'t have enough money');
+    alert(`You need ${cost} to purchase this character!`);
   }
 })
 
