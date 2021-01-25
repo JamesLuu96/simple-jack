@@ -3,7 +3,8 @@ const apiKey = 'apikey=8dc4947cd23a3751e248fa0ac896866f';
 // stores available characters
 var characters = [];
 // stores unlocked characters in local storage
-var unlockedChars = localStorage.getItem('id') || [];
+var temp = [];
+
 // use this for list of available series and to make calls to api
 const selections = [
   {
@@ -76,21 +77,11 @@ const selections = [
   }  
 ];
 
-// TODO: check available characters against unlocked characters
-// function checkCharacters() {
-
-//   if (unlockedChars.includes(characters)) {
-//     continue;
-//   } else {
-
-//   }
-// };
-
 // builds character array
 async function seriesList() {
   var seriesSearch = 'https://gateway.marvel.com/v1/public/series/';
   var charLimit = 'characters?limit=100';
-
+  var index = 0;
   for (let x = 0; x < selections.length; x++) {
 
     var response = await fetch(`${seriesSearch}${selections[x].id}/${charLimit}&${apiKey}`);
@@ -108,56 +99,53 @@ async function seriesList() {
             path: data.data.results[i].thumbnail.path,
             ext: data.data.results[i].thumbnail.extension,
             id: data.data.results[i].id,
-            series: selections[x].id
+            series: selections[x].id,
+            index: index
         }
         characters.push(character);
+        index++
       }
     }
+    console.log('getting data from API call')
+    localStorage.setItem('characters', JSON.stringify(characters))
   }
-  console.log(characters)
 };
 
-// get rid of and make html select box
-
-// function pageBuild() {
-//   // create select box
-//   var selectBox = $('<select>');
-//   // pull bankMoney from game_logic.js to display available funds in shop
-//   $('#shop-money').text(`Available Funds: ${bankMoney}`)
-  
-//   // populate options for select box
-//   for (let i = 0; i < selections.length; i++) {
-//     var option = $('<option>').attr('value', selections[i].id).text(selections[i].series);
-//     selectBox.append(option);
-//   }
-
-//   // append select box with options
-//   $('#select-box').append(selectBox);
-//   seriesDisplay();
-// };
-
+function containsObject(obj, list) {
+  var i;
+  for (i = 0; i < list.length; i++) {
+    if (list[i] === obj) {
+      return true;
+    }
+  }
+  return false;
+}
 function seriesDisplay(value) {
   var filteredArray = characters.filter(x => x.series === value)
+  console.log(filteredArray)
 
   // TODO: change to loop through filteredArray
   for (let i = 0; i < filteredArray.length; i++) {
-
-    var name = (filteredArray[i].name);
-    var picPath = filteredArray[i].path;
-    var picExtension = filteredArray[i].ext;
-
-    var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
-    var container = $('<div>');
-    var listItem = $('<p>').text(`${name}`);
-    var picture = $('<img>').attr('src', thumbnail);
-    container.append(listItem);
-    container.append(picture);
-    var buttonContainer = $('<div>').addClass('unlock-card');
-    // create button with id of character
-    var button = $('<button>').addClass('button is-success').attr('id', characters[i]).attr('title', 'you need 500 points').text('Unlock');
-    buttonContainer.append(button);
-    container.append(buttonContainer);
-    $('.shop-container').append(container);
+    if (unlockedChars.includes(filteredArray[i])) {
+    
+    } else {
+      var name = (filteredArray[i].name);
+      var picPath = filteredArray[i].path;
+      var picExtension = filteredArray[i].ext;
+  
+      var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
+      var container = $('<div>');
+      var listItem = $('<p>').text(`${name}`);
+      var picture = $('<img>').attr('src', thumbnail);
+      container.append(listItem);
+      container.append(picture);
+      var buttonContainer = $('<div>');
+      // create button with id of character
+      var button = $('<button>').addClass('button is-success unlock-card').attr('id', filteredArray[i].index).attr('title', 'you need 500 points').text('Unlock');
+      buttonContainer.append(button);
+      container.append(buttonContainer);
+      $('.shop-container').append(container);
+    }
     // debugger
   }
 };
@@ -170,11 +158,14 @@ $('.series').on('change', function(event) {
 })
 
 // TODO: target unlock button to add character to localStorage
-$('.unlock-card').click(function(event) {
-  if (bankMoney >= 500) {
-    var pullId = event.target.id
-    unlockedChars = localStorage.setItem('id', pullId)
-    checkCharacters();
+$('.shop-container').on('click', '.unlock-card', function(event) {
+  console.log(event.target)
+
+  if (bankMoney >= 10) {
+    var pullId = event.target.id;
+    unlockedChars.push(characters[pullId]);
+    localStorage.setItem('unlockedChars', JSON.stringify(unlockedChars));
+    $('.series').trigger('change');
   } else {
     alert('You don\'t have enough money');
   }
@@ -189,80 +180,19 @@ function test() {
   }
 }
 
-// test();
 
-seriesList();
-// display series based on option selection (default is Amazing Spider-Man)
-// async function seriesDisplay(value) {
-//   // API limits query results to 100 and defaults to 20 unless otherwise specified
-//   var seriesComp = '/v1/public/series/454/characters?limit=100';
-//   // clear previous series
-//   $('.shop-container').empty()
-//   // will skip on initial page load and load default series list
-//   if (value) {
-//     seriesComp = seriesComp.replace('454', value);
-//     console.log(seriesComp)
-//   }
+if (localStorage.getItem('characters') === null) {
+  seriesList();
+} else {
+  characters = JSON.parse(localStorage.getItem('characters'))
+}
 
-//   var response = await fetch(`${gateway}${seriesComp}${apiKey}`);
-//   var data = await response.json();
-//   // debugger
-
-//   for (let i = 0; i < data.data.results.length; i++) {
-//     // console.log(data)
-//     var name = (data.data.results[i].name);
-//     var picPath = data.data.results[i].thumbnail.path;
-//     var picExtension = data.data.results[i].thumbnail.extension;
-//     if (picPath.includes('image_not_available')) {
-//       continue;
-//     } else {
-//       var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
-//       var container = $('<div>');
-//       var listItem = $('<p>').text(`${name}`);
-//       var picture = $('<img>').attr('src', thumbnail);
-//       container.append(listItem);
-//       container.append(picture);
-//       if (bankMoney >= 200) {
-//         var buttonContainer = $('<div>').addClass('unlock-card');
-//         var button = $('<button>').addClass('button is-success').attr('title', 'you need 200 points').text('Unlock');
-//         buttonContainer.append(button);
-//         container.append(buttonContainer);
-//       } else {
-//         var notEnough = $('<p>').text('You don\'t have enough points');
-//         container.append(notEnough)
-//       }
-
-//       $('.shop-container').append(container);
-//     }
-//   }
-  
-//   // checks array length and calls new fetch to pull rest of results for series
-//   if (data.data.results.length === 100) {
-//     seriesComp += '&offset=100';
-//     fetch(`${gateway}${seriesComp}${apiKey}`).then(function(response) {
-//       response.json().then(function(data) {
-//         for (let i = 0; i < data.data.results.length; i++) {
-//           var name = (data.data.results[i].name);
-//           var picPath = data.data.results[i].thumbnail.path;
-//           var picExtension = data.data.results[i].thumbnail.extension;
-//           if (picPath.includes('image_not_available')) {
-//             continue;
-//           } else {
-//             var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
-//             var container = $('<div>');
-//             var listItem = $('<p>').text(`${name}`);
-//             var picture = $('<img>').attr('src', thumbnail);
-//             container.append(listItem);
-//             container.append(picture);
-//             var buttonContainer = $('<div>').addClass('unlock-card');
-//             var button = $('<button>').addClass('button is-success').attr('title', 'you need 200 points').text('Unlock');
-//             buttonContainer.append(button);
-//             container.append(buttonContainer);
-
-//             $('.shop-container').append(container);
-//           }
-//         }
-//       })
-//     })
-//   }
-// };
+if (localStorage.getItem('unlockedChars') === null) {
+  var unlockedChars = [];
+} else {
+  var temp = JSON.parse(localStorage.getItem('unlockedChars'));
+  var unlockedChars = [];
+  for (let i = 0; i < temp.length; i++) {
+    unlockedChars.push(characters[temp[i].index])
+  }
+}
