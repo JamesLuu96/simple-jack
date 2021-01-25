@@ -4,7 +4,7 @@ var dealerHand;
 var playerHand;
 var bankMoney = 300;
 let betAmount = 0;
-var loadGamePage = function(){
+var loadGamePage = function () {
     $('.game-button-container').hide()
     $('.special-btn').hide()
     $('#characters').hide()
@@ -35,7 +35,7 @@ var cardValueEvaluate = function (string, objArr) {
         cardValue = parseInt(string[0]);
     }
     //checks to see if the sum has gone over AND the hand has an ACE
-    if (cardValue + playerSum > 21 && objArr.some(code => code.card === "AH" || code.card=== "AD" || code.card=== "AC" || code.card === "AS")) {
+    if (cardValue + playerSum > 21 && objArr.some(code => code.card === "AH" || code.card === "AD" || code.card === "AC" || code.card === "AS")) {
         //goes through the array, changes all ace values to 1
         for (let i = 0; i < objArr.length; i++) {
             if (objArr[i].card === "AH" || objArr[i].card === "AD" || objArr[i].card === "AC" || objArr[i].card === "AS") {
@@ -226,11 +226,11 @@ var gameOver = function () {
 $("#play-button").on("click", function (event) {
     event.preventDefault()
     if (bankMoney <= 0) {
-        $('.modal-reload').addClass("is-active") 
-    } else{
+        $('.modal-reload').addClass("is-active")
+    } else {
         $('#bet-money').val('50')
         $('#bet span').text(bankMoney)
-        
+
         //added to show the modal when play button click
         $('.modal-place-bet').addClass("is-active");
         $('#bet-money').trigger('select');
@@ -274,3 +274,6 @@ $('.stand').on('click', async function (event) {
 $('.double').on('click', function () {
     doubleDown();
 })
+
+
+

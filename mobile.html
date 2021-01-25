@@ -1,88 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SimpleJack</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css" integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css"
+        integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./assets/css/test.css">
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
-    <nav>
+    <!-- <nav class="navbar">
+    <ul>
+      <li>
         <p>SimpleJack</p>
-        <p>My Items</p>
+      </li>
+      <li>
+        <p class="nav-items">My Items</p>
+        <p class="nav-shop">Shop</p>
         <span id="mute" class="oi" data-glyph="volume-high"></span>
+      </li>
+    </ul>
+  </nav> -->
+
+    <nav class="navbar">
+        <div class="navbar-start">
+            <p class="navbar-item">Simple<span>Jack</span></p>
+        </div>
+        <div class="navbar-end">
+            <p class="nav-items navbar-item">My Items</p>
+            <p class="nav-shop navbar-item">Shop</p>
+            <span id="mute" class="oi navbar-item" data-glyph="volume-high"></span>
+        </div>
+        <div class="search">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><span class="oi cart" data-glyph="cart"></span></a>
+        </div>
     </nav>
 
     <!-- Enter Site Screen -->
-    <section id="enter-site">
-        <button>Enter Site</button>
-    </section>
+    <div id="enter-site">
+        <button class="button is-medium">Enter Site</button>
+    </div>
 
     <!-- Home Screen -->
-    <section id="home">
+    <div id="home">
         <h1>Simple <span>Jack</span></h1>
-
         <img class="gambit" src="./assets/images/gambit.png" alt="Gambit">
 
-        <div>
-            <button class="button is-success is-outlined" class="home-play">Play Now</button>
-            <button class="button  is-success" id="home-rules">Rules</button>
+        <div class="home-buttons">
+            <button class="button is-success is-outlined is-medium" id="home-play">Play Now</button>
+            <button class="button  is-success is-medium" id="home-rules">Rules</button>
         </div>
 
         <div class="modal rules-modal">
             <div class="modal-background"></div>
-            <div class="modal-card">
-              <header class="modal-card-head">
-                <p class="modal-card-title">blackJack Rules</p>
-              </header>
-              <section class="modal-card-body">
-                <div class="content">
-                  <h2>Introduction</h2>
-                  <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible without
-                    exceeding 21. In contrast to poker, where players compete with each other, blackjack is a one-on-one game
-                    between each player and the dealer.</p>
-                  <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their face value.
-                    The jack, queen and king are worth 10 points each. The ace has a value of either 1 point or 11 points,
-                    depending on its usage in your hand.</p>
-                  <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are responsible for
-                    paying out bets, they obviously can’t take insurance. They also can’t split their hand, double down on a
-                    good hand or surrender for half their bet.</p>
-                </div>
+            <div class="modal-card" id="rule-modal">
+                <header class=" modal-card-head">
+                    <p class="modal-card-title">blackJack Rules</p>
+                </header>
+                <section class="modal-card-body">
+                    <!-- <div class="modal-content"> -->
+                    <h2>Introduction</h2>
+                    <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible without
+                        exceeding 21. In contrast to poker, where players compete with each other, blackjack is a
+                        one-on-one game between each player and the
+                        dealer.
+                    </p>
+                    <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their face
+                        value. The jack, queen and king are worth 10 points each. The ace has a value of either 1 point
+                        or 11 points, depending on its usage in
+                        your hand.</p>
+                    <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are
+                        responsible for paying out bets, they obviously can’t take insurance. They also can’t split
+                        their hand, double down on a good hand or surrender
+                        for half their bet.</p>
+                    <!-- </div> -->
+                </section>
                 <footer class="modal-card-foot">
-                  <button class="button is-success is-outlined" id="btn-close">close</button>
+                    <button class="button is-success is-outlined" id="btn-close">close</button>
                 </footer>
-              </section>
-          </div>
+            </div>
         </div>
-    </section>
+    </div>
 
 
     <!-- Play Screen -->
-    <section id="play">
-        <span id="play-back" class="game-back oi" data-glyph="arrow-thick-left"></span>
-        <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special" class="animate__animated animate__fadeInLeft animate__delay-0.5s">
-        
+    <div id="play">
+        <!-- <span id="play-back" class="game-back oi" data-glyph="arrow-thick-left"></span> -->
+        <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
+      class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
         <div id="player" class="user-info">
+            <p>Gambit</p>
             <div class="user-display">
-              <img src="./assets/images/user-icon/gambit.png">
-              <p>Gambit</p>
+                <img src="./assets/images/user-icon/gambit.png">
             </div>
             <div class="user-chat">
-              <p></p>
+                <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
             </div>
         </div>
 
         <div class="play-area">
             <div class="play-player">
-                <div class="play-cards"></div>
+                <div class="play-cards">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                </div>
                 <div class="play-score">
                     Player Score: <span></span>
                 </div>
@@ -96,8 +132,13 @@
                 </div>
                 <div class="play-result">You Lost!</div>
             </div>
-            <div class="play-dealer">
-                <div class="play-cards"></div>
+            <div class="play-dealer dealer">
+                <div class="play-cards">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+
+                </div>
                 <div class="play-score">
                     Dealer Score: <span></span>
                 </div>
@@ -105,12 +146,13 @@
         </div>
 
         <div id="dealer" class="user-info">
+            <p>Dealer</p>
             <div class="user-display">
-              <img src="./assets/images/user-icon/joker.png">
-              <p>Dealer</p>
+                <img src="./assets/images/user-icon/joker.png">
             </div>
+
             <div class="user-chat">
-              <p></p>
+                <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
             </div>
         </div>
 
@@ -118,60 +160,73 @@
         <div id="play-bet" class="modal modal-place-bet">
             <div class="modal-background"></div>
             <div class="modal-card modal-bet">
-              <form>
-              <section class="modal-card-body">
-                <div class="field">
-                  <label class="label">
-                    You can place a bet up to <span></span> dollars
-                  </label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Bet Amount" id="bet-money">
-                  </div>
-                  <button type="submit" class="button is-success btn-bet">Confirm</button>
-                </section>
-              </form>
+                <form>
+                    <section class="modal-card-body">
+                        <div class="field">
+                            <label class="label">
+                                You can place a bet up to <span></span> dollars
+                            </label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Bet Amount" id="bet-money">
+                            </div>
+                            <button type="submit" class="button is-success btn-bet">Confirm</button>
+                    </section>
+                </form>
             </div>
-          </div>
+        </div>
 
-          <div id="play-reload" class="modal modal-reload">
+        <div id="play-reload" class="modal modal-reload">
             <div class="modal-background"></div>
             <div class="modal-card modal-reload">
-              <section class="modal-card-body">
-                <div class="field">
-                  <label class="label">You seem to have run out of money! Click the reload button to get another $300 dollars</label>
-                </div>
-                <button class="button is-success btn-reload">RELOAD</button>
-              </section>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">You seem to have run out of money! Click the reload button to get another
+                            $300
+                            dollars</label>
+                    </div>
+                    <button class="button is-success btn-reload">RELOAD</button>
+                </section>
             </div>
-          </div>
-    </section>
+        </div>
+    </div>
 
 
     <!-- Shop Screen -->
-    <section id="shop">
+    <div id="shop">
         <div class="shop-container container">
             <div class="shop-item">
-              <img src="./assets/images/placeholder1.jpg">
-              <button class="button is-success" title="you need 200 points">unlock</button>
+                <img src="./assets/images/placeholder1.jpg">
+                <button class="button is-success" title="you need 200 points">unlock</button>
             </div>
             <div class="shop-item">
-              <img src="./assets/images/placeholder2.jpg">
-              <button class="button is-success" title="you need 200 points">unlock</button>
+                <img src="./assets/images/placeholder2.jpg">
+                <button class="button is-success" title="you need 200 points">unlock</button>
             </div>
             <div class="shop-item">
-              <img src="./assets/images/placeholder3.jpg">
-              <button class="button is-success" title="you need 200 points">unlock</button>
+                <img src="./assets/images/placeholder3.jpg">
+                <button class="button is-success" title="you need 200 points">unlock</button>
             </div>
             <div class="shop-item">
-              <img src="./assets/images/placeholder2.jpg">
-               <button class="button is-success" title="you need 200 points">unlock</button>
+                <img src="./assets/images/placeholder2.jpg">
+                <button class="button is-success" title="you need 200 points">unlock</button>
             </div>
             <div class="shop-item">
-              <img src="./assets/images/placeholder1.jpg">
-              <button class="button is-success" title="you need 200 points">unlock</button>
+                <img src="./assets/images/placeholder1.jpg">
+                <button class="button is-success" title="you need 200 points">unlock</button>
             </div>
-          </div>
-    </section>
+            <div class="shop-item">
+                <img src="./assets/images/placeholder2.jpg">
+                <button class="button is-success" title="you need 200 points">unlock</button>
+            </div>
+            <div class="shop-item">
+                <img src="./assets/images/placeholder2.jpg">
+                <button class="button is-success" title="you need 200 points">unlock</button>
+            </div>
+        </div>
+        <footer id="contact-footer">
+            <p>Contact Us</p>
+        </footer>
+    </div>
 
 
     <!-- Contact Us Screen -->
@@ -181,12 +236,11 @@
 
 
     <!-- Footer -->
-    <footer>
-        <p>Contact Us</p>
-    </footer>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/test.js"></script>
 </body>
+
 </html>
