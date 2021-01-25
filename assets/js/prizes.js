@@ -94,13 +94,29 @@ async function seriesList() {
       if (picPath.includes('image_not_available')) {
         continue;
       } else {
+        var might = Math.floor(Math.random() * (31 - 1) + 1);
+        if (might < 6) {
+          cost = 300;
+        } else if (might < 11) {
+          cost = 600;
+        } else if (might < 16) {
+          cost = 900;
+        } else if (might < 21) {
+          cost = 1200;
+        } else if (might < 26) {
+          cost = 1500;
+        } else if (might < 31) {
+          cost = 1800;
+        }
         var character = {
             name: data.data.results[i].name,
             path: data.data.results[i].thumbnail.path,
             ext: data.data.results[i].thumbnail.extension,
             id: data.data.results[i].id,
             series: selections[x].id,
-            index: index
+            index: index,
+            might: might,
+            cost: cost
         }
         characters.push(character);
         index++
