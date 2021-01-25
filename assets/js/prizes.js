@@ -91,11 +91,11 @@ async function seriesList() {
   var seriesSearch = 'https://gateway.marvel.com/v1/public/series/';
   var charLimit = 'characters?limit=100';
 
-  for (let i = 0; i < selections.length; i++) {
+  for (let x = 0; x < selections.length; x++) {
 
-    var response = await fetch(`${seriesSearch}/${selections[i].id}/${charLimit}&${apiKey}`);
+    var response = await fetch(`${seriesSearch}${selections[x].id}/${charLimit}&${apiKey}`);
     var data = await response.json();
-    debugger
+    // debugger
     for (let i = 0; i < data.data.results.length; i++) {
       
       var picPath = data.data.results[i].thumbnail.path;
@@ -108,12 +108,13 @@ async function seriesList() {
             path: data.data.results[i].thumbnail.path,
             ext: data.data.results[i].thumbnail.extension,
             id: data.data.results[i].id,
-            series: selections[i].id
+            series: selections[x].id
         }
         characters.push(character);
       }
     }
   }
+  console.log(characters)
 };
 
 // get rid of and make html select box
@@ -142,8 +143,8 @@ function seriesDisplay(value) {
   for (let i = 0; i < filteredArray.length; i++) {
 
     var name = (filteredArray[i].name);
-    var picPath = filteredArray[i].thumbnail.path;
-    var picExtension = filteredArray[i].thumbnail.extension;
+    var picPath = filteredArray[i].path;
+    var picExtension = filteredArray[i].ext;
 
     var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
     var container = $('<div>');
@@ -164,6 +165,7 @@ function seriesDisplay(value) {
 $('.series').on('change', function(event) {
 
   var value = event.target.value;
+  $('.shop-container').empty();
   seriesDisplay(value);
 })
 
@@ -178,6 +180,16 @@ $('.unlock-card').click(function(event) {
   }
   console.log(unlockedChars)
 })
+
+function test() {
+  for (let i = 0; i < selections.length; i++) {
+    for (let j = 0; j < 20; j++) {
+      console.log(selections[i].id)
+    }
+  }
+}
+
+// test();
 
 seriesList();
 // display series based on option selection (default is Amazing Spider-Man)
