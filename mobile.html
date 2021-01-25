@@ -30,10 +30,9 @@
         <p class="nav-shop">Shop</p>
         <span id="mute" class="oi" data-glyph="volume-high"></span>
       </li>
-    </ul>
-  </nav> -->
-
-    <nav class="navbar">
+    </ul>-->
+    <!-- </nav> -->
+    <nav class="is-flex is-justify-content-space-between" id="navbar">
         <div class="navbar-start">
             <p class="navbar-item">Simple<span>Jack</span></p>
         </div>
@@ -42,19 +41,20 @@
             <p class="nav-shop navbar-item">Shop</p>
             <span id="mute" class="oi navbar-item" data-glyph="volume-high"></span>
         </div>
-        <div class="search">
+        <div class="search is-flex is-justify-content-space-between is-align-items-center">
             <a href="#"><i class="fas fa-search"></i></a>
-            <a href="#"><span class="oi cart" data-glyph="cart"></span></a>
+            <a href="#home"><span class="oi cart" data-glyph="cart"></span></a>
+            <img src="./assets/images/user-icon/gambit.png" class="user-img">
         </div>
     </nav>
 
     <!-- Enter Site Screen -->
-    <div id="enter-site">
+    <div id="enter-site" class="is-flex is-justify-content-center is-align-items-center">
         <button class="button is-medium">Enter Site</button>
     </div>
 
     <!-- Home Screen -->
-    <div id="home">
+    <div id="home" class="is-flex is-align-items-flex-end">
         <h1>Simple <span>Jack</span></h1>
         <img class="gambit" src="./assets/images/gambit.png" alt="Gambit">
 
@@ -72,13 +72,16 @@
                 <section class="modal-card-body">
                     <!-- <div class="modal-content"> -->
                     <h2>Introduction</h2>
-                    <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible without
+                    <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible
+                        without
                         exceeding 21. In contrast to poker, where players compete with each other, blackjack is a
                         one-on-one game between each player and the
                         dealer.
                     </p>
-                    <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their face
-                        value. The jack, queen and king are worth 10 points each. The ace has a value of either 1 point
+                    <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their
+                        face
+                        value. The jack, queen and king are worth 10 points each. The ace has a value of either 1
+                        point
                         or 11 points, depending on its usage in
                         your hand.</p>
                     <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are
@@ -96,11 +99,11 @@
 
 
     <!-- Play Screen -->
-    <div id="play">
+    <div id="play" class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-around">
         <!-- <span id="play-back" class="game-back oi" data-glyph="arrow-thick-left"></span> -->
         <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
-        <div id="player" class="user-info">
+        <div id="player" class="user-info is-flex is-align-items-center">
             <p>Gambit</p>
             <div class="user-display">
                 <img src="./assets/images/user-icon/gambit.png">
@@ -110,9 +113,9 @@
             </div>
         </div>
 
-        <div class="play-area">
+        <div class="play-area is-flex is-justify-content-center is-align-items-center">
             <div class="play-player">
-                <div class="play-cards">
+                <div class="play-cards is-flex is-justify-content-center is-flex-wrap-wrap">
                     <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
                     <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
                     <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
@@ -145,7 +148,7 @@
             </div>
         </div>
 
-        <div id="dealer" class="user-info">
+        <div id="dealer" class="user-info is-flex is-align-items-center">
             <p>Dealer</p>
             <div class="user-display">
                 <img src="./assets/images/user-icon/joker.png">
@@ -180,7 +183,8 @@
             <div class="modal-card modal-reload">
                 <section class="modal-card-body">
                     <div class="field">
-                        <label class="label">You seem to have run out of money! Click the reload button to get another
+                        <label class="label">You seem to have run out of money! Click the reload button to get
+                            another
                             $300
                             dollars</label>
                     </div>
@@ -192,8 +196,9 @@
 
 
     <!-- Shop Screen -->
+
     <div id="shop">
-        <div class="shop-container container">
+        <div class="shop-container container is-flex is-flex-wrap-wrap is-justify-content-center">
             <div class="shop-item">
                 <img src="./assets/images/placeholder1.jpg">
                 <button class="button is-success" title="you need 200 points">unlock</button>
@@ -222,6 +227,7 @@
                 <img src="./assets/images/placeholder2.jpg">
                 <button class="button is-success" title="you need 200 points">unlock</button>
             </div>
+
         </div>
         <footer id="contact-footer">
             <p>Contact Us</p>

@@ -1,16 +1,18 @@
 // $('#enter-site').show()
 $('#enter-site').hide()
-// $('#home').show()
-$('#home').hide()
+$('#home').show()
+// $('#home').hide()
 // $('#play').show()
-$('#shop').show()
+// $('#shop').show()
 // $('#contact').show()
+// $('#contact').hide()
 $('#play').hide()
-$('.nav-items').hide()
-$('.navbar').show()
-// $('.navbar-item').hide()
+// $('.navbar').show()
+$('#navbar').hide()
 $('.navbar-end').hide()
-$('#contact-footer').show()
+// $('#contact-footer').show()
+$('#contact-footer').hide()
+$('#shop').hide()
 
 // Home Section
 $('#home-rules').on('click', function () {
@@ -40,17 +42,17 @@ $('#play-bet form').on('submit', function (event) {
 })
 
 //
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    // Check for click events on the navbar burger icon
-    $(".navbar").click(function () {
+// Check for click events on the navbar burger icon
+// $(".navbar").click(function () {
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        $(".navbar").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
+//     // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+//     $(".navbar").toggleClass("is-active");
+//     $(".navbar-menu").toggleClass("is-active");
 
-    });
-});
+// });
+// });
 
 // var mql = window.matchMedia('(max-width: 600px)');
 
