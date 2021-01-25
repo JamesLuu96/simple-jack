@@ -109,6 +109,7 @@ async function seriesList() {
     // saves to localStorage to prevent same user from making multiple api calls
     localStorage.setItem('characters', JSON.stringify(characters))
   }
+  console.log(`Running API Call`)
 };
 
 // displays store items based on selected series
@@ -117,7 +118,8 @@ function seriesDisplay(value) {
 
   // check if character is unlocked and prevent displaying on store page
   for (let i = 0; i < filteredArray.length; i++) {
-    if (unlockedChars.includes(filteredArray[i])) {
+    // if (unlockedChars.includes(filteredArray[i])) {
+      if (sameName(filteredArray[i].name)) {
     
       // displayed locked characters on store page
     } else {
@@ -170,12 +172,25 @@ if (localStorage.getItem('characters') === null) {
 }
 
 // set empty array or retrieve unlocked characters from localStorage
-if (localStorage.getItem('unlockedChars') === null) {
-  var unlockedChars = [];
-} else {
-  var temp = JSON.parse(localStorage.getItem('unlockedChars'));
-  var unlockedChars = [];
-  for (let i = 0; i < temp.length; i++) {
-    unlockedChars.push(characters[temp[i].index])
+// if (localStorage.getItem('unlockedChars') === null) {
+//   var unlockedChars = [];
+// } else {
+//   var temp = JSON.parse(localStorage.getItem('unlockedChars'));
+//   var unlockedChars = [];
+//   for (let i = 0; i < temp.length; i++) {
+//     unlockedChars.push(characters[temp[i].index])
+//   }
+// }
+var unlockedChars = JSON.parse(localStorage.getItem('unlockedChars')) || []
+var sameName = function(name){
+  var found = false;
+  for(var i = 0; i < unlockedChars.length; i++) {
+      if (unlockedChars[i].name == name) {
+          found = true;
+          console.log(`true`)
+          break;
+      }
   }
+  
+  return found
 }
