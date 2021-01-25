@@ -1,11 +1,8 @@
 const gateway = 'https://gateway.marvel.com';
 const apiKey = 'apikey=8dc4947cd23a3751e248fa0ac896866f';
-// stores available characters
+// variable to store available character objects and build store pages
 var characters = [];
-// stores unlocked characters in local storage
-var temp = [];
-
-// use this for list of available series and to make calls to api
+// use this for list of available series and to make initial call to api
 const selections = [
   {
     'series': 'Amazing Spider-Man',
@@ -77,20 +74,23 @@ const selections = [
   }  
 ];
 
-// builds character array
+// builds character array of objects
 async function seriesList() {
   var seriesSearch = 'https://gateway.marvel.com/v1/public/series/';
   var charLimit = 'characters?limit=100';
+  // set manual index for each character
   var index = 0;
+  // iterate through array for each series
   for (let x = 0; x < selections.length; x++) {
 
     var response = await fetch(`${seriesSearch}${selections[x].id}/${charLimit}&${apiKey}`);
     var data = await response.json();
-    // debugger
+
+    // iterate through each character in each series
     for (let i = 0; i < data.data.results.length; i++) {
       
       var picPath = data.data.results[i].thumbnail.path;
-      
+      // prevents characters without distinct pictures from being stored
       if (picPath.includes('image_not_available')) {
         continue;
       } else {
@@ -106,30 +106,22 @@ async function seriesList() {
         index++
       }
     }
-    console.log('getting data from API call')
+    // saves to localStorage to prevent same user from making multiple api calls
     localStorage.setItem('characters', JSON.stringify(characters))
   }
 };
 
-function containsObject(obj, list) {
-  var i;
-  for (i = 0; i < list.length; i++) {
-    if (list[i] === obj) {
-      return true;
-    }
-  }
-  return false;
-}
+// displays store items based on selected series
 function seriesDisplay(value) {
   var filteredArray = characters.filter(x => x.series === value)
-  console.log(filteredArray)
 
-  // TODO: change to loop through filteredArray
+  // check if character is unlocked and prevent displaying on store page
   for (let i = 0; i < filteredArray.length; i++) {
     if (unlockedChars.includes(filteredArray[i])) {
     
+      // displayed locked characters on store page
     } else {
-      var name = (filteredArray[i].name);
+      var name = filteredArray[i].name;
       var picPath = filteredArray[i].path;
       var picExtension = filteredArray[i].ext;
   
@@ -146,10 +138,10 @@ function seriesDisplay(value) {
       container.append(buttonContainer);
       $('.shop-container').append(container);
     }
-    // debugger
   }
 };
 
+// refresh store page and call function to display currently selected series
 $('.series').on('change', function(event) {
 
   var value = event.target.value;
@@ -157,9 +149,8 @@ $('.series').on('change', function(event) {
   seriesDisplay(value);
 })
 
-// TODO: target unlock button to add character to localStorage
+// set unlocked character in localStorage and global variable
 $('.shop-container').on('click', '.unlock-card', function(event) {
-  console.log(event.target)
 
   if (bankMoney >= 10) {
     var pullId = event.target.id;
@@ -169,24 +160,16 @@ $('.shop-container').on('click', '.unlock-card', function(event) {
   } else {
     alert('You don\'t have enough money');
   }
-  console.log(unlockedChars)
 })
 
-function test() {
-  for (let i = 0; i < selections.length; i++) {
-    for (let j = 0; j < 20; j++) {
-      console.log(selections[i].id)
-    }
-  }
-}
-
-
+// check if api call needs to run or set characters from localStorage
 if (localStorage.getItem('characters') === null) {
   seriesList();
 } else {
   characters = JSON.parse(localStorage.getItem('characters'))
 }
 
+// set empty array or retrieve unlocked characters from localStorage
 if (localStorage.getItem('unlockedChars') === null) {
   var unlockedChars = [];
 } else {
