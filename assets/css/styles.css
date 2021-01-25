@@ -8,6 +8,32 @@ body {
   font-family: "Chakra Petch", sans-serif;
 }
 
+.skill {
+  position: relative;
+}
+.skill:hover::before {
+  --scale: 1;
+}
+
+.skill::after,
+.skill::before {
+  --scale: 0;
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+  transition: 50ms transform;
+}
+.skill::before {
+  content: attr(data-tooltip);
+  color: white;
+  padding: .5rem;
+  border-radius: .3rem;
+  text-align: center;
+  width: 300px;
+  background: #333;
+}
+
 #mute {
   position: fixed;
   z-index: 999;

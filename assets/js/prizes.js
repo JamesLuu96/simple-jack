@@ -1,5 +1,7 @@
 const gateway = 'https://gateway.marvel.com';
 const apiKey = 'apikey=8dc4947cd23a3751e248fa0ac896866f';
+{/* <span class="skill" data-tooltip="Health: This unit increases your health by x and heals your hero by x."><span class="oi" data-glyph="heart"></span></span>
+<span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="flash"></span></span><p>x 5</p> */}
 // variable to store available character objects and build store pages
 var characters = [];
 // use this for list of available series and to make initial call to api
