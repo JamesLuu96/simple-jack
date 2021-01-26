@@ -4,6 +4,7 @@ var enterSite = function(){
     $('#play').hide()
     $('#shop').hide()
     
+
 }
 // Home Section
 
