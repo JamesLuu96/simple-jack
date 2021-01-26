@@ -29,15 +29,53 @@ button {
     margin-left: 10px;
     cursor: pointer;
 }
+.navbar-start .nav-might{
+    position: relative;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.navbar-start .nav-might::before,
+.navbar-start .nav-might::after {
+    --scale: 0;
+    position: absolute;
+    bottom: -.25rem;
+    transform: translateX(-5%) translateY(65%) scale(var(--scale));
+    transition: 150ms transform;
+}
+.navbar-start .nav-might::before {
+    content: attr(data-tooltip);
+    padding: .5rem;
+    width: max-content;
+    background: rgba(97, 93, 93, 0.5);
+    border-radius: .3rem;
+}
+.navbar-start .nav-might:hover::before {
+    --scale: 1;
+}
 
 .navbar-start span{
     color: #2fb667;
+}
+
+.navbar-start div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    margin-left: 20px;
+}
+
+.navbar-start div span{
+    color: #f1da0b;
 }
 
 .main-nav{
    display:flex;
    justify-content: space-around;
    align-items: center;
+   padding-right: 20px;
 }
 .main-nav button{
     width:auto;
@@ -267,7 +305,7 @@ button {
     transition: 50ms transform;
     z-index: 999;
 }
-  .skill::before {
+.skill::before {
     content: attr(data-tooltip);
     color: white;
     padding: .5rem;
@@ -276,6 +314,7 @@ button {
     width: 300px;
     background: #333;
 }
+
 
 #shop {
     padding-top: 5%;
@@ -327,6 +366,10 @@ button {
     font-size: 17px;
 }
 
+.shop-item span {
+    margin-right: 2px;
+}
+
 .shop-item img{
     width:100%;
     border-radius: 5px;
@@ -336,6 +379,13 @@ button {
     display:flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.shop-item .shop-item-info span{
+    color: #f1da0b;
+}
+.shop-item .shop-item-info p{
+    margin-top: 5px;
 }
 
 .shop-item .shop-item-info button{

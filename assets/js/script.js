@@ -52,7 +52,7 @@ var enterHomeSiteFromPlay = function(){
     $('#shop').hide()
     $('#play').hide()
 }
-$('.navbar .navbar-start').on('click', function(event){
+$('.navbar .navbar-start h1').on('click', function(event){
     event.preventDefault()
     enterHomeSiteFromPlay()
 })

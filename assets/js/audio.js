@@ -3,7 +3,7 @@ var mySong;
 const defaultSong = new Audio()
 defaultSong.loop = true
 defaultSong.src = `./assets/audio/main-menu.mp3`
-var mute = false
+var mute = 1
 
 // If no song in localStorage
 if(localStorage.getItem(mySong) === null){
@@ -14,6 +14,7 @@ if(localStorage.getItem(mySong) === null){
 }
 
 async function playSong(song) {
+    song.volume = 1
     await song.play()
 }
 
@@ -21,16 +22,27 @@ var stopSong = function (song) {
     song.pause()
 }
 
+var lowerSong = function (song) {
+    song.volume = 0.2;
+}
+
 // Mute Button
 $('.mute').on('click', function(){
-    if(mute){
-        playSong(mySong)
-        $('.mute').attr('data-glyph', 'volume-high')
-    } else{
+    if(mute === 1){
+        lowerSong(mySong)
+        $('.mute').attr('data-glyph', 'volume-low')
+    } else if (mute === 2){
         stopSong(mySong)
         $('.mute').attr('data-glyph', 'volume-off')
+    } else{
+        playSong(mySong)
+        $('.mute').attr('data-glyph', 'volume-high')
     }
-    mute = !mute
+
+    mute++
+    if(mute > 3){
+        mute = 0
+    }
 })
 
 // Joker / Gambit audio
