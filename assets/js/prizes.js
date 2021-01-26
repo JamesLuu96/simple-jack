@@ -77,119 +77,153 @@ const selections = [
 ];
 
 
-// // Might Values
-// var might = [
-//   {
-//     might: 2.5,
-//     mightAdd: true,
-//     cost: 48
-//   },
-//   {
-//     might: 5,
-//     mightAdd: true,
-//     cost: 100
-//   },
-//   {
-//     might: .02,
-//     mightAdd: false,
-//     cost: 75
-//   },
-//   {
-//     might: 10,
-//     mightAdd: true,
-//     cost: 300
-//   },
-//   {
-//     might: 25,
-//     mightAdd: true,
-//     cost: 500
-//   },
-//   {
-//     might: .1,
-//     mightAdd: false,
-//     cost: 500
-//   },
-//   {
-//     might: .5,
-//     mightAdd: false,
-//     cost: 2000
-//   }
-// ]
-// // Health Values
-// var health = [
-//   {
-//     health: 2,
-//     cost: 25
-//   },
-//   {
-//     health: 5,
-//     cost: 50
-//   },
-//   {
-//     health: 12,
-//     cost: 120
-//   },
-//   {
-//     health: 25,
-//     cost: 200
-//   },
-//   {
-//     health: 55,
-//     cost: 500
-//   }
-// ]
+// Might Values
+var might = [
+  {
+    might: 2.5,
+    mightAdd: true,
+    cost: 48
+  },
+  {
+    might: 5,
+    mightAdd: true,
+    cost: 105
+  },
+  {
+    might: .02,
+    mightAdd: false,
+    cost: 75
+  },
+  {
+    might: 10,
+    mightAdd: true,
+    cost: 312
+  },
+  {
+    might: 25,
+    mightAdd: true,
+    cost: 514
+  },
+  {
+    might: .1,
+    mightAdd: false,
+    cost: 523
+  },
+  {
+    might: .5,
+    mightAdd: false,
+    cost: 2110
+  }
+]
+// Health Values
+var health = [
+  {
+    health: 2,
+    cost: 26
+  },
+  {
+    health: 5,
+    cost: 55
+  },
+  {
+    health: 12,
+    cost: 123
+  },
+  {
+    health: 25,
+    cost: 280
+  },
+  {
+    health: 55,
+    cost: 750
+  }
+]
 
-// var mightRandom = function(){
-//   var random = Math.floor((Math.random() * 100) + 1)
-//   if (random < 20){
-//     return 0
-//   } else if (random <= 40){
-//     return 1
-//   } else if (random <= 60){
-//     return 2
-//   } else if (random <= 75){
-//     return 3
-//   } else if (random <= 85){
-//     return 4
-//   } else if (random <= 95){
-//     return 5
-//   } else {
-//     return 6
-//   }
-// }
+var mightRandom = function(){
+  var random = Math.floor((Math.random() * 100) + 1)
+  if (random < 20){
+    return 0
+  } else if (random <= 40){
+    return 1
+  } else if (random <= 60){
+    return 2
+  } else if (random <= 75){
+    return 3
+  } else if (random <= 85){
+    return 4
+  } else if (random <= 95){
+    return 5
+  } else {
+    return 6
+  }
+}
 
-// var healthRandom = function(){
-//   var random = Math.floor((Math.random() * 100) + 1)
-//   if (random <= 20){
-//     return 0
-//   } else if(random <= 40){
-//     return 1
-//   } else if(random <= 65){
-//     return 2
-//   } else if(random <= 90){
-//     return 3
-//   } else {
-//     return 4
-//   }
-// }
+var healthRandom = function(){
+  var random = Math.floor((Math.random() * 100) + 1)
+  if (random <= 20){
+    return 0
+  } else if(random <= 40){
+    return 1
+  } else if(random <= 65){
+    return 2
+  } else if(random <= 90){
+    return 3
+  } else {
+    return 4
+  }
+}
 
-// var randomValues = function(obj){
-//   // 1 / 100
-//   var mightOrHealth = Math.floor((Math.random() * 100) + 1)
+var randomValues = function(obj){
+  // 1 / 100
+  var mightOrHealth = Math.floor((Math.random() * 100) + 1)
+  const mightNum = mightRandom()
+  const healthNum = healthRandom()
+  const goodOrBad = Math.floor((Math.random() * 2) + 1)
+  const legendary = Math.floor((Math.random() * 50) + 1)
+  if(!obj.cost){
+    obj.cost = 0
+  }
 
-//   // 30% Health
-//   if(mightOrHealth <= 30){
-//   obj[might] = 
-
-//   // 50% Might
-//   } else if (mightOrHealth <= 80){
-
-
-//   // 20% Both
-//   } else{
-
-//   }
-// }
+  // 30% Health
+  if(mightOrHealth <= 30){
+    obj.health = health[healthNum].health
+    obj.cost += health[healthNum].cost
+  // 50% Might
+  } else if (mightOrHealth <= 80){
+    obj.might = might[mightNum].might
+    obj.mightAdd = might[mightNum].mightAdd
+    obj.cost += might[mightNum].cost
+  // 20% Both
+  } else{
+    obj.might = might[mightNum].might
+    obj.mightAdd = might[mightNum].mightAdd
+    obj.cost += might[mightNum].cost + health[healthNum].cost
+    obj.health = health[healthNum].health
+  }
+  // adds random amount to cost
+  if(goodOrBad === 1){
+    obj.cost -= Math.floor(Math.random() * 10)
+  }else{
+    obj.cost += Math.floor(Math.random() * 10)
+  }
+  // legendary card
+  if((legendary < 5 && mightOrHealth > 30) || (legendary < 5 && mightOrHealth > 80)){
+    obj.legendary = true
+    if(obj.mightAdd){
+      var damage = (Math.floor(Math.random() * (100 - 50) + 50)) + 1
+      obj.might += damage
+      obj.cost += Math.floor(((2000 * (damage * .01))*2.5))
+    } else {
+      var damage = Math.random() * (10 - 5) + 5
+      damage = Math.round(damage*10)/10
+      obj.might += damage
+      obj.might = Math.round(obj.might*10)/10
+      obj.cost += Math.floor((2000 * damage))
+    }
+  }
+  return obj
+  
+}
 // builds character array of objects
 async function seriesList() {
   var seriesSearch = 'https://gateway.marvel.com/v1/public/series/';
@@ -223,8 +257,12 @@ async function seriesList() {
       }
     }
     // saves to localStorage to prevent same user from making multiple api calls
-    localStorage.setItem('characters', JSON.stringify(characters))
+    
   }
+  for(let i = 0; i<characters.length; i++){
+    characters[i] = randomValues(characters[i])
+  }
+  localStorage.setItem('characters', JSON.stringify(characters))
   console.log(`Running API Call`)
 };
 
