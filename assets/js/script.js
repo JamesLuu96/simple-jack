@@ -1,4 +1,10 @@
-
+// Enter Site Section
+var enterSite = function(){
+    $('.home-hidden').hide()
+    $('#play').hide()
+    $('#shop').hide()
+    
+}
 // Home Section
 
 // Opens Rules
