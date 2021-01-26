@@ -22,13 +22,13 @@ var stopSong = function (song) {
 }
 
 // Mute Button
-$('#mute').on('click', function(){
+$('.mute').on('click', function(){
     if(mute){
         playSong(mySong)
-        $('#mute').attr('data-glyph', 'volume-high')
+        $('.mute').attr('data-glyph', 'volume-high')
     } else{
         stopSong(mySong)
-        $('#mute').attr('data-glyph', 'volume-off')
+        $('.mute').attr('data-glyph', 'volume-off')
     }
     mute = !mute
 })

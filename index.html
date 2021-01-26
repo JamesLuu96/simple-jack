@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SimpleJack</title>
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -25,11 +26,11 @@
         </div>
 
         <div class="main-nav">
-            <button><span class="fas fa-search"></span></button>
-            <button><span class="oi cart" data-glyph="cart"></span></button>
-            <button><span class="oi" data-glyph="box"></span></button>
-            <button><img src="./assets/images/user-icon/gambit.png" class="nav-user"></button>
-            <button><span id="mute" class="oi" data-glyph="volume-high"></span></button>
+            <button class="nav-search"><span class="fas fa-search"></span></button>
+            <button class="nav-shop"><span class="oi cart" data-glyph="cart"></span></button>
+            <button class="nav-inventory"><span class="oi" data-glyph="box"></span></button>
+            <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user"></button>
+            <button><span class="oi mute" data-glyph="volume-high"></span></button>
         </div>
 
     </nav>
@@ -42,12 +43,13 @@
     <!-- Home Screen -->
     <div id="home">
         <div class="home-hidden">
+            <span id="mute" class="oi mute" data-glyph="volume-high"></span>
             <h1>Simple <span>Jack</span></h1>
-            <img class="gambit" src="./assets/images/gambit.png" alt="Gambit">
+            <img class="gambit animate__animated animate__fadeInLeft animate__delay-0.5s" src="./assets/images/gambit.png" alt="Gambit">
 
-            <div class="home-buttons">
+            <div class="home-buttons animate__animated animate__fadeInRight animate__delay-0.2s">
                 <button class="button is-success is-outlined is-medium" id="home-play">Play Now</button>
-                <button class="button  is-success is-medium" id="home-rules">Rules</button>
+                <button class="button is-success is-medium" id="home-rules">Rules</button>
             </div>
 
             <div class="modal rules-modal">
@@ -93,44 +95,39 @@
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
         <div class="play-container">
             <div id="dealer" class="user-info">
-                <p>Dealer</p>
-                <div class="user-display">
-                    <img src="./assets/images/user-icon/joker.png">
+                <div>
+                    <p>Dealer</p>
+                    <div class="user-display">
+                        <img src="./assets/images/user-icon/joker.png">
+                    </div>
                 </div>
 
                 <div class="user-chat">
-                    <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
+                    <p></p>
                 </div>
             </div>
 
             <div class="play-area">
                 <div class="play-dealer dealer">
                     <div class="play-cards">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-
+                       <!-- Dynamically Add Cards -->
                     </div>
                     <div class="play-score">
                         Dealer Score: <span></span>
                     </div>
                 </div>
                 <div class="play-buttons">
-                    <button class="play-placebet start-btn button is-success mt-4">Place Bet</button>
+                    <button class="play-placebet start-btn button is-success">Place Bet</button>
                     <div class="play-game-buttons">
-                        <button class="play-hit button is-success mt-4">Hit</button>
-                        <button class="play-stand button is-success mt-4">Stand</button>
-                        <button class="play-double button is-success mt-4">Double Down</button>
+                        <button class="play-hit button is-success">Hit</button>
+                        <button class="play-stand button is-success">Stand</button>
+                        <button class="play-double button is-success">Double Down</button>
                     </div>
                     <div class="play-result">You Lost!</div>
                 </div>
                 <div class="play-player">
                     <div class="play-cards">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                        <!-- Dynamically Add Cards -->
                     </div>
                     <div class="play-score">
                         Player Score: <span></span>
@@ -140,12 +137,14 @@
         </div>
     
         <div id="player" class="user-info">
-            <p>Gambit</p>
-            <div class="user-display">
-                <img src="./assets/images/user-icon/gambit.png">
-            </div>
-            <div class="user-chat">
-                <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
+            <div>
+                <p>Gambit</p>
+                <div class="user-display">
+                    <img src="./assets/images/user-icon/gambit.png">
+                </div>
+                <div class="user-chat">
+                    <p></p>
+                </div>
             </div>
         </div>
     </div>
@@ -160,7 +159,7 @@
                                 You can place a bet up to <span></span> dollars
                             </label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Bet Amount" id="bet-money">
+                                <input class="input" type="text" placeholder="Bet Amount" id="bet-money" autocomplete="off" required>
                             </div>
                             <button type="submit" class="button is-success btn-bet">Confirm</button>
                     </section>
@@ -184,8 +183,30 @@
     </div>
     <!-- Shop Screen -->
     <div id="shop">
+        <div class="shop-select select is-success">
+            <select class="series">
+                <option value="454">Amazing Spider Man</option>
+                <option value="784">Black Panther</option>
+                <option value="1123">Blade</option>
+                <option value="1997">Captain America</option>
+                <option value="16280">Captain Marvel</option>
+                <option value="12916">Daredevil</option>
+                <option value="5701">Deadpool</option>
+                <option value="21122">Power Man and Iron Fist</option>
+                <option value="20020">Punisher 2099</option>
+                <option value="18892">Spider-Verse</option>
+                <option value="2473">Thor</option>
+                <option value="2375">Wolverine Origins</option>
+                <option value="20460">Extraordinary X-Men</option>
+                <option value="16557">Fantastic Four</option>
+                <option value="23045">Luke Cage</option>
+                <option value="1107">Marvel Adventures the Avengers</option>
+                <option value="749">New X-Men</option>
+            </select>
+        </div>
         <div class="shop-container">
-            <div class="shop-item">
+
+            <!-- <div class="shop-item">
                 <div>
                     <div>
                         <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
@@ -199,67 +220,7 @@
                     <p>1200</p>
                     <button class="btn-red" title="you need 200 points">unlock</button>
                 </div>
-            </div>
-            <div class="shop-item">
-                <div>
-                    <div>
-                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
-                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
-                    </div>
-                    <p>3/300</p>
-                </div>
-                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
-                <div class="shop-item-info">
-                    <h3>Iron Man</h3>
-                    <p>1200</p>
-                    <button class="btn-red" title="you need 200 points">unlock</button>
-                </div>
-            </div>
-            <div class="shop-item">
-                <div>
-                    <div>
-                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
-                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
-                    </div>
-                    <p>3/300</p>
-                </div>
-                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
-                <div class="shop-item-info">
-                    <h3>Iron Man</h3>
-                    <p>1200</p>
-                    <button class="btn-green" title="you need 200 points">unlock</button>
-                </div>
-            </div>
-            <div class="shop-item">
-                <div>
-                    <div>
-                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
-                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
-                    </div>
-                    <p>3/300</p>
-                </div>
-                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
-                <div class="shop-item-info">
-                    <h3>Iron Man</h3>
-                    <p>1200</p>
-                    <button class="btn-green" title="you need 200 points">unlock</button>
-                </div>
-            </div>
-            <div class="shop-item">
-                <div>
-                    <div>
-                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
-                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
-                    </div>
-                    <p>3/300</p>
-                </div>
-                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
-                <div class="shop-item-info">
-                    <h3>Iron Man</h3>
-                    <p>1200</p>
-                    <button class="btn-green" title="you need 200 points">unlock</button>
-                </div>
-            </div>
+            </div> -->
             
         </div>
 
@@ -280,6 +241,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/audio.js"></script>
+    <script src="./assets/js/game_logic.js"></script>
+    <script src="./assets/js/prizes.js"></script>
 </body>
 
 </html>

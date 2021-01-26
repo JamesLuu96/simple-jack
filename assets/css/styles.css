@@ -18,7 +18,7 @@ button {
     position: fixed;
     width: 100%;
     top: 0;
-    background-color:#5f5f5f;
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
 }
@@ -93,6 +93,17 @@ button {
     height: 100vh;
     position: fixed;
 }
+
+#home .mute {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 15px 30px;
+    font-size: 150%;
+    cursor: pointer;
+    color: rgb(235, 228, 228);
+}
+
 .home-hidden{
     position: relative;
     display:flex;
@@ -155,9 +166,8 @@ button {
     display: flex;
     flex-direction: column;
 }
-
-.play-nav {
-    background-color: transparent;
+.play-container div {
+    margin: 10px 0;
 }
 
 .play-area {
@@ -178,6 +188,7 @@ button {
 }
 
 .user-chat {
+    display: none;
     color: #333;
     background-color: #fff;
     font-family: "Shadows Into Light";
@@ -192,6 +203,11 @@ button {
     margin: 5px;
 }
 
+.play-buttons {
+    display: flex;
+    align-items: center;
+}
+
 .play-cards {
     width: 40vw;
     display:flex;
@@ -203,13 +219,31 @@ button {
     margin: 5px;
 }
 
-.modal-card-body {
-    margin: 0 auto;
-    line-height: 2;
-    
+.play-score {
+    display: none;
 }
 
-.modal-card-body button {
+.play-result {
+    display: none;
+}
+
+#play-bet .modal-card {
+    width: fit-content;
+}
+
+#play-bet .modal-card-body {
+    margin: 0 auto;
+    line-height: 2;
+    width: fit-content;
+    text-align: center;
+    border-radius: 7px;
+}
+#play-bet form {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#play-bet .modal-card-body button {
     margin-top: 1rem;
 }
 
@@ -246,12 +280,17 @@ button {
 #shop {
     padding-top: 5%;
     background-color: #f6f6f6;
+    color: white;
     height: 100vh;
     width:100vw;
     display: flex;
+    flex-direction: column;
     overflow: scroll;
-    justify-content: center;
-    background-color: rgb(196, 192, 184);
+    align-items: center;
+    background-image: linear-gradient(0deg, rgb(99, 61, 51) 0%, rgb(0, 0, 0) 100%);
+}
+#shop .shop-select{
+    margin-top: 20px;
 }
 
 .shop-container{

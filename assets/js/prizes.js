@@ -279,15 +279,36 @@ function seriesDisplay(value) {
     } else {
       var name = filteredArray[i].name;
       var thumbnail = `${filteredArray[i].path}/portrait_uncanny.${filteredArray[i].ext}`
-      var container = $('<div>');
-      var nameEl = $('<p>').text(`${name}`);
+      var container = $('<div>').addClass('shop-item');
+      if(filteredArray[i].might && filteredArray[i].health){
+        if(filteredArray[i].mightAdd){
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle.').append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit increases your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
+        } else{
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle.').append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit multiplies your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
+        }
+
+      } else if(filteredArray[i].might){
+        if(filteredArray[i].mightAdd){
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit increases your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].might}`)))
+        } else{
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit multiplies your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].might}`)))
+        }
+
+      } else {
+
+        container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle.').append($('<span>').addClass('oi').attr('data-glyph', 'heart'))), $('<p>').text(`${filteredArray[i].health}`)))
+
+      }
       var picture = $('<img>').attr('src', thumbnail);
-      container.append(listItem, picture);
-      var buttonContainer = $('<div>');
-      // create button with id of character
-      var button = $('<button>').addClass('button is-success unlock-card').attr('id', filteredArray[i].index).attr('title', 'you need 500 points').text('Unlock');
-      buttonContainer.append(button);
-      container.append(buttonContainer);
+      container.append(picture)
+      var nameEl = $('<h3>').text(`${name}`);
+      var shopItemInfoEl = $('<div>').addClass('shop-item-info').append(nameEl, $('<p>').text(filteredArray[i].cost))
+      if (bankMoney >= filteredArray[i].cost){
+        shopItemInfoEl.append($('<button>').addClass('btn-green unlock-card').text('Unlock').attr('data-index', filteredArray[i].index))
+      } else {
+        shopItemInfoEl.append($('<button>').addClass('btn-red unlock-card').text('Unlock').attr('data-index', filteredArray[i].index))
+      }
+      container.append(shopItemInfoEl)
       $('.shop-container').append(container);
     }
   }
@@ -295,7 +316,6 @@ function seriesDisplay(value) {
 
 // refresh store page and call function to display currently selected series
 $('.series').on('change', function(event) {
-
   var value = event.target.value;
   $('.shop-container').empty();
   seriesDisplay(value);
@@ -303,10 +323,10 @@ $('.series').on('change', function(event) {
 
 // set unlocked character in localStorage and global variable
 $('.shop-container').on('click', '.unlock-card', function(event) {
-
-  if (bankMoney >= 10) {
-    var pullId = event.target.id;
-    unlockedChars.push(characters[pullId]);
+  var cost = characters[event.target.getAttribute('data-index')].cost
+  if (bankMoney >= cost) {
+    bankMoney -= cost
+    unlockedChars.push(characters[event.target.getAttribute('data-index')]);
     localStorage.setItem('unlockedChars', JSON.stringify(unlockedChars));
     $('.series').trigger('change');
   } else {
