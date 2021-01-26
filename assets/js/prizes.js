@@ -145,11 +145,13 @@ function seriesDisplay(value) {
       var container = $('<div>');
       var listItem = $('<p>').text(`${name}`);
       var picture = $('<img>').attr('src', thumbnail);
+      var might = $('<p>').text(`Might: ${filteredArray[i].might}`);
       container.append(listItem);
       container.append(picture);
+      container.append(might);
       var buttonContainer = $('<div>').addClass('unlock-card');
       // create button with id of character
-      var button = $('<button>').addClass('button is-success unlock-char').attr('id', filteredArray[i].index).attr('title', 'you need 500 points').text('Unlock');
+      var button = $('<button>').addClass('button is-success unlock-char').attr('id', filteredArray[i].index).attr('title', `You need ${filteredArray[i].cost} to purchase`).text(`Cost: ${filteredArray[i].cost}`);
       buttonContainer.append(button);
       container.append(buttonContainer);
       $('.shop-container').append(container);
