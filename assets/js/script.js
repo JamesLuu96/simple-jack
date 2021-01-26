@@ -26,6 +26,7 @@ var enterPlaySite = function(){
     $('.nav-shop').show()
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
+    $('.navbar p').text(bankMoney)
 }
 $('#home-play').on('click', function(event){
     event.preventDefault()
@@ -60,6 +61,7 @@ $('.navbar .navbar-start h1').on('click', function(event){
 $(".play-placebet").on("click", function (event) {
     event.preventDefault()
     $('.modal-place-bet').addClass("is-active");
+    $('#play-bet span').text(bankMoney)
     $('#bet-money').trigger('select');
 })
 $('.btn-reload').on('click', function (event) {
@@ -78,6 +80,7 @@ var enterShop = function(){
     $('#shop').show()
     $('#play').hide()
     $('.series').trigger('change')
+    shopAudio()
 }
 $('.nav-shop').on('click', function(event){
     event.preventDefault()

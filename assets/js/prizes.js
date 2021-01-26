@@ -131,11 +131,11 @@ var health = [
   },
   {
     health: 25,
-    cost: 280
+    cost: 580
   },
   {
     health: 55,
-    cost: 750
+    cost: 1510
   }
 ]
 
@@ -332,6 +332,7 @@ $('.shop-container').on('click', '.unlock-card', function(event) {
     unlockedChars.push(characters[event.target.getAttribute('data-index')]);
     localStorage.setItem('unlockedChars', JSON.stringify(unlockedChars));
     $('.series').trigger('change');
+    $('.navbar p').text(bankMoney)
   } else {
     alert('You don\'t have enough money');
   }

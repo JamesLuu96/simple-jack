@@ -14,7 +14,7 @@ if(localStorage.getItem(mySong) === null){
 }
 
 async function playSong(song) {
-    song.volume = 1
+    song.volume = .7
     await song.play()
 }
 
@@ -182,3 +182,26 @@ var randomEntryAudio = function(){
     }
 }
 
+var shopAudio = function(){
+    var doorbell = new Audio()
+    doorbell.src = './assets/audio/door-bell.mp3'
+    doorbell.volume = 0.8
+    var random = Math.floor(Math.random() * 3)
+    doorbell.play()
+    if(random === 0){
+        var joker = new Audio()
+        joker.src = './assets/audio/Joker/joker-shop.wav'
+        joker.volume = 0.8
+    } else if(random === 1){
+        var joker = new Audio()
+        joker.src = './assets/audio/Joker/joker-shop2.wav'
+        joker.volume = 0.8
+    } else{
+        var joker = new Audio()
+        joker.src = './assets/audio/Joker/joker-shop3.wav'
+        joker.volume = 0.8
+    }
+    setTimeout(function(){
+        joker.play()
+    }, 900)
+}
