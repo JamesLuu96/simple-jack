@@ -366,6 +366,10 @@ button {
     font-size: 17px;
 }
 
+.legendary {
+    color: rgb(238, 223, 12);
+}
+
 .shop-item span {
     margin-right: 2px;
 }

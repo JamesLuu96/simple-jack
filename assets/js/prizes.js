@@ -302,6 +302,9 @@ function seriesDisplay(value) {
       var picture = $('<img>').attr('src', thumbnail);
       container.append(picture)
       var nameEl = $('<h3>').text(`${name}`);
+      if(filteredArray[i].legendary){
+        nameEl.addClass('legendary')
+      }
       var shopItemInfoEl = $('<div>').addClass('shop-item-info').append(nameEl, $('<p>').text(filteredArray[i].cost).prepend($('<span>').addClass('oi').attr('data-glyph', 'flash')))
       if (bankMoney >= filteredArray[i].cost){
         shopItemInfoEl.append($('<button>').addClass('btn-green unlock-card').text('Unlock').attr('data-index', filteredArray[i].index))
