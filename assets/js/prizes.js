@@ -282,21 +282,21 @@ function seriesDisplay(value) {
       var container = $('<div>').addClass('shop-item');
       if(filteredArray[i].might && filteredArray[i].health){
         if(filteredArray[i].mightAdd){
-          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Health: This unit increases your maximum health by x and heals you by x everytime you win a battle.').append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit increases your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
         } else{
-          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Health: This unit increases your maximum health by x and heals you by x everytime you win a battle.').append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit multiplies your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit multiplies your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
         }
 
       } else if(filteredArray[i].might){
         if(filteredArray[i].mightAdd){
-          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit increases your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].might}`)))
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].might}`)))
         } else{
-          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Might: This unit multiplies your might by x when fighting a battle. (Rounded Down)').append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].might}`)))
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Might: This unit multiplies your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].might}`)))
         }
 
       } else {
 
-        container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', 'Health: This unit increases your maximum health by x and heals you by x everytime you win a battle.').append($('<span>').addClass('oi').attr('data-glyph', 'heart'))), $('<p>').text(`${filteredArray[i].health}`)))
+        container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart'))), $('<p>').text(`${filteredArray[i].health}`)))
 
       }
       var picture = $('<img>').attr('src', thumbnail);
