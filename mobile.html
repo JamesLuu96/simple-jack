@@ -36,16 +36,29 @@
         <div class="navbar-start">
             <p class="navbar-item">Simple<span>Jack</span></p>
         </div>
-        <div class="navbar-end">
+        <!-- <div class="navbar-end">
             <p class="nav-items navbar-item">My Items</p>
             <p class="nav-shop navbar-item">Shop</p>
             <span id="mute" class="oi navbar-item" data-glyph="volume-high"></span>
         </div>
-        <div class="search">
-            <a href="#"><i class="fas fa-search"></i></a>
-            <a href="#home"><span class="oi cart" data-glyph="cart"></span></a>
-            <img src="./assets/images/user-icon/gambit.png" class="user-img">
+        <div class="search js--nav">
+            <ul class="main-nav">
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="#home"><span class="oi cart" data-glyph="cart"></span></a></li>
+            </ul>
+           
+        
+
+        -->
+        <div class="main-nav">
+            <button><span class="fas fa-search"></span></button>
+            <button><span class="oi cart" data-glyph="cart"></span></button>
+            <button><span class="oi" data-glyph="box"></span></button>
+            <button><img src="./assets/images/user-icon/gambit.png" class="nav-user"></button>
+            <button><span id="mute" class="oi" data-glyph="volume-high"></span></button>
         </div>
+
+
     </nav>
 
     <!-- Enter Site Screen -->
@@ -177,7 +190,6 @@
                 </form>
             </div>
         </div>
-
         <div id="play-reload" class="modal modal-reload">
             <div class="modal-background"></div>
             <div class="modal-card modal-reload">
@@ -193,10 +205,7 @@
             </div>
         </div>
     </div>
-
-
     <!-- Shop Screen -->
-
     <div id="shop">
         <div class="shop-container container">
             <div class="shop-item">
@@ -209,7 +218,7 @@
                 </div>
                 <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
                 <div class="price-con">
-                    <h3>Iron Man MK46 Helmet Mini Bluetooth Speaker (V2.0)</h3>
+                    <h3>Iron Man series</h3>
                     <p class="offer">best offer</p>
                     <span class="price">123<sup>pts</sup></span>
                     <button class="btn-red btn-green" title="you need 200 points">unlock</button>
@@ -239,8 +248,8 @@
                 <img src="./assets/images/placeholder2.jpg">
                 <button class="button is-success" title="you need 200 points">unlock</button>
             </div>
-
         </div>
+
         <footer id="contact-footer">
             <p>Contact Us</p>
         </footer>
