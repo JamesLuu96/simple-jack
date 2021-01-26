@@ -1,7 +1,7 @@
 const gateway = 'https://gateway.marvel.com';
 const apiKey = 'apikey=8dc4947cd23a3751e248fa0ac896866f';
 {/* <span class="skill" data-tooltip="Health: This unit increases your health by x and heals your hero by x."><span class="oi" data-glyph="heart"></span></span>
-<span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="flash"></span></span><p>x 5</p> */}
+<span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="arrow-thick-top"></span></span> */}
 // variable to store available character objects and build store pages
 var characters = [];
 // use this for list of available series and to make initial call to api
@@ -76,6 +76,120 @@ const selections = [
   }  
 ];
 
+
+// // Might Values
+// var might = [
+//   {
+//     might: 2.5,
+//     mightAdd: true,
+//     cost: 48
+//   },
+//   {
+//     might: 5,
+//     mightAdd: true,
+//     cost: 100
+//   },
+//   {
+//     might: .02,
+//     mightAdd: false,
+//     cost: 75
+//   },
+//   {
+//     might: 10,
+//     mightAdd: true,
+//     cost: 300
+//   },
+//   {
+//     might: 25,
+//     mightAdd: true,
+//     cost: 500
+//   },
+//   {
+//     might: .1,
+//     mightAdd: false,
+//     cost: 500
+//   },
+//   {
+//     might: .5,
+//     mightAdd: false,
+//     cost: 2000
+//   }
+// ]
+// // Health Values
+// var health = [
+//   {
+//     health: 2,
+//     cost: 25
+//   },
+//   {
+//     health: 5,
+//     cost: 50
+//   },
+//   {
+//     health: 12,
+//     cost: 120
+//   },
+//   {
+//     health: 25,
+//     cost: 200
+//   },
+//   {
+//     health: 55,
+//     cost: 500
+//   }
+// ]
+
+// var mightRandom = function(){
+//   var random = Math.floor((Math.random() * 100) + 1)
+//   if (random < 20){
+//     return 0
+//   } else if (random <= 40){
+//     return 1
+//   } else if (random <= 60){
+//     return 2
+//   } else if (random <= 75){
+//     return 3
+//   } else if (random <= 85){
+//     return 4
+//   } else if (random <= 95){
+//     return 5
+//   } else {
+//     return 6
+//   }
+// }
+
+// var healthRandom = function(){
+//   var random = Math.floor((Math.random() * 100) + 1)
+//   if (random <= 20){
+//     return 0
+//   } else if(random <= 40){
+//     return 1
+//   } else if(random <= 65){
+//     return 2
+//   } else if(random <= 90){
+//     return 3
+//   } else {
+//     return 4
+//   }
+// }
+
+// var randomValues = function(obj){
+//   // 1 / 100
+//   var mightOrHealth = Math.floor((Math.random() * 100) + 1)
+
+//   // 30% Health
+//   if(mightOrHealth <= 30){
+//   obj[might] = 
+
+//   // 50% Might
+//   } else if (mightOrHealth <= 80){
+
+
+//   // 20% Both
+//   } else{
+
+//   }
+// }
 // builds character array of objects
 async function seriesList() {
   var seriesSearch = 'https://gateway.marvel.com/v1/public/series/';
@@ -189,7 +303,6 @@ var sameName = function(name){
   for(var i = 0; i < unlockedChars.length; i++) {
       if (unlockedChars[i].name == name) {
           found = true;
-          console.log(`true`)
           break;
       }
   }
