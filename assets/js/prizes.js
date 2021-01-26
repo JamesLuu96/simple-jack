@@ -278,15 +278,11 @@ function seriesDisplay(value) {
       // displayed locked characters on store page
     } else {
       var name = filteredArray[i].name;
-      var picPath = filteredArray[i].path;
-      var picExtension = filteredArray[i].ext;
-  
-      var thumbnail = `${picPath}/portrait_uncanny.${picExtension}`
+      var thumbnail = `${filteredArray[i].path}/portrait_uncanny.${filteredArray[i].ext}`
       var container = $('<div>');
-      var listItem = $('<p>').text(`${name}`);
+      var nameEl = $('<p>').text(`${name}`);
       var picture = $('<img>').attr('src', thumbnail);
-      container.append(listItem);
-      container.append(picture);
+      container.append(listItem, picture);
       var buttonContainer = $('<div>');
       // create button with id of character
       var button = $('<button>').addClass('button is-success unlock-card').attr('id', filteredArray[i].index).attr('title', 'you need 500 points').text('Unlock');
