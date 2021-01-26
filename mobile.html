@@ -113,20 +113,41 @@
 
     <!-- Play Screen -->
     <div id="play">
-        <!-- <span id="play-back" class="game-back oi" data-glyph="arrow-thick-left"></span> -->
+           <!-- <span id="play-back" class="game-back oi" data-glyph="arrow-thick-left"></span> -->
         <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
-        <div id="player" class="user-info">
-            <p>Gambit</p>
-            <div class="user-display">
-                <img src="./assets/images/user-icon/gambit.png">
-            </div>
-            <div class="user-chat">
-                <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
-            </div>
+      <div id="dealer" class="user-info">
+        <p>Dealer</p>
+        <div class="user-display">
+            <img src="./assets/images/user-icon/joker.png">
         </div>
 
+        <div class="user-chat">
+            <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
+        </div>
+    </div>
+
         <div class="play-area">
+            <div class="play-dealer dealer">
+                <div class="play-cards">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+
+                </div>
+                <div class="play-score">
+                    Dealer Score: <span></span>
+                </div>
+            </div>
+            <div class="play-buttons">
+                <button class="play-placebet start-btn button is-success mt-4">Place Bet</button>
+                <div class="play-game-buttons">
+                    <button class="play-hit button is-success mt-4">Hit</button>
+                    <button class="play-stand button is-success mt-4">Stand</button>
+                    <button class="play-double button is-success mt-4">Double Down</button>
+                </div>
+                <div class="play-result">You Lost!</div>
+            </div>
             <div class="play-player">
                 <div class="play-cards">
                     <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
@@ -139,34 +160,14 @@
                     Player Score: <span></span>
                 </div>
             </div>
-            <div class="play-buttons">
-                <button class="play-placebet start-btn button is-success mt-4">Place Bet</button>
-                <div class="play-game-buttons">
-                    <button class="play-hit button is-success mt-4">Hit</button>
-                    <button class="play-stand button is-success mt-4">Stand</button>
-                    <button class="play-double button is-success mt-4">Double Down</button>
-                </div>
-                <div class="play-result">You Lost!</div>
-            </div>
-            <div class="play-dealer dealer">
-                <div class="play-cards">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-
-                </div>
-                <div class="play-score">
-                    Dealer Score: <span></span>
-                </div>
-            </div>
+            
         </div>
 
-        <div id="dealer" class="user-info">
-            <p>Dealer</p>
+        <div id="player" class="user-info">
+            <p>Gambit</p>
             <div class="user-display">
-                <img src="./assets/images/user-icon/joker.png">
+                <img src="./assets/images/user-icon/gambit.png">
             </div>
-
             <div class="user-chat">
                 <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
             </div>

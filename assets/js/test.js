@@ -2,11 +2,15 @@
 $('#enter-site').hide()
 // $('#home').show()
 $('#home').hide()
-// $('#play').show()
-$('#shop').show()
+$('#play').show()
+// $('#shop').show()
 // $('#contact').show()
 // $('#contact').hide()
+<<<<<<< HEAD
 $('#play').hide()
+=======
+// $('#play').hide()
+>>>>>>> b5717c9375259a39182b6b6e56ab72864866e3ca
 $('.navbar').show()
 
 // $('.navbar').hide()

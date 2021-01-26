@@ -8,6 +8,32 @@ body {
   font-family: "Chakra Petch", sans-serif;
 }
 
+.skill {
+  position: relative;
+}
+.skill:hover::before {
+  --scale: 1;
+}
+
+.skill::after,
+.skill::before {
+  --scale: 0;
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+  transition: 50ms transform;
+}
+.skill::before {
+  content: attr(data-tooltip);
+  color: white;
+  padding: .5rem;
+  border-radius: .3rem;
+  text-align: center;
+  width: 300px;
+  background: #333;
+}
+
 #mute {
   position: fixed;
   z-index: 999;
@@ -22,7 +48,7 @@ body {
   display: flex;
   width: 100%;
   height: 100%;
-  background-color:rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   text-align: center;
   justify-content: center;
@@ -142,14 +168,14 @@ body {
   width: 40%;
   margin-right: 2%;
 }
-.special{
+.special {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 50%;
   z-index: 999;
 }
-.special-btn{
+.special-btn {
   position: fixed;
   right: 0;
   top: 6%;
@@ -165,7 +191,7 @@ body {
       rgba(51, 51, 51, 0.705),
       rgba(51, 51, 51, 0.747)
     ),
-    url(./images/back3.jpg);
+    url(../images/game-placeholder.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -208,15 +234,15 @@ body {
   margin: 5px;
 }
 
-.game-back{
+.game-back {
   color: black;
   margin: 1% 2%;
   cursor: pointer;
 }
 
 /* .cards { */
-  /* max-width: 20%; */
-  /* display: flex;
+/* max-width: 20%; */
+/* display: flex;
   flex-wrap: wrap;
   justify-content: center; */
 /* } */
@@ -235,26 +261,31 @@ body {
 .dealer {
   flex: 40%;
 }
-#shop{
+#shop {
   position: absolute;
-  bottom:10%;
-  right:10%;
+  bottom: 10%;
+  right: 10%;
+}
+#home {
+  position: absolute;
+  bottom: 10%;
+  right: 18%;
+}
+#home,
+#shop:hover {
+  background-color: #eee;
 }
 
-#shop:hover{
-  background-color:#eee;
-}
-
-#characters{
+#characters {
   position: fixed;
   bottom: 2%;
   right: 2%;
   padding: 2px;
 }
 
-.modal-bet{
-width:25%;
-border-radius: 5px;
+.modal-bet {
+  width: 25%;
+  border-radius: 5px;
 }
 
 /* shop section */
@@ -271,14 +302,12 @@ border-radius: 5px;
 .shop-container div {
   padding: 0 20px 20px;
   width: 20%;
-  overflow: hidden;
-  flex-shrink: 100%;
 }
 
 .shop-container img {
   border-radius: 4px;
   width: 100%;
-  height:100%;
+  height: 100%;
 }
 .shop-container .unlock-card {
   width: 100%;
@@ -318,11 +347,15 @@ border-radius: 5px;
   margin-left: 10%;
 }
 
+#shop-money {
+  color: #2fb667;
+  text-align: right;
+  margin-right: 5%;
+}
+
 /* .lock-icon {
   background-color: rgba(255, 255, 255, 0.808);
   z-index: 1;
 } */
 
 /* Media Queries */
-
-
