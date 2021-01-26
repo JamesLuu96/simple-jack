@@ -19,37 +19,11 @@
 
 <body>
 
-    <!-- Navigation Bar -->
-    <!-- <nav class="navbar">
-    <ul>
-      <li>
-        <p>SimpleJack</p>
-      </li>
-      <li>
-        <p class="nav-items">My Items</p>
-        <p class="nav-shop">Shop</p>
-        <span id="mute" class="oi" data-glyph="volume-high"></span>
-      </li>
-    </ul>-->
-    <!-- </nav> -->
     <nav class="navbar">
         <div class="navbar-start">
-            <p class="navbar-item">Simple<span>Jack</span></p>
+            <h1 class="navbar-item">Simple<span>Jack</span></h1>
         </div>
-        <!-- <div class="navbar-end">
-            <p class="nav-items navbar-item">My Items</p>
-            <p class="nav-shop navbar-item">Shop</p>
-            <span id="mute" class="oi navbar-item" data-glyph="volume-high"></span>
-        </div>
-        <div class="search js--nav">
-            <ul class="main-nav">
-                <li><a href="#"><i class="fas fa-search"></i></a></li>
-                <li><a href="#home"><span class="oi cart" data-glyph="cart"></span></a></li>
-            </ul>
-           
-        
 
-        -->
         <div class="main-nav">
             <button><span class="fas fa-search"></span></button>
             <button><span class="oi cart" data-glyph="cart"></span></button>
@@ -57,7 +31,6 @@
             <button><img src="./assets/images/user-icon/gambit.png" class="nav-user"></button>
             <button><span id="mute" class="oi" data-glyph="volume-high"></span></button>
         </div>
-
 
     </nav>
 
@@ -68,44 +41,46 @@
 
     <!-- Home Screen -->
     <div id="home">
-        <h1>Simple <span>Jack</span></h1>
-        <img class="gambit" src="./assets/images/gambit.png" alt="Gambit">
+        <div class="home-hidden">
+            <h1>Simple <span>Jack</span></h1>
+            <img class="gambit" src="./assets/images/gambit.png" alt="Gambit">
 
-        <div class="home-buttons">
-            <button class="button is-success is-outlined is-medium" id="home-play">Play Now</button>
-            <button class="button  is-success is-medium" id="home-rules">Rules</button>
-        </div>
+            <div class="home-buttons">
+                <button class="button is-success is-outlined is-medium" id="home-play">Play Now</button>
+                <button class="button  is-success is-medium" id="home-rules">Rules</button>
+            </div>
 
-        <div class="modal rules-modal">
-            <div class="modal-background"></div>
-            <div class="modal-card" id="rule-modal">
-                <header class=" modal-card-head">
-                    <p class="modal-card-title">blackJack Rules</p>
-                </header>
-                <section class="modal-card-body">
-                    <!-- <div class="modal-content"> -->
-                    <h2>Introduction</h2>
-                    <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible
-                        without
-                        exceeding 21. In contrast to poker, where players compete with each other, blackjack is a
-                        one-on-one game between each player and the
-                        dealer.
-                    </p>
-                    <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their
-                        face
-                        value. The jack, queen and king are worth 10 points each. The ace has a value of either 1
-                        point
-                        or 11 points, depending on its usage in
-                        your hand.</p>
-                    <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are
-                        responsible for paying out bets, they obviously can’t take insurance. They also can’t split
-                        their hand, double down on a good hand or surrender
-                        for half their bet.</p>
-                    <!-- </div> -->
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button is-success is-outlined" id="btn-close">close</button>
-                </footer>
+            <div class="modal rules-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card" id="rule-modal">
+                    <header class=" modal-card-head">
+                        <p class="modal-card-title">blackJack Rules</p>
+                    </header>
+                    <section class="modal-card-body">
+                        <!-- <div class="modal-content"> -->
+                        <h2>Introduction</h2>
+                        <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible
+                            without
+                            exceeding 21. In contrast to poker, where players compete with each other, blackjack is a
+                            one-on-one game between each player and the
+                            dealer.
+                        </p>
+                        <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their
+                            face
+                            value. The jack, queen and king are worth 10 points each. The ace has a value of either 1
+                            point
+                            or 11 points, depending on its usage in
+                            your hand.</p>
+                        <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are
+                            responsible for paying out bets, they obviously can’t take insurance. They also can’t split
+                            their hand, double down on a good hand or surrender
+                            for half their bet.</p>
+                        <!-- </div> -->
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-success is-outlined" id="btn-close">close</button>
+                    </footer>
+                </div>
             </div>
         </div>
     </div>
@@ -113,56 +88,57 @@
 
     <!-- Play Screen -->
     <div id="play">
-           <!-- <span id="play-back" class="game-back oi" data-glyph="arrow-thick-left"></span> -->
+
         <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
-      <div id="dealer" class="user-info">
-        <p>Dealer</p>
-        <div class="user-display">
-            <img src="./assets/images/user-icon/joker.png">
-        </div>
-
-        <div class="user-chat">
-            <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
-        </div>
-    </div>
-
-        <div class="play-area">
-            <div class="play-dealer dealer">
-                <div class="play-cards">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-
+        <div class="play-container">
+            <div id="dealer" class="user-info">
+                <p>Dealer</p>
+                <div class="user-display">
+                    <img src="./assets/images/user-icon/joker.png">
                 </div>
-                <div class="play-score">
-                    Dealer Score: <span></span>
+
+                <div class="user-chat">
+                    <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
                 </div>
             </div>
-            <div class="play-buttons">
-                <button class="play-placebet start-btn button is-success mt-4">Place Bet</button>
-                <div class="play-game-buttons">
-                    <button class="play-hit button is-success mt-4">Hit</button>
-                    <button class="play-stand button is-success mt-4">Stand</button>
-                    <button class="play-double button is-success mt-4">Double Down</button>
-                </div>
-                <div class="play-result">You Lost!</div>
-            </div>
-            <div class="play-player">
-                <div class="play-cards">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                    <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
-                </div>
-                <div class="play-score">
-                    Player Score: <span></span>
-                </div>
-            </div>
-            
-        </div>
 
+            <div class="play-area">
+                <div class="play-dealer dealer">
+                    <div class="play-cards">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+
+                    </div>
+                    <div class="play-score">
+                        Dealer Score: <span></span>
+                    </div>
+                </div>
+                <div class="play-buttons">
+                    <button class="play-placebet start-btn button is-success mt-4">Place Bet</button>
+                    <div class="play-game-buttons">
+                        <button class="play-hit button is-success mt-4">Hit</button>
+                        <button class="play-stand button is-success mt-4">Stand</button>
+                        <button class="play-double button is-success mt-4">Double Down</button>
+                    </div>
+                    <div class="play-result">You Lost!</div>
+                </div>
+                <div class="play-player">
+                    <div class="play-cards">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                        <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
+                    </div>
+                    <div class="play-score">
+                        Player Score: <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
         <div id="player" class="user-info">
             <p>Gambit</p>
             <div class="user-display">
@@ -172,7 +148,7 @@
                 <p>hello gambit how are you dfnfngfd dfndfkdmdsmfdsfdskf</p>
             </div>
         </div>
-
+    </div>
         <!-- Modals -->
         <div id="play-bet" class="modal modal-place-bet">
             <div class="modal-background"></div>
@@ -208,52 +184,85 @@
     </div>
     <!-- Shop Screen -->
     <div id="shop">
-        <div class="shop-container container">
+        <div class="shop-container">
             <div class="shop-item">
                 <div>
                     <div>
-                        <span class="oi" title="So nice to see you!" data-glyph="arrow-thick-top"></span>
-                        <span class="oi" data-glyph="arrow-thick-top"></span>
+                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
+                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
                     </div>
-                    <p>300</p>
+                    <p>3/300</p>
                 </div>
                 <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
-                <div class="price-con">
-                    <h3>Iron Man series</h3>
-                    <p class="offer">best offer</p>
-                    <span class="price">123<sup>pts</sup></span>
-                    <button class="btn-red btn-green" title="you need 200 points">unlock</button>
+                <div class="shop-item-info">
+                    <h3>Iron Man</h3>
+                    <p>1200</p>
+                    <button class="btn-red" title="you need 200 points">unlock</button>
                 </div>
             </div>
             <div class="shop-item">
-                <img src="./assets/images/placeholder2.jpg">
-                <button class="button is-success" title="you need 200 points">unlock</button>
+                <div>
+                    <div>
+                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
+                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
+                    </div>
+                    <p>3/300</p>
+                </div>
+                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
+                <div class="shop-item-info">
+                    <h3>Iron Man</h3>
+                    <p>1200</p>
+                    <button class="btn-red" title="you need 200 points">unlock</button>
+                </div>
             </div>
             <div class="shop-item">
-                <img src="./assets/images/placeholder3.jpg">
-                <button class="button is-success" title="you need 200 points">unlock</button>
+                <div>
+                    <div>
+                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
+                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
+                    </div>
+                    <p>3/300</p>
+                </div>
+                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
+                <div class="shop-item-info">
+                    <h3>Iron Man</h3>
+                    <p>1200</p>
+                    <button class="btn-green" title="you need 200 points">unlock</button>
+                </div>
             </div>
             <div class="shop-item">
-                <img src="./assets/images/placeholder2.jpg">
-                <button class="button is-success" title="you need 200 points">unlock</button>
+                <div>
+                    <div>
+                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
+                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
+                    </div>
+                    <p>3/300</p>
+                </div>
+                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
+                <div class="shop-item-info">
+                    <h3>Iron Man</h3>
+                    <p>1200</p>
+                    <button class="btn-green" title="you need 200 points">unlock</button>
+                </div>
             </div>
             <div class="shop-item">
-                <img src="./assets/images/placeholder1.jpg">
-                <button class="button is-success" title="you need 200 points">unlock</button>
+                <div>
+                    <div>
+                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
+                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
+                    </div>
+                    <p>3/300</p>
+                </div>
+                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
+                <div class="shop-item-info">
+                    <h3>Iron Man</h3>
+                    <p>1200</p>
+                    <button class="btn-green" title="you need 200 points">unlock</button>
+                </div>
             </div>
-            <div class="shop-item">
-                <img src="./assets/images/placeholder2.jpg">
-                <button class="button is-success" title="you need 200 points">unlock</button>
-            </div>
-            <div class="shop-item">
-                <img src="./assets/images/placeholder2.jpg">
-                <button class="button is-success" title="you need 200 points">unlock</button>
-            </div>
+            
         </div>
 
-        <footer id="contact-footer">
-            <p>Contact Us</p>
-        </footer>
     </div>
 
 
@@ -264,7 +273,9 @@
 
 
     <!-- Footer -->
-
+    <footer id="footer">
+        <p>Contact Us</p>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

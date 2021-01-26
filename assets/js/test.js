@@ -1,23 +1,3 @@
-// $('#enter-site').show()
-$('#enter-site').hide()
-// $('#home').show()
-$('#home').hide()
-$('#play').show()
-// $('#shop').show()
-// $('#contact').show()
-// $('#contact').hide()
-<<<<<<< HEAD
-$('#play').hide()
-=======
-// $('#play').hide()
->>>>>>> b5717c9375259a39182b6b6e56ab72864866e3ca
-$('.navbar').show()
-
-// $('.navbar').hide()
-// $('#navbar').addClass('hidden')
-$('.navbar-end').hide()
-$('#contact-footer').show()
-// $('#contact-footer').hide()
 
 // Home Section
 $('#home-rules').on('click', function () {

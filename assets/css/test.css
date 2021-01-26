@@ -3,70 +3,78 @@
     margin: 0;
 }
 
-html {
+html,
+body {
     overflow-y: hidden;
     overflow-x: hidden;
 }
-
+button {
+    outline: none;
+}
 
 /* Navigation Bar */
 
 .navbar {
-    display: none;
-    position: sticky;
+    position: fixed;
     width: 100%;
     top: 0;
     background-color:#5f5f5f;
     display: flex;
     justify-content: space-between;
 }
-/* .main-nav{
-    display: flex;
-    align-items: center;
-    margin-right: 3%;
-} */
 
-/* nav ul li span {
-    font-size: 1.6rem;
-    margin: 6% 0 0 1rem;
-} */
-.main-nav{
-   display:flex;
-   justify-content: space-between;
-   align-items: center;
-}
-.main-nav button{
-    width:auto;
-    background-color: transparent;
-    border:0;
-    color:#fff;
-    font-size: 120%;
-    margin:0 7px;
+.navbar h1 {
+    font-size: 200%;
+    color: #fff;
+    margin-left: 10px;
     cursor: pointer;
-}
-.main-nav .cart{
-    font-size: 130%;
 }
 
 .navbar-start span{
     color: #2fb667;
 }
 
-
+.main-nav{
+   display:flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.main-nav button{
+    width:auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border:0;
+    color:#fff;
+    font-size: 120%;
+    margin: 0 17px;
+    cursor: pointer;
+}
+.main-nav button:hover{
+    color: rgb(158, 152, 152);
+}
+.main-nav .cart{
+    font-size: 130%;
+}
 .nav-user{
     width:2rem;
     height: 2rem;
     border-radius: 50%;
 }
+
 /* Enter Site Screen */
 
 #enter-site {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.65);
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
 
 #enter-site button {
@@ -78,15 +86,19 @@ html {
 /* Home Screen */
 
 #home {
-    display: none;
     background-image: linear-gradient( to top left, rgba(51, 51, 51, 0.9), rgba(51, 51, 51, 0.8)), url("../images/city.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    position: fixed;
+}
+.home-hidden{
     position: relative;
     display:flex;
     align-items: flex-end;
+    width: 100vw;
+    height: 100vh;
 }
 
 #home .gambit {
@@ -126,27 +138,39 @@ html {
 /* Play Screen */
 
 #play {
-    display: none;
-    background-color: #f5f5f5;
+    background-image: url('../images/poker-table.jpg');
+    background-position: center;
+    background-size: cover;
     text-align: center;
     height:100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    color: white;
+    font-size: 130%;
+}
+.play-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.play-nav {
+    background-color: transparent;
 }
 
 .play-area {
-    flex: 40%;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .user-info {
-    flex: 30%;
     display:flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .user-info p {
@@ -172,7 +196,6 @@ html {
     width: 40vw;
     display:flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .play-cards img {
@@ -193,26 +216,56 @@ html {
 
 /* Shop Screen */
 
+.skill {
+    position: relative;
+}
+.skill:hover::before {
+    --scale: 1;
+}
+  
+.skill::after,
+.skill::before {
+    --scale: 0;
+    position: absolute;
+    top: -.25rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+    transition: 50ms transform;
+    z-index: 999;
+}
+  .skill::before {
+    content: attr(data-tooltip);
+    color: white;
+    padding: .5rem;
+    border-radius: .3rem;
+    text-align: center;
+    width: 300px;
+    background: #333;
+}
+
 #shop {
-    display: none;
     padding-top: 5%;
     background-color: #f6f6f6;
     height: 100vh;
     width:100vw;
     display: flex;
+    overflow: scroll;
+    justify-content: center;
+    background-color: rgb(196, 192, 184);
 }
-#shop select{
-text-align: center;
-}
+
 .shop-container{
    display: flex;
    flex-wrap: wrap;
-   justify-content: center; 
+   justify-content: center;
+   align-content: flex-start;
+   width: 80%;
+   padding: 45px 0 0 0;
 }
 
 .shop-item{
-    width:10%;
-
+    width: 15%;
+    height: fit-content;
     margin:1%;
     text-align: center;
 }
@@ -222,59 +275,57 @@ text-align: center;
     justify-content: space-between;
 }
 .shop-item h3{
-    line-height: 15px;
-    font-size: 12px;
-   font-weight: 500;
+    border-bottom: 1px solid rgb(194, 187, 187);
+    width: fit-content;
+    font-weight: 500;
+    margin: 0 auto;
 }
-.shop-item .offer{
-    color:rgba(0, 0, 0, 0.28);
-    max-height: 20px;
-    line-height: 10px;
-    font-size: 11px;
-    text-transform: uppercase;
-    
-}
-.shop-item price{
+
+.shop-item .price{
     letter-spacing: 0.6px;
     font-weight: bolder;
     color:#333;
     font-size: 17px;
 }
-.shop-item button{
-    padding:1em 1em;
-}
+
 .shop-item img{
     width:100%;
     border-radius: 5px;
 }
 
-.shop-item .price-con{
+.shop-item .shop-item-info{
     display:flex;
-   flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
 }
-.shop-item .price-con button{
+
+.shop-item .shop-item-info button{
     align-self: center;
-   padding:0.5em 1em;
+    padding:0.5em 1em;
     border-radius: 4px;
     border-color: transparent;
     color:#fff;
-    border:1px solid transparent
-  
-    
+    border:1px solid transparent;
+    cursor: pointer;
+}
+.shop-item .shop-item-info button:hover{
+    filter: brightness(80%);
 }
 /* Contact Us Screen */
 
-#contact {
-    display: none;
-}
-.shop-item .price-con .btn-red{
-    background-color: #e21e1e;
-}
-/* .shop-item .price-con .btn-green{
-    background-color: #2fb667;
+/* #contact {
 } */
+
+.shop-item .shop-item-info .btn-red{
+    background-color: #d61212;
+}
+.shop-item .shop-item-info .btn-green{
+    background-color: #13b91b;
+}
+
+
 /* Footer */
-#contact-footer{
+#footer{
     background-color: #5f5f5f;
     color:#FFF;
     padding:1rem 2rem;
@@ -289,7 +340,19 @@ text-align: center;
 
 @media only screen and (max-width: 767px) {
     #home .gambit {
-        width: 80%;
+        width: 120%;
+        position: fixed;
+    }
+    #home .home-buttons {
+        align-self: center;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        margin: 0 auto;
+    }
+    #home .home-buttons button {
+        margin:5px;
     }
     #home-play {
         color: #fff;
@@ -300,53 +363,13 @@ text-align: center;
         height: 100%;
         overflow: scroll;
     }
-    .user-display img {
-        max-width: 60px;
-    } 
-    #player{
-    /* position: absolute; */
-    top:10%;
-    left:5%;
-    }
-    #dealer{
-     /* position: absolute; */
-    bottom:4%;
-    left:5%; 
-   
-    }
-    .play-buttons{
-        display: flex;
-        flex-direction: column;
-        /* position: absolute; */
-        /* top:40%;
-        left:5%;  */
-    }
-    .play-game-buttons{
-        display:flex;
-        flex-direction: column;
-    }
-    .play-player{
-        /* position: absolute; */
-       bottom:10%;  
-    } 
-    .dealer{
-        /* position: absolute; */
-        top:27%;
-        left:32%;
-       
-    }
-    .button{
-        padding:5px;
-        font-size:80%;
-    }
-    .user-display img{
-        max-width: 50px;
-    }
     .user-info {
-        flex: 30%;
         display:flex;
         flex-direction: column;
         align-items: center;
+    }
+    .user-display img{
+        max-width: 60px;
     }
     .shop-item{
      width:25%;
@@ -357,12 +380,12 @@ text-align: center;
         max-width: 30%;
     }
 
-    #shop{
+    /* #shop{
         overflow:scroll;
         padding-top:15%;
         position: relative;
         overflow-x: hidden;
-    }
+    } */
    
 
 }
