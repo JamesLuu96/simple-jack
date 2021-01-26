@@ -323,7 +323,7 @@ nav p,
     }
     .user-display img {
         max-width: 60px;
-    }
+    } 
     #player{
     /* position: absolute; */
     top:10%;
@@ -339,8 +339,8 @@ nav p,
         display: flex;
         flex-direction: column;
         /* position: absolute; */
-        top:40%;
-        left:5%; 
+        /* top:40%;
+        left:5%;  */
     }
     .play-game-buttons{
         display:flex;
@@ -373,6 +373,11 @@ nav p,
      width:25%;
       scroll-behavior: auto;
     }
+
+    .play-cards img {
+        max-width: 30%;
+    }
+
     #shop{
         overflow:scroll;
         padding-top:15%;
