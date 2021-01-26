@@ -1,0 +1,29 @@
+#player-health-bar {
+  width: 20rem;
+  height: 3rem;
+  border: 0.2rem solid rgb(0, 156, 0);
+  margin-top: 2rem;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+#player-health-bar-full {
+  height: 100%;
+  background: rgb(11, 223, 36);
+  width: 0%;
+}
+
+#enemy-health-bar {
+  width: 20rem;
+  height: 3rem;
+  border: 0.2rem solid rgb(0, 156, 0);
+  margin-top: 2rem;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+#enemy-health-bar-full {
+  height: 100%;
+  background: rgb(11, 223, 36);
+  width: 0%;
+}
