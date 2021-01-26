@@ -11,13 +11,14 @@ html {
 
 /* Navigation Bar */
 
-#navbar {
+.navbar {
     display: none;
     position: fixed;
     width: 100%;
     top: 0;
     background-color:#5f5f5f;
-    
+    display: flex;
+    justify-content: space-between;
 }
 
 /* nav ul {
@@ -53,17 +54,20 @@ nav p,
 .navbar-start span{
     color: #2fb667;
 }
-#navbar a .fa-search{
+.navbar a .fa-search{
     width:1rem;
     height:1rem;
     font-size: 20px;
     color:#fff;
- 
 }
-#navbar .search{
+
+.navbar .search{
     padding-right: 5%;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
 }
-#navbar a .cart{
+.navbar a .cart{
     padding-right: 7%;  
     width:1rem;
     height:1rem;
@@ -84,6 +88,9 @@ nav p,
     display: none;
     background-color: rgba(0, 0, 0, 0.5);
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #enter-site button {
@@ -102,6 +109,8 @@ nav p,
     width: 100vw;
     height: 100vh;
     position: relative;
+    display:flex;
+    align-items: flex-end;
 }
 
 #home .gambit {
@@ -145,13 +154,22 @@ nav p,
     background-color: #f5f5f5;
     text-align: center;
     height:100vh;
-}
-.play-area {
-    flex: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
+.play-area {
+    flex: 40%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 .user-info {
     flex: 30%;
+    display:flex;
+    align-items: center;
 }
 
 .user-info p {
@@ -175,6 +193,9 @@ nav p,
 
 .play-cards {
     width: 40vw;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .play-cards img {
@@ -202,12 +223,42 @@ nav p,
     height: 100vh;
     width:100vw;
 }
+.shop-container{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center; 
+}
 
 .shop-item{
-    width:10%;
-    height:10%;
+    width:20%;
+   height:10%;
     margin:1%;
     text-align: center;
+    
+}
+
+.shop-item div{
+    display:flex;
+    justify-content: space-between;
+}
+.shop-item h3{
+    line-height: 15px;
+    font-size: 12px;
+   font-weight: 500;
+}
+.shop-item .offer{
+    color:rgba(0, 0, 0, 0.28);
+    max-height: 20px;
+    line-height: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    
+}
+.shop-item price{
+    letter-spacing: 0.6px;
+    font-weight: bolder;
+    color:#333;
+    font-size: 17px;
 }
 .shop-item button{
     padding:1em 1em;
@@ -217,23 +268,41 @@ nav p,
     border-radius: 5px;
 }
 
-
+.shop-item .price-con{
+    display:flex;
+   flex-direction: column;
+}
+.shop-item .price-con button{
+    align-self: center;
+   padding:0.5em 1em;
+    border-radius: 4px;
+    border-color: transparent;
+    color:#fff;
+    border:1px solid transparent
+  
+    
+}
 /* Contact Us Screen */
 
 #contact {
     display: none;
 }
-
-
+.shop-item .price-con .btn-red{
+    background-color: #e21e1e;
+}
+/* .shop-item .price-con .btn-green{
+    background-color: #2fb667;
+} */
 /* Footer */
 #contact-footer{
     background-color: #5f5f5f;
     color:#FFF;
-    padding:1rem;
+    padding:1rem 2rem;
     position: absolute;
    bottom: 0;
     width:100vw;
-    text-align:right;
+   text-align:right;
+   
  }
  
  /* media queries */
@@ -250,9 +319,6 @@ nav p,
         width: 90%;
         height: 100%;
         overflow: scroll;
-    }
-    .user-chat {
-        display: none;
     }
     .user-display img {
         max-width: 60px;

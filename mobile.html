@@ -32,7 +32,7 @@
       </li>
     </ul>-->
     <!-- </nav> -->
-    <nav class="is-flex is-justify-content-space-between" id="navbar">
+    <nav class="navbar">
         <div class="navbar-start">
             <p class="navbar-item">Simple<span>Jack</span></p>
         </div>
@@ -41,7 +41,7 @@
             <p class="nav-shop navbar-item">Shop</p>
             <span id="mute" class="oi navbar-item" data-glyph="volume-high"></span>
         </div>
-        <div class="search is-flex is-justify-content-space-between is-align-items-center">
+        <div class="search">
             <a href="#"><i class="fas fa-search"></i></a>
             <a href="#home"><span class="oi cart" data-glyph="cart"></span></a>
             <img src="./assets/images/user-icon/gambit.png" class="user-img">
@@ -49,12 +49,12 @@
     </nav>
 
     <!-- Enter Site Screen -->
-    <div id="enter-site" class="is-flex is-justify-content-center is-align-items-center">
+    <div id="enter-site">
         <button class="button is-medium">Enter Site</button>
     </div>
 
     <!-- Home Screen -->
-    <div id="home" class="is-flex is-align-items-flex-end">
+    <div id="home">
         <h1>Simple <span>Jack</span></h1>
         <img class="gambit" src="./assets/images/gambit.png" alt="Gambit">
 
@@ -99,11 +99,11 @@
 
 
     <!-- Play Screen -->
-    <div id="play" class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-around">
+    <div id="play">
         <!-- <span id="play-back" class="game-back oi" data-glyph="arrow-thick-left"></span> -->
         <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
-        <div id="player" class="user-info is-flex is-align-items-center">
+        <div id="player" class="user-info">
             <p>Gambit</p>
             <div class="user-display">
                 <img src="./assets/images/user-icon/gambit.png">
@@ -113,9 +113,9 @@
             </div>
         </div>
 
-        <div class="play-area is-flex is-justify-content-center is-align-items-center">
+        <div class="play-area">
             <div class="play-player">
-                <div class="play-cards is-flex is-justify-content-center is-flex-wrap-wrap">
+                <div class="play-cards">
                     <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
                     <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
                     <img src="https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png">
@@ -148,7 +148,7 @@
             </div>
         </div>
 
-        <div id="dealer" class="user-info is-flex is-align-items-center">
+        <div id="dealer" class="user-info">
             <p>Dealer</p>
             <div class="user-display">
                 <img src="./assets/images/user-icon/joker.png">
@@ -198,10 +198,22 @@
     <!-- Shop Screen -->
 
     <div id="shop">
-        <div class="shop-container container is-flex is-flex-wrap-wrap is-justify-content-center">
+        <div class="shop-container container">
             <div class="shop-item">
-                <img src="./assets/images/placeholder1.jpg">
-                <button class="button is-success" title="you need 200 points">unlock</button>
+                <div>
+                    <div>
+                        <span class="oi" title="So nice to see you!" data-glyph="arrow-thick-top"></span>
+                        <span class="oi" data-glyph="arrow-thick-top"></span>
+                    </div>
+                    <p>300</p>
+                </div>
+                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
+                <div class="price-con">
+                    <h3>Iron Man MK46 Helmet Mini Bluetooth Speaker (V2.0)</h3>
+                    <p class="offer">best offer</p>
+                    <span class="price">123<sup>pts</sup></span>
+                    <button class="btn-red btn-green" title="you need 200 points">unlock</button>
+                </div>
             </div>
             <div class="shop-item">
                 <img src="./assets/images/placeholder2.jpg">

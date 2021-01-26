@@ -1,18 +1,19 @@
 // $('#enter-site').show()
 $('#enter-site').hide()
-$('#home').show()
-// $('#home').hide()
+// $('#home').show()
+$('#home').hide()
 // $('#play').show()
-// $('#shop').show()
+$('#shop').show()
 // $('#contact').show()
 // $('#contact').hide()
 $('#play').hide()
 // $('.navbar').show()
-$('#navbar').hide()
+
+$('.navbar').hide()
+// $('#navbar').addClass('hidden')
 $('.navbar-end').hide()
-// $('#contact-footer').show()
-$('#contact-footer').hide()
-$('#shop').hide()
+$('#contact-footer').show()
+// $('#contact-footer').hide()
 
 // Home Section
 $('#home-rules').on('click', function () {
