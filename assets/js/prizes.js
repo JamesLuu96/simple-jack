@@ -383,6 +383,26 @@ function showMyItems(unlockedChars) {
       var itemImage = $('<img>').attr('src', path + "." + ext).addClass('myItems-img')
       var itemHeader = $('<h4>').text(name).addClass('inventory-header')
       $(divcont).append(itemImage, itemHeader)
+      
+
+      var skillsEl = $('<div>').addClass('is-flex')
+
+      if(unlockedChars[i].health){
+        var spanEl = $('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${unlockedChars[i].health} and heals you by ${unlockedChars[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart'))
+        var value = $('<p>').text(unlockedChars[i].health)
+        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+      }
+      if(unlockedChars[i].mightAdd){
+        var spanEl = $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${unlockedChars[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'plus'))
+        var value = $('<p>').text(unlockedChars[i].might)
+        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+      }
+      if(unlockedChars[i].might && !unlockedChars[i].mightAdd){
+        var spanEl = $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit multiplies your might by ${unlockedChars[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'x'))
+        var value = $('<p>').text(unlockedChars[i].might)
+        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+      }
+      $(divcont).prepend(skillsEl)
       $('.inventory-box').append($(divcont))
     }
   }
