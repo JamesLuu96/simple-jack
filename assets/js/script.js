@@ -26,7 +26,8 @@ var enterPlaySite = function(){
     $('.nav-shop').show()
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
-    $('.navbar p').text(bankMoney)
+    $(`.play-cards`).hide()
+    $('.navbar p').text(player.money)
 }
 $('#home-play').on('click', function(event){
     event.preventDefault()
@@ -58,20 +59,12 @@ $('.navbar .navbar-start h1').on('click', function(event){
     enterHomeSiteFromPlay()
 })
 
-$(".play-placebet").on("click", function (event) {
-    event.preventDefault()
-    $('.modal-place-bet').addClass("is-active");
-    $('#play-bet span').text(bankMoney)
-    $('#bet-money').trigger('select');
-})
+
 $('.btn-reload').on('click', function (event) {
     event.preventDefault()
     $('.modal').removeClass("is-active");
 })
-$('#play-bet form').on('submit', function (event) {
-    event.preventDefault()
-    $('.modal').removeClass("is-active");
-})
+
 
 // Take you to Shop
 var enterShop = function(){
@@ -86,3 +79,10 @@ $('.nav-shop').on('click', function(event){
     event.preventDefault()
     enterShop()
 })
+
+// ----------------------Save Game----------------------
+
+var saveGame = function(){
+    localStorage.setItem('player', JSON.stringify(player))
+    localStorage.setItem('dealer', JSON.stringify(dealer))
+}

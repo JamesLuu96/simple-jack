@@ -272,7 +272,7 @@ function seriesDisplay(value) {
 
   // check if character is unlocked and prevent displaying on store page
   for (let i = 0; i < filteredArray.length; i++) {
-    // if (unlockedChars.includes(filteredArray[i])) {
+    // if (player.inventory.includes(filteredArray[i])) {
       if (sameName(filteredArray[i].name)) {
     
       // displayed locked characters on store page
@@ -306,7 +306,7 @@ function seriesDisplay(value) {
         nameEl.addClass('legendary')
       }
       var shopItemInfoEl = $('<div>').addClass('shop-item-info').append(nameEl, $('<p>').text(filteredArray[i].cost).prepend($('<span>').addClass('oi').attr('data-glyph', 'flash')))
-      if (bankMoney >= filteredArray[i].cost){
+      if (player.money >= filteredArray[i].cost){
         shopItemInfoEl.append($('<button>').addClass('btn-green unlock-card').text('Unlock').attr('data-index', filteredArray[i].index))
       } else {
         shopItemInfoEl.append($('<button>').addClass('btn-red unlock-card').text('Unlock').attr('data-index', filteredArray[i].index))
@@ -327,12 +327,12 @@ $('.series').on('change', function(event) {
 // set unlocked character in localStorage and global variable
 $('.shop-container').on('click', '.unlock-card', function(event) {
   var cost = characters[event.target.getAttribute('data-index')].cost
-  if (bankMoney >= cost) {
-    bankMoney -= cost
-    unlockedChars.push(characters[event.target.getAttribute('data-index')]);
-    localStorage.setItem('unlockedChars', JSON.stringify(unlockedChars));
+  if (player.money >= cost) {
+    player.money -= cost
+    player.inventory.push(characters[event.target.getAttribute('data-index')]);
+    localStorage.setItem('player.inventory', JSON.stringify(player.inventory));
     $('.series').trigger('change');
-    $('.navbar p').text(bankMoney)
+    $('.navbar p').text(player.money)
   } else {
     alert('You don\'t have enough money');
   }
@@ -345,11 +345,11 @@ if (localStorage.getItem('characters') === null) {
   characters = JSON.parse(localStorage.getItem('characters'))
 }
 
-var unlockedChars = JSON.parse(localStorage.getItem('unlockedChars')) || []
+
 var sameName = function(name){
   var found = false;
-  for(var i = 0; i < unlockedChars.length; i++) {
-      if (unlockedChars[i].name == name) {
+  for(var i = 0; i < player.inventory.length; i++) {
+      if (player.inventory[i].name == name) {
           found = true;
           break;
       }
