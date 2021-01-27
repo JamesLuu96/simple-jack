@@ -23,7 +23,9 @@
     <nav class="navbar">
         <div class="navbar-start">
             <h1 class="navbar-item">Simple<span>Jack</span></h1>
-            <div class="nav-might" data-tooltip='Your Current Might'><span class="oi" data-glyph="flash"></span><p></p></div>
+            <div class="nav-might" data-tooltip='Your Current Might'><span class="oi" data-glyph="flash"></span>
+                <p></p>
+            </div>
         </div>
 
         <div class="main-nav">
@@ -46,7 +48,8 @@
         <div class="home-hidden">
             <span id="mute" class="oi mute" data-glyph="volume-high"></span>
             <h1>Simple <span>Jack</span></h1>
-            <img class="gambit animate__animated animate__fadeInLeft animate__delay-0.5s" src="./assets/images/gambit.png" alt="Gambit">
+            <img class="gambit animate__animated animate__fadeInLeft animate__delay-0.5s"
+                src="./assets/images/gambit.png" alt="Gambit">
 
             <div class="home-buttons animate__animated animate__fadeInRight animate__delay-0.2s">
                 <button class="button is-success is-outlined is-medium" id="home-play">Play Now</button>
@@ -91,7 +94,6 @@
 
     <!-- Play Screen -->
     <div id="play">
-
         <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
         <div class="play-container">
@@ -111,7 +113,7 @@
             <div class="play-area">
                 <div class="play-dealer dealer">
                     <div class="play-cards">
-                       <!-- Dynamically Add Cards -->
+                        <!-- Dynamically Add Cards -->
                     </div>
                     <div class="play-score">
                         Dealer Score: <span></span>
@@ -136,7 +138,7 @@
                 </div>
             </div>
         </div>
-    
+
         <div id="player" class="user-info">
             <div>
                 <p>Gambit</p>
@@ -149,38 +151,39 @@
             </div>
         </div>
     </div>
-        <!-- Modals -->
-        <div id="play-bet" class="modal modal-place-bet">
-            <div class="modal-background"></div>
-            <div class="modal-card modal-bet">
-                <form>
-                    <section class="modal-card-body">
-                        <div class="field">
-                            <label class="label">
-                                You can put up to <span></span> might
-                            </label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Might Amount" id="bet-money" autocomplete="off" required>
-                            </div>
-                            <button type="submit" class="button is-success btn-bet">Confirm</button>
-                    </section>
-                </form>
-            </div>
-        </div>
-        <div id="play-reload" class="modal modal-reload">
-            <div class="modal-background"></div>
-            <div class="modal-card modal-reload">
+    <!-- Modals -->
+    <div id="play-bet" class="modal modal-place-bet">
+        <div class="modal-background"></div>
+        <div class="modal-card modal-bet">
+            <form>
                 <section class="modal-card-body">
                     <div class="field">
-                        <label class="label">You seem to have run out of money! Click the reload button to get
-                            another
-                            $300
-                            dollars</label>
-                    </div>
-                    <button class="button is-success btn-reload">RELOAD</button>
+                        <label class="label">
+                            You can put up to <span></span> might
+                        </label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Might Amount" id="bet-money"
+                                autocomplete="off" required>
+                        </div>
+                        <button type="submit" class="button is-success btn-bet">Confirm</button>
                 </section>
-            </div>
+            </form>
         </div>
+    </div>
+    <div id="play-reload" class="modal modal-reload">
+        <div class="modal-background"></div>
+        <div class="modal-card modal-reload">
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">You seem to have run out of money! Click the reload button to get
+                        another
+                        $300
+                        dollars</label>
+                </div>
+                <button class="button is-success btn-reload">RELOAD</button>
+            </section>
+        </div>
+    </div>
     </div>
     <!-- Shop Screen -->
     <div id="shop">
@@ -222,12 +225,35 @@
                     <button class="btn-red" title="you need 200 points">unlock</button>
                 </div>
             </div> -->
-            
+
         </div>
 
     </div>
 
+    <!--inventory modal-->
+    <div class="modal modal-inventory">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p class="modal-card-title" id="inventory-title"><span class="fas fa-heart"></span>my items</p>
+                <!-- Content ... -->
+                <div class="inventory-box">
 
+                </div>
+            </section>
+            <button class="button is-dark" id="inventory-close">close</button>
+        </div>
+    </div>
+    <!--shop unlock message-->
+    <div class="modal modal-unlock-message">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p>you don't have enough money</p>
+            </section>
+            <button type="submit" class="button is-success">ok</button>
+        </div>
+    </div>
     <!-- Contact Us Screen -->
     <section id="contact">
         <!-- Work in Progress -->
