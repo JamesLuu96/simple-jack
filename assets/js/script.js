@@ -1,5 +1,5 @@
 // ----------------------Enter Site Section----------------------
-var enterSite = function(){
+var enterSite = function () {
     $('.home-hidden').hide()
     $('#play').hide()
     $('#shop').hide()
@@ -9,7 +9,7 @@ var enterSite = function(){
 }
 enterSite()
 // Enter Site Button Event Listener
-$('#enter-site button').on('click', function(event){
+$('#enter-site button').on('click', function (event) {
     event.preventDefault()
     $('.home-hidden').fadeIn()
     $('#enter-site').fadeOut()
@@ -19,7 +19,7 @@ $('#enter-site button').on('click', function(event){
 // ----------------------Home Section----------------------
 
 // Play Game Button
-var enterPlaySite = function(){
+var enterPlaySite = function () {
     $('#play').show()
     $('#home').hide()
     $('.navbar').fadeIn()
@@ -28,7 +28,7 @@ var enterPlaySite = function(){
     $('.nav-search').hide()
     $('.navbar p').text(bankMoney)
 }
-$('#home-play').on('click', function(event){
+$('#home-play').on('click', function (event) {
     event.preventDefault()
     enterPlaySite()
 })
@@ -47,13 +47,13 @@ $('#btn-close').on("click", () => {
 // ----------------------Play Section----------------------
 // Back to Home Button
 
-var enterHomeSiteFromPlay = function(){
+var enterHomeSiteFromPlay = function () {
     $('.navbar').hide()
     $('#home').show()
     $('#shop').hide()
     $('#play').hide()
 }
-$('.navbar .navbar-start h1').on('click', function(event){
+$('.navbar .navbar-start h1').on('click', function (event) {
     event.preventDefault()
     enterHomeSiteFromPlay()
 })
@@ -74,15 +74,16 @@ $('#play-bet form').on('submit', function (event) {
 })
 
 // Take you to Shop
-var enterShop = function(){
+var enterShop = function () {
     $('.nav-search').show()
     $('.nav-shop').hide()
     $('#shop').show()
     $('#play').hide()
-    $('.series').trigger('change')
+    $('.shop-select').hide()
+    $('.search').trigger('input')
     shopAudio()
 }
-$('.nav-shop').on('click', function(event){
+$('.nav-shop').on('click', function (event) {
     event.preventDefault()
     enterShop()
 })
