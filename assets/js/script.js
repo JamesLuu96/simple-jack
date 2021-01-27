@@ -1,74 +1,88 @@
-// Generates User Picture / Name
-$('#player-img img').attr('src', './assets/images/user-icon/gambit.png')
-$('#player-img p').text('Gambit')
+// ----------------------Enter Site Section----------------------
+var enterSite = function(){
+    $('.home-hidden').hide()
+    $('#play').hide()
+    $('#shop').hide()
+    $('#contact').hide()
+    $('.navbar').hide()
+    $('#footer').hide()
+}
+enterSite()
+// Enter Site Button Event Listener
+$('#enter-site button').on('click', function(event){
+    event.preventDefault()
+    $('.home-hidden').fadeIn()
+    $('#enter-site').fadeOut()
+    $('#mute').fadeIn()
+    playSong(mySong)
+})
+// ----------------------Home Section----------------------
 
-// Hidden From Start
-$('.home-gambit').hide()
-$('.button-box').hide()
-$('.home h1').hide()
-$('.play-section').hide()
-$('.shop').hide();
-$('#mute').hide()
-
-
-$('#start').on('click', function () {
-  playSong(mySong)
-  $('.start').fadeOut()
-  $('.home-gambit').fadeIn()
-  $('.button-box').fadeIn()
-  $('.home h1').fadeIn()
-  $('#mute').show()
+// Play Game Button
+var enterPlaySite = function(){
+    $('#play').show()
+    $('#home').hide()
+    $('.navbar').fadeIn()
+    $('.nav-shop').show()
+    $('.play-game-buttons').hide()
+    $('.nav-search').hide()
+    $('.navbar p').text(bankMoney)
+}
+$('#home-play').on('click', function(event){
+    event.preventDefault()
+    enterPlaySite()
 })
 
-
-$('#play').on('click', function () {
-    $('.home').hide()
-    $('.play-section').show()
-    loadGamePage()
-    $('.special').hide()
-    randomEntryAudio()
-    setTimeout(function(){
-        $('#dealer-text').hide()
-        $('#player-text').hide()
-        $('#play-button').show()
-    }, 4500)
+// Opens Rules
+$('#home-rules').on('click', function () {
+    $('.rules-modal').addClass("is-active")
 })
-var x = true
-$('.special-btn').on('click', function () {
-    if (x){
-        $('.special').fadeIn()
-    }else{
-        $('.special').fadeOut()
-    }
-    x=!x
-})
-$('#btnModal').on("click", () => {
-    $('.modal').addClass("is-active");  
-})
-//close the rules modals
 $('.modal-background').on("click", () => {
     $('.modal').removeClass("is-active");
 })
-
 $('#btn-close').on("click", () => {
-  $('.modal').removeClass("is-active");
+    $('.modal').removeClass("is-active");
 })
 
-//go to shop page from play page
-$("#shop").on("click", () => {
-    $(".play-section").hide();
-    $(".series").val("784").trigger("change");
-    $(".shop").show();
-})
-//back to home from play page
-$("#home").on("click", () => {
-    $(".play-section").hide();
-    $(".home").show();
+// ----------------------Play Section----------------------
+// Back to Home Button
+
+var enterHomeSiteFromPlay = function(){
+    $('.navbar').hide()
+    $('#home').show()
+    $('#shop').hide()
+    $('#play').hide()
+}
+$('.navbar .navbar-start h1').on('click', function(event){
+    event.preventDefault()
+    enterHomeSiteFromPlay()
 })
 
-//back to home from shop page
-$(".return-home").on("click", () => {
-    $(".play-section").hide();
-    $(".home").show();
+$(".play-placebet").on("click", function (event) {
+    event.preventDefault()
+    $('.modal-place-bet').addClass("is-active");
+    $('#play-bet span').text(bankMoney)
+    $('#bet-money').trigger('select');
+})
+$('.btn-reload').on('click', function (event) {
+    event.preventDefault()
+    $('.modal').removeClass("is-active");
+})
+$('#play-bet form').on('submit', function (event) {
+    event.preventDefault()
+    $('.modal').removeClass("is-active");
 })
 
+// Take you to Shop
+var enterShop = function(){
+    $('.nav-search').show()
+    $('.nav-shop').hide()
+    $('#shop').show()
+    $('#play').hide()
+    $('.series').trigger('change')
+    shopAudio()
+}
+$('.nav-shop').on('click', function(event){
+    event.preventDefault()
+    enterShop()
+})

@@ -1,0 +1,361 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 20px;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+.skill {
+  position: relative;
+}
+.skill:hover::before {
+  --scale: 1;
+}
+
+.skill::after,
+.skill::before {
+  --scale: 0;
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+  transition: 50ms transform;
+}
+.skill::before {
+  content: attr(data-tooltip);
+  color: white;
+  padding: .5rem;
+  border-radius: .3rem;
+  text-align: center;
+  width: 300px;
+  background: #333;
+}
+
+#mute {
+  position: fixed;
+  z-index: 999;
+  right: 0;
+  margin: 1% 4%;
+  color: black;
+  cursor: pointer;
+}
+
+.start {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#start {
+  padding: 5px;
+  font-size: 20px;
+}
+
+.home-background {
+  background-image: linear-gradient(
+      to top left,
+      rgba(51, 51, 51, 0.9),
+      rgba(51, 51, 51, 0.8)
+    ),
+    url("../images/city.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.home-background h1 {
+  color: #fff;
+  font-size: 350%;
+  text-align: left;
+  padding: 2% 0 0 2%;
+}
+.home-background span {
+  color: #2fb667;
+}
+
+.home-gambit {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 50%;
+  z-index: 1;
+}
+.button-box {
+  display: inline-block;
+  padding: 3rem 6rem;
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+}
+.button {
+  margin-right: 1rem;
+  padding: 1.5rem 2rem;
+  font-weight: bold;
+}
+/*------------modal---------------*/
+.content h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.content h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
+  color: #363636;
+  font-weight: 600;
+  line-height: 1.125;
+}
+/*-------animation-------*/
+.button-box {
+  opacity: 0;
+}
+
+.button-box.animate__animated {
+  opacity: 1;
+}
+/*-------card container-------*/
+
+.play-section {
+  /* display:none; */
+  width: 100vw;
+  height: 100vh;
+  padding-top: 2%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* .center{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+} */
+/*-------hero section-------*/
+.card-wrapper {
+  width: 70%;
+}
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+.cards {
+  color: #fff;
+  width: 40vw;
+}
+
+.column {
+  flex-grow: 0;
+}
+.hero-body {
+  padding-bottom: 0;
+}
+.columns img {
+  width: 40%;
+  margin-right: 2%;
+}
+.special {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 999;
+}
+.special-btn {
+  position: fixed;
+  right: 0;
+  top: 6%;
+}
+/* Play Game */
+.play-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(51, 51, 51, 0.705),
+      rgba(51, 51, 51, 0.747)
+    ),
+    url(../images/game-placeholder.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  padding-top: 0;
+  color: #fff;
+}
+.play-section .user-info {
+  padding-top: 5px;
+  margin-bottom: 8px;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.player-text {
+  color: #333;
+  background-color: #fff;
+  font-family: "Shadows Into Light";
+  font-weight: bold;
+  border: 3px solid #333;
+  border-radius: 5px;
+  padding: 1%;
+}
+
+.player-img {
+  flex-basis: 10%;
+}
+
+/* Play Area */
+.play-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* max-height: 60%; */
+}
+.button-container .button {
+  margin: 5px;
+}
+
+.game-back {
+  color: black;
+  margin: 1% 2%;
+  cursor: pointer;
+}
+
+/* .cards { */
+/* max-width: 20%; */
+/* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
+/* } */
+
+.cards img {
+  margin: 5px;
+  max-width: 20%;
+}
+
+.player {
+  flex: 40%;
+}
+.button-container {
+  flex: 20%;
+}
+.dealer {
+  flex: 40%;
+}
+#shop {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+}
+#home {
+  position: absolute;
+  bottom: 10%;
+  right: 18%;
+}
+#home,
+#shop:hover {
+  background-color: #eee;
+}
+
+#characters {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  padding: 2px;
+}
+
+.modal-bet {
+  width: 25%;
+  border-radius: 5px;
+}
+
+/* shop section */
+.shop {
+  background-color: #f6f6f6;
+  height: 100vh;
+}
+.shop-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.shop-container div {
+  padding: 0 20px 20px;
+  width: 20%;
+}
+
+.shop-container img {
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+}
+.shop-container .unlock-card {
+  width: 100%;
+  text-align: center;
+}
+.unlock-card button {
+  padding: 10px;
+}
+
+.navbar {
+  padding: 0.1% 0 0 0;
+  background-color: #333;
+  margin-bottom: 3%;
+  text-transform: uppercase;
+}
+
+.navbar-menu a {
+  margin: 1% 3% 0 0;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 70%;
+}
+.navbar-menu a:hover {
+  color: #dbd8d8;
+}
+.navbar-burger {
+  color: #fff;
+}
+.navbar-start {
+  color: #fff;
+  margin-top: 0.6%;
+  padding-left: 2%;
+  font-size: 130%;
+}
+.navbar-start span {
+  color: #2fb667;
+  margin-left: 10%;
+}
+
+#shop-money {
+  color: #2fb667;
+  text-align: right;
+  margin-right: 5%;
+}
+
+/* .lock-icon {
+  background-color: rgba(255, 255, 255, 0.808);
+  z-index: 1;
+} */
+
+/* Media Queries */
