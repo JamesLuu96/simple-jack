@@ -4,6 +4,10 @@ var dealerHand;
 var playerHand;
 var bankMoney = 300;
 let betAmount = 0;
+let playerHealth = 100;
+let enemyHealth = 100;
+let playerMaxHealth = 100;
+leat enemyMaxHealth = 100;
 var loadGamePage = function () {
     $('.game-button-container').hide()
     $('.special-btn').hide()
@@ -193,6 +197,8 @@ var playerLose = function (integer) {
     console.log(bankMoney, integer);
     bankMoney = bankMoney - integer;
     console.log(`You lose, you now have ${bankMoney} dollars`)
+    playerHealth -= integer;
+    enemyHealth += integer;
     gameOver()
 }
 var playerWin = function (integer) {
@@ -201,6 +207,8 @@ var playerWin = function (integer) {
     console.log(bankMoney, integer);
     bankMoney += integer;
     console.log(`You win, you now have ${bankMoney} dollars`)
+    playerHealth += integer;
+    enemyHealth -= integer;
     gameOver()
 }
 var gameOver = function () {

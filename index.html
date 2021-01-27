@@ -16,6 +16,7 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/health.css">
 </head>
 
 <body>
@@ -98,10 +99,13 @@
             <div id="dealer" class="user-info">
                 <div>
                     <p>Dealer</p>
+                    <div id="enemy-health-bar">
+                      <div id="enemy-health-bar-full"></div>
+                    </div>
                     <div class="user-display">
                         <img src="./assets/images/user-icon/joker.png">
+                      </div>
                     </div>
-                </div>
 
                 <div class="user-chat">
                     <p></p>
@@ -140,6 +144,9 @@
         <div id="player" class="user-info">
             <div>
                 <p>Gambit</p>
+                <div id="player-health-bar">
+                  <div id="player-health-bar-full"></div>
+                </div>
                 <div class="user-display">
                     <img src="./assets/images/user-icon/gambit.png">
                 </div>
@@ -245,6 +252,7 @@
     <script src="./assets/js/audio.js"></script>
     <script src="./assets/js/game_logic.js"></script>
     <script src="./assets/js/prizes.js"></script>
+    <script src="./assets/js/health.js"></script>
 </body>
 
 </html>
