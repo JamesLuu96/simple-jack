@@ -19,8 +19,10 @@ async function beginGame(){
 // Fetches New Deck
 async function getDeck() {
     var res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
-    while(!res.ok){
-        res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
+    for(let i = 0; i < 5; i++){
+        if(!res.ok){
+            res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
+        }
     }
     var data = await res.json()
     deckId = data.deck_id
@@ -28,8 +30,10 @@ async function getDeck() {
 // Deals Card and shows it
 async function dealCard(number, playerObj) {
     var res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
-    while(!res.ok){
-        res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
+    for(let i = 0; i < 5; i++){
+        if(!res.ok){
+            res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
+        }
     }
     var data = await res.json()
     for (let i = 0; i < number; i++) {

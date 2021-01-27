@@ -1,5 +1,7 @@
 const gateway = 'https://gateway.marvel.com';
-const apiKey = 'apikey=8dc4947cd23a3751e248fa0ac896866f';
+const apiKey = 'apikey=6183cc1410bb4bd83659bc716cd7fadb';
+// 6183cc1410bb4bd83659bc716cd7fadb
+// 8dc4947cd23a3751e248fa0ac896866f
 {/* <span class="skill" data-tooltip="Health: This unit increases your health by x and heals your hero by x."><span class="oi" data-glyph="heart"></span></span>
 <span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="plus"></span></span> */}
 // variable to store available character objects and build store pages
@@ -263,6 +265,7 @@ async function seriesList() {
     characters[i] = randomValues(characters[i])
   }
   localStorage.setItem('characters', JSON.stringify(characters))
+  $('#enter-site button').show()
   console.log(`Running API Call`)
 };
 
@@ -364,6 +367,7 @@ if (localStorage.getItem('characters') === null) {
   seriesList();
 } else {
   characters = JSON.parse(localStorage.getItem('characters'))
+  $('#enter-site button').show()
 }
 
 $('.form-filter').on('change', $('input'),function(event){

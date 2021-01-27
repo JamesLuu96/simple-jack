@@ -367,6 +367,15 @@ button {
     font-size: 17px;
 }
 
+.form-filter label {
+    margin: 5px;
+    padding: 3px;
+}
+.form-filter input {
+    margin-right: 5px;
+}
+
+
 .legendary {
     color: rgb(238, 223, 12) !important;
 }

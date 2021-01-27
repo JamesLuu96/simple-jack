@@ -10,7 +10,13 @@ var player = JSON.parse(localStorage.getItem('player')) ||
     handSum: 0,
     money: 300,
     bet: 0,
-    inventory: [],
+    inventory: [{
+        name: 'Level 1 Might',
+        path: 'https://images-na.ssl-images-amazon.com/images/I/71sFiAksnIL._AC_SY450_',
+        ext: '.jpg',
+        might: 1,
+        mightAdd: true
+      }],
     mightSum: 0,
     mightProduct: 0,
     healAmount: 0
@@ -35,6 +41,7 @@ var enterSite = function(){
     $('#contact').hide()
     $('.navbar').hide()
     $('#footer').hide()
+    $('#enter-site button').hide()
 }
 enterSite()
 // Enter Site Button Event Listener
