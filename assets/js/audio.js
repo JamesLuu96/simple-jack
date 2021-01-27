@@ -205,3 +205,4 @@ var shopAudio = function(){
         joker.play()
     }, 900)
 }
+

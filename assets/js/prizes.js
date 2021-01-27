@@ -345,16 +345,6 @@ if (localStorage.getItem('characters') === null) {
   characters = JSON.parse(localStorage.getItem('characters'))
 }
 
-// set empty array or retrieve unlocked characters from localStorage
-// if (localStorage.getItem('unlockedChars') === null) {
-//   var unlockedChars = [];
-// } else {
-//   var temp = JSON.parse(localStorage.getItem('unlockedChars'));
-//   var unlockedChars = [];
-//   for (let i = 0; i < temp.length; i++) {
-//     unlockedChars.push(characters[temp[i].index])
-//   }
-// }
 var unlockedChars = JSON.parse(localStorage.getItem('unlockedChars')) || []
 var sameName = function(name){
   var found = false;
