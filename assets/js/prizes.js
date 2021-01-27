@@ -1,7 +1,7 @@
 const gateway = 'https://gateway.marvel.com';
 const apiKey = 'apikey=8dc4947cd23a3751e248fa0ac896866f';
 {/* <span class="skill" data-tooltip="Health: This unit increases your health by x and heals your hero by x."><span class="oi" data-glyph="heart"></span></span>
-<span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="arrow-thick-top"></span></span> */}
+<span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="plus"></span></span> */}
 // variable to store available character objects and build store pages
 var characters = [];
 // use this for list of available series and to make initial call to api
@@ -269,6 +269,23 @@ async function seriesList() {
 // displays store items based on selected series
 function seriesDisplay(value) {
   var filteredArray = characters.filter(x => x.series === value)
+  $('.form-filter input').each(function(){
+    var name = $(this)[0].id
+    if($(this)[0].checked){
+      if(name === 'filter-health'){
+        filteredArray = filteredArray.filter(x=>x.health)
+        console.log(`hp`)
+      } else if(name === 'filter-mightAdd'){
+        filteredArray = filteredArray.filter(x=>x.mightAdd)
+        console.log(`add`)
+      } else if(name === 'filter-mightMultiply'){
+        filteredArray = filteredArray.filter(x=>x.might).filter(x=>!x.mightAdd)
+        console.log(`multiply`)
+      } else if(name === 'filter-legendary'){
+        filteredArray = filteredArray.filter(x=>x.legendary)
+      }
+    }
+  })
 
   // check if character is unlocked and prevent displaying on store page
   for (let i = 0; i < filteredArray.length; i++) {
@@ -282,14 +299,14 @@ function seriesDisplay(value) {
       var container = $('<div>').addClass('shop-item');
       if(filteredArray[i].might && filteredArray[i].health){
         if(filteredArray[i].mightAdd){
-          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'plus'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
         } else{
           container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit multiplies your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
         }
 
       } else if(filteredArray[i].might){
         if(filteredArray[i].mightAdd){
-          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'arrow-thick-top'))), $('<p>').text(`${filteredArray[i].might}`)))
+          container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'plus'))), $('<p>').text(`${filteredArray[i].might}`)))
         } else{
           container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Might: This unit multiplies your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].might}`)))
         }
@@ -344,6 +361,13 @@ if (localStorage.getItem('characters') === null) {
 } else {
   characters = JSON.parse(localStorage.getItem('characters'))
 }
+
+$('.form-filter').on('change', $('input'),function(event){
+  event.preventDefault()
+  console.log(`changed`)
+  $('.shop-container').empty();
+  seriesDisplay($('.series').val());
+})
 
 
 var sameName = function(name){
