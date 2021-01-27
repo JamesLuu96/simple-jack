@@ -1,3 +1,32 @@
+// player Object
+var player = JSON.parse(localStorage.getItem('player')) || 
+{ 
+    name: 'player',
+    character: 'gambit',
+    level: 1,
+    maxHp: 100,
+    hp: 100,
+    hand: [],
+    handSum: 0,
+    money: 300,
+    bet: 0,
+    inventory: [],
+    mightSum: 0,
+    mightProduct: 0,
+    healAmount: 0
+}
+// dealer Object
+var dealer = JSON.parse(localStorage.getItem('dealer')) || 
+{ 
+    name: 'dealer',
+    level: 1,
+    maxHp: 100,
+    hp: 100,
+    hand: [],
+    handSum: 0,
+    xp: 0
+}
+
 // ----------------------Enter Site Section----------------------
 var enterSite = function(){
     $('.home-hidden').hide()
@@ -28,6 +57,10 @@ var enterPlaySite = function(){
     $('.nav-search').hide()
     $(`.play-cards`).hide()
     $('.navbar p').text(player.money)
+    $('#player .play-level').text(player.level)
+    $('#dealer .play-level').text(dealer.level)
+    $('#player .play-health').text(`HP: ${player.hp}/${player.maxHp}`)
+    $('#dealer .play-health').text(`HP: ${dealer.hp}/${dealer.maxHp}`)
 }
 $('#home-play').on('click', function(event){
     event.preventDefault()
@@ -42,6 +75,9 @@ $('.modal-background').on("click", () => {
     $('.modal').removeClass("is-active");
 })
 $('#btn-close').on("click", () => {
+    $('.modal').removeClass("is-active");
+})
+$('.modal-unlock-message button').on("click", () => {
     $('.modal').removeClass("is-active");
 })
 
@@ -85,4 +121,22 @@ $('.nav-shop').on('click', function(event){
 var saveGame = function(){
     localStorage.setItem('player', JSON.stringify(player))
     localStorage.setItem('dealer', JSON.stringify(dealer))
+}
+
+var levelUp = function(){
+    if(dealer.hp === 0){
+        player.level++
+        player.maxHp += player.level * 20
+        player.hp = player.maxHp
+        dealer.hp = dealer.maxHp
+    }
+    if(player.hp === 0 || dealer.xp === 5){
+        dealer.level++
+        dealer.maxHp += dealer.maxHp * .3
+        dealer.hp = dealer.maxHp
+        if(player.hp === 0){
+            player.hp = player.maxHp
+        }
+        dealer.xp = 0
+    }
 }

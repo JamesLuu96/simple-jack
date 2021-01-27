@@ -73,7 +73,7 @@ const selections = [
   {
     'series': 'New X-Men',
     'id': '749'
-  }  
+  }
 ];
 
 
@@ -139,90 +139,90 @@ var health = [
   }
 ]
 
-var mightRandom = function(){
+var mightRandom = function () {
   var random = Math.floor((Math.random() * 100) + 1)
-  if (random < 20){
+  if (random < 20) {
     return 0
-  } else if (random <= 40){
+  } else if (random <= 40) {
     return 1
-  } else if (random <= 60){
+  } else if (random <= 60) {
     return 2
-  } else if (random <= 75){
+  } else if (random <= 75) {
     return 3
-  } else if (random <= 85){
+  } else if (random <= 85) {
     return 4
-  } else if (random <= 95){
+  } else if (random <= 95) {
     return 5
   } else {
     return 6
   }
 }
 
-var healthRandom = function(){
+var healthRandom = function () {
   var random = Math.floor((Math.random() * 100) + 1)
-  if (random <= 20){
+  if (random <= 20) {
     return 0
-  } else if(random <= 40){
+  } else if (random <= 40) {
     return 1
-  } else if(random <= 65){
+  } else if (random <= 65) {
     return 2
-  } else if(random <= 90){
+  } else if (random <= 90) {
     return 3
   } else {
     return 4
   }
 }
 
-var randomValues = function(obj){
+var randomValues = function (obj) {
   // 1 / 100
   var mightOrHealth = Math.floor((Math.random() * 100) + 1)
   const mightNum = mightRandom()
   const healthNum = healthRandom()
   const goodOrBad = Math.floor((Math.random() * 2) + 1)
   const legendary = Math.floor((Math.random() * 50) + 1)
-  if(!obj.cost){
+  if (!obj.cost) {
     obj.cost = 0
   }
 
   // 30% Health
-  if(mightOrHealth <= 30){
+  if (mightOrHealth <= 30) {
     obj.health = health[healthNum].health
     obj.cost += health[healthNum].cost
-  // 50% Might
-  } else if (mightOrHealth <= 80){
+    // 50% Might
+  } else if (mightOrHealth <= 80) {
     obj.might = might[mightNum].might
     obj.mightAdd = might[mightNum].mightAdd
     obj.cost += might[mightNum].cost
-  // 20% Both
-  } else{
+    // 20% Both
+  } else {
     obj.might = might[mightNum].might
     obj.mightAdd = might[mightNum].mightAdd
     obj.cost += might[mightNum].cost + health[healthNum].cost
     obj.health = health[healthNum].health
   }
   // adds random amount to cost
-  if(goodOrBad === 1){
+  if (goodOrBad === 1) {
     obj.cost -= Math.floor(Math.random() * 10)
-  }else{
+  } else {
     obj.cost += Math.floor(Math.random() * 10)
   }
   // legendary card
-  if((legendary < 5 && mightOrHealth > 30) || (legendary < 5 && mightOrHealth > 80)){
+  if ((legendary < 5 && mightOrHealth > 30) || (legendary < 5 && mightOrHealth > 80)) {
     obj.legendary = true
-    if(obj.mightAdd){
+    if (obj.mightAdd) {
       var damage = (Math.floor(Math.random() * (100 - 50) + 50)) + 1
       obj.might += damage
-      obj.cost += Math.floor(((2000 * (damage * .01))*2.5))
+      obj.cost += Math.floor(((2000 * (damage * .01)) * 2.5))
     } else {
       var damage = Math.random() * (10 - 5) + 5
-      damage = Math.round(damage*10)/10
+      damage = Math.round(damage * 10) / 10
       obj.might += damage
-      obj.might = Math.round(obj.might*10)/10
+      obj.might = Math.round(obj.might * 10) / 10
       obj.cost += Math.floor((2000 * damage))
     }
   }
   return obj
-  
+
 }
 // builds character array of objects
 async function seriesList() {
@@ -238,28 +238,28 @@ async function seriesList() {
 
     // iterate through each character in each series
     for (let i = 0; i < data.data.results.length; i++) {
-      
+
       var picPath = data.data.results[i].thumbnail.path;
       // prevents characters without distinct pictures from being stored
       if (picPath.includes('image_not_available')) {
         continue;
       } else {
         var character = {
-            name: data.data.results[i].name,
-            path: data.data.results[i].thumbnail.path,
-            ext: data.data.results[i].thumbnail.extension,
-            id: data.data.results[i].id,
-            series: selections[x].id,
-            index: index
+          name: data.data.results[i].name,
+          path: data.data.results[i].thumbnail.path,
+          ext: data.data.results[i].thumbnail.extension,
+          id: data.data.results[i].id,
+          series: selections[x].id,
+          index: index
         }
         characters.push(character);
         index++
       }
     }
     // saves to localStorage to prevent same user from making multiple api calls
-    
+
   }
-  for(let i = 0; i<characters.length; i++){
+  for (let i = 0; i < characters.length; i++) {
     characters[i] = randomValues(characters[i])
   }
   localStorage.setItem('characters', JSON.stringify(characters))
@@ -319,7 +319,7 @@ function seriesDisplay(value) {
       var picture = $('<img>').attr('src', thumbnail);
       container.append(picture)
       var nameEl = $('<h3>').text(`${name}`);
-      if(filteredArray[i].legendary){
+      if (filteredArray[i].legendary) {
         nameEl.addClass('legendary')
       }
       var shopItemInfoEl = $('<div>').addClass('shop-item-info').append(nameEl, $('<p>').text(filteredArray[i].cost).prepend($('<span>').addClass('oi').attr('data-glyph', 'flash')))
@@ -335,24 +335,28 @@ function seriesDisplay(value) {
 };
 
 // refresh store page and call function to display currently selected series
-$('.series').on('change', function(event) {
+$('.series').on('change', function (event) {
   var value = event.target.value;
   $('.shop-container').empty();
   seriesDisplay(value);
 })
 
 // set unlocked character in localStorage and global variable
-$('.shop-container').on('click', '.unlock-card', function(event) {
+$('.shop-container').on('click', '.unlock-card', function (event) {
   var cost = characters[event.target.getAttribute('data-index')].cost
   if (player.money >= cost) {
     player.money -= cost
     player.inventory.push(characters[event.target.getAttribute('data-index')]);
-    localStorage.setItem('player.inventory', JSON.stringify(player.inventory));
+    updateStats()
+    if(characters[event.target.getAttribute('data-index')].health){
+      player.maxHp += characters[event.target.getAttribute('data-index')].health
+    }
     $('.series').trigger('change');
     $('.navbar p').text(player.money)
   } else {
-    alert('You don\'t have enough money');
+    unlockErrorMessage();
   }
+  saveGame()
 })
 
 // check if api call needs to run or set characters from localStorage
@@ -378,6 +382,76 @@ var sameName = function(name){
           break;
       }
   }
-  
+
   return found
+}
+
+function showMyItems() {
+  $('.inventory-box').text('')
+  console.log(player.inventory)
+  if (player.inventory.length === 0) {
+    var message = $('<p>').text("You have no characters.").addClass("notification  is-light")
+    $('.inventory-box').append(message)
+  } else {
+    for (var i = 0; i < player.inventory.length; i++) {
+      var name = player.inventory[i].name
+      var ext = player.inventory[i].ext
+      var path = player.inventory[i].path
+      var itemContainerEl = $('<div>').addClass('myItems-container')
+      var itemImage = $('<img>').attr('src', path + "." + ext).addClass('myItems-img')
+      var itemHeader = $('<h4>').text(name).addClass('inventory-header')
+      if(player.inventory[i].legendary){
+        itemHeader.addClass('legendary')
+      }
+      $(itemContainerEl).append(itemImage, itemHeader)
+      
+
+      var skillsEl = $('<div>').addClass('is-flex')
+
+      if(player.inventory[i].health){
+        var spanEl = $('<span>').append($('<span>').addClass('oi').attr('data-glyph', 'heart'))
+        var value = $('<p>').text(player.inventory[i].health)
+        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+      }
+      if(player.inventory[i].mightAdd){
+        var spanEl = $('<span>').append($('<span>').addClass('oi').attr('data-glyph', 'plus'))
+        var value = $('<p>').text(player.inventory[i].might)
+        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+      }
+      if(player.inventory[i].might && !player.inventory[i].mightAdd){
+        var spanEl = $('<span>').append($('<span>').addClass('oi').attr('data-glyph', 'x'))
+        var value = $('<p>').text(player.inventory[i].might)
+        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+      }
+      $(itemContainerEl).prepend(skillsEl)
+      $('.inventory-box').append($(itemContainerEl))
+    }
+  }
+}
+$('.nav-inventory').on('click', function () {
+  $('.modal-inventory').addClass('is-active')
+  showMyItems(player.inventory)
+})
+$('#inventory-close').on('click', function () {
+  $('.modal-inventory').removeClass('is-active')
+})
+
+function unlockErrorMessage() {
+  $('.modal-unlock-message').addClass('is-active')
+}
+
+var updateStats = function(){
+  player.mightSum = 0
+  player.mightProduct = 1
+  player.healAmount = 0
+  for(let i = 0; i < player.inventory.filter(x=>x.might).length; i++){
+    if(player.inventory.filter(x=>x.might)[i].mightAdd){
+        player.mightSum += player.inventory.filter(x=>x.might)[i].might
+    } else{
+        player.mightProduct += player.inventory.filter(x=>x.might)[i].might
+    }
+  }
+  for(let i = 0; i < player.inventory.filter(x=>x.health).length; i++){
+    player.healAmount += player.inventory.filter(x=>x.health)[i].health
+  }
 }

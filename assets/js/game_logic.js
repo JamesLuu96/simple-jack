@@ -211,7 +211,7 @@ var gameOver = function () {
         $('.game-result').text('')
         $('#player-text').hide()
         $('#dealer-text').hide()
-        $('#play-button').show()
+        $('#play-button').show()``
         $('.cards').text('')
         $('.player span').text(0)
         $('.player p').hide()

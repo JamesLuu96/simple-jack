@@ -1,31 +1,5 @@
 var deckId;
 
-// player Object
-var player = JSON.parse(localStorage.getItem(player)) || 
-{ 
-    name: 'player',
-    character: 'gambit',
-    level: 1,
-    maxHp: 100,
-    hp: 100,
-    hand: [],
-    handSum: 0,
-    money: 300,
-    bet: 0,
-    inventory: [],
-    mightSum: 0,
-    mightProduct: 0
-}
-// dealer Object
-var dealer = JSON.parse(localStorage.getItem(dealer)) || 
-{ 
-    name: 'dealer',
-    level: 1,
-    maxHp: 100,
-    hp: 100,
-    hand: [],
-    handSum: 0
-}
 var resetGame = function(playerObj){
     playerObj.hand = []
     playerObj.handSum = 0
@@ -44,14 +18,20 @@ async function beginGame(){
 
 // Fetches New Deck
 async function getDeck() {
-    const res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
-    const data = await res.json()
+    var res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
+    while(!res.ok){
+        res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
+    }
+    var data = await res.json()
     deckId = data.deck_id
 }
 // Deals Card and shows it
 async function dealCard(number, playerObj) {
-    const res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
-    const data = await res.json()
+    var res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
+    while(!res.ok){
+        res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
+    }
+    var data = await res.json()
     for (let i = 0; i < number; i++) {
         var cardValue = cardValueEvaluate(data.cards[i].code, playerObj);
         var cardObj = {
@@ -165,30 +145,44 @@ async function doubleDown() {
 
 var gameOver = function (result) {
     $('.play-game-buttons').hide()
+    var damage = Math.floor(player.bet + player.mightSum)
+    damage = Math.floor(player.bet * player.mightProduct)
     switch (result){
         case 'win':
-            $('.play-result').text(`You Won! You earned ${player.bet} might!`)
-            player.money += player.bet
+            player.money += damage
+            dealer.hp = Math.max(dealer.hp - damage, 0)
+            player.hp = Math.min(player.hp + player.healAmount, player.maxHp)
+            $('.play-result').text(`You Won! You earned ${damage} might! \n You healed ${player.healAmount}.`)
+            dealer.xp++
             break
         case 'lose':
             $('.play-result').text(`You Lost. You lost ${player.bet} might!`)
+            player.hp = Math.max(player.hp - damage, 0)
             player.money -= player.bet
             break
-
         case 'tie':
             $('.play-result').text(`You tied.`)
             break
     }
+    $('#player .play-level').text(player.level)
+    $('#dealer .play-level').text(dealer.level)
+    $('#player .play-health').text(`HP: ${player.hp}/${player.maxHp}`)
+    $('#dealer .play-health').text(`HP: ${dealer.hp}/${dealer.maxHp}`)
     $('.navbar p').text(player.money)
     $('.play-result').show()
-    saveGame()
     setTimeout(function () {
+        levelUp()
+        $('#player .play-level').text(player.level)
+        $('#dealer .play-level').text(dealer.level)
+        $('#player .play-health').text(`HP: ${player.hp}/${player.maxHp}`)
+        $('#dealer .play-health').text(`HP: ${dealer.hp}/${dealer.maxHp}`)
         $('.play-placebet').show()
         $('.navbar h1').show()
         $('.navbar .nav-shop').show()
         $('.play-result').text('')
         $('.play-cards').hide()
         $('.play-score').hide()
+        saveGame()
     }, 5000)
 }
 
@@ -202,7 +196,7 @@ $(".play-placebet").on("click", function (event) {
 $('#play-bet form').on('submit', function (event) {
     event.preventDefault()
     player.bet = parseInt($('#bet-money').val())
-    if (player.bet > player.money || player.bet === NaN || !player.bet) {
+    if (player.bet > player.money || player.bet === NaN) {
         return
     }
     $('.play-placebet').hide()

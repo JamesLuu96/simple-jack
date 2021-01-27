@@ -313,6 +313,7 @@ button {
     text-align: center;
     width: 300px;
     background: #333;
+    
 }
 
 
@@ -367,7 +368,7 @@ button {
 }
 
 .legendary {
-    color: rgb(238, 223, 12);
+    color: rgb(238, 223, 12) !important;
 }
 
 .shop-item span {
@@ -415,8 +416,36 @@ button {
 .shop-item .shop-item-info .btn-green{
     background-color: #13b91b;
 }
-
-
+.inventory-box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+.modal-inventory{
+    overflow: scroll;
+}
+.modal-unlock-message .modal-card {
+    border-radius: 7px;
+}
+#inventory-title{
+    padding-bottom: 20px;;
+}
+.modal-inventory .modal-card{
+    width:30%;
+}
+.myItems-img{
+border-radius: 7px;
+width:100%;
+}
+.myItems-container{
+width:30%;
+}
+.inventory-header{
+  color:rgb(138, 138, 138); 
+  text-align: center; 
+}
 /* Footer */
 #footer{
     background-color: #5f5f5f;
@@ -472,14 +501,24 @@ button {
     .play-cards img {
         max-width: 30%;
     }
-
+    .modal-inventory .modal-card{
+        width:50%;
+    }
+    .myItems-container{
+        width:49%;
+       
+      }
+    
     /* #shop{
         overflow:scroll;
         padding-top:15%;
         position: relative;
         overflow-x: hidden;
     } */
-   
-
+}
+@media screen and (min-width: 769px){
+.modal-content, .modal-card {
+    width: auto;
+}
 }
 

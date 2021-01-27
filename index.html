@@ -46,7 +46,8 @@
         <div class="home-hidden">
             <span id="mute" class="oi mute" data-glyph="volume-high"></span>
             <h1>Simple <span>Jack</span></h1>
-            <img class="gambit animate__animated animate__fadeInLeft animate__delay-0.5s" src="./assets/images/gambit.png" alt="Gambit">
+            <img class="gambit animate__animated animate__fadeInLeft animate__delay-0.5s"
+                src="./assets/images/gambit.png" alt="Gambit">
 
             <div class="home-buttons animate__animated animate__fadeInRight animate__delay-0.2s">
                 <button class="button is-success is-outlined is-medium" id="home-play">Play Now</button>
@@ -91,13 +92,13 @@
 
     <!-- Play Screen -->
     <div id="play">
-
         <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
         <div class="play-container">
             <div id="dealer" class="user-info">
                 <div>
-                    <p>Dealer</p>
+                    <p>Level <span class="play-level"></span> Dealer</p>
+                    <p class="play-health"></p>
                     <div class="user-display">
                         <img src="./assets/images/user-icon/joker.png">
                     </div>
@@ -111,7 +112,7 @@
             <div class="play-area">
                 <div class="play-dealer dealer">
                     <div class="play-cards">
-                       <!-- Dynamically Add Cards -->
+                        <!-- Dynamically Add Cards -->
                     </div>
                     <div class="play-score">
                         Dealer Score: <span></span>
@@ -136,15 +137,11 @@
                 </div>
             </div>
         </div>
-    
-        <form action="">
-            
-
-        </form>
 
         <div id="player" class="user-info">
             <div>
-                <p>Gambit</p>
+                <p>Level <span class="play-level"></span> Gambit</p>
+                <p class="play-health"></p>
                 <div class="user-display">
                     <img src="./assets/images/user-icon/gambit.png">
                 </div>
@@ -173,20 +170,21 @@
                 </form>
             </div>
         </div>
-        <div id="play-reload" class="modal modal-reload">
-            <div class="modal-background"></div>
-            <div class="modal-card modal-reload">
-                <section class="modal-card-body">
-                    <div class="field">
-                        <label class="label">You seem to have run out of money! Click the reload button to get
-                            another
-                            $300
-                            dollars</label>
-                    </div>
-                    <button class="button is-success btn-reload">RELOAD</button>
-                </section>
-            </div>
+    </div>
+    <div id="play-reload" class="modal modal-reload">
+        <div class="modal-background"></div>
+        <div class="modal-card modal-reload">
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">You seem to have run out of money! Click the reload button to get
+                        another
+                        $300
+                        dollars</label>
+                </div>
+                <button class="button is-success btn-reload">RELOAD</button>
+            </section>
         </div>
+    </div>
     </div>
     <!-- Shop Screen -->
     <div id="shop">
@@ -245,12 +243,35 @@
                     <button class="btn-red" title="you need 200 points">unlock</button>
                 </div>
             </div> -->
-            
+
         </div>
 
     </div>
 
+    <!--inventory modal-->
+    <div class="modal modal-inventory">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory</p>
+                <!-- Content ... -->
+                <div class="inventory-box">
 
+                </div>
+            </section>
+            <button class="button is-dark" id="inventory-close">Close</button>
+        </div>
+    </div>
+    <!--shop unlock message-->
+    <div class="modal modal-unlock-message">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p>You don't have enough money</p>
+            </section>
+            <button type="submit" class="button is-success">OK</button>
+        </div>
+    </div>
     <!-- Contact Us Screen -->
     <section id="contact">
         <!-- Work in Progress -->
