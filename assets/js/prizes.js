@@ -487,7 +487,8 @@ function searchItems(searchItem) {
 $('#search-character').on('click', function () {
   console.log($(this))
   var searchItem = $(this).siblings().val()
-  if (searchItem == '') {
+  if (searchItem == '' || (typeof searchItem !== "string")) {
+    $(this).siblings().first().val('')
     $('.shop-container').empty()
     var messagediv = $('<div>').addClass('notification is-danger is-light')
     var message = $('<p>').text('please insert the correct name')
@@ -496,6 +497,7 @@ $('#search-character').on('click', function () {
 
   } else {
     searchItems(searchItem)
+    $(this).siblings().first().val('')
   }
 
 })
