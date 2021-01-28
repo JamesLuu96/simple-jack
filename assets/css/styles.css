@@ -199,13 +199,14 @@ button {
     color: white;
     font-size: 130%;
 }
+
 .play-container{
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 .play-container div {
-    margin: 10px 0;
+    margin: 4px 0;
 }
 
 .play-area {
