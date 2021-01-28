@@ -521,17 +521,14 @@ width:30%;
         width:49%;
        
       }
-    
+      .modal-content, .modal-card {
+        width: auto;
+    }
     /* #shop{
         overflow:scroll;
         padding-top:15%;
         position: relative;
         overflow-x: hidden;
     } */
-}
-@media screen and (min-width: 769px){
-.modal-content, .modal-card {
-    width: auto;
-}
 }
 
