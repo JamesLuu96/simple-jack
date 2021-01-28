@@ -434,17 +434,7 @@ function showMyItems() {
     }
   }
 }
-$('.nav-inventory').on('click', function () {
-  $('.modal-inventory').addClass('is-active')
-  showMyItems(player.inventory)
-})
-$('#inventory-close').on('click', function () {
-  $('.modal-inventory').removeClass('is-active')
-})
 
-function unlockErrorMessage() {
-  $('.modal-unlock-message').addClass('is-active')
-}
 
 var updateStats = function () {
   player.mightSum = 0
@@ -482,22 +472,32 @@ function searchItems(searchItem) {
     display(filterArray)
   }
 
-
 }
-$('#search-character').on('click', function () {
-  console.log($(this))
-  var searchItem = $(this).siblings().val()
-  if (searchItem == '' || (typeof searchItem !== "string")) {
-    $(this).siblings().first().val('')
-    $('.shop-container').empty()
-    var messagediv = $('<div>').addClass('notification is-danger is-light')
-    var message = $('<p>').text('please insert the correct name')
-    messagediv.append(message)
-    $('.shop-container').append(messagediv)
+$('.nav-inventory').on('click', function () {
+  $('.modal-inventory').addClass('is-active')
+  showMyItems(player.inventory)
+})
+$('#inventory-close').on('click', function () {
+  $('.modal-inventory').removeClass('is-active')
+})
 
+function unlockErrorMessage() {
+  $('.modal-unlock-message').addClass('is-active')
+}
+
+$('#search-character').on('click', function () {
+  var searchItem = $(this).siblings().val()
+  if (searchItem == null || searchItem == '') {
+    // $('#search').prop('required', true);
+    $('.shop-container').empty()
+    var message = $('<p>').text('Please fill the input').addClass('notification is-primary is-light')
+    $('.shop-container').append(message)
   } else {
     searchItems(searchItem)
     $(this).siblings().first().val('')
   }
 
 })
+
+
+

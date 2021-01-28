@@ -337,17 +337,16 @@ button {
     display: flex
     
 }
-.series{
-    width: 300px;
-    height: 40px;
-    border-left: 1px solid rgb(224, 224, 224);
-}
-#search{
- width:200px;
+
+ #search{ 
+  width:200px; 
  height: 40px;
  padding: 11px 40px 11px 15px;
  font-size: 14px;
 
+} 
+.search_icon{
+    height:22px;
 }
 #search-character{
     height: 41px;
@@ -366,10 +365,7 @@ button {
 .input, .select select, .textarea {
     border-radius: 0;
 }
-.fas .fa-search{
 
-  color:#333; 
-}
 
 /* #search-character{
     height: 40px;
