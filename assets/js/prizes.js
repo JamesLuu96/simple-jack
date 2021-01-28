@@ -277,13 +277,13 @@ function seriesDisplay(value) {
     if($(this)[0].checked){
       if(name === 'filter-health'){
         filteredArray = filteredArray.filter(x=>x.health)
-        console.log(`hp`)
+        
       } else if(name === 'filter-mightAdd'){
         filteredArray = filteredArray.filter(x=>x.mightAdd)
-        console.log(`add`)
+        
       } else if(name === 'filter-mightMultiply'){
         filteredArray = filteredArray.filter(x=>x.might).filter(x=>!x.mightAdd)
-        console.log(`multiply`)
+        
       } else if(name === 'filter-legendary'){
         filteredArray = filteredArray.filter(x=>x.legendary)
       }
@@ -372,7 +372,7 @@ if (localStorage.getItem('characters') === null) {
 
 $('.form-filter').on('change', $('input'),function(event){
   event.preventDefault()
-  console.log(`changed`)
+  
   $('.shop-container').empty();
   seriesDisplay($('.series').val());
 })
@@ -392,7 +392,7 @@ var sameName = function(name){
 
 function showMyItems() {
   $('.inventory-box').text('')
-  console.log(player.inventory)
+  
   if (player.inventory.length === 0) {
     var message = $('<p>').text("You have no characters.").addClass("notification  is-light")
     $('.inventory-box').append(message)
