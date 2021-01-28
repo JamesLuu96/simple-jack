@@ -246,9 +246,11 @@ async function seriesList() {
       if (picPath.includes('image_not_available')) {
         continue;
       } else {
+        var path = data.data.results[i].thumbnail.path
+        path = path.substring(0, 4) + 's' + path.substring(4, path.length)
         var character = {
           name: data.data.results[i].name,
-          path: data.data.results[i].thumbnail.path,
+          path: path,
           ext: data.data.results[i].thumbnail.extension,
           id: data.data.results[i].id,
           series: selections[x].id,
