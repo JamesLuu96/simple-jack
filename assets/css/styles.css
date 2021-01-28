@@ -423,8 +423,8 @@ button {
 /* #contact {
 } */
 
-.shop-item .shop-item-info .btn-red{
-    background-color: #d61212;
+.shop-item .shop-item-info .btn-red, .btn-red{
+    background-color: #d61212 !important;
 }
 .shop-item .shop-item-info .btn-green{
     background-color: #13b91b;

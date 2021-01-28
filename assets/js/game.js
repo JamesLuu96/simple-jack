@@ -198,7 +198,7 @@ $(".play-placebet").on("click", function (event) {
     $('.modal-place-bet').addClass("is-active");
     $('#play-bet label span').text(player.money)
     $('#play-bet .display-might span').text(player.mightSum)
-    $('#play-bet .display-multiply span').text(player.mightProduct - 1)
+    $('#play-bet .display-multiply span').text((player.mightProduct - 1).toFixed(2))
     $('#bet-money').trigger('select');
 })
 

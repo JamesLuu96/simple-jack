@@ -5,78 +5,8 @@ const apiKey = 'apikey=6183cc1410bb4bd83659bc716cd7fadb';
 {/* <span class="skill" data-tooltip="Health: This unit increases your health by x and heals your hero by x."><span class="oi" data-glyph="heart"></span></span>
 <span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="plus"></span></span> */}
 // variable to store available character objects and build store pages
-var characters = [];
 // use this for list of available series and to make initial call to api
-const selections = [
-  {
-    'series': 'Amazing Spider-Man',
-    'id': '454'
-  },
-  {
-    'series': 'Black Panther',
-    'id': '784'
-  },
-  {
-    'series': 'Blade',
-    'id': '1123'
-  },
-  {
-    'series': 'Captain America',
-    'id': '1997'
-  },
-  {
-    'series': 'Captain Marvel',
-    'id': '16280'
-  },
-  {
-    'series': 'Daredevil',
-    'id': '12916'
-  },
-  {
-    'series': 'Deadpool',
-    'id': '5701'
-  },
-  {
-    'series': 'Power Man and Iron Fist',
-    'id': '21122'
-  },
-  {
-    'series': 'Punisher 2099',
-    'id': '20020'
-  },
-  {
-    'series': 'Spider-Verse',
-    'id': '18892'
-  },
-  {
-    'series': 'Thor',
-    'id': '2473'
-  },
-  {
-    'series': 'Wolverine Origins',
-    'id': '2375'
-  },
-  {
-    'series': 'Extraordinary X-Men',
-    'id': '20460'
-  },
-  {
-    'series': 'Fantastic Four',
-    'id': '16557'
-  },
-  {
-    'series': 'Luke Cage',
-    'id': '23045'
-  },
-  {
-    'series': 'Marvel Adventures the Avengers',
-    'id': '1107'
-  },
-  {
-    'series': 'New X-Men',
-    'id': '749'
-  }
-];
+const selections = [454, 784, 1123, 1997, 16280, 12916, 5701, 21122, 20020, 18892, 2473, 2375, 20460, 16557, 23045, 1107, 749]
 
 
 // Might Values
@@ -235,7 +165,7 @@ async function seriesList() {
   // iterate through array for each series
   for (let x = 0; x < selections.length; x++) {
 
-    var response = await fetch(`${seriesSearch}${selections[x].id}/${charLimit}&${apiKey}`);
+    var response = await fetch(`${seriesSearch}${selections[x]}/${charLimit}&${apiKey}`);
     var data = await response.json();
 
     // iterate through each character in each series
@@ -253,7 +183,7 @@ async function seriesList() {
           path: path,
           ext: data.data.results[i].thumbnail.extension,
           id: data.data.results[i].id,
-          series: selections[x].id,
+          series: selections[x],
           index: index
         }
         characters.push(character);
@@ -267,13 +197,11 @@ async function seriesList() {
     characters[i] = randomValues(characters[i])
   }
   localStorage.setItem('characters', JSON.stringify(characters))
-  $('#enter-site button').show()
-  console.log(`Running API Call`)
 };
 
 // displays store items based on selected series
 function seriesDisplay(value) {
-  var filteredArray = characters.filter(x => x.series === value)
+  var filteredArray = characters.filter(x => x.series === parseInt(value))
   $('.form-filter input').each(function(){
     var name = $(this)[0].id
     if($(this)[0].checked){
@@ -364,13 +292,6 @@ $('.shop-container').on('click', '.unlock-card', function (event) {
   saveGame()
 })
 
-// check if api call needs to run or set characters from localStorage
-if (localStorage.getItem('characters') === null) {
-  seriesList();
-} else {
-  characters = JSON.parse(localStorage.getItem('characters'))
-  $('#enter-site button').show()
-}
 
 $('.form-filter').on('change', $('input'),function(event){
   event.preventDefault()

@@ -1,3 +1,10 @@
+var gameVersion;
+var characters = []
+
+if(localStorage.getItem('gameVersion')){
+    gameVersion = localStorage.getItem('gameVersion')
+}
+
 // player Object
 var player = JSON.parse(localStorage.getItem('player')) || 
 { 
@@ -41,16 +48,76 @@ var enterSite = function(){
     $('#contact').hide()
     $('.navbar').hide()
     $('#footer').hide()
-    $('#enter-site button').hide()
+    $('#enter-site .btn-red').hide()
+    $('#enter-site .enter-site-btn').hide()
+    // If Update is not Current
+    if(gameVersion !== '1.0'){
+        $('#enter-site .btn-red').show()
+    // If Update is Current
+    }else{
+        async function showSite(){
+            if(localStorage.getItem('characters')){
+                characters = JSON.parse(localStorage.getItem('characters'))
+            }else{
+                await seriesList()
+            }
+            $('#enter-site .enter-site-btn').show()
+        }
+        showSite()
+    }
+
 }
 enterSite()
 // Enter Site Button Event Listener
-$('#enter-site button').on('click', function(event){
+$('#enter-site .enter-site-btn').on('click', function(event){
     event.preventDefault()
     $('.home-hidden').fadeIn()
     $('#enter-site').fadeOut()
     $('#mute').fadeIn()
     playSong(mySong)
+})
+// Update Game Button
+$('#enter-site .btn-red').on('click', function(event){
+    event.preventDefault()
+    async function updateGame(){
+        characters = []
+        gameVersion = '1.0'
+        player = { 
+            name: 'player',
+            character: 'gambit',
+            level: 1,
+            maxHp: 100,
+            hp: 100,
+            hand: [],
+            handSum: 0,
+            money: 300,
+            bet: 0,
+            inventory: [{
+                name: 'Level 1 Might',
+                path: 'https://images-na.ssl-images-amazon.com/images/I/71sFiAksnIL._AC_SY450_',
+                ext: '.jpg',
+                might: 1,
+                mightAdd: true
+            }],
+            mightSum: 1,
+            mightProduct: 1,
+            healAmount: 0
+        }
+        dealer = { 
+            name: 'dealer',
+            level: 1,
+            maxHp: 100,
+            hp: 100,
+            hand: [],
+            handSum: 0,
+            xp: 0
+        }
+        await seriesList()
+        saveGame()
+        $('#enter-site .enter-site-btn').show()
+    }
+    $('#enter-site .btn-red').hide()
+    updateGame()
 })
 // ----------------------Home Section----------------------
 
@@ -127,9 +194,10 @@ $('.nav-shop').on('click', function(event){
 
 // ----------------------Save Game----------------------
 
-var saveGame = function(){
+function saveGame(){
     localStorage.setItem('player', JSON.stringify(player))
     localStorage.setItem('dealer', JSON.stringify(dealer))
+    localStorage.setItem('gameVersion', gameVersion)
 }
 
 var levelUp = function(){
