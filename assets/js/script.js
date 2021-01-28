@@ -212,7 +212,7 @@ var levelUp = function(){
     }
     if(player.hp === 0 || dealer.xp === 5){
         dealer.level++
-        dealer.maxHp += dealer.maxHp * .3
+        dealer.maxHp += Math.floor(dealer.maxHp * .3)
         dealer.hp = dealer.maxHp
         if(player.hp === 0){
             player.hp = player.maxHp
