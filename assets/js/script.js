@@ -60,6 +60,7 @@ var enterPlaySite = function(){
     $('#home').hide()
     $('.navbar').fadeIn()
     $('.nav-shop').hide()
+    $('.start-btn').hide()
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
     $(`.play-cards`).hide()

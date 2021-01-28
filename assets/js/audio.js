@@ -138,6 +138,7 @@ var jokerEntry = [
         joker.onended = function(){
             $('#dealer-text').hide()
             $('.nav-shop').show()
+            $('.start-btn').show()
         }
     }},
     {audio: function(){
@@ -149,6 +150,7 @@ var jokerEntry = [
         joker.onended = function(){
             $('#dealer-text').hide()
             $('.nav-shop').show()
+            $('.start-btn').show()
         }
     }},
     {audio: function(){
@@ -160,6 +162,7 @@ var jokerEntry = [
         joker.onended = function(){
             $('#dealer-text').hide()
             $('.nav-shop').show()
+            $('.start-btn').show()
         }
     }},
     {audio: function(){
@@ -171,6 +174,7 @@ var jokerEntry = [
         joker.onended = function(){
             $('#dealer-text').hide()
             $('.nav-shop').show()
+            $('.start-btn').show()
         }
     }},
     {audio: function(){
@@ -182,6 +186,7 @@ var jokerEntry = [
         joker.onended = function(){
             $('#dealer-text').hide()
             $('.nav-shop').show()
+            $('.start-btn').show()
         }
     }}
 ]
