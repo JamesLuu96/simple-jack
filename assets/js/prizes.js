@@ -492,7 +492,7 @@ $('#search-character').on('click', function () {
   var isValid = regex.test(searchItem);
   if (!isValid || searchItem == '') {
     $('.shop-container').empty()
-    var message = $('<p>').text('Please provide a valid input').addClass('notification is-primary is-light')
+    var message = $('<p>').text('Please provide a valid input').addClass('notification is-danger is-light')
     $('.shop-container').append(message)
   } else {
     searchItems(searchItem)
