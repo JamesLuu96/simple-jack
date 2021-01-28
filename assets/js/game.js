@@ -150,7 +150,7 @@ async function doubleDown() {
 var gameOver = function (result) {
     $('.play-game-buttons').hide()
     var damage = Math.floor(player.bet + player.mightSum)
-    damage = Math.floor(player.bet * player.mightProduct)
+    damage = Math.floor(damage * player.mightProduct)
     switch (result){
         case 'win':
             player.money += damage
@@ -158,11 +158,13 @@ var gameOver = function (result) {
             player.hp = Math.min(player.hp + player.healAmount, player.maxHp)
             $('.play-result').text(`You Won! You earned ${damage} might! \n You healed ${player.healAmount}.`)
             dealer.xp++
+            randomAudio(playerWinAudio)
             break
         case 'lose':
             $('.play-result').text(`You Lost. You lost ${player.bet} might!`)
             player.hp = Math.max(player.hp - damage, 0)
             player.money -= player.bet
+            randomAudio(playerLoseAudio)
             break
         case 'tie':
             $('.play-result').text(`You tied.`)
@@ -186,6 +188,7 @@ var gameOver = function (result) {
         $('.play-result').text('')
         $('.play-cards').hide()
         $('.play-score').hide()
+        $('.user-chat').hide()
         saveGame()
     }, 5000)
 }
@@ -193,7 +196,9 @@ var gameOver = function (result) {
 $(".play-placebet").on("click", function (event) {
     event.preventDefault()
     $('.modal-place-bet').addClass("is-active");
-    $('#play-bet span').text(player.money)
+    $('#play-bet label span').text(player.money)
+    $('#play-bet .display-might span').text(player.mightSum)
+    $('#play-bet .display-multiply span').text(player.mightProduct - 1)
     $('#bet-money').trigger('select');
 })
 
@@ -203,11 +208,16 @@ $('#play-bet form').on('submit', function (event) {
     if (player.bet > player.money || player.bet === NaN) {
         return
     }
+    var cards = new Audio()
+    cards.src = './assets/audio/cards-shuffle.mp3'
+    cards.play()
     $('.play-placebet').hide()
     $('.navbar h1').hide()
     $('.navbar .nav-shop').hide()
     $('.modal').removeClass("is-active");
-    beginGame();
+    cards.onended = function(){
+        beginGame();
+    }
 })
 
 $('.play-hit').on('click', async function(event) {

@@ -135,6 +135,10 @@ var jokerEntry = [
         joker.src = './assets/audio/Joker/joker-entry.wav'
         joker.play()
         $('#dealer-text').show()
+        joker.onended = function(){
+            $('#dealer-text').hide()
+            $('.nav-shop').show()
+        }
     }},
     {audio: function(){
         $('#dealer-text p').text(`This next part is SO funny..`)
@@ -142,6 +146,10 @@ var jokerEntry = [
         joker.src = './assets/audio/Joker/joker-entry2.wav'
         joker.play()
         $('#dealer-text').show()
+        joker.onended = function(){
+            $('#dealer-text').hide()
+            $('.nav-shop').show()
+        }
     }},
     {audio: function(){
         $('#dealer-text p').text(`How nice, you saved me a spot`)
@@ -149,6 +157,10 @@ var jokerEntry = [
         joker.src = './assets/audio/Joker/joker-entry3.wav'
         joker.play()
         $('#dealer-text').show()
+        joker.onended = function(){
+            $('#dealer-text').hide()
+            $('.nav-shop').show()
+        }
     }},
     {audio: function(){
         $('#dealer-text p').text(`Let's hear what you got...`)
@@ -156,6 +168,10 @@ var jokerEntry = [
         joker.src = './assets/audio/Joker/joker-entry4.wav'
         joker.play()
         $('#dealer-text').show()
+        joker.onended = function(){
+            $('#dealer-text').hide()
+            $('.nav-shop').show()
+        }
     }},
     {audio: function(){
         $('#dealer-text p').text(`Gonna love pulling the legs off you...`)
@@ -163,6 +179,10 @@ var jokerEntry = [
         joker.src = './assets/audio/Joker/joker-entry5.wav'
         joker.play()
         $('#dealer-text').show()
+        joker.onended = function(){
+            $('#dealer-text').hide()
+            $('.nav-shop').show()
+        }
     }}
 ]
 
@@ -177,6 +197,7 @@ var randomEntryAudio = function(){
         gambit.play()
         $('#player-text').show()
         gambit.onended = function(){
+            $('#player-text').hide()
             randomAudio(jokerEntry)
         }
     }

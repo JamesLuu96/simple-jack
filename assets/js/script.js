@@ -17,8 +17,8 @@ var player = JSON.parse(localStorage.getItem('player')) ||
         might: 1,
         mightAdd: true
       }],
-    mightSum: 0,
-    mightProduct: 0,
+    mightSum: 1,
+    mightProduct: 1,
     healAmount: 0
 }
 // dealer Object
@@ -59,7 +59,7 @@ var enterPlaySite = function(){
     $('#play').show()
     $('#home').hide()
     $('.navbar').fadeIn()
-    $('.nav-shop').show()
+    $('.nav-shop').hide()
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
     $(`.play-cards`).hide()
@@ -68,6 +68,7 @@ var enterPlaySite = function(){
     $('#dealer .play-level').text(dealer.level)
     $('#player .play-health').text(`HP: ${player.hp}/${player.maxHp}`)
     $('#dealer .play-health').text(`HP: ${dealer.hp}/${dealer.maxHp}`)
+    randomEntryAudio()
 }
 $('#home-play').on('click', function(event){
     event.preventDefault()
@@ -133,6 +134,9 @@ var saveGame = function(){
 var levelUp = function(){
     if(dealer.hp === 0){
         player.level++
+        player.inventory[0].name = `Level ${player.level} Might`
+        player.inventory[0].might++
+        updateStats()
         player.maxHp += player.level * 20
         player.hp = player.maxHp
         dealer.hp = dealer.maxHp
