@@ -473,6 +473,7 @@ function searchItems(searchItem) {
   }
 
 }
+
 $('.nav-inventory').on('click', function () {
   $('.modal-inventory').addClass('is-active')
   showMyItems(player.inventory)
@@ -487,15 +488,19 @@ function unlockErrorMessage() {
 
 $('#search-character').on('click', function () {
   var searchItem = $(this).siblings().val()
-  if (searchItem == null || searchItem == '') {
-    // $('#search').prop('required', true);
+  var regex = /^[A-Za-z0-9 ]+$/
+  var isValid = regex.test(searchItem);
+  if (!isValid || searchItem == '') {
     $('.shop-container').empty()
-    var message = $('<p>').text('Please fill the input').addClass('notification is-primary is-light')
+    var message = $('<p>').text('Please provide a valid input').addClass('notification is-primary is-light')
     $('.shop-container').append(message)
   } else {
     searchItems(searchItem)
     $(this).siblings().first().val('')
   }
+  // $('#search').prop('required', true);
+
+
 
 })
 
