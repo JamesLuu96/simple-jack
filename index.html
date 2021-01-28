@@ -30,7 +30,7 @@
             <!-- <button class="nav-search"><span class="fas fa-search"></span></button> -->
             <button class="nav-shop"><span class="oi cart" data-glyph="cart"></span></button>
             <button class="nav-inventory"><span class="oi" data-glyph="box"></span></button>
-            <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user"></button>
+            <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user" alt="gambit-icon"></button>
             <button><span class="oi mute" data-glyph="volume-high"></span></button>
         </div>
 
@@ -62,23 +62,30 @@
                     </header>
                     <section class="modal-card-body">
                         <!-- <div class="modal-content"> -->
-                        <h2>Introduction</h2>
-                        <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible
-                            without
-                            exceeding 21. In contrast to poker, where players compete with each other, blackjack is a
-                            one-on-one game between each player and the
-                            dealer.
+                        <h2>Blackjack Rules:</h2>
+                        <p>The basic rules of blackjack is simple. Players try to score as close to 21 as possible
+                            without exceeding 21. You are dealt two cards initially and if you aren't at 21 yet, you
+                            have the option to 'Hit', which means to draw another card.
                         </p>
-                        <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their
-                            face
-                            value. The jack, queen and king are worth 10 points each. The ace has a value of either 1
-                            point
-                            or 11 points, depending on its usage in
-                            your hand.</p>
-                        <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are
-                            responsible for paying out bets, they obviously can’t take insurance. They also can’t split
-                            their hand, double down on a good hand or surrender
-                            for half their bet.</p>
+                        <p>If you ever exeed the 21, then you lose. If you do not wish to draw a card, then you may choose
+                            to 'Stand'. Whoever is then closer to 21, will win the game.
+                        </p>
+                        <h2>Might:</h2>
+                        <p>Might is the value of your money. The amount you bet will be doubled if you win, or 
+                            lost when you lose. You may buy characters at the store to give you a bonus amount
+                            of might everytime you win.</p>
+                        <h2>Health:</h2>
+                        <p>If you reach 0 health, the dealer will level up, gaining more health. When you win a 
+                            battle, you deal the amount of might you put in (including any bonuses), to the dealer.
+                            When you lose a battle, the dealer deals the amount of might you would have dealt, to you.
+                            If you defeat the dealer, you level up, gaining more base might and also more maximum health.
+                        </p>
+                        <h2>Allies:</h2>
+                        <p>Allies help you in different ways. Allies with a '+' icon, boost your might up by a set amount
+                            everytime you win. Allies with a 'x' icon, boost your might up by a multiplied amount everytime
+                            you win. Allies with a heart icon add a value to your maximum health and also heal you for that
+                            amount when you win.
+                        </p>
                         <!-- </div> -->
                     </section>
                     <footer class="modal-card-foot">
@@ -100,7 +107,7 @@
                     <p>Level <span class="play-level"></span> Dealer</p>
                     <p class="play-health"></p>
                     <div class="user-display">
-                        <img src="./assets/images/user-icon/joker.png">
+                        <img src="./assets/images/user-icon/joker.png" alt="joker icon">
                     </div>
                 </div>
 
@@ -143,7 +150,7 @@
                 <p>Level <span class="play-level"></span> Gambit</p>
                 <p class="play-health"></p>
                 <div class="user-display">
-                    <img src="./assets/images/user-icon/gambit.png">
+                    <img src="./assets/images/user-icon/gambit.png" alt="gambit">
                 </div>
                 <div id="player-text" class="user-chat">
                     <p></p>
@@ -163,16 +170,17 @@
                                 You can put up to <span></span> might
                             </label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Might Amount" id="bet-money" autocomplete="off" required>
+                                <input class="input" type="text" placeholder="Might Amount" id="bet-money" autocomplete="off" required />
                             </div>
                             <button type="submit" class="button is-success btn-bet">Confirm</button>
                             <p class="display-might">Your Bonus Might: <span>0</span></p>
                             <p class="display-multiply">Your Bonus Might Multiplier: <span>0</span></p>
+                        </div>
                     </section>
                 </form>
             </div>
         </div>
-    </div>
+    
     <div id="play-reload" class="modal modal-reload">
         <div class="modal-background"></div>
         <div class="modal-card modal-reload">
@@ -187,7 +195,7 @@
             </section>
         </div>
     </div>
-    </div>
+    
     <!-- Shop Screen -->
     <div id="shop">
         <div class="shop-select select is-success">
@@ -213,7 +221,7 @@
         </div>
         
         <div class="form-filter">
-            <form action="">
+            <form>
                 <label class="checkbox">
                     <input id="filter-health" type="checkbox"><span class="oi" data-glyph="heart"></span>
                 </label>

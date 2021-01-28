@@ -7,6 +7,8 @@ html,
 body {
     overflow-y: hidden;
     overflow-x: hidden;
+    font-family: 'Chakra Petch';
+    text-rendering: optimizeLegibility;
 }
 button {
     outline: none;

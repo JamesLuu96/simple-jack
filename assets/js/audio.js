@@ -60,9 +60,11 @@ var playerWinAudio = [
         var gambit = new Audio()
         joker.src = './assets/audio/Joker/joker-lose.wav'
         gambit.src = './assets/audio/Gambit/gambit-win.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
         joker.onended = function(){
+            gambit.volume = 0.6
             gambit.play()
             $('#player-text').show()
         }
@@ -71,6 +73,7 @@ var playerWinAudio = [
         $('#dealer-text p').text(`We'll just have to try again.`)
         var joker = new Audio()
         joker.src = './assets/audio/Joker/joker-lose2.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
     }},
@@ -78,6 +81,7 @@ var playerWinAudio = [
         $('#dealer-text p').text(`We're almost done here...`)
         var joker = new Audio()
         joker.src = './assets/audio/Joker/joker-lose3.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
     }},
@@ -88,9 +92,11 @@ var playerWinAudio = [
         var gambit = new Audio()
         joker.src = './assets/audio/Joker/joker-lose.wav'
         gambit.src = './assets/audio/Gambit/gambit-win2.wav'
+        gambit.volume = 0.6
         gambit.play()
         $('#player-text').show()
         gambit.onended = function(){
+            joker.volume = 0.6
             joker.play()
             $('#dealer-text').show()
         }
@@ -105,9 +111,11 @@ var playerLoseAudio = [
         var joker = new Audio()
         gambit.src = `./assets/audio/Gambit/gambit-lose.wav`
         joker.src = `./assets/audio/Joker/joker-win.wav`
+        gambit.volume = 0.6
         gambit.play()
         $('#player-text').show()
         gambit.onended = function(){
+            joker.volume = 0.6
             joker.play()
             $('#dealer-text').show()
         }
@@ -119,9 +127,11 @@ var playerLoseAudio = [
         var joker = new Audio()
         gambit.src = `./assets/audio/Gambit/gambit-lose.wav`
         joker.src = `./assets/audio/Joker/joker-win2.wav`
+        gambit.volume = 0.6
         gambit.play()
         $('#player-text').show()
         gambit.onended = function(){
+            joker.volume = 0.6
             joker.play()
             $('#dealer-text').show()
         }
@@ -133,6 +143,7 @@ var jokerEntry = [
         $('#dealer-text p').text(`Here fishie' fishie'...`)
         var joker = new Audio()
         joker.src = './assets/audio/Joker/joker-entry.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
         joker.onended = function(){
@@ -145,6 +156,7 @@ var jokerEntry = [
         $('#dealer-text p').text(`This next part is SO funny..`)
         var joker = new Audio()
         joker.src = './assets/audio/Joker/joker-entry2.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
         joker.onended = function(){
@@ -157,6 +169,7 @@ var jokerEntry = [
         $('#dealer-text p').text(`How nice, you saved me a spot`)
         var joker = new Audio()
         joker.src = './assets/audio/Joker/joker-entry3.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
         joker.onended = function(){
@@ -169,6 +182,7 @@ var jokerEntry = [
         $('#dealer-text p').text(`Let's hear what you got...`)
         var joker = new Audio()
         joker.src = './assets/audio/Joker/joker-entry4.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
         joker.onended = function(){
@@ -181,6 +195,7 @@ var jokerEntry = [
         $('#dealer-text p').text(`Gonna love pulling the legs off you...`)
         var joker = new Audio()
         joker.src = './assets/audio/Joker/joker-entry5.wav'
+        joker.volume = 0.6
         joker.play()
         $('#dealer-text').show()
         joker.onended = function(){
@@ -199,6 +214,7 @@ var randomEntryAudio = function(){
         $('#player-text p').text(`Ittt's showtime!`)
         var gambit = new Audio()
         gambit.src = './assets/audio/Gambit/gambit-enter.wav'
+        gambit.volume = 0.6
         gambit.play()
         $('#player-text').show()
         gambit.onended = function(){
