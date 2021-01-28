@@ -23,11 +23,14 @@
     <nav class="navbar">
         <div class="navbar-start">
             <h1 class="navbar-item">Simple<span>Jack</span></h1>
-            <div class="nav-might" data-tooltip='Might'><span class="oi" data-glyph="flash"></span><p></p></div>
+            <div class="nav-might" data-tooltip='Might'><span class="oi" data-glyph="flash"></span>
+                <p></p>
+            </div>
         </div>
 
         <div class="main-nav">
-            <!-- <button class="nav-search"><span class="fas fa-search"></span></button> -->
+            <!-- <input class="input" type="text" placeholder="character" id="search-character">
+            <button class="nav-search"><span class="fas fa-search"></span></button> -->
             <button class="nav-shop"><span class="oi cart" data-glyph="cart"></span></button>
             <button class="nav-inventory"><span class="oi" data-glyph="box"></span></button>
             <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user"></button>
@@ -124,7 +127,9 @@
                         <button class="play-hit button is-success">Hit</button>
                         <button class="play-stand button is-success">Stand</button>
                         <button class="play-double button is-success">Double Down</button>
+                        <button class="restart button is-success">restart</button>
                     </div>
+
                     <div class="play-result">You Lost!</div>
                 </div>
                 <div class="play-player">
@@ -151,27 +156,28 @@
             </div>
         </div>
     </div>
-        <!-- Modals -->
-        <div id="play-bet" class="modal modal-place-bet">
-            <div class="modal-background"></div>
-            <div class="modal-card modal-bet">
-                <form>
-                    <section class="modal-card-body">
-                        <div class="field">
-                            <label class="label">
-                                How much might would you like to use?<br>
-                                You can put up to <span></span> might
-                            </label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Might Amount" id="bet-money" autocomplete="off" required>
-                            </div>
-                            <button type="submit" class="button is-success btn-bet">Confirm</button>
-                            <p class="display-might">Your Bonus Might: <span>0</span></p>
-                            <p class="display-multiply">Your Bonus Might Multiplier: <span>0</span></p>
-                    </section>
-                </form>
-            </div>
+    <!-- Modals -->
+    <div id="play-bet" class="modal modal-place-bet">
+        <div class="modal-background"></div>
+        <div class="modal-card modal-bet">
+            <form>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">
+                            How much might would you like to use?<br>
+                            You can put up to <span></span> might
+                        </label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Might Amount" id="bet-money"
+                                autocomplete="off" required>
+                        </div>
+                        <button type="submit" class="button is-success btn-bet">Confirm</button>
+                        <p class="display-might">Your Bonus Might: <span>0</span></p>
+                        <p class="display-multiply">Your Bonus Might Multiplier: <span>0</span></p>
+                </section>
+            </form>
         </div>
+    </div>
     </div>
     <div id="play-reload" class="modal modal-reload">
         <div class="modal-background"></div>
@@ -191,6 +197,7 @@
     <!-- Shop Screen -->
     <div id="shop">
         <div class="shop-select select is-success">
+            <input class="input is-small" type="email" placeholder="search for character" id="search" required>
             <select class="series">
                 <option value="454">Amazing Spider Man</option>
                 <option value="784">Black Panther</option>
@@ -210,8 +217,21 @@
                 <option value="1107">Marvel Adventures the Avengers</option>
                 <option value="749">New X-Men</option>
             </select>
+
+            <!-- <span class="fas fa-search"></span> -->
+            <button id="search-character"><svg width="16" height="16" data-icon="magnifying-glass"
+                    class="iconic-magnifying-glass iconic-size-sm injected-svg iconic">
+                    <g class="iconic-container" data-width="16" data-height="16">
+                        <path stroke="#000" stroke-width="3" stroke-linecap="round"
+                            class="iconic-magnifying-glass-handle iconic-property-stroke" fill="none"
+                            d="M11 11l3.5 3.5"></path>
+                        <circle stroke="#000" stroke-width="2" cx="6.5" cy="6.5" r="5.5"
+                            class="iconic-magnifying-glass-rim iconic-property-stroke" fill="none"></circle>
+                    </g>
+                </svg></button>
+
         </div>
-        
+
         <div class="form-filter">
             <form action="">
                 <label class="checkbox">
@@ -255,7 +275,8 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <section class="modal-card-body">
-                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory</p>
+                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory
+                </p>
                 <!-- Content ... -->
                 <div class="inventory-box">
 

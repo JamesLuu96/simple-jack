@@ -1,6 +1,6 @@
 // player Object
-var player = JSON.parse(localStorage.getItem('player')) || 
-{ 
+var player = JSON.parse(localStorage.getItem('player')) ||
+{
     name: 'player',
     character: 'gambit',
     level: 1,
@@ -16,14 +16,14 @@ var player = JSON.parse(localStorage.getItem('player')) ||
         ext: '.jpg',
         might: 1,
         mightAdd: true
-      }],
+    }],
     mightSum: 1,
     mightProduct: 1,
     healAmount: 0
 }
 // dealer Object
-var dealer = JSON.parse(localStorage.getItem('dealer')) || 
-{ 
+var dealer = JSON.parse(localStorage.getItem('dealer')) ||
+{
     name: 'dealer',
     level: 1,
     maxHp: 100,
@@ -34,7 +34,7 @@ var dealer = JSON.parse(localStorage.getItem('dealer')) ||
 }
 
 // ----------------------Enter Site Section----------------------
-var enterSite = function(){
+var enterSite = function () {
     $('.home-hidden').hide()
     $('#play').hide()
     $('#shop').hide()
@@ -45,7 +45,7 @@ var enterSite = function(){
 }
 enterSite()
 // Enter Site Button Event Listener
-$('#enter-site button').on('click', function(event){
+$('#enter-site button').on('click', function (event) {
     event.preventDefault()
     $('.home-hidden').fadeIn()
     $('#enter-site').fadeOut()
@@ -55,12 +55,13 @@ $('#enter-site button').on('click', function(event){
 // ----------------------Home Section----------------------
 
 // Play Game Button
-var enterPlaySite = function(){
+var enterPlaySite = function () {
     $('#play').show()
     $('#home').hide()
     $('.navbar').fadeIn()
     $('.nav-shop').hide()
     $('.start-btn').hide()
+    $('.restart').hide()
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
     $(`.play-cards`).hide()
@@ -71,7 +72,7 @@ var enterPlaySite = function(){
     $('#dealer .play-health').text(`HP: ${dealer.hp}/${dealer.maxHp}`)
     randomEntryAudio()
 }
-$('#home-play').on('click', function(event){
+$('#home-play').on('click', function (event) {
     event.preventDefault()
     enterPlaySite()
 })
@@ -93,13 +94,13 @@ $('.modal-unlock-message button').on("click", () => {
 // ----------------------Play Section----------------------
 // Back to Home Button
 
-var enterHomeSiteFromPlay = function(){
+var enterHomeSiteFromPlay = function () {
     $('.navbar').hide()
     $('#home').show()
     $('#shop').hide()
     $('#play').hide()
 }
-$('.navbar .navbar-start h1').on('click', function(event){
+$('.navbar .navbar-start h1').on('click', function (event) {
     event.preventDefault()
     enterHomeSiteFromPlay()
 })
@@ -112,7 +113,7 @@ $('.btn-reload').on('click', function (event) {
 
 
 // Take you to Shop
-var enterShop = function(){
+var enterShop = function () {
     $('.nav-search').show()
     $('.nav-shop').hide()
     $('#shop').show()
@@ -120,20 +121,20 @@ var enterShop = function(){
     $('.series').trigger('change')
     shopAudio()
 }
-$('.nav-shop').on('click', function(event){
+$('.nav-shop').on('click', function (event) {
     event.preventDefault()
     enterShop()
 })
 
 // ----------------------Save Game----------------------
 
-var saveGame = function(){
+var saveGame = function () {
     localStorage.setItem('player', JSON.stringify(player))
     localStorage.setItem('dealer', JSON.stringify(dealer))
 }
 
-var levelUp = function(){
-    if(dealer.hp === 0){
+var levelUp = function () {
+    if (dealer.hp === 0) {
         player.level++
         player.inventory[0].name = `Level ${player.level} Might`
         player.inventory[0].might++
@@ -142,11 +143,11 @@ var levelUp = function(){
         player.hp = player.maxHp
         dealer.hp = dealer.maxHp
     }
-    if(player.hp === 0 || dealer.xp === 5){
+    if (player.hp === 0 || dealer.xp === 5) {
         dealer.level++
         dealer.maxHp += dealer.maxHp * .3
         dealer.hp = dealer.maxHp
-        if(player.hp === 0){
+        if (player.hp === 0) {
             player.hp = player.maxHp
         }
         dealer.xp = 0
