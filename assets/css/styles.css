@@ -513,9 +513,9 @@ button {
     scroll-behavior: auto;
   }
 
-  .play-cards {
+  /* .play-cards {
     max-width: 30%;
-  }
+  } */
   .modal-inventory .modal-card {
     width: 50%;
   }
