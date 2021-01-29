@@ -296,7 +296,7 @@ function display(filteredArray) {
   // check if character is unlocked and prevent displaying on store page
   for (let i = 0; i < filteredArray.length; i++) {
     // if (player.inventory.includes(filteredArray[i])) {
-    if (sameName(filteredArray[i].name)) {
+    if (sameName(filteredArray[i])) {
       continue
       // displayed locked characters on store page
     } else {
@@ -382,10 +382,10 @@ $('.form-filter').on('change', $('input'), function (event) {
 })
 
 
-var sameName = function (name) {
+var sameName = function (filteredArray) {
   var found = false;
   for (var i = 0; i < player.inventory.length; i++) {
-    if (player.inventory[i].name == name && player.inventory[i].unlocked == true) {
+    if (player.inventory[i].name == filteredArray.name && filteredArray.unlocked == true) {
       found = true;
       break;
     }

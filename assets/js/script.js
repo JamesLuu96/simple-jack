@@ -132,6 +132,7 @@ $('.nav-shop').on('click', function (event) {
 var saveGame = function () {
     localStorage.setItem('player', JSON.stringify(player))
     localStorage.setItem('dealer', JSON.stringify(dealer))
+    localStorage.setItem('characters', JSON.stringify(characters))
 }
 
 var levelUp = function () {
