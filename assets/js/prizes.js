@@ -252,14 +252,15 @@ async function seriesList() {
           ext: data.data.results[i].thumbnail.extension,
           id: data.data.results[i].id,
           series: selections[x].id,
-          index: index
+          index: index,
+          unlocked: false
         }
         characters.push(character);
         index++
       }
     }
     // saves to localStorage to prevent same user from making multiple api calls
-
+    console.log(characters)
   }
   for (let i = 0; i < characters.length; i++) {
     characters[i] = randomValues(characters[i])
@@ -296,7 +297,7 @@ function display(filteredArray) {
   for (let i = 0; i < filteredArray.length; i++) {
     // if (player.inventory.includes(filteredArray[i])) {
     if (sameName(filteredArray[i].name)) {
-
+      continue
       // displayed locked characters on store page
     } else {
       var name = filteredArray[i].name;
@@ -351,6 +352,7 @@ $('.shop-container').on('click', '.unlock-card', function (event) {
   var cost = characters[event.target.getAttribute('data-index')].cost
   if (player.money >= cost) {
     player.money -= cost
+    characters[event.target.getAttribute('data-index')].unlocked = true
     player.inventory.push(characters[event.target.getAttribute('data-index')]);
     updateStats()
     if (characters[event.target.getAttribute('data-index')].health) {
@@ -383,7 +385,7 @@ $('.form-filter').on('change', $('input'), function (event) {
 var sameName = function (name) {
   var found = false;
   for (var i = 0; i < player.inventory.length; i++) {
-    if (player.inventory[i].name == name) {
+    if (player.inventory[i].name == name && player.inventory[i].unlocked == true) {
       found = true;
       break;
     }
@@ -488,7 +490,7 @@ function unlockErrorMessage() {
 
 $('#search-character').on('click', function () {
   var searchItem = $(this).siblings().val()
-  var regex = /^[A-Za-z0-9 ]+$/
+  var regex = /^[A-Za-z0-9-, ]+$/
   var isValid = regex.test(searchItem);
   if (!isValid || searchItem == '') {
     $('.shop-container').empty()
