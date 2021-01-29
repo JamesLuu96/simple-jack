@@ -513,10 +513,10 @@ button {
     scroll-behavior: auto;
   }
 
-  .play-cards {
+  /* .play-cards {
     max-height: 30vh;
     max-width: 80vw;
-  }
+  } */
 
   /* .play-cards img {
     max-width: 15%;
