@@ -513,9 +513,15 @@ button {
     scroll-behavior: auto;
   }
 
-  /* .play-cards {
-    max-width: 30%;
+  .play-cards {
+    max-height: 3rem;
+  }
+
+  /* .play-cards img {
+    max-width: 15%;
+    margin: 5px;
   } */
+
   .modal-inventory .modal-card {
     width: 50%;
   }
