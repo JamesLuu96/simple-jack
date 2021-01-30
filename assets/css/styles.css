@@ -10,7 +10,7 @@ body {
   font-family: "Chakra Petch";
   text-rendering: optimizeLegibility;
   /* testing out height of html/body */
-  height: 100vh;
+  /* height: 100vh; */
 }
 button {
   outline: none;
@@ -218,6 +218,7 @@ button {
 }
 
 .play-area {
+  height: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -256,16 +257,18 @@ button {
 }
 
 .play-cards {
+  /* height: 100%; */
   width: 40vh;
   display: flex;
   justify-content: center;
 }
 
 .play-cards img {
+  /* height: 100%; */
   max-width: 50%;
   margin: 5px;  
   /*added to test if height: auto is the problem */
-  max-height: 30%;
+  /* max-height: 30%; */
   /* height: 100%; */
 }
 
@@ -480,7 +483,7 @@ button {
 
 /* media queries */
 
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) {
   #home .gambit {
     width: 120%;
     position: fixed;
@@ -516,7 +519,7 @@ button {
   .shop-item {
     width: 25%;
     scroll-behavior: auto;
-  }
+  } */
 
   /* .play-cards {
     max-height: 30vh;
@@ -528,7 +531,7 @@ button {
     margin: 5px;
   } */
 
-  .modal-inventory .modal-card {
+  /* .modal-inventory .modal-card {
     width: 50%;
   }
   .myItems-container {
@@ -537,11 +540,11 @@ button {
   .modal-content,
   .modal-card {
     width: auto;
-  }
+  } */
   /* #shop{
         overflow:scroll;
         padding-top:15%;
         position: relative;
         overflow-x: hidden;
     } */
-}
+/* } */
