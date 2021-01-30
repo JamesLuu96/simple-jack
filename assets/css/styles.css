@@ -9,6 +9,8 @@ body {
   overflow-x: hidden;
   font-family: "Chakra Petch";
   text-rendering: optimizeLegibility;
+  /* testing out height of html/body */
+  height: 100vh;
 }
 button {
   outline: none;
@@ -254,7 +256,7 @@ button {
 }
 
 .play-cards {
-  width: 40vw;
+  width: 40vh;
   display: flex;
   justify-content: center;
 }
