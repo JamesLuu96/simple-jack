@@ -23,17 +23,24 @@
     <nav class="navbar">
         <div class="navbar-start">
             <h1 class="navbar-item">Simple<span>Jack</span></h1>
-            <div class="nav-might" data-tooltip='Might'><span class="oi" data-glyph="flash"></span><p></p></div>
+            <div class="nav-might" data-tooltip='Might'><span class="oi" data-glyph="flash"></span>
+                <p></p>
+            </div>
         </div>
 
         <div class="main-nav">
             <!-- <button class="nav-search"><span class="fas fa-search"></span></button> -->
             <button class="nav-shop"><span class="oi cart" data-glyph="cart"></span></button>
             <button class="nav-inventory"><span class="oi" data-glyph="box"></span></button>
-            <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user" alt="gambit-icon"></button>
+            <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user"
+                    alt="gambit-icon"></button>
             <button><span class="oi mute" data-glyph="volume-high"></span></button>
         </div>
-
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </nav>
 
     <!-- Enter Site Screen -->
@@ -68,23 +75,28 @@
                             without exceeding 21. You are dealt two cards initially and if you aren't at 21 yet, you
                             have the option to 'Hit', which means to draw another card.
                         </p>
-                        <p>If you ever exeed the 21, then you lose. If you do not wish to draw a card, then you may choose
+                        <p>If you ever exeed the 21, then you lose. If you do not wish to draw a card, then you may
+                            choose
                             to 'Stand'. Whoever is then closer to 21, will win the game.
                         </p>
                         <h2>Might:</h2>
-                        <p>Might is the value of your money. The amount you bet will be doubled if you win, or 
+                        <p>Might is the value of your money. The amount you bet will be doubled if you win, or
                             lost when you lose. You may buy characters at the store to give you a bonus amount
                             of might everytime you win.</p>
                         <h2>Health:</h2>
-                        <p>If you reach 0 health, the dealer will level up, gaining more health. When you win a 
+                        <p>If you reach 0 health, the dealer will level up, gaining more health. When you win a
                             battle, you deal the amount of might you put in (including any bonuses), to the dealer.
                             When you lose a battle, the dealer deals the amount of might you would have dealt, to you.
-                            If you defeat the dealer, you level up, gaining more base might and also more maximum health.
+                            If you defeat the dealer, you level up, gaining more base might and also more maximum
+                            health.
                         </p>
                         <h2>Allies:</h2>
-                        <p>Allies help you in different ways. Allies with a '+' icon, boost your might up by a set amount
-                            everytime you win. Allies with a 'x' icon, boost your might up by a multiplied amount everytime
-                            you win. Allies with a heart icon add a value to your maximum health and also heal you for that
+                        <p>Allies help you in different ways. Allies with a '+' icon, boost your might up by a set
+                            amount
+                            everytime you win. Allies with a 'x' icon, boost your might up by a multiplied amount
+                            everytime
+                            you win. Allies with a heart icon add a value to your maximum health and also heal you for
+                            that
                             amount when you win.
                         </p>
                         <!-- </div> -->
@@ -109,11 +121,10 @@
                     <p class="play-health"></p>
                     <div class="user-display">
                         <img src="./assets/images/user-icon/joker.png" alt="joker icon">
+                        <div id="dealer-text" class="user-chat">
+                            <p></p>
+                        </div>
                     </div>
-                </div>
-
-                <div id="dealer-text" class="user-chat">
-                    <p></p>
                 </div>
             </div>
 
@@ -152,36 +163,38 @@
                 <p class="play-health"></p>
                 <div class="user-display">
                     <img src="./assets/images/user-icon/gambit.png" alt="gambit">
+                    <div id="player-text" class="user-chat">
+                        <p></p>
+                    </div>
                 </div>
-                <div id="player-text" class="user-chat">
-                    <p></p>
-                </div>
+
             </div>
         </div>
     </div>
-        <!-- Modals -->
-        <div id="play-bet" class="modal modal-place-bet">
-            <div class="modal-background"></div>
-            <div class="modal-card modal-bet">
-                <form>
-                    <section class="modal-card-body">
-                        <div class="field">
-                            <label class="label">
-                                How much might would you like to use?<br>
-                                You can put up to <span></span> might
-                            </label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Might Amount" id="bet-money" autocomplete="off" required />
-                            </div>
-                            <button type="submit" class="button is-success btn-bet">Confirm</button>
-                            <p class="display-might">Your Bonus Might: <span>0</span></p>
-                            <p class="display-multiply">Your Bonus Might Multiplier: <span>0</span></p>
+    <!-- Modals -->
+    <div id="play-bet" class="modal modal-place-bet">
+        <div class="modal-background"></div>
+        <div class="modal-card modal-bet">
+            <form>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">
+                            How much might would you like to use?<br>
+                            You can put up to <span></span> might
+                        </label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Might Amount" id="bet-money"
+                                autocomplete="off" required />
                         </div>
-                    </section>
-                </form>
-            </div>
+                        <button type="submit" class="button is-success btn-bet">Confirm</button>
+                        <p class="display-might">Your Bonus Might: <span>0</span></p>
+                        <p class="display-multiply">Your Bonus Might Multiplier: <span>0</span></p>
+                    </div>
+                </section>
+            </form>
         </div>
-    
+    </div>
+
     <div id="play-reload" class="modal modal-reload">
         <div class="modal-background"></div>
         <div class="modal-card modal-reload">
@@ -196,7 +209,7 @@
             </section>
         </div>
     </div>
-    
+
     <!-- Shop Screen -->
     <div id="shop">
         <div class="shop-select select is-success">
@@ -220,7 +233,7 @@
                 <option value="749">New X-Men</option>
             </select>
         </div>
-        
+
         <div class="form-filter">
             <form>
                 <label class="checkbox">
@@ -264,7 +277,8 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <section class="modal-card-body">
-                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory</p>
+                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory
+                </p>
                 <!-- Content ... -->
                 <div class="inventory-box">
 

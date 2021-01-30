@@ -1,13 +1,6 @@
-var gameVersion;
-var characters = []
-
-if(localStorage.getItem('gameVersion')){
-    gameVersion = localStorage.getItem('gameVersion')
-}
-
 // player Object
-var player = JSON.parse(localStorage.getItem('player')) || 
-{ 
+var player = JSON.parse(localStorage.getItem('player')) ||
+{
     name: 'player',
     character: 'gambit',
     level: 1,
@@ -17,20 +10,21 @@ var player = JSON.parse(localStorage.getItem('player')) ||
     handSum: 0,
     money: 300,
     bet: 0,
-    inventory: [{
-        name: 'Level 1 Might',
-        path: 'https://images-na.ssl-images-amazon.com/images/I/71sFiAksnIL._AC_SY450_',
-        ext: '.jpg',
-        might: 1,
-        mightAdd: true
-      }],
+    inventory: [
+        {
+            name: 'Level 1 Might',
+            path: 'https://images-na.ssl-images-amazon.com/images/I/71sFiAksnIL._AC_SY450_',
+            ext: '.jpg',
+            might: 1,
+            mightAdd: true,
+        }],
     mightSum: 1,
     mightProduct: 1,
     healAmount: 0
 }
 // dealer Object
-var dealer = JSON.parse(localStorage.getItem('dealer')) || 
-{ 
+var dealer = JSON.parse(localStorage.getItem('dealer')) ||
+{
     name: 'dealer',
     level: 1,
     maxHp: 100,
@@ -41,93 +35,34 @@ var dealer = JSON.parse(localStorage.getItem('dealer')) ||
 }
 
 // ----------------------Enter Site Section----------------------
-var enterSite = function(){
+var enterSite = function () {
     $('.home-hidden').hide()
     $('#play').hide()
     $('#shop').hide()
     $('#contact').hide()
     $('.navbar').hide()
     $('#footer').hide()
-    $('#enter-site .btn-red').hide()
-    $('#enter-site .enter-site-btn').hide()
-    // If Update is not Current
-    if(gameVersion !== '1.0'){
-        $('#enter-site .btn-red').show()
-    // If Update is Current
-    }else{
-        async function showSite(){
-            if(localStorage.getItem('characters')){
-                characters = JSON.parse(localStorage.getItem('characters'))
-            }else{
-                await seriesList()
-            }
-            $('#enter-site .enter-site-btn').show()
-        }
-        showSite()
-    }
-
+    $('#enter-site button').hide()
 }
 enterSite()
 // Enter Site Button Event Listener
-$('#enter-site .enter-site-btn').on('click', function(event){
+$('#enter-site button').on('click', function (event) {
     event.preventDefault()
     $('.home-hidden').fadeIn()
     $('#enter-site').fadeOut()
     $('#mute').fadeIn()
     playSong(mySong)
 })
-// Update Game Button
-$('#enter-site .btn-red').on('click', function(event){
-    event.preventDefault()
-    async function updateGame(){
-        characters = []
-        gameVersion = '1.0'
-        player = { 
-            name: 'player',
-            character: 'gambit',
-            level: 1,
-            maxHp: 100,
-            hp: 100,
-            hand: [],
-            handSum: 0,
-            money: 300,
-            bet: 0,
-            inventory: [{
-                name: 'Level 1 Might',
-                path: 'https://images-na.ssl-images-amazon.com/images/I/71sFiAksnIL._AC_SY450_',
-                ext: '.jpg',
-                might: 1,
-                mightAdd: true
-            }],
-            mightSum: 1,
-            mightProduct: 1,
-            healAmount: 0
-        }
-        dealer = { 
-            name: 'dealer',
-            level: 1,
-            maxHp: 100,
-            hp: 100,
-            hand: [],
-            handSum: 0,
-            xp: 0
-        }
-        await seriesList()
-        saveGame()
-        $('#enter-site .enter-site-btn').show()
-    }
-    $('#enter-site .btn-red').hide()
-    updateGame()
-})
 // ----------------------Home Section----------------------
 
 // Play Game Button
-var enterPlaySite = function(){
+var enterPlaySite = function () {
     $('#play').show()
     $('#home').hide()
     $('.navbar').fadeIn()
     $('.nav-shop').hide()
     $('.start-btn').hide()
+
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
     $(`.play-cards`).hide()
@@ -138,7 +73,7 @@ var enterPlaySite = function(){
     $('#dealer .play-health').text(`HP: ${dealer.hp}/${dealer.maxHp}`)
     randomEntryAudio()
 }
-$('#home-play').on('click', function(event){
+$('#home-play').on('click', function (event) {
     event.preventDefault()
     enterPlaySite()
 })
@@ -160,13 +95,13 @@ $('.modal-unlock-message button').on("click", () => {
 // ----------------------Play Section----------------------
 // Back to Home Button
 
-var enterHomeSiteFromPlay = function(){
+var enterHomeSiteFromPlay = function () {
     $('.navbar').hide()
     $('#home').show()
     $('#shop').hide()
     $('#play').hide()
 }
-$('.navbar .navbar-start h1').on('click', function(event){
+$('.navbar .navbar-start h1').on('click', function (event) {
     event.preventDefault()
     enterHomeSiteFromPlay()
 })
@@ -179,7 +114,7 @@ $('.btn-reload').on('click', function (event) {
 
 
 // Take you to Shop
-var enterShop = function(){
+var enterShop = function () {
     $('.nav-search').show()
     $('.nav-shop').hide()
     $('#shop').show()
@@ -187,21 +122,21 @@ var enterShop = function(){
     $('.series').trigger('change')
     shopAudio()
 }
-$('.nav-shop').on('click', function(event){
+$('.nav-shop').on('click', function (event) {
     event.preventDefault()
     enterShop()
 })
 
 // ----------------------Save Game----------------------
 
-function saveGame(){
+var saveGame = function () {
     localStorage.setItem('player', JSON.stringify(player))
     localStorage.setItem('dealer', JSON.stringify(dealer))
-    localStorage.setItem('gameVersion', gameVersion)
+    localStorage.setItem('characters', JSON.stringify(characters))
 }
 
-var levelUp = function(){
-    if(dealer.hp === 0){
+var levelUp = function () {
+    if (dealer.hp === 0) {
         player.level++
         player.inventory[0].name = `Level ${player.level} Might`
         player.inventory[0].might++
@@ -210,11 +145,11 @@ var levelUp = function(){
         player.hp = player.maxHp
         dealer.hp = dealer.maxHp
     }
-    if(player.hp === 0 || dealer.xp === 5){
+    if (player.hp === 0 || dealer.xp === 5) {
         dealer.level++
-        dealer.maxHp += Math.floor(dealer.maxHp * .3)
+        dealer.maxHp += dealer.maxHp * .3
         dealer.hp = dealer.maxHp
-        if(player.hp === 0){
+        if (player.hp === 0) {
             player.hp = player.maxHp
         }
         dealer.xp = 0
