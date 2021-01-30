@@ -6,7 +6,7 @@ const apiKey = 'apikey=6183cc1410bb4bd83659bc716cd7fadb';
 <span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="plus"></span></span> */}
 // variable to store available character objects and build store pages
 // use this for list of available series and to make initial call to api
-const selections = [454, 784, 1123, 1997, 16280, 12916, 5701, 21122, 20020, 18892, 2473, 2375, 20460, 16557, 23045, 1107, 749]
+const selections = ['116', '227', '238']
 
 
 // Might Values
@@ -158,14 +158,13 @@ var randomValues = function (obj) {
 }
 // builds character array of objects
 async function seriesList() {
-  var seriesSearch = 'https://gateway.marvel.com/v1/public/series/';
-  var charLimit = 'characters?limit=100';
+  var seriesSearch = 'https://gateway.marvel.com/v1/public/events/';
   // set manual index for each character
   var index = 0;
   // iterate through array for each series
   for (let x = 0; x < selections.length; x++) {
 
-    var response = await fetch(`${seriesSearch}${selections[x]}/${charLimit}&${apiKey}`);
+    var response = await fetch(`${seriesSearch}${selections[x]}/characters?${apiKey}&limit=100`);
     var data = await response.json();
 
     // iterate through each character in each series
@@ -184,7 +183,12 @@ async function seriesList() {
           ext: data.data.results[i].thumbnail.extension,
           id: data.data.results[i].id,
           series: selections[x],
-          index: index
+          index: index,
+          description: data.data.results[i].description
+        }
+        if(path === 'https://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708'){
+          character.path = `https://upload.wikimedia.org/wikipedia/en/2/2d/XMEN_Synch`
+          character.ext = `jpg`
         }
         characters.push(character);
         index++
@@ -201,7 +205,7 @@ async function seriesList() {
 
 // displays store items based on selected series
 function seriesDisplay(value) {
-  var filteredArray = characters.filter(x => x.series === parseInt(value))
+  var filteredArray = characters.filter(x => x.series === value)
   $('.form-filter input').each(function(){
     var name = $(this)[0].id
     if($(this)[0].checked){
@@ -228,7 +232,12 @@ function seriesDisplay(value) {
       // displayed locked characters on store page
     } else {
       var name = filteredArray[i].name;
-      var thumbnail = `${filteredArray[i].path}/portrait_uncanny.${filteredArray[i].ext}`
+      if(filteredArray[i].path === `https://upload.wikimedia.org/wikipedia/en/2/2d/XMEN_Synch`){
+        var thumbnail = `${filteredArray[i].path}.${filteredArray[i].ext}`
+      }else{
+        var thumbnail = `${filteredArray[i].path}/portrait_uncanny.${filteredArray[i].ext}`
+      }
+
       var container = $('<div>').addClass('shop-item');
       if(filteredArray[i].might && filteredArray[i].health){
         if(filteredArray[i].mightAdd){

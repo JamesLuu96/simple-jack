@@ -195,6 +195,20 @@ var gameOver = function (result) {
 
 $(".play-placebet").on("click", function (event) {
     event.preventDefault()
+    if(player.money === 0){
+        player.bet = 0
+        var cards = new Audio()
+        cards.src = './assets/audio/cards-shuffle.mp3'
+        cards.play()
+        $('.play-placebet').hide()
+        $('.navbar h1').hide()
+        $('.navbar .nav-shop').hide()
+        $('.modal').removeClass("is-active");
+        cards.onended = function(){
+            beginGame();
+        }
+        return
+    }
     $('.modal-place-bet').addClass("is-active");
     $('#play-bet label span').text(player.money)
     $('#play-bet .display-might span').text(player.mightSum)
