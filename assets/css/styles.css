@@ -548,8 +548,8 @@ button {
   #menu{
       display: block;   
       position:absolute;
-      right:4%;
-      top:20%;
+      right:8%;
+      top:25%;
   }
   .main-nav{  
    flex-direction: column;

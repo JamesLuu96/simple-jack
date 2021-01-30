@@ -385,4 +385,5 @@ var updateStats = function () {
 
 $('#menu').on('click', function () {
   $('.main-nav').slideToggle(200)
+
 })
