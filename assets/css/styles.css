@@ -254,17 +254,17 @@ button {
 }
 
 .play-cards {
-  width: 40vw;
+  /* width: 30vw; */
   display: flex;
   justify-content: center;
 }
 
 .play-cards img {
-  max-width: 15%;
-  margin: 5px;
+  max-width: 50%;
+  margin: 5px;  
   /*added to test if height: auto is the problem */
-  /* max-height: 30%; */
-  height: 100%;
+  max-height: 30%;
+  /* height: 100%; */
 }
 
 .play-score {
