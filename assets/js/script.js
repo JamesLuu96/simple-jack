@@ -125,6 +125,7 @@ $('#enter-site .btn-red').on('click', function(event){
 var enterPlaySite = function(){
     $('#play').show()
     $('#home').hide()
+    $('#play').prepend($('.navbar'))
     $('.navbar').fadeIn()
     $('.nav-shop').hide()
     $('.start-btn').hide()
@@ -182,6 +183,7 @@ $('.btn-reload').on('click', function (event) {
 var enterShop = function(){
     $('.nav-search').show()
     $('.nav-shop').hide()
+    $('#shop').prepend($('.navbar'))
     $('#shop').show()
     $('#play').hide()
     $('.series').trigger('change')

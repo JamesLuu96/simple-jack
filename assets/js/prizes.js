@@ -6,7 +6,7 @@ const apiKey = 'apikey=6183cc1410bb4bd83659bc716cd7fadb';
 <span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="plus"></span></span> */}
 // variable to store available character objects and build store pages
 // use this for list of available series and to make initial call to api
-const selections = ['116', '227', '238']
+const selections = ['116', '227', '238', '271']
 
 
 // Might Values
@@ -184,7 +184,8 @@ async function seriesList() {
           id: data.data.results[i].id,
           series: selections[x],
           index: index,
-          description: data.data.results[i].description
+          description: data.data.results[i].description,
+          url: data.data.results[i].urls[1].url
         }
         if(path === 'https://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708'){
           character.path = `https://upload.wikimedia.org/wikipedia/en/2/2d/XMEN_Synch`
@@ -220,6 +221,10 @@ function seriesDisplay(value) {
         
       } else if(name === 'filter-legendary'){
         filteredArray = filteredArray.filter(x=>x.legendary)
+      } else if(name === 'filter-down'){
+        filteredArray = filteredArray.sort((a,b)=>a.cost-b.cost)
+      } else if(name === 'filter-up'){
+        filteredArray = filteredArray.sort((a,b)=>b.cost-a.cost)
       }
     }
   })
@@ -258,13 +263,27 @@ function seriesDisplay(value) {
         container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart'))), $('<p>').text(`${filteredArray[i].health}`)))
 
       }
-      var picture = $('<img>').attr('src', thumbnail);
-      container.append(picture)
+      var pictureContainerEl = $('<div>').addClass('shop-item-picture')
       var nameEl = $('<h3>').text(`${name}`);
+      var picture = $('<img>').attr('src', thumbnail);
+      if(filteredArray[i].url){
+        var linkEl = $('<a>').attr('href', filteredArray[i].url).attr('target', '_blank')
+        linkEl.append(picture)
+        pictureContainerEl.append(linkEl)
+      } else{
+        pictureContainerEl.append(picture)
+      }
+      container.append(pictureContainerEl)
+      
       if (filteredArray[i].legendary) {
         nameEl.addClass('legendary')
       }
-      var shopItemInfoEl = $('<div>').addClass('shop-item-info').append(nameEl, $('<p>').text(filteredArray[i].cost).prepend($('<span>').addClass('oi').attr('data-glyph', 'flash')))
+      if(filteredArray[i].description){
+        var descriptionEl = $('<span>').addClass('skill').attr('data-tooltip', filteredArray[i].description).append($('<i>').addClass('fa fa-info-circle').attr('aria-hidden', 'true'))
+        var shopItemInfoEl = $('<div>').addClass('shop-item-info').append(nameEl, descriptionEl, $('<p>').text(filteredArray[i].cost).prepend($('<span>').addClass('oi').attr('data-glyph', 'flash')))
+      }else{
+        var shopItemInfoEl = $('<div>').addClass('shop-item-info').append(nameEl, $('<p>').text(filteredArray[i].cost).prepend($('<span>').addClass('oi').attr('data-glyph', 'flash')))
+      }
       if (player.money >= filteredArray[i].cost){
         shopItemInfoEl.append($('<button>').addClass('btn-green unlock-card').text('Unlock').attr('data-index', filteredArray[i].index))
       } else {

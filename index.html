@@ -16,6 +16,7 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -102,59 +103,61 @@
     <div id="play">
         <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
       class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
-        <div class="play-container">
-            <div id="dealer" class="user-info">
+        <div class="play-game-container">
+            <div class="play-container">
+                <div id="dealer" class="user-info">
+                    <div>
+                        <p>Level <span class="play-level"></span> Dealer</p>
+                        <p class="play-health"></p>
+                        <div class="user-display">
+                            <img src="./assets/images/user-icon/joker.png" alt="joker icon">
+                        </div>
+                    </div>
+
+                    <div id="dealer-text" class="user-chat">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="play-area">
+                    <div class="play-dealer dealer">
+                        <div class="play-cards">
+                            <!-- Dynamically Add Cards -->
+                        </div>
+                        <div class="play-score">
+                            Dealer Score: <span></span>
+                        </div>
+                    </div>
+                    <div class="play-buttons">
+                        <button class="play-placebet start-btn button is-success">Fight</button>
+                        <div class="play-game-buttons">
+                            <button class="play-hit button is-success">Hit</button>
+                            <button class="play-stand button is-success">Stand</button>
+                            <button class="play-double button is-success">Double Down</button>
+                        </div>
+                        <div class="play-result">You Lost!</div>
+                    </div>
+                    <div class="play-player">
+                        <div class="play-cards">
+                            <!-- Dynamically Add Cards -->
+                        </div>
+                        <div class="play-score">
+                            Player Score: <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="player" class="user-info">
                 <div>
-                    <p>Level <span class="play-level"></span> Dealer</p>
+                    <p>Level <span class="play-level"></span> Gambit</p>
                     <p class="play-health"></p>
                     <div class="user-display">
-                        <img src="./assets/images/user-icon/joker.png" alt="joker icon">
+                        <img src="./assets/images/user-icon/gambit.png" alt="gambit">
                     </div>
-                </div>
-
-                <div id="dealer-text" class="user-chat">
-                    <p></p>
-                </div>
-            </div>
-
-            <div class="play-area">
-                <div class="play-dealer dealer">
-                    <div class="play-cards">
-                        <!-- Dynamically Add Cards -->
+                    <div id="player-text" class="user-chat">
+                        <p></p>
                     </div>
-                    <div class="play-score">
-                        Dealer Score: <span></span>
-                    </div>
-                </div>
-                <div class="play-buttons">
-                    <button class="play-placebet start-btn button is-success">Fight</button>
-                    <div class="play-game-buttons">
-                        <button class="play-hit button is-success">Hit</button>
-                        <button class="play-stand button is-success">Stand</button>
-                        <button class="play-double button is-success">Double Down</button>
-                    </div>
-                    <div class="play-result">You Lost!</div>
-                </div>
-                <div class="play-player">
-                    <div class="play-cards">
-                        <!-- Dynamically Add Cards -->
-                    </div>
-                    <div class="play-score">
-                        Player Score: <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="player" class="user-info">
-            <div>
-                <p>Level <span class="play-level"></span> Gambit</p>
-                <p class="play-health"></p>
-                <div class="user-display">
-                    <img src="./assets/images/user-icon/gambit.png" alt="gambit">
-                </div>
-                <div id="player-text" class="user-chat">
-                    <p></p>
                 </div>
             </div>
         </div>
@@ -201,26 +204,37 @@
     <div id="shop">
         <div class="shop-select select is-success">
             <select class="series">
-                <option value="116">Amazing Spider Man</option>
-                <option value="227">Black Panther</option>
-                <option value="238">Blade</option>
+                <option value="116">Acts of Vengeance!</option>
+                <option value="227">Age of Apocalype</option>
+                <option value="238">Civil War</option>
+                <option value="271">Secret War</option>
             </select>
         </div>
         
         <div class="form-filter">
             <form>
-                <label class="checkbox">
-                    <input id="filter-health" type="checkbox"><span class="oi" data-glyph="heart"></span>
-                </label>
-                <label class="checkbox">
-                    <input id="filter-mightAdd" type="checkbox"><span class="oi" data-glyph="plus"></span>
-                </label>
-                <label class="checkbox">
-                    <input id="filter-mightMultiply" type="checkbox"><span class="oi" data-glyph="x"></span>
-                </label>
-                <label class="checkbox">
-                    <input id="filter-legendary" type="checkbox"><span class="oi" data-glyph="aperture"></span>
-                </label>
+                <div>
+                    <label class="checkbox" for="filter-health">
+                        <input id="filter-health" type="checkbox"><span class="oi" data-glyph="heart"></span>
+                    </label>
+                    <label class="checkbox" for="filter-mightAdd">
+                        <input id="filter-mightAdd" type="checkbox"><span class="oi" data-glyph="plus"></span>
+                    </label>
+                    <label class="checkbox" for="filter-mightMultiply">
+                        <input id="filter-mightMultiply" type="checkbox"><span class="oi" data-glyph="x"></span>
+                    </label>
+                    <label class="checkbox" for="filter-legendary">
+                        <input id="filter-legendary" type="checkbox"><span class="oi" data-glyph="aperture"></span>
+                    </label>
+                </div>
+                <div>
+                    <label class="checkbox" for="filter-none"><i class="fas fa-sort-alpha-down"></i></label>
+                    <input type="radio" id="filter-none" name="filter" checked>
+                    <label class="checkbox" for="filter-down" ><i class="fas fa-sort-amount-down"></i></label>
+                    <input type="radio" id="filter-down" name="filter">
+                    <label class="checkbox" for="filter-up"><i class="fas fa-sort-amount-up"></i></label>
+                    <input type="radio" id="filter-up" name="filter">
+                </div>
             </form>
         </div>
         <div class="shop-container">
@@ -240,8 +254,7 @@
                     <button class="btn-red" title="you need 200 points">unlock</button>
                 </div>
             </div> -->
-
-        </div>
+            
 
     </div>
 

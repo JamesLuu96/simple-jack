@@ -17,7 +17,7 @@ button {
 /* Navigation Bar */
 
 .navbar {
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     background-color: transparent;
@@ -195,12 +195,21 @@ button {
     background-size: cover;
     text-align: center;
     height:100vh;
+    color: white;
+    font-size: 130%;
+    position: relative;
+}
+
+.play-game-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 130%;
+    height: 100%;
 }
 
 .play-container{
@@ -294,6 +303,7 @@ button {
 
 .skill {
     position: relative;
+    cursor: pointer;
 }
 .skill:hover::before {
     --scale: 1;
@@ -322,7 +332,6 @@ button {
 
 
 #shop {
-    padding-top: 5%;
     background-color: #f6f6f6;
     color: white;
     height: 100vh;
@@ -378,7 +387,10 @@ button {
 .form-filter input {
     margin-right: 5px;
 }
-
+.form-filter form {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .legendary {
     color: rgb(238, 223, 12) !important;
@@ -399,12 +411,21 @@ button {
     flex-direction: column;
 }
 
-.shop-item .shop-item-info span{
+.shop-item .shop-item-info p span{
     color: #f1da0b;
 }
 .shop-item .shop-item-info p{
     margin-top: 5px;
 }
+
+.shop-item .shop-item-picture {
+    position: relative;
+}
+
+/* .shop-item .shop-item-info {
+    margin-left: 3px;
+    width: fit-content;
+} */
 
 .shop-item .shop-item-info button{
     align-self: center;
