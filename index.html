@@ -2,275 +2,304 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="#">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Shadows+Into+Light&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css"
-    integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-  <link rel="stylesheet" href="./assets/css/styles.css">
-
-  <title>Simple Jack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleJack</title>
+    <!-- <link rel="shortcut icon" href="#"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css"
+        integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
-  <!-- Mute Button -->
-  <span id="mute" class="oi" data-glyph="volume-high"></span>
-  <!-- Start Menu -->
-  <div class="start">
-    <button id="start">Enter Site</button>
-    <span class="skill" data-tooltip="Health: This unit increases your health by x and heals your hero by x."><span class="oi" data-glyph="heart"></span></span>
-<span class="skill" data-tooltip="Might: This unit increases your might by x when winning a battle."><span class="oi" data-glyph="arrow-thick-top"></span></span>
-  </div>
 
-  <!-- Home Section -->
-  <section class="home">
-    <div class="home-background">
-      <h1>Simple <span>Jack</span></h1>
-      <div class="button-box animate__animated animate__fadeInRight animate__delay-0.5s">
-        <button class="button is-success is-outlined" id="play">Play Now</button>
-        <button class="button  is-success" id="btnModal">Rules</button>
-      </div>
-      <img src="./assets/images/gambit.png" alt="section-background"
-        class="home-gambit animate__animated animate__fadeInLeft animate__delay-0.5s">
-    </div>
-    <!-- modal for the rules-->
-    <div class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">blackJack Rules</p>
-        </header>
-        <section class="modal-card-body">
-          <div class="content">
-            <h2>Introduction</h2>
-            <p>The basic rules of blackjack are simple. Players try to score as close to 21 as possible without
-              exceeding 21. In contrast to poker, where players compete with each other, blackjack is a one-on-one game
-              between each player and the dealer.</p>
-            <p>As the dealer, the basic rules of blackjack still apply. Cards 2 through 10 are worth their face value.
-              The jack, queen and king are worth 10 points each. The ace has a value of either 1 point or 11 points,
-              depending on its usage in your hand.
-            <p>The advanced rules of blackjack, however, are a little bit different. Since dealers are responsible for
-              paying out bets, they obviously can’t take insurance. They also can’t split their hand, double down on a
-              good hand or surrender for half their bet.</p>
-            <p>In addition to these rules, when you play as the dealer you face additional rules that limit how you can
-              hit or stand. In most casinos, the dealer is required to hit on hands worth less than 17 points,
-              regardless of the cards that make up their hand.</p>
-            <p>Hands worth 17 points, however, can’t be hit on. If you’re playing as the dealer and your hand is worth
-              17, 18, 19, 20 or 21 points, you can’t hit any further and need to stand with whatever hand you’ve got.
-            </p>
-            <p>These restrictions on additional rules, hitting, and standing are the only differences between the
-              dealer’s rules and the players’ rules. In addition to the different rules, the dealer plays their hand
-              after the players have played their hands.</p>
-
-            <h3>Before you start dealing cards</h3>
-            <p>Are you ready to deal the cards? Don’t act too quickly. Before you deal cards to the players, several
-              things need to be done. First, you need to shuffle your cards and, if you’re playing with several players,
-              combine two or more decks together.</p>
-            <p>Once your cards are shuffled, make sure all players have placed their bets. All bets need to be placed
-              before you start dealing cards – players can’t bet once their cards are dealt unless they’re doubling down
-              or splitting their hand into two.</p>
-
-            <h3>Dealing cards for players</h3>
-
-            <p>Start by dealing each player’s first card face down. Deal the player on your left first, then move left
-              to right down the remaining players. Finish by dealing yourself one card face down. Deal another card to
-              each player, this time with the card facing up.</p>
-            <p>Finally, deal your final card. This time, it should face upwards. If your card is an ace, you need to ask
-              the players if they want to purchase insurance. If they do, take each player’s insurance (it should be
-              half of their original bet) and flip over your second card to see whether or not you have a blackjack.</p>
-            <p>If you have a blackjack, collect bets from anyone that didn’t buy insurance. Players that did buy
-              insurance receive their original bets back. Players with blackjack will receive their original bet, even
-              if they didn’t purchase insurance.</p>
-            <h3>The players’ turns</h3>
-            <p>If your face-up card isn’t an ace, continue play as normal. Starting from your left, all of the players
-              play their hand in turn. Players can stand, in which case you move on to the next player. They can also
-              hit, in which case you deal them a new card face up.</p>
-            <p>If the player continues drawing cards until their hand exceeds 21, they’re bust. You can collect their
-              bet and move on to the next player. If they have blackjack on their first hand, pay back their bet with a
-              3:2 bonus (for example, a $20 bet receives $30, as well as the return of their original bet.)</p>
-            <p>Before players take additional cards, they can double down. In this case, deal them a new card face up
-              after they have added their extra bet. Remember that players who choose to double down only receive one
-              new card and cannot continue to hit.</p>
-            <p>Players with matching cards can split their hand into two. Once a player splits their hand and matches
-              their original bet, you should deal them two cards – one for each hand – both facing down. Players then
-              play one hand followed by the other.</p>
-          </div>
-          <footer class="modal-card-foot">
-            <button class="button is-success is-outlined" id="btn-close">close</button>
-          </footer>
-        </section>
-      </div>
-    </div>
-  </section>
-
-  <!-- Play Game Section -->
-  <section class="play-section">
-    <span id="home" class="game-back oi" data-glyph="arrow-thick-left"></span>
-    <img src="./assets/images/special/gambit.png" alt="section-background"
-      class="special animate__animated animate__fadeInLeft animate__delay-0.5s">
-
-    <div class="pl-3 user-info">
-      <div id="player-img" class="player-img">
-        <img style="max-width:80px" alt="user image">
-        <p class="user-name" style="width:auto;"><!--Name--></p>
-      </div>
-      <div id="player-text" class="player-text">
-        <p class="text"></p>
-      </div>
-    </div>
-
-    <div class="play-area">
-      <div class="player">
-        <div class="player-cards cards">
-          <!-- Player Hand -->
-        </div>
-        <p>Player Score: <span>0</span></p>
-      </div>
-
-      <div class="button-container">
-        <button id="play-button" class="start-btn button is-success mt-4">Place Bet</button>
-
-
-        <div id="reload" class="modal modal-reload">
-          <div class="modal-background"></div>
-          <div class="modal-card modal-reload">
-            <section class="modal-card-body">
-              <div class="field">
-                <label class="label">You seem to have run out of money! Click the reload button to get another $300 dollars</label>
-              </div>
-              <button class="button is-success btn-reload">RELOAD</button>
-            </section>
-          </div>
-        </div> 
-
-        <div id="bet" class="modal modal-place-bet">
-          <div class="modal-background"></div>
-          <div class="modal-card modal-bet">
-            <form>
-            <section class="modal-card-body">
-              <div class="field">
-                <label class="label">
-                  You can place a bet up to <span></span> dollars
-                </label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Bet Amount" id="bet-money" autocomplete="off">
-                </div>
-                <button type="submit" class="button is-success btn-bet">Confirm</button>
-              </section>
-            </form>
-          </div>
+    <nav class="navbar">
+        <div class="navbar-start">
+            <h1 class="navbar-item">Simple<span>Jack</span></h1>
+            <div class="nav-might" data-tooltip='Might'><span class="oi" data-glyph="flash"></span><p></p></div>
         </div>
 
-        <div class="game-result"></div>
-        <button class="special-btn button is-success mt-4">Special Attack</button>
-        <div class="game-button-container">
-          <button class="hit button is-success mt-4">Hit</button>
-          <button class="stand button is-success mt-4">Stand</button>
-          <button class="double button is-success mt-4">Double Down</button>
+        <div class="main-nav">
+            <!-- <button class="nav-search"><span class="fas fa-search"></span></button> -->
+            <button class="nav-shop"><span class="oi cart" data-glyph="cart"></span></button>
+            <button class="nav-inventory"><span class="oi" data-glyph="box"></span></button>
+            <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user" alt="gambit-icon"></button>
+            <button><span class="oi mute" data-glyph="volume-high"></span></button>
         </div>
-      </div>
 
-      <div class="dealer">
-        <div class="dealer-cards cards">
-          <!-- Dealer Hand -->
-        </div>
-        <p>Dealer Score: <span>0</span></p>
-      </div>
-    </div>
-
-    <div class="pl-3 user-info">
-      <div class="player-img">
-        <img src="./assets/images/joker.png" style="max-width:80px" alt="user image">
-        <p class="user-name" style="width:auto;">Dealer</p>
-      </div>
-      <div id="dealer-text" class="player-text">
-        <p class="text"></p>
-      </div>
-    </div>
-
-    <div class="back-buttons">
-      <button class="button mt-4" id="shop">Shop</button>
-      <select name="characters" id="characters">
-        <option value="gambit">Gambit</option>
-        <option value="aquaman">Aquaman</option>
-        <option value="catwoman">Cat Woman</option>
-        <option value="cyclops">Cyclops</option>
-        <option value="deadpool">Deadpool</option>
-        <option value="greenarrow">Green Arrow</option>
-        <option value="greenlantern">Green Lantern</option>
-        <option value="groot">Groot</option>
-        <option value="ironman">Iron-Man</option>
-        <option value="magneto">Magneto</option>
-        <option value="mystique">Mystique</option>
-        <option value="nightwing">Nightwing</option>
-        <option value="spiderman">Spider-Man</option>
-        <option value="storm">Storm</option>
-        <option value="wolverine">Wolverine</option>
-        <option value="wonderwoman">Wonder-Woman</option>
-      </select>
-    </div>
-  </section>
-
-  <!--shop section-->
-  <section class="shop">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-      <div id="navbarBasicExample" class="navbar-menu">
-        <h1 class="navbar-start navbar-item">Simple<span>Jack</span> </h1>
-        <select class="series">
-          <option value="454">Amazing Spider Man</option>
-          <option value="784">Black Panther</option>
-          <option value="1123">Blade</option>
-          <option value="1997">Captain America</option>
-          <option value="16280">Captain Marvel</option>
-          <option value="12916">Daredevil</option>
-          <option value="5701">Deadpool</option>
-          <option value="21122">Power Man and Iron Fist</option>
-          <option value="20020">Punisher 2099</option>
-          <option value="18892">Spider-Verse</option>
-          <option value="2473">Thor</option>
-          <option value="2375">Wolverine Origins</option>
-          <option value="20460">Extraordinary X-Men</option>
-          <option value="16557">Fantastic Four</option>
-          <option value="23045">Luke Cage</option>
-          <option value="1107">Marvel Adventures the Avengers</option>
-          <option value="749">New X-Men</option>
-        </select>
-        <a class="return-home"> Home</a>
-        <a>News</a>
-        <a>contact us</a>
-        <a>signup</a>
-      </div>
     </nav>
-    <div id="shop-money"></div>
-    <div class="shop-container container">
-      <!-- <div>
-        <img src="assets/css/images/image1.jpg">
-        <div class="unlock-card"> <button class="button is-success" id="454" title="you need 200 points">unlock</button></div>
-      </div> -->
-      <!-- dynamically scripted images from prizes.js -->
-    </div>
-  </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="./assets/js/script.js"></script>
-  <script src="./assets/js/game_logic.js"></script>
-  <script src="./assets/js/audio.js"></script>
-  <script src="./assets/js/characters.js"></script>
-  <script src="./assets/js/prizes.js"></script>
+    <!-- Enter Site Screen -->
+    <div id="enter-site">
+        <button class="button is-medium enter-site-btn">Enter Site</button>
+        <button class="button is-medium btn-red">Update Game</button>
+    </div>
+
+    <!-- Home Screen -->
+    <div id="home">
+        <div class="home-hidden">
+            <span id="mute" class="oi mute" data-glyph="volume-high"></span>
+            <h1>Simple <span>Jack</span></h1>
+            <img class="gambit animate__animated animate__fadeInLeft animate__delay-0.5s"
+                src="./assets/images/gambit.png" alt="Gambit">
+
+            <div class="home-buttons animate__animated animate__fadeInRight animate__delay-0.2s">
+                <button class="button is-success is-outlined is-medium" id="home-play">Play Now</button>
+                <button class="button is-success is-medium" id="home-rules">Rules</button>
+            </div>
+
+            <div class="modal rules-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card" id="rule-modal">
+                    <header class=" modal-card-head">
+                        <p class="modal-card-title">blackJack Rules</p>
+                    </header>
+                    <section class="modal-card-body">
+                        <!-- <div class="modal-content"> -->
+                        <h2>Blackjack Rules:</h2>
+                        <p>The basic rules of blackjack is simple. Players try to score as close to 21 as possible
+                            without exceeding 21. You are dealt two cards initially and if you aren't at 21 yet, you
+                            have the option to 'Hit', which means to draw another card.
+                        </p>
+                        <p>If you ever exeed the 21, then you lose. If you do not wish to draw a card, then you may choose
+                            to 'Stand'. Whoever is then closer to 21, will win the game.
+                        </p>
+                        <h2>Might:</h2>
+                        <p>Might is the value of your money. The amount you bet will be doubled if you win, or 
+                            lost when you lose. You may buy characters at the store to give you a bonus amount
+                            of might everytime you win.</p>
+                        <h2>Health:</h2>
+                        <p>If you reach 0 health, the dealer will level up, gaining more health. When you win a 
+                            battle, you deal the amount of might you put in (including any bonuses), to the dealer.
+                            When you lose a battle, the dealer deals the amount of might you would have dealt, to you.
+                            If you defeat the dealer, you level up, gaining more base might and also more maximum health.
+                        </p>
+                        <h2>Allies:</h2>
+                        <p>Allies help you in different ways. Allies with a '+' icon, boost your might up by a set amount
+                            everytime you win. Allies with a 'x' icon, boost your might up by a multiplied amount everytime
+                            you win. Allies with a heart icon add a value to your maximum health and also heal you for that
+                            amount when you win.
+                        </p>
+                        <!-- </div> -->
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-success is-outlined" id="btn-close">close</button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Play Screen -->
+    <div id="play">
+        <!-- <img id="play-special" src="./assets/images/special/gambit.png" alt="Character's Special"
+      class="animate__animated animate__fadeInLeft animate__delay-0.5s"> -->
+        <div class="play-container">
+            <div id="dealer" class="user-info">
+                <div>
+                    <p>Level <span class="play-level"></span> Dealer</p>
+                    <p class="play-health"></p>
+                    <div class="user-display">
+                        <img src="./assets/images/user-icon/joker.png" alt="joker icon">
+                    </div>
+                </div>
+
+                <div id="dealer-text" class="user-chat">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="play-area">
+                <div class="play-dealer dealer">
+                    <div class="play-cards is-square">
+                        <!-- Dynamically Add Cards -->
+                    </div>
+                    <div class="play-score">
+                        Dealer Score: <span></span>
+                    </div>
+                </div>
+                <div class="play-buttons">
+                    <button class="play-placebet start-btn button is-success">Fight</button>
+                    <div class="play-game-buttons">
+                        <button class="play-hit button is-success">Hit</button>
+                        <button class="play-stand button is-success">Stand</button>
+                        <button class="play-double button is-success">Double Down</button>
+                    </div>
+                    <div class="play-result">You Lost!</div>
+                </div>
+                <div class="play-player">
+                    <div class="play-cards is-square">
+                        <!-- Dynamically Add Cards -->
+                    </div>
+                    <div class="play-score">
+                        Player Score: <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="player" class="user-info">
+            <div>
+                <p>Level <span class="play-level"></span> Gambit</p>
+                <p class="play-health"></p>
+                <div class="user-display">
+                    <img src="./assets/images/user-icon/gambit.png" alt="gambit">
+                </div>
+                <div id="player-text" class="user-chat">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Modals -->
+        <div id="play-bet" class="modal modal-place-bet">
+            <div class="modal-background"></div>
+            <div class="modal-card modal-bet">
+                <form>
+                    <section class="modal-card-body">
+                        <div class="field">
+                            <label class="label">
+                                How much might would you like to use?<br>
+                                You can put up to <span></span> might
+                            </label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Might Amount" id="bet-money" autocomplete="off" required />
+                            </div>
+                            <button type="submit" class="button is-success btn-bet">Confirm</button>
+                            <p class="display-might">Your Bonus Might: <span>0</span></p>
+                            <p class="display-multiply">Your Bonus Might Multiplier: <span>0</span></p>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    
+    <div id="play-reload" class="modal modal-reload">
+        <div class="modal-background"></div>
+        <div class="modal-card modal-reload">
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">You seem to have run out of money! Click the reload button to get
+                        another
+                        $300
+                        dollars</label>
+                </div>
+                <button class="button is-success btn-reload">RELOAD</button>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Shop Screen -->
+    <div id="shop">
+        <div class="shop-select select is-success">
+            <select class="series">
+                <option value="454">Amazing Spider Man</option>
+                <option value="784">Black Panther</option>
+                <option value="1123">Blade</option>
+                <option value="1997">Captain America</option>
+                <option value="16280">Captain Marvel</option>
+                <option value="12916">Daredevil</option>
+                <option value="5701">Deadpool</option>
+                <option value="21122">Power Man and Iron Fist</option>
+                <option value="20020">Punisher 2099</option>
+                <option value="18892">Spider-Verse</option>
+                <option value="2473">Thor</option>
+                <option value="2375">Wolverine Origins</option>
+                <option value="20460">Extraordinary X-Men</option>
+                <option value="16557">Fantastic Four</option>
+                <option value="23045">Luke Cage</option>
+                <option value="1107">Marvel Adventures the Avengers</option>
+                <option value="749">New X-Men</option>
+            </select>
+        </div>
+        
+        <div class="form-filter">
+            <form>
+                <label class="checkbox">
+                    <input id="filter-health" type="checkbox"><span class="oi" data-glyph="heart"></span>
+                </label>
+                <label class="checkbox">
+                    <input id="filter-mightAdd" type="checkbox"><span class="oi" data-glyph="plus"></span>
+                </label>
+                <label class="checkbox">
+                    <input id="filter-mightMultiply" type="checkbox"><span class="oi" data-glyph="x"></span>
+                </label>
+                <label class="checkbox">
+                    <input id="filter-legendary" type="checkbox"><span class="oi" data-glyph="aperture"></span>
+                </label>
+            </form>
+        </div>
+        <div class="shop-container">
+
+            <!-- <div class="shop-item">
+                <div>
+                    <div>
+                        <span class="skill" data-tooltip="Health: This unit increases your maximum health by x and heals you by x, everytime you win a battle."><span class="oi" data-glyph="heart"></span></span>
+                        <span class="skill" data-tooltip="Might: This unit increases your might by x when fighting a battle. (Rounded Down)"><span class="oi" data-glyph="arrow-thick-top"></span></span>
+                    </div>
+                    <p>3/300</p>
+                </div>
+                <img src="./assets/images/placeholder1.jpg" class="has-tooltip-multiline" data-tooltip="Tooltip Text">
+                <div class="shop-item-info">
+                    <h3>Iron Man</h3>
+                    <p>1200</p>
+                    <button class="btn-red" title="you need 200 points">unlock</button>
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
+
+    <!--inventory modal-->
+    <div class="modal modal-inventory">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory</p>
+                <!-- Content ... -->
+                <div class="inventory-box">
+
+                </div>
+            </section>
+            <button class="button is-dark" id="inventory-close">Close</button>
+        </div>
+    </div>
+    <!--shop unlock message-->
+    <div class="modal modal-unlock-message">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p>You don't have enough money</p>
+            </section>
+            <button type="submit" class="button is-success">OK</button>
+        </div>
+    </div>
+    <!-- Contact Us Screen -->
+    <section id="contact">
+        <!-- Work in Progress -->
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>Contact Us</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/audio.js"></script>
+    <script src="./assets/js/game.js"></script>
+    <script src="./assets/js/prizes.js"></script>
 </body>
 
 </html>
