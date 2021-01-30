@@ -253,7 +253,6 @@ async function seriesList() {
           id: data.data.results[i].id,
           series: selections[x].id,
           index: index,
-          unlocked: false
         }
         characters.push(character);
         index++
@@ -353,7 +352,6 @@ $('.shop-container').on('click', '.unlock-card', function (event) {
   var cost = characters[event.target.getAttribute('data-index')].cost
   if (player.money >= cost) {
     player.money -= cost
-    characters[event.target.getAttribute('data-index')].unlocked = true
     player.inventory.push(characters[event.target.getAttribute('data-index')]);
     updateStats()
     if (characters[event.target.getAttribute('data-index')].health) {
@@ -386,7 +384,7 @@ $('.form-filter').on('change', $('input'), function (event) {
 var sameName = function (filteredArray) {
   var found = false;
   for (var i = 0; i < player.inventory.length; i++) {
-    if (player.inventory[i].name == filteredArray.name && filteredArray.unlocked == true) {
+    if (player.inventory[i].name == filteredArray.name) {
       found = true;
       break;
     }
@@ -460,7 +458,7 @@ function searchItems(searchItem) {
   var filterArray = []
   searchItem = searchItem.toLowerCase()
   for (var i = 0; i < characters.length; i++) {
-    if ((searchItem.toLowerCase()) === ((characters[i].name).toLowerCase())) {
+    if (searchItem.toLowerCase() === characters[i].name.toLowerCase() || searchItem.toLowerCase() == characters[i].name.slice(0, 2)) {
       filterArray.push(characters[i])
     }
   }
@@ -489,8 +487,8 @@ function unlockErrorMessage() {
   $('.modal-unlock-message').addClass('is-active')
 }
 
-$('#search-character').on('click', function () {
-  var searchItem = $(this).siblings().val()
+$('.search-character').on('click', function () {
+  var searchItem = $('#search').val()
   var regex = /^[A-Za-z0-9-, ]+$/
   var isValid = regex.test(searchItem);
   if (!isValid || searchItem == '') {
@@ -499,7 +497,7 @@ $('#search-character').on('click', function () {
     $('.shop-container').append(message)
   } else {
     searchItems(searchItem)
-    $(this).siblings().first().val('')
+    $('#search').val('')
   }
   // $('#search').prop('required', true);
 

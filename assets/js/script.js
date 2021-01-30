@@ -62,9 +62,10 @@ var enterPlaySite = function () {
     $('.navbar').fadeIn()
     $('.nav-shop').hide()
     $('.start-btn').hide()
-
+    $('.search-character').hide()
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
+    $('#search').hide()
     $(`.play-cards`).hide()
     $('.navbar p').text(player.money)
     $('#player .play-level').text(player.level)
@@ -119,6 +120,8 @@ var enterShop = function () {
     $('.nav-shop').hide()
     $('#shop').show()
     $('#play').hide()
+    $('#search').show()
+    $('.search-character').show()
     $('.series').trigger('change')
     shopAudio()
 }

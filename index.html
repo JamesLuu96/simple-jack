@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
     <nav class="navbar">
         <div class="navbar-start">
             <h1 class="navbar-item">Simple<span>Jack</span></h1>
@@ -27,16 +26,17 @@
                 <p></p>
             </div>
         </div>
-
         <div class="main-nav">
             <!-- <input class="input" type="text" placeholder="character" id="search-character">
             <button class="nav-search"><span class="fas fa-search"></span></button> -->
+            <input class="input is-small" type="email" placeholder="search for character" id="search">
+            <button class="search-character"><i class="fas fa-search"></i></button>
             <button class="nav-shop"><span class="oi cart" data-glyph="cart"></span></button>
             <button class="nav-inventory"><span class="oi" data-glyph="box"></span></button>
             <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user"></button>
             <button><span class="oi mute" data-glyph="volume-high"></span></button>
         </div>
-
+        <button class="menu"><i class="far fa-bars"></i></button>
     </nav>
 
     <!-- Enter Site Screen -->
@@ -197,7 +197,6 @@
     <!-- Shop Screen -->
     <div id="shop">
         <div class="shop-select select is-success">
-            <input class="input is-small" type="email" placeholder="search for character" id="search">
             <select class="series">
                 <option value="454">Amazing Spider Man</option>
                 <option value="784">Black Panther</option>
@@ -218,11 +217,11 @@
                 <option value="749">New X-Men</option>
             </select>
 
-            <button id="search-character"><svg class="search_icon" viewBox="0 0 24 24">
+            <!-- <button id="search-character"><svg class="search_icon" viewBox="0 0 24 24">
                     <path
                         d="M21 19.586l-6.256-6.256A6.465 6.465 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.434 0 2.755-.47 3.83-1.256L19.586 21 21 19.586zM5 9.5a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z"
                         fill="#fff"></path>
-                </svg></button>
+                </svg></button> -->
 
         </div>
 
