@@ -254,7 +254,7 @@ button {
 }
 
 .play-cards {
-  /* width: 30vw; */
+  width: 40vw;
   display: flex;
   justify-content: center;
 }
