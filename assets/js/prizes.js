@@ -344,7 +344,8 @@ function display(filteredArray) {
 $('.series').on('change', function (event) {
   var value = event.target.value;
   $('.shop-container').empty();
-  seriesDisplay(value);
+  var filteredArray = characters.filter(x => x.series === parseInt(value))
+  display(filteredArray);
 })
 
 // set unlocked character in localStorage and global variable
@@ -378,7 +379,7 @@ $('.form-filter').on('change', $('input'), function (event) {
   event.preventDefault()
   console.log(`changed`)
   $('.shop-container').empty();
-  seriesDisplay($('.series').val());
+  seriesDisplay(parseInt($('.series').val()));
 })
 
 
