@@ -258,6 +258,7 @@ button {
 
 .play-cards {
   /* height: 100%; */
+  height: 28vh;
   width: 40vh;
   display: flex;
   justify-content: center;
@@ -483,7 +484,7 @@ button {
 
 /* media queries */
 
-/* @media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   #home .gambit {
     width: 120%;
     position: fixed;
@@ -519,7 +520,7 @@ button {
   .shop-item {
     width: 25%;
     scroll-behavior: auto;
-  } */
+  }
 
   /* .play-cards {
     max-height: 30vh;
@@ -531,7 +532,7 @@ button {
     margin: 5px;
   } */
 
-  /* .modal-inventory .modal-card {
+  .modal-inventory .modal-card {
     width: 50%;
   }
   .myItems-container {
@@ -540,11 +541,11 @@ button {
   .modal-content,
   .modal-card {
     width: auto;
-  } */
+  }
   /* #shop{
         overflow:scroll;
         padding-top:15%;
         position: relative;
         overflow-x: hidden;
     } */
-/* } */
+}
