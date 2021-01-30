@@ -58,9 +58,9 @@ Inventory:\
 
 Made by:
 
-**[James Luu](https://github.com/JamesLuu96)** - Project Lead, Character Attributes, Sound Design, Code Refactoring, Debugging
-**[Fasika Walle](https://github.com/fasikaWalle)** - HTML and CSS, Site Design, Mobile Responsiveness, Player Inventory
-**[Eduardo Castro](https://github.com/mambru82)** - Game Logic, Deck of Cards API, Resident Black Jack Expert, Debugging
+**[James Luu](https://github.com/JamesLuu96)** - Project Lead, Character Attributes, Sound Design, Code Refactoring, Debugging\
+**[Fasika Walle](https://github.com/fasikaWalle)** - HTML and CSS, Site Design, Mobile Responsiveness, Player Inventory\
+**[Eduardo Castro](https://github.com/mambru82)** - Game Logic, Deck of Cards API, Resident Black Jack Expert, Debugging\
 **[Nick Carter](https://github.com/NickolausCarter)** - Store Logic, Marvel API, localStorage, Project Documentation
 
 ### ©️2020 Simple Jack
