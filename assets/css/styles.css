@@ -262,6 +262,8 @@ button {
 .play-cards img {
   max-width: 15%;
   margin: 5px;
+  /*added to test if height: auto is the problem */
+  max-height: 30%;
 }
 
 .play-score {
