@@ -113,7 +113,14 @@ button {
   display:none;
   color:#fff;
 }
-
+#search{
+    padding:7px 10px 10px 10px;
+    height:38px; 
+}
+.nav-background{
+    height:100vh;
+    display: none;
+}
 /* Enter Site Screen */
 
 #enter-site {
@@ -575,9 +582,13 @@ width:30%;
     .main-nav{  
      flex-direction: column;
      position: absolute;
-     right:5%;
-     top:35%;
+     right:-2%;
+     top:65%;
      display: none;
+     
+    }
+    .main-nav button{
+        margin-bottom: 10px;
     }
     .navbar{
       flex-direction: column;
@@ -596,10 +607,11 @@ width:30%;
       
       .nav-search{
          margin-top:5%;
-          width: 90%;
-        
+          width: 90%;  
       }
-    
+      .nav-background{
+          display: block;
+      }
    
     /* .main-nav button{
      margin:10px;
