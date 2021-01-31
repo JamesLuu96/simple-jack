@@ -182,6 +182,8 @@ $('.btn-reload').on('click', function (event) {
 // Take you to Shop
 var enterShop = function(){
     $('.nav-search').show()
+    $('#shop').append($('#footer'))
+    $('#footer').show()
     $('.nav-shop').hide()
     $('#shop').prepend($('.navbar'))
     $('#shop').show()
@@ -192,6 +194,17 @@ var enterShop = function(){
 $('.nav-shop').on('click', function(event){
     event.preventDefault()
     enterShop()
+})
+
+// ----------------------Shop Screen----------------------
+
+$('#footer h1').on('click', function(event){
+    event.preventDefault()
+    $('#contact').fadeIn()
+    $('#contact').prepend($('.navbar'))
+    $('#contact').append($('#footer'))
+    $('#shop').hide()
+    $('#footer').hide()
 })
 
 // ----------------------Save Game----------------------
