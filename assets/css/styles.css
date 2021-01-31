@@ -501,6 +501,14 @@ width:30%;
    text-align:right;
    
  }
+ .overlay {
+  position:absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
  
  /* media queries */
 
@@ -576,6 +584,9 @@ width:30%;
       position: fixed;
       top:0;
     }
+    .shop-container{
+        padding:10px 0 0 0 ;
+      }
     .series{
       margin-top:40%
       }
@@ -586,10 +597,10 @@ width:30%;
       .nav-search{
          margin-top:5%;
           width: 90%;
+        
       }
-      .shop-container{
-        padding:10px 0 0 0 ;
-      }
+    
+   
     /* .main-nav button{
      margin:10px;
     } */

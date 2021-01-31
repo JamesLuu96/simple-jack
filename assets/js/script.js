@@ -163,6 +163,10 @@ var levelUp = function () {
 $('#menu').on('click', function () {
     $('.main-nav').slideToggle(200)
 })
-$('..search-bar-icon').on('click', function () {
-    $('.search-bar').slideToggle(200)
-})
+// $('..search-bar-icon').on('click', function () {
+//     $('.search-bar').slideToggle(200)
+// })
+$('#menu').click(function () {
+    $(document.body).toggleClass('overlay');
+
+});
