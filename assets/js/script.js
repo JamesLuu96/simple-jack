@@ -42,6 +42,7 @@ var enterSite = function () {
     $('#contact').hide()
     $('.navbar').hide()
     $('#footer').hide()
+    $('.search-bar').hide()
     $('#enter-site button').hide()
 }
 enterSite()
@@ -101,6 +102,7 @@ var enterHomeSiteFromPlay = function () {
     $('#home').show()
     $('#shop').hide()
     $('#play').hide()
+    $('.search-bar-icon').hide()
 }
 $('.navbar .navbar-start h1').on('click', function (event) {
     event.preventDefault()
@@ -158,3 +160,9 @@ var levelUp = function () {
         dealer.xp = 0
     }
 }
+$('#menu').on('click', function () {
+    $('.main-nav').slideToggle(200)
+})
+$('..search-bar-icon').on('click', function () {
+    $('.search-bar').slideToggle(200)
+})

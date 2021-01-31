@@ -220,7 +220,6 @@ $('#play-bet form').on('submit', function (event) {
     }
 })
 
-
 $('.play-hit').on('click', async function (event) {
     event.preventDefault()
     player = await dealCard(1, player)

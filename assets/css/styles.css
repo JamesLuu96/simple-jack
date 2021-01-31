@@ -21,6 +21,7 @@ button {
     background-color: transparent;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navbar h1 {
@@ -28,6 +29,9 @@ button {
     color: #fff;
     margin-left: 10px;
     cursor: pointer;
+}
+.navbar-start{
+  display:flex;
 }
 .navbar-start .nav-might{
     position: relative;
@@ -64,7 +68,7 @@ button {
     align-items: center;
     font-size: 20px;
     color: white;
-    margin-left: 60px;
+  
 }
 
 .navbar-start div span{
@@ -101,10 +105,14 @@ button {
     height: 2rem;
     border-radius: 50%;
 }
-/* .menu i{
+#menu{
   display: none;
-  background-color: none;
-} */
+  color:#fff;
+}
+.fas .fa-lg .fa-search{
+  display:none;
+  color:#fff;
+}
 
 /* Enter Site Screen */
 
@@ -342,35 +350,19 @@ button {
     
 }
 
- #search{ 
-  width:200px; 
- height: 30px;
- padding: 11px 40px 11px 15px;
- font-size: 14px;
-
-} 
-.search-character i{
-  position: absolute;
-  right:15.5%;
-  color:#333;
-  font-size: 1rem;
+.nav-search{
+  position: relative;
+  height: fit-content;
 }
-/* .iconic-container{
-    color:#fff;
-} */
-
-/* .input, .select select, .textarea {
-    border-radius: 0;
-} */
-
-
-/* #search-character{
-    height: 40px;
-    width: 40px;
-    border-radius: 0px 0px 3px 0px;
-    display: flex;
-   
-} */
+.nav-search input{
+  width:100%;
+}
+.nav-search i{
+  position: absolute;
+  right:0;
+  top:50%;
+  transform: translateY(-50%);
+}
 .shop-container{
    display: flex;
    flex-wrap: wrap;
@@ -493,7 +485,11 @@ width:30%;
   color:rgb(138, 138, 138); 
   text-align: center; 
 }
-
+.series{
+  padding:10px;
+  border-radius: 5px;
+  border-color: #2fb667;
+}
 /* Footer */
 #footer{
     background-color: #5f5f5f;
@@ -509,6 +505,9 @@ width:30%;
  /* media queries */
 
 @media only screen and (max-width: 767px) {
+  body{
+    font-size: 14px;
+  }
     #home .gambit {
         width: 120%;
         position: fixed;
@@ -533,6 +532,9 @@ width:30%;
         height: 100%;
         overflow: scroll;
     }
+    .modal-content, .modal-card {
+      width: auto;
+  }
     .user-info {
         display:flex;
         flex-direction: column;
@@ -556,13 +558,58 @@ width:30%;
         width:49%;
        
       }
-.menu{
-  display:block;
+      #menu{
+        display: block;   
+        position:absolute;
+        right:8%;
+        top:25%;
+    }
+    .main-nav{  
+     flex-direction: column;
+     position: absolute;
+     right:5%;
+     top:35%;
+     display: none;
+    }
+    .navbar{
+      flex-direction: column;
+      position: fixed;
+      top:0;
+    }
+    .series{
+      margin-top:40%
+      }
+      .form-filter {
+          margin-top: 2%;
+      }
+      
+      .nav-search{
+         margin-top:5%;
+          width: 90%;
+      }
+      .shop-container{
+        padding:10px 0 0 0 ;
+      }
+    /* .main-nav button{
+     margin:10px;
+    } */
+    /* .series{
+     top:200%;
+    } */
+/*  
+    .nav-search{
+    
+     width:90%;
+     margin:0 auto;
+    }
+    .nav-bar{
+      flex-direction: column;
+    } */
+    /* .select:not(.is-multiple):not(.is-loading)::after, .navbar-link:not(.is-arrowless)::after {
+      top:240%;
+    } */
 }
-}
-@media screen and (min-width: 769px){
-.modal-content, .modal-card {
-    width: auto;
-}
-}
+/* @media screen and (min-width: 769px){
+
+} */
 

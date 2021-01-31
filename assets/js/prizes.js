@@ -458,7 +458,7 @@ function searchItems(searchItem) {
   var filterArray = []
   searchItem = searchItem.toLowerCase()
   for (var i = 0; i < characters.length; i++) {
-    if (searchItem.toLowerCase() === characters[i].name.toLowerCase() || searchItem.toLowerCase() == characters[i].name.slice(0, 2)) {
+    if ((searchItem.toLowerCase() === characters[i].name.toLowerCase()) || (characters[i].name.toLowerCase().slice(0, searchItem.length) === searchItem)) {
       filterArray.push(characters[i])
     }
   }
@@ -473,6 +473,17 @@ function searchItems(searchItem) {
     display(filterArray)
   }
 
+}
+$('#search').autocomplete({
+  source: noDuplicate(characters.map(x => x.name))
+})
+
+
+function noDuplicate(a) {
+  a = a.filter(function (item, pos) {
+    return a.indexOf(item) == pos;
+  })
+  return a
 }
 
 $('.nav-inventory').on('click', function () {
@@ -499,10 +510,6 @@ $('.search-character').on('click', function () {
     searchItems(searchItem)
     $('#search').val('')
   }
-  // $('#search').prop('required', true);
-
-
-
 })
 
 
