@@ -235,6 +235,7 @@ button {
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 80vw;
 }
 
 .play-container{
@@ -251,6 +252,7 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .user-info {
     display:flex;
@@ -285,9 +287,11 @@ button {
 }
 
 .play-cards {
-    width: 40vw;
+    width: 100%;
     display:flex;
     justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .play-cards img {
@@ -638,7 +642,7 @@ width:30%;
     }
 
     .play-cards img {
-        max-width: 30%;
+        width: 80px;
     }
     .modal-inventory .modal-card{
         width:50%;
