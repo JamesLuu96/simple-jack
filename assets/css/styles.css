@@ -646,6 +646,12 @@ width:30%;
         width: 80px;
         height: 126px;
     }
+    #play .button{
+        font-size: 80%;
+    }
+    .user-chat{
+        display: none !important;
+    }
     .modal-inventory .modal-card{
         width:50%;
     }

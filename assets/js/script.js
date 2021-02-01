@@ -52,7 +52,7 @@ var enterSite = function () {
     $('#enter-site .btn-red').hide()
     $('#enter-site .enter-site-btn').hide()
     // If Update is not Current
-    if(gameVersion !== '1.5' || !localStorage.getItem('characters')){
+    if(gameVersion !== '1.6' || !localStorage.getItem('characters')){
         $('#enter-site .btn-red').show()
     // If Update is Current
     }else{
@@ -82,7 +82,7 @@ $('#enter-site .btn-red').on('click', function(event){
     event.preventDefault()
     async function updateGame(){
         characters = []
-        gameVersion = '1.5'
+        gameVersion = '1.6'
         player = { 
             name: 'player',
             character: 'gambit',
