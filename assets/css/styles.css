@@ -5,20 +5,6 @@
 h1, h2, h3, h4, h5, h6{
     font-size: revert;
 }
-.ui-menu .ui-menu-item{
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    padding: 1px;
-    width: 250px;
-}
-.ui-menu .ui-menu-item:hover{
-    background-color: rgba(230, 230, 230);
-}
-.ui-menu{
-    overflow-y: scroll;
-    max-height: 400px;
-}
 
 html,
 body {
@@ -134,7 +120,8 @@ button {
 }
 #search{
     padding:7px 10px 10px 10px;
-    height:38px; 
+    height:38px;
+    border-radius: 5px;
 }
 .nav-background{
     height:100vh;
@@ -408,6 +395,7 @@ button {
     right:0;
     top:50%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 .shop-container{
    display: flex;
@@ -441,6 +429,21 @@ button {
     font-weight: bolder;
     color:#333;
     font-size: 17px;
+}
+
+.ui-menu .ui-menu-item{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 1px;
+    width: 250px;
+}
+.ui-menu .ui-menu-item:hover{
+    background-color: rgba(230, 230, 230);
+}
+.ui-menu{
+    overflow-y: scroll;
+    max-height: 400px;
 }
 
 .form-filter label {
