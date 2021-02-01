@@ -196,6 +196,7 @@ async function seriesList() {
       }
     }
     // saves to localStorage to prevent same user from making multiple api calls
+    
   }
   for (let i = 0; i < characters.length; i++) {
     characters[i] = randomValues(characters[i])
@@ -300,8 +301,7 @@ function display(filteredArray) {
 $('.series').on('change', function (event) {
   var value = event.target.value;
   $('.shop-container').empty();
-  var filteredArray = characters.filter(x => x.series === value)
-  display(filteredArray);
+  seriesDisplay(value);
 })
 
 // set unlocked character in localStorage and global variable
@@ -314,7 +314,8 @@ $('.shop-container').on('click', '.unlock-card', function (event) {
     if (characters[event.target.getAttribute('data-index')].health) {
       player.maxHp += characters[event.target.getAttribute('data-index')].health
     }
-    $('.series').trigger('change');
+    $('.shop-container').empty();
+    seriesDisplay($('.series').val())
     $('.navbar p').text(player.money)
   } else {
     unlockErrorMessage();
