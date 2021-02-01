@@ -6,8 +6,8 @@ if(localStorage.getItem('gameVersion')){
 }
 
 // player Object
-var player = JSON.parse(localStorage.getItem('player')) || 
-{ 
+var player = JSON.parse(localStorage.getItem('player')) ||
+{
     name: 'player',
     character: 'gambit',
     level: 1,
@@ -17,20 +17,21 @@ var player = JSON.parse(localStorage.getItem('player')) ||
     handSum: 0,
     money: 300,
     bet: 0,
-    inventory: [{
-        name: 'Level 1 Might',
-        path: 'https://images-na.ssl-images-amazon.com/images/I/71sFiAksnIL._AC_SY450_',
-        ext: '.jpg',
-        might: 1,
-        mightAdd: true
-      }],
+    inventory: [
+        {
+            name: 'Level 1 Might',
+            path: 'https://images-na.ssl-images-amazon.com/images/I/71sFiAksnIL._AC_SY450_',
+            ext: '.jpg',
+            might: 1,
+            mightAdd: true,
+        }],
     mightSum: 1,
     mightProduct: 1,
     healAmount: 0
 }
 // dealer Object
-var dealer = JSON.parse(localStorage.getItem('dealer')) || 
-{ 
+var dealer = JSON.parse(localStorage.getItem('dealer')) ||
+{
     name: 'dealer',
     level: 1,
     maxHp: 100,
@@ -41,7 +42,7 @@ var dealer = JSON.parse(localStorage.getItem('dealer')) ||
 }
 
 // ----------------------Enter Site Section----------------------
-var enterSite = function(){
+var enterSite = function () {
     $('.home-hidden').hide()
     $('#play').hide()
     $('#shop').hide()
@@ -51,7 +52,7 @@ var enterSite = function(){
     $('#enter-site .btn-red').hide()
     $('#enter-site .enter-site-btn').hide()
     // If Update is not Current
-    if(gameVersion !== '1.1' || !localStorage.getItem('characters')){
+    if(gameVersion !== '1.2' || !localStorage.getItem('characters')){
         $('#enter-site .btn-red').show()
     // If Update is Current
     }else{
@@ -81,7 +82,7 @@ $('#enter-site .btn-red').on('click', function(event){
     event.preventDefault()
     async function updateGame(){
         characters = []
-        gameVersion = '1.1'
+        gameVersion = '1.2'
         player = { 
             name: 'player',
             character: 'gambit',
@@ -122,15 +123,18 @@ $('#enter-site .btn-red').on('click', function(event){
 // ----------------------Home Section----------------------
 
 // Play Game Button
-var enterPlaySite = function(){
+var enterPlaySite = function () {
     $('#play').show()
+    $('.nav-might').show()
     $('#home').hide()
     $('#play').prepend($('.navbar'))
     $('.navbar').fadeIn()
     $('.nav-shop').hide()
     $('.start-btn').hide()
+    $('.search-character').hide()
     $('.play-game-buttons').hide()
     $('.nav-search').hide()
+    $('#search').hide()
     $(`.play-cards`).hide()
     $('.navbar p').text(player.money)
     $('#player .play-level').text(player.level)
@@ -139,7 +143,7 @@ var enterPlaySite = function(){
     $('#dealer .play-health').text(`HP: ${dealer.hp}/${dealer.maxHp}`)
     randomEntryAudio()
 }
-$('#home-play').on('click', function(event){
+$('#home-play').on('click', function (event) {
     event.preventDefault()
     enterPlaySite()
 })
@@ -161,13 +165,15 @@ $('.modal-unlock-message button').on("click", () => {
 // ----------------------Play Section----------------------
 // Back to Home Button
 
-var enterHomeSiteFromPlay = function(){
+var enterHomeSiteFromPlay = function () {
     $('.navbar').hide()
+    $('#contact').hide()
     $('#home').show()
     $('#shop').hide()
     $('#play').hide()
+    $('.search-bar-icon').hide()
 }
-$('.navbar .navbar-start h1').on('click', function(event){
+$('.navbar .navbar-start h1').on('click', function (event) {
     event.preventDefault()
     enterHomeSiteFromPlay()
 })
@@ -180,7 +186,12 @@ $('.btn-reload').on('click', function (event) {
 
 
 // Take you to Shop
-var enterShop = function(){
+var enterShop = function () {
+    if ($('.main-nav').is(':visible')){
+        if(window.matchMedia('(max-width: 767px)').matches){
+            $('.main-nav').slideToggle(200)
+        }
+    }
     $('.nav-search').show()
     $('#shop').append($('#footer'))
     $('#footer').show()
@@ -188,10 +199,12 @@ var enterShop = function(){
     $('#shop').prepend($('.navbar'))
     $('#shop').show()
     $('#play').hide()
+    $('#search').show()
+    $('.search-character').show()
     $('.series').trigger('change')
     shopAudio()
 }
-$('.nav-shop').on('click', function(event){
+$('.nav-shop').on('click', function (event) {
     event.preventDefault()
     enterShop()
 })
@@ -205,6 +218,8 @@ $('#footer h1').on('click', function(event){
     $('#contact').append($('#footer'))
     $('#shop').hide()
     $('#footer').hide()
+    $('.nav-search').hide()
+    $('.nav-might').hide()
 })
 
 // ----------------------Save Game----------------------
@@ -215,8 +230,8 @@ function saveGame(){
     localStorage.setItem('gameVersion', gameVersion)
 }
 
-var levelUp = function(){
-    if(dealer.hp === 0){
+var levelUp = function () {
+    if (dealer.hp === 0) {
         player.level++
         player.inventory[0].name = `Level ${player.level} Might`
         player.inventory[0].might++
@@ -225,13 +240,21 @@ var levelUp = function(){
         player.hp = player.maxHp
         dealer.hp = dealer.maxHp
     }
-    if(player.hp === 0 || dealer.xp === 5){
+    if (player.hp === 0 || dealer.xp === 5) {
         dealer.level++
         dealer.maxHp += Math.floor(dealer.maxHp * .3)
         dealer.hp = dealer.maxHp
-        if(player.hp === 0){
+        if (player.hp === 0) {
             player.hp = player.maxHp
         }
         dealer.xp = 0
     }
 }
+$('#menu').on('click', function () {
+    $('.main-nav').slideToggle(200, function(){
+        if ($(this).is(':visible')){
+            $(this).css('display','flex');
+        }
+    })
+    
+})

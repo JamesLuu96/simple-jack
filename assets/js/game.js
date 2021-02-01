@@ -1,12 +1,12 @@
 var deckId;
 
-var resetGame = function(playerObj){
+var resetGame = function (playerObj) {
     playerObj.hand = []
     playerObj.handSum = 0
     return playerObj
 }
 
-async function beginGame(){
+async function beginGame() {
     await getDeck()
     player = resetGame(player)
     dealer = resetGame(dealer)
@@ -19,8 +19,8 @@ async function beginGame(){
 // Fetches New Deck
 async function getDeck() {
     var res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
-    for(let i = 0; i < 5; i++){
-        if(!res.ok){
+    for (let i = 0; i < 5; i++) {
+        if (!res.ok) {
             res = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2`)
         }
     }
@@ -30,8 +30,8 @@ async function getDeck() {
 // Deals Card and shows it
 async function dealCard(number, playerObj) {
     var res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
-    for(let i = 0; i < 5; i++){
-        if(!res.ok){
+    for (let i = 0; i < 5; i++) {
+        if (!res.ok) {
             res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw?count=${number}`)
         }
     }
@@ -46,18 +46,18 @@ async function dealCard(number, playerObj) {
         playerObj.hand.push(cardObj)
     }
     playerObj = updateSum(playerObj)
-    
-    if(playerObj.name === 'dealer' && playerObj.hand.length < 2){
+
+    if (playerObj.name === 'dealer' && playerObj.hand.length < 2) {
         $(`.play-${playerObj.name} .play-cards`).append($('<img>').attr('src', 'https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png'))
-    }else if(playerObj.name === 'dealer' && playerObj.hand.length === 2){
+    } else if (playerObj.name === 'dealer' && playerObj.hand.length === 2) {
         $(`.play-${playerObj.name} .play-cards`).text('')
         $(`.play-${playerObj.name} .play-cards`).append($('<img>').attr('src', 'https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png'))
         $(`.play-${playerObj.name} .play-cards`).append($('<img>').attr('src', playerObj.hand[1].img))
         $(`.play-${playerObj.name} .play-score span`).text(playerObj.handSum - playerObj.hand[0].value)
         $(`.play-${playerObj.name} .play-score`).show()
-    } else{
+    } else {
         $(`.play-${playerObj.name} .play-cards`).text('')
-        for(let i = 0; i < playerObj.hand.length; i++){
+        for (let i = 0; i < playerObj.hand.length; i++) {
             $(`.play-${playerObj.name} .play-cards`).append($('<img>').attr('src', playerObj.hand[i].img))
         }
         $(`.play-${playerObj.name} .play-score span`).text(playerObj.handSum)
@@ -66,18 +66,18 @@ async function dealCard(number, playerObj) {
     return playerObj
 }
 // Updates Sum of Hand
-var updateSum = function(playerObj){
-    playerObj.handSum = playerObj.hand.reduce((x , y) => x + y.value, 0)
+var updateSum = function (playerObj) {
+    playerObj.handSum = playerObj.hand.reduce((x, y) => x + y.value, 0)
     return playerObj
 }
 
 // Evaluates Card's Value
 var cardValueEvaluate = function (string, playerObj) {
     // defines cardValue
-    switch(string[0]){
+    switch (string[0]) {
         case 'A':
             var cardValue = 1
-            if(playerObj.handSum + 11 <= 21){
+            if (playerObj.handSum + 11 <= 21) {
                 cardValue = 11
             }
             break;
@@ -100,43 +100,43 @@ var cardValueEvaluate = function (string, playerObj) {
 }
 // Check Cards
 async function checkCards() {
-    if(player.handSum >= 21){
+    if (player.handSum >= 21) {
         await endGame()
-    }else{
+    } else {
         continueGame()
     }
 }
 
-function continueGame(){
+function continueGame() {
     $('.play-game-buttons').show()
     if (player.money < (2 * player.bet) || player.hand.length > 2) {
         $('.play-double').hide()
-    } else{
+    } else {
         $('.play-double').show()
     }
 }
 
-async function endGame(){
+async function endGame() {
     while (dealer.handSum < 17) {
         dealer = await dealCard(1, dealer);
     }
     // reveals first card if dealer has 2 cards only
-    if(dealer.hand.length === 2){
+    if (dealer.hand.length === 2) {
         $(`.play-dealer .play-cards`).text('')
-        for(let i = 0; i < dealer.hand.length; i++){
+        for (let i = 0; i < dealer.hand.length; i++) {
             $(`.play-dealer .play-cards`).append($('<img>').attr('src', dealer.hand[i].img))
         }
         $(`.play-dealer .play-score span`).text(dealer.handSum)
     }
-    if(player.handSum > 21){
+    if (player.handSum > 21) {
         gameOver('lose')
-    }else if(dealer.handSum > 21){
+    } else if (dealer.handSum > 21) {
         gameOver('win')
-    }else if(dealer.handSum === player.handSum){
+    } else if (dealer.handSum === player.handSum) {
         gameOver('tie')
-    }else if(dealer.handSum > player.handSum){
+    } else if (dealer.handSum > player.handSum) {
         gameOver('lose')
-    }else{
+    } else {
         gameOver('win')
     }
 }
@@ -151,7 +151,7 @@ var gameOver = function (result) {
     $('.play-game-buttons').hide()
     var damage = Math.floor(player.bet + player.mightSum)
     damage = Math.floor(damage * player.mightProduct)
-    switch (result){
+    switch (result) {
         case 'win':
             player.money += damage
             dealer.hp = Math.max(dealer.hp - damage, 0)
@@ -229,23 +229,23 @@ $('#play-bet form').on('submit', function (event) {
     $('.navbar h1').hide()
     $('.navbar .nav-shop').hide()
     $('.modal').removeClass("is-active");
-    cards.onended = function(){
+    cards.onended = function () {
         beginGame();
     }
 })
 
-$('.play-hit').on('click', async function(event) {
+$('.play-hit').on('click', async function (event) {
     event.preventDefault()
     player = await dealCard(1, player)
     checkCards()
 })
 
-$('.play-stand').on('click', function(event) {
+$('.play-stand').on('click', function (event) {
     event.preventDefault()
     endGame()
 })
 
-$('.play-double').on('click', function(event){
+$('.play-double').on('click', function (event) {
     event.preventDefault()
     doubleDown();
 })

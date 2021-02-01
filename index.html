@@ -20,13 +20,17 @@
 </head>
 
 <body>
-
     <nav class="navbar">
         <div class="navbar-start">
             <h1 class="navbar-item">Simple<span>Jack</span></h1>
-            <div class="nav-might" data-tooltip='Might'><span class="oi" data-glyph="flash"></span><p></p></div>
+            <div class="nav-might" data-tooltip='Might'><span class="oi" data-glyph="flash"></span>
+                <p></p>
+            </div>
         </div>
-
+        <form class="nav-search">
+            <input class="input is-small" placeholder="search for character" id="search">
+            <button type="submit" class="fas fa-search search-character"></button>
+        </form>
         <div class="main-nav">
             <!-- <button class="nav-search"><span class="fas fa-search"></span></button> -->
             <button class="nav-shop"><span class="oi cart" data-glyph="cart"></span></button>
@@ -34,9 +38,8 @@
             <button class="nav-character"><img src="./assets/images/user-icon/gambit.png" class="nav-user" alt="gambit-icon"></button>
             <button><span class="oi mute" data-glyph="volume-high"></span></button>
         </div>
-
+        <span class="oi" data-glyph="menu" id="menu"></span>
     </nav>
-
     <!-- Enter Site Screen -->
     <div id="enter-site">
         <button class="button is-medium enter-site-btn">Enter Site</button>
@@ -202,15 +205,21 @@
     
     <!-- Shop Screen -->
     <div id="shop">
-        <div class="shop-select select is-success">
+        <div class="shop-select">
             <select class="series">
                 <option value="116">Acts of Vengeance!</option>
                 <option value="227">Age of Apocalype</option>
                 <option value="238">Civil War</option>
                 <option value="271">Secret War</option>
             </select>
+
+            <!-- <button id="search-character"><svg class="search_icon" viewBox="0 0 24 24">
+                    <path
+                        d="M21 19.586l-6.256-6.256A6.465 6.465 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.434 0 2.755-.47 3.83-1.256L19.586 21 21 19.586zM5 9.5a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z"
+                        fill="#fff"></path>
+                </svg></button> -->
         </div>
-        
+
         <div class="form-filter">
             <form>
                 <div>
@@ -263,7 +272,8 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <section class="modal-card-body">
-                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory</p>
+                <p class="modal-card-title" id="inventory-title"><span class="oi" data-glyph="box"></span> My Inventory
+                </p>
                 <!-- Content ... -->
                 <div class="inventory-box">
 
@@ -345,15 +355,15 @@
             <div class="contact-person">
                 <div>
                   <figure>
-                    <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/70/5261a7d7c394b/portrait_uncanny.jpg" alt="Placeholder image">
+                    <img src="https://i.annihil.us/u/prod/marvel/i/mg/9/c0/52740e5d96fcc/portrait_uncanny.jpg" alt="Placeholder image">
                   </figure>
                 </div>
                 <div>
                   <div class="contact-person-picture">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                    <img src="./assets/images/resume/Eduardo.jfif" alt="Placeholder image">
                     <div>
                       <p>Eduardo Castro</p>
-                      <p>@</p>
+                      <p>@mambru82</p>
                     </div>
                   </div>
               
@@ -361,9 +371,9 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris.
                     <div class="contact-social">
-                        <a href="https://github.com/JamesLuu96" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/james-luu-7b62391ab/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://jamesluu96.github.io/portfolio/" target="_blank"><i class="fas fa-user-tie"></i></a>
+                        <a href="https://github.com/mambru82" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/eduardo-castro-a90b5329" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://mambru82.github.io/my_portfolio/" target="_blank"><i class="fas fa-user-tie"></i></a>
                     </div>
                   </div>
                 </div>
@@ -406,10 +416,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./assets/js/prizes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/audio.js"></script>
     <script src="./assets/js/game.js"></script>
+    <script src="./assets/js/prizes.js"></script>
 </body>
 
 </html>

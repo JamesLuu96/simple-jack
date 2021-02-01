@@ -196,7 +196,7 @@ async function seriesList() {
       }
     }
     // saves to localStorage to prevent same user from making multiple api calls
-
+    console.log(characters)
   }
   for (let i = 0; i < characters.length; i++) {
     characters[i] = randomValues(characters[i])
@@ -207,7 +207,7 @@ async function seriesList() {
 // displays store items based on selected series
 function seriesDisplay(value) {
   var filteredArray = characters.filter(x => x.series === value)
-  $('.form-filter input').each(function(){
+  $('.form-filter input').each(function () {
     var name = $(this)[0].id
     if($(this)[0].checked){
       if(name === 'filter-health'){
@@ -228,12 +228,14 @@ function seriesDisplay(value) {
       }
     }
   })
-
+  display(filteredArray)
+}
+function display(filteredArray) {
   // check if character is unlocked and prevent displaying on store page
   for (let i = 0; i < filteredArray.length; i++) {
     // if (player.inventory.includes(filteredArray[i])) {
-      if (sameName(filteredArray[i].name)) {
-    
+    if (sameName(filteredArray[i])) {
+      continue
       // displayed locked characters on store page
     } else {
       var name = filteredArray[i].name;
@@ -244,17 +246,17 @@ function seriesDisplay(value) {
       }
 
       var container = $('<div>').addClass('shop-item');
-      if(filteredArray[i].might && filteredArray[i].health){
-        if(filteredArray[i].mightAdd){
+      if (filteredArray[i].might && filteredArray[i].health) {
+        if (filteredArray[i].mightAdd) {
           container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'plus'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
-        } else{
+        } else {
           container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Health: This unit increases your maximum health by ${filteredArray[i].health} and heals you by ${filteredArray[i].health} everytime you win a battle.`).append($('<span>').addClass('oi').attr('data-glyph', 'heart')), $('<span>').addClass('skill').attr('data-tooltip', `Might: This unit multiplies your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].health}/${filteredArray[i].might}`)))
         }
 
-      } else if(filteredArray[i].might){
-        if(filteredArray[i].mightAdd){
+      } else if (filteredArray[i].might) {
+        if (filteredArray[i].mightAdd) {
           container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Might: This unit increases your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'plus'))), $('<p>').text(`${filteredArray[i].might}`)))
-        } else{
+        } else {
           container.append($('<div>').append($('<div>').append($('<span>').addClass('skill').attr('data-tooltip', `Might: This unit multiplies your might by ${filteredArray[i].might} when fighting a battle. (Rounded Down)`).append($('<span>').addClass('oi').attr('data-glyph', 'x'))), $('<p>').text(`${filteredArray[i].might}`)))
         }
 
@@ -299,7 +301,8 @@ function seriesDisplay(value) {
 $('.series').on('change', function (event) {
   var value = event.target.value;
   $('.shop-container').empty();
-  seriesDisplay(value);
+  var filteredArray = characters.filter(x => x.series === value)
+  display(filteredArray);
 })
 
 // set unlocked character in localStorage and global variable
@@ -309,7 +312,7 @@ $('.shop-container').on('click', '.unlock-card', function (event) {
     player.money -= cost
     player.inventory.push(characters[event.target.getAttribute('data-index')]);
     updateStats()
-    if(characters[event.target.getAttribute('data-index')].health){
+    if (characters[event.target.getAttribute('data-index')].health) {
       player.maxHp += characters[event.target.getAttribute('data-index')].health
     }
     $('.series').trigger('change');
@@ -321,7 +324,7 @@ $('.shop-container').on('click', '.unlock-card', function (event) {
 })
 
 
-$('.form-filter').on('change', $('input'),function(event){
+$('.form-filter').on('change', $('input'), function (event) {
   event.preventDefault()
   
   $('.shop-container').empty();
@@ -329,13 +332,13 @@ $('.form-filter').on('change', $('input'),function(event){
 })
 
 
-var sameName = function(name){
+var sameName = function (filteredArray) {
   var found = false;
-  for(var i = 0; i < player.inventory.length; i++) {
-      if (player.inventory[i].name == name) {
-          found = true;
-          break;
-      }
+  for (var i = 0; i < player.inventory.length; i++) {
+    if (player.inventory[i].name == filteredArray.name) {
+      found = true;
+      break;
+    }
   }
 
   return found
@@ -355,34 +358,85 @@ function showMyItems() {
       var itemContainerEl = $('<div>').addClass('myItems-container')
       var itemImage = $('<img>').attr('src', path + "." + ext).addClass('myItems-img')
       var itemHeader = $('<h4>').text(name).addClass('inventory-header')
-      if(player.inventory[i].legendary){
+      if (player.inventory[i].legendary) {
         itemHeader.addClass('legendary')
       }
       $(itemContainerEl).append(itemImage, itemHeader)
-      
+
 
       var skillsEl = $('<div>').addClass('is-flex')
 
-      if(player.inventory[i].health){
+      if (player.inventory[i].health) {
         var spanEl = $('<span>').append($('<span>').addClass('oi').attr('data-glyph', 'heart'))
         var value = $('<p>').text(player.inventory[i].health)
-        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+        skillsEl.append($('<div>').append(spanEl, value).addClass('is-flex'))
       }
-      if(player.inventory[i].mightAdd){
+      if (player.inventory[i].mightAdd) {
         var spanEl = $('<span>').append($('<span>').addClass('oi').attr('data-glyph', 'plus'))
         var value = $('<p>').text(player.inventory[i].might)
-        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+        skillsEl.append($('<div>').append(spanEl, value).addClass('is-flex'))
       }
-      if(player.inventory[i].might && !player.inventory[i].mightAdd){
+      if (player.inventory[i].might && !player.inventory[i].mightAdd) {
         var spanEl = $('<span>').append($('<span>').addClass('oi').attr('data-glyph', 'x'))
         var value = $('<p>').text(player.inventory[i].might)
-        skillsEl.append($('<div>').append(spanEl,value).addClass('is-flex'))
+        skillsEl.append($('<div>').append(spanEl, value).addClass('is-flex'))
       }
       $(itemContainerEl).prepend(skillsEl)
       $('.inventory-box').append($(itemContainerEl))
     }
   }
 }
+
+
+var updateStats = function () {
+  player.mightSum = 0
+  player.mightProduct = 1
+  player.healAmount = 0
+  for (let i = 0; i < player.inventory.filter(x => x.might).length; i++) {
+    if (player.inventory.filter(x => x.might)[i].mightAdd) {
+      player.mightSum += player.inventory.filter(x => x.might)[i].might
+    } else {
+      player.mightProduct += player.inventory.filter(x => x.might)[i].might
+    }
+  }
+  for (let i = 0; i < player.inventory.filter(x => x.health).length; i++) {
+    player.healAmount += player.inventory.filter(x => x.health)[i].health
+  }
+}
+
+//search characters
+function searchItems(searchItem) {
+  var filterArray = []
+  searchItem = searchItem.toLowerCase()
+  for (var i = 0; i < characters.length; i++) {
+    if ((searchItem.toLowerCase() === characters[i].name.toLowerCase()) || (characters[i].name.toLowerCase().slice(0, searchItem.length) === searchItem)) {
+      filterArray.push(characters[i])
+    }
+  }
+  if (filterArray.length == 0) {
+    $('.shop-container').empty()
+    var messagediv = $('<div>').addClass('notification is-primary is-light')
+    var message = $('<p>').text('oops your character is not available')
+    messagediv.append(message)
+    $('.shop-container').append(messagediv)
+  } else {
+    $('.shop-container').empty()
+    display(filterArray)
+  }
+
+}
+$('#search').autocomplete({
+  source: noDuplicate(characters.map(x => x.name))
+})
+
+
+function noDuplicate(a) {
+  a = a.filter(function (item, pos) {
+    return a.indexOf(item) == pos;
+  })
+  return a
+}
+
 $('.nav-inventory').on('click', function () {
   $('.modal-inventory').addClass('is-active')
   showMyItems(player.inventory)
@@ -395,18 +449,20 @@ function unlockErrorMessage() {
   $('.modal-unlock-message').addClass('is-active')
 }
 
-var updateStats = function(){
-  player.mightSum = 0
-  player.mightProduct = 1
-  player.healAmount = 0
-  for(let i = 0; i < player.inventory.filter(x=>x.might).length; i++){
-    if(player.inventory.filter(x=>x.might)[i].mightAdd){
-        player.mightSum += player.inventory.filter(x=>x.might)[i].might
-    } else{
-        player.mightProduct += player.inventory.filter(x=>x.might)[i].might
-    }
+$('.nav-search').on('submit', function (event) {
+  event.preventDefault()
+  var searchItem = $('#search').val()
+  var regex = /^[A-Za-z0-9-,() ]+$/
+  var isValid = regex.test(searchItem);
+  if (!isValid || searchItem == '') {
+    $('.shop-container').empty()
+    var message = $('<p>').text('Please provide a valid input').addClass('notification is-danger is-light')
+    $('.shop-container').append(message)
+  } else {
+    searchItems(searchItem)
+    $('#search').val('')
   }
-  for(let i = 0; i < player.inventory.filter(x=>x.health).length; i++){
-    player.healAmount += player.inventory.filter(x=>x.health)[i].health
-  }
-}
+})
+
+
+
