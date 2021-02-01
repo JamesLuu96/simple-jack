@@ -44,8 +44,8 @@ async function dealCard(number, playerObj) {
             img: data.cards[i].image
         }
         playerObj.hand.push(cardObj)
-    }
-    playerObj = updateSum(playerObj)
+        playerObj = updateSum(playerObj)
+   }
 
     if (playerObj.name === 'dealer' && playerObj.hand.length < 2) {
         $(`.play-${playerObj.name} .play-cards`).append($('<img>').attr('src', 'https://i.pinimg.com/originals/10/80/a4/1080a4bd1a33cec92019fab5efb3995d.png'))
@@ -78,6 +78,7 @@ var cardValueEvaluate = function (string, playerObj) {
         case 'A':
             var cardValue = 1
             if (playerObj.handSum + 11 <= 21) {
+                console.log(playerObj.handSum);
                 cardValue = 11
             }
             break;
