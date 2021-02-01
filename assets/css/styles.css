@@ -571,9 +571,10 @@ width:30%;
   text-align: center; 
 }
 .series{
-  padding:10px;
-  border-radius: 5px;
-  border-color: #2fb667;
+    margin: 15px 0;
+    padding:10px;
+    border-radius: 5px;
+    border-color: #2fb667;
 }
 /* Footer */
 #footer{
