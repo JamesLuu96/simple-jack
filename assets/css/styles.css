@@ -297,6 +297,7 @@ button {
 
 .play-cards img {
     width: 117px;
+    height: 174px;
     margin: 5px;
 }
 
@@ -644,6 +645,7 @@ width:30%;
 
     .play-cards img {
         width: 80px;
+        height: 126px;
     }
     .modal-inventory .modal-card{
         width:50%;
