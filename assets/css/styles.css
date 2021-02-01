@@ -438,6 +438,7 @@ button {
 .form-filter form {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .legendary {
