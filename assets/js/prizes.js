@@ -196,7 +196,6 @@ async function seriesList() {
       }
     }
     // saves to localStorage to prevent same user from making multiple api calls
-    console.log(characters)
   }
   for (let i = 0; i < characters.length; i++) {
     characters[i] = randomValues(characters[i])
